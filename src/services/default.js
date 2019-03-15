@@ -359,7 +359,7 @@ export default {
         "id": 913,
         "parentId": 92,
         "sort": 0,
-        "name": "测试1-1-2",
+        "name": "树形表格",
         "href": "/test/1/1/2",
         "icon": "fa fa-area-chart",
         "children": [],

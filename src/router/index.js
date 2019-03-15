@@ -17,6 +17,7 @@ import userAdd from "pages/sys/userAdd.vue";
 import resetPwd from "pages/resetPwd.vue";
 import test2 from "pages/test1/testPage.vue";
 import tableShow from "pages/table/tableShow"
+import treeTable from "pages/table/treeTable";
 
 
 //加载路由中间件
@@ -29,6 +30,7 @@ const router = new VueRouter({
     {
       path: '/test', component: app, children: [
         {path: '/test/1/1/1', component: tableShow},
+        {path: '/test/1/1/2', component: treeTable},
 
         {path: '/test/2/1', component: test2},
         {path: '*', component: NotFoundView}
