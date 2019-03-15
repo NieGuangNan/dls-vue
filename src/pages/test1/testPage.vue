@@ -8,7 +8,7 @@
 
 <script>
     import Chart from 'components/Xcharts/Chart1.vue';
-    import options from '../../chart-options/options'
+    import options from '@/services/options'
 
 export default {
       name: "testPage",

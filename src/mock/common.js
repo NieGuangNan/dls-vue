@@ -56,7 +56,7 @@ const menuList = [
     "isShow":"1"},
   {"id":31,"parentId":null,"sort":1,"name":"测试1","href":"/test/1","icon":"fa fa-upload","children":
     [
-      {"id":92,"parentId":31,"sort":0,"name":"测试1-1","href":"/test/1/1","icon":"fa fa-bank","children":[
+      {"id":92,"parentId":31,"sort":0,"name":"测试表格","href":"/test/1/1","icon":"fa fa-bank","children":[
         {"id":912,"parentId":92,"sort":0,"name":"测试1-1-1","href":"/test/1/1/1","icon":"fa fa-bank","children":[],"isShow":"1"},
         {"id":913,"parentId":92,"sort":0,"name":"测试1-1-2","href":"/test/1/1/2","icon":"fa fa-area-chart","children":[],"isShow":"1"}
       ],"isShow":"1"},

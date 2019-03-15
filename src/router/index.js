@@ -15,7 +15,9 @@ import app from "../App.vue";
 import sysUser from "pages/sys/user.vue";
 import userAdd from "pages/sys/userAdd.vue";
 import resetPwd from "pages/resetPwd.vue";
-import test1 from "pages/test1/testPage.vue"
+import test2 from "pages/test1/testPage.vue";
+import tableShow from "pages/table/tableShow"
+
 
 //加载路由中间件
 Vue.use(VueRouter)
@@ -26,7 +28,9 @@ const router = new VueRouter({
     {path: '/login', component: login},
     {
       path: '/test', component: app, children: [
-        {path: '/test/1/1/1', component: test1},
+        {path: '/test/1/1/1', component: tableShow},
+
+        {path: '/test/2/1', component: test2},
         {path: '*', component: NotFoundView}
       ]
     },

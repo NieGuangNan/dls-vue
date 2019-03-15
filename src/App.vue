@@ -14,10 +14,11 @@
             <transition mode="out-in" enter-active-class="fadeIn" leave-active-class="fadeOut" appear>
               <router-view></router-view>
             </transition>
-            <imp-footer></imp-footer>
           </section>
         </el-scrollbar>
+        <imp-footer></imp-footer>
       </div>
+
   </div>
 </template>
 
@@ -148,7 +149,7 @@
   }
 
   .content-scrollbar{
-    height: calc(100vh - 50px);
+    height: calc(100vh - 80px);
   }
 
   .content-wrapper .el-scrollbar__bar.is-vertical{
@@ -157,6 +158,8 @@
 
   .content-wrapper .content {
     padding: 1.25rem;
+
+    /*text-align: center;*/
   }
 
   .content-wrapper.slideCollapse{
