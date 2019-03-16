@@ -1,12 +1,11 @@
 <template>
-  <div >
+  <div>
     <el-table
       ref="multipleTable"
       :data="data"
-      border
-      @row-click="a"
-      @selection-change="handleSelectionChange"
       :row-style="rowStyle"
+      border
+      @selection-change="handleSelectionChange"
       size="medium">
       <slot></slot>
     </el-table>
@@ -19,50 +18,39 @@
       layout="total, prev, pager, next, jumper"
       :total="total">
     </el-pagination>
-
   </div>
-
-    
 </template>
 
 <script>
 
-    export default {
+  export default {
     name: "dataTable",
-
-
-      data() {
-
-        return {
-
-          currentPage4: 8,
-          total:0,
-          multipleSelection: []
-
-        }
+    data() {
+      return {
+        currentPage4: 8,
+        total: 0,
+        multipleSelection: [],
+        selectionList: []
+      }
+    },
+    props: {
+      paginator: {
+        default: false,
+        type: Boolean
       },
-      props:{
-        paginator:{
-          default:false,
-          type:Boolean
-        },
-        data:{
-          type: Array,
-          require:true
-        },
-        row:{
-          type: Number,
-          default:30,
-        },
-        rowStyle:{
-          type:Function
-        }
-
+      data: {
+        type: Array,
+        require: true
       },
+      row: {
+        type: Number,
+        default: 30
+      },
+      rowStyle:{
+        type:Function
+      }
+    },
     methods: {
-      deleteRow(index, rows) {
-        rows.splice(index, 1);
-      },
       handleSizeChange(val) {
         console.log(`每页 ${val} 条`);
       },
@@ -71,26 +59,16 @@
       },
       handleSelectionChange(val) {
         this.multipleSelection = val;
+        this.selectionList = val.map((i) => {
+          return i.id
+        });
+        this.$emit("selection-change", this.selectionList)
       },
-      a(row){
-        console.log(row)
-      }
-      // toggleSelection(rows) {
-      //   if (rows) {
-      //     rows.forEach(row => {
-      //       this.$refs.multipleTable.toggleRowSelection(row);
-      //     });
-      //   } else {
-      //     this.$refs.multipleTable.clearSelection();
-      //   }
-      // },
     },
-      mounted() {
-      this.total=this.data.length
-      }
-
-
+    mounted() {
+      this.total = this.data.length
     }
+  }
 </script>
 
 <style scoped>
@@ -101,7 +79,6 @@
     color: #303133;
     font-weight: 700;
   }
-
 
 
 </style>
