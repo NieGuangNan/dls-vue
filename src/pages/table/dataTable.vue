@@ -30,7 +30,6 @@
         currentPage4: 8,
         total: 0,
         multipleSelection: [],
-        selectionList: []
       }
     },
     props: {
@@ -46,8 +45,8 @@
         type: Number,
         default: 30
       },
-      rowStyle:{
-        type:Function
+      rowStyle: {
+        type: Function
       }
     },
     methods: {
@@ -59,10 +58,9 @@
       },
       handleSelectionChange(val) {
         this.multipleSelection = val;
-        this.selectionList = val.map((i) => {
+        this.$emit("selection-change", val.map((i) => {
           return i.id
-        });
-        this.$emit("selection-change", this.selectionList)
+        }))
       },
     },
     mounted() {
