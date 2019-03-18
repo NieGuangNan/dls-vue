@@ -4,6 +4,7 @@ import Vue from 'vue'
 function DataTransfer (data) {
   if (!(this instanceof DataTransfer)) {
     return new DataTransfer(data, null, null)
+
   }
 }
 
