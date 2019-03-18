@@ -99,15 +99,6 @@
   }
 </script>
 <style>
-  .el-menu-style li.el-menu-item:hover, .el-menu-style div.el-submenu__title:hover{
-    background: #000000!important;
-  }
-  .el-menu-item.is-active{
-    color:orange;
-  }
-  .el-menu-item,.el-submenu__title{
-    color:#fff
-  }
 
   .showSlide {
     animation-duration: .2s;
@@ -120,7 +111,6 @@
   }
 
   .main-sidebar {
-    background-color: #444444;
     position: fixed;
     top: 50px;
     left: 0;
@@ -138,14 +128,7 @@
     width: 230px;
   }
 
-  .el-menu-style,
-  .el-menu-style .el-menu{
-    background-color: #444444;
-  }
-  .el-menu-style .el-menu-item:hover,
-  .el-menu-style .el-submenu__title:hover{
-    background-color: #eeeeee !important;
-  }
+
 
   .el-menu-style .el-submenu .el-menu-item {
     height: 45px;
@@ -168,7 +151,6 @@
   }
 
   .vue-scrollbar{
-    background-color: #444444 !important;
     height: calc(100vh - 50px)
   }
 

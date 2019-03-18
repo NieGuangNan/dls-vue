@@ -9,6 +9,7 @@ import VueProgressBar from "vue-progressbar";
 import Element from "element-ui";
 import 'element-ui/lib/theme-default/index.css';
 import ImpPanel from "./components/panel.vue";
+import '@/assets/css/theme.css';
 import i18n from './i18n';
 import './assets/css/theme/409EFF/index.css';
 

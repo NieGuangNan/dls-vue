@@ -50,11 +50,11 @@
               </div>
               <div class="pull-left">
                 <router-link :to="{ path: '/resetPwd' }">
-                  <el-button type="default">修改密码</el-button>
+                  <el-button type="default">{{$t('message.header.btn1')}}</el-button>
                 </router-link>
               </div>
               <div class="pull-right">
-                <el-button type="default" @click="logout">退出</el-button>
+                <el-button type="default" @click="logout">{{$t('message.header.btn2')}}</el-button>
               </div>
             </div>
           </el-dropdown-menu>
@@ -168,13 +168,7 @@
   }
 </script>
 <style scoped>
-  .el-dropdown, .main-header a[data-v-cea13f84] {
-    color: #fff
-  }
 
-  .main-header.closeLogo .sidebar-toggle[data-v-cea13f84] {
-    color: #000;
-  }
 
   .animated {
     animation-duration: .2s;
@@ -182,7 +176,6 @@
 
   .main-header a {
     text-decoration: none;
-    color: #48576a;
   }
 
   .main-header {
@@ -192,7 +185,6 @@
     z-index: 1999;
     animation-name: slideInDown;
     animation-fill-mode: both;
-    color: #48576a;
   }
 
   .main-header .navbar .sidebar-toggle {
@@ -208,9 +200,7 @@
     content: "\f03b";
   }
 
-  .main-header {
-    background-color: #ffffff;
-  }
+
 
   .main-header .logo {
     -webkit-transition: width 0.3s ease-in-out;
@@ -246,7 +236,6 @@
     border: none;
     min-height: 50px;
     border-radius: 0;
-    background-color: #ffffff;
   }
 
   .layout-top-nav .main-header .navbar {
@@ -265,9 +254,6 @@
     display: block;
   }
 
-  .main-header .navbar .sidebar-toggle:hover {
-    background: #f9f9f9;
-  }
 
   .main-header .logo {
     border-bottom: 0 solid transparent;
@@ -328,13 +314,6 @@
     text-align: center;
   }
 
-  .navbar-custom-menu .el-dropdown-link img {
-    background-color: #108ee9;
-  }
-
-  .navbar-custom-menu .el-dropdown-link:hover {
-    background: #f9f9f9;
-  }
 
   .message-list {
     list-style: none;
@@ -349,16 +328,12 @@
 
   .message-list li a {
     text-decoration: none;
-    color: #666666;
   }
 
-  .message-list li:hover {
-    background-color: #f9f9f9;
-  }
+
 
   .el-dropdown-menu .header-pic {
     text-align: center;
-    background-color: #108ee9;
     padding: 20px;
   }
 
@@ -367,41 +342,22 @@
     height: 90px;
     width: 90px;
     border: 3px solid;
-    border-color: transparent;
-    border-color: hsla(0, 0%, 100%, .2);
-    background-color: #108ee9;
   }
 
   .el-dropdown-menu .header-pic p {
     font-size: 1.5rem;
-    color: #ffffff;
   }
 
   .el-dropdown-menu .pull-left {
-    background-color: #f9f9f9;
     padding: 10px;
     display: inline-block;
     float: left;
   }
 
   .el-dropdown-menu .pull-right {
-    background-color: #f9f9f9;
     padding: 10px;
     float: right;
     display: inline-block;
   }
 
-  .main-header.closeLogo .sidebar-toggle[data-v-cea13f84][data-v-cea13f84],
-  .el-dropdown, .main-header a[data-v-cea13f84] {
-    color: #fff
-  }
-
-  .main-header[data-v-cea13f84], .main-header .navbar[data-v-cea13f84] {
-    background: #000;
-  }
-
-  .main-header.closeLogo .sidebar-toggle[data-v-cea13f84],
-  .main-header .navbar .sidebar-toggle[data-v-cea13f84]:hover {
-    background: #444444;
-  }
 </style>

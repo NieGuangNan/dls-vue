@@ -1,0 +1,171 @@
+/*按钮样式*/
+.el-button--primary {
+  color: #E0E0E3 !important;
+  background-color: transparent !important;
+  border-color: #f6a821 !important;
+  z-index: 2;
+}
+.el-button--primary:hover,
+.el-button--primary:focus,
+.el-button--primary:active,
+.el-button--primary.active,
+.el-button--primary:active:focus,
+.el-button--primary:active:hover,
+.el-button--primary.active:hover,
+.el-button--primary.active:focus ,
+.el-button--primary:not(:disabled):not(.disabled):active,
+.el-button--primary:not(:disabled):not(.disabled).active{
+  background-color: rgba(246, 168, 33, 0.1) !important;
+  color: #fff !important;
+  border-color: #f6a821 !important;
+}
+
+
+.el-button--success {
+  color: #E0E0E3 !important;
+  background-color: transparent !important;
+  border-color: #0f83c9 !important;
+  z-index: 2;
+}
+.el-button--success:hover,
+.el-button--success:focus,
+.el-button--success:active,
+.el-button--success.active,
+.el-button--success:active:focus,
+.el-button--success:active:hover,
+.el-button--success.active:hover,
+.el-button--success.active:focus {
+  background-color: rgba(15, 131, 201, 0.1) !important;
+  color: #fff !important;
+  border-color: #0f83c9 !important;
+}
+
+
+.el-button--default {
+  color: #E0E0E3 !important;
+  background-color: transparent !important;
+  border-color: #616779 !important;
+}
+.el-button--default:hover,
+.el-button--default:focus,
+.el-button--default:active,
+.el-button--default.active,
+.open .dropdown-toggle.el-button--default,
+.el-button--default:active:focus,
+.el-button--default:active:hover,
+.el-button--default.active:hover,
+.el-button--default.active:focus {
+  background-color: #3d404c !important;
+  color: #ffffff !important;
+}
+
+
+.el-button--danger {
+  color: #E0E0E3 !important;
+  background-color: transparent !important;
+  border-color: #db524b !important;
+}
+.el-button--danger:hover,
+.el-button--danger:focus,
+.el-button--danger:active,
+.el-button--danger.active,
+.open .dropdown-toggle.el-button--danger,
+.el-button--danger:active:focus,
+.el-button--danger:active:hover,
+.el-button--danger.active:hover,
+.el-button--danger.active:focus {
+  background-color: rgba(219, 82, 75, 0.1) !important;
+  color: #fff !important;
+  border-color: #db524b !important;
+}
+
+
+.el-button--white {
+  color: #E0E0E3 !important;
+  background-color: transparent !important;
+  border-color: #616779 !important;
+}
+.el-button--white:hover,
+.el-button--white:focus,
+.el-button--white:active,
+.el-button--white.active,
+.open .dropdown-toggle.el-button--white,
+.el-button--white:active:focus,
+.el-button--white:active:hover,
+.el-button--white.active:hover,
+.el-button--white.active:focus {
+  background-color: #3d404c !important;
+  color: #ffffff !important;
+}
+
+/*header样式*/
+
+.el-dropdown-menu .header-pic p,
+.el-dropdown ,.main-header a[data-v-cea13f84]{
+  color:#fff !important;
+}
+.main-header.closeLogo .sidebar-toggle[data-v-cea13f84]{
+  color:#000;
+}
+.main-header[data-v-cea13f84],.main-header .navbar[data-v-cea13f84]{
+  background:#000;
+}
+.main-header.closeLogo .sidebar-toggle[data-v-cea13f84],
+.main-header .navbar .sidebar-toggle[data-v-cea13f84]:hover,
+.navbar-custom-menu .el-dropdown-link[data-v-cea13f84]:hover
+{
+  background:#444444;
+}
+.el-dropdown-menu .header-pic,
+.navbar-custom-menu .el-dropdown-link img{
+  background-color: #108ee9;
+}
+.el-dropdown-menu .pull-left,
+.el-dropdown-menu .pull-right,
+.navbar-custom-menu .el-dropdown-link:hover{
+  background: #f9f9f9;
+}
+.message-list li a{
+  color: #666666;
+}
+.message-list li:hover{
+  background-color: #f9f9f9;
+}
+.el-dropdown-menu .header-pic img{
+  border-color: transparent;
+  border-color: hsla(0,0%,100%,.2);
+  background-color: #108ee9;
+}
+.main-header,.main-header a{
+  color: #48576a;
+}
+
+
+/*side-menu样式*/
+
+.el-menu-style li.el-menu-item:hover, .el-menu-style div.el-submenu__title:hover{
+  background: #000000!important;
+}
+.el-menu-item.is-active{
+  color:orange;
+}
+.el-menu-item,.el-submenu__title{
+  color:#fff
+}
+.main-sidebar,
+.el-menu-style,
+.el-menu-style .el-menu,
+.vue-scrollbar{
+  background-color: #444444 !important;
+}
+
+.el-menu-style .el-menu-item:hover,
+.el-menu-style .el-submenu__title:hover{
+  background-color: #eeeeee !important;
+}
+
+/*footer样式*/
+.main-footer {
+  color:#444;
+  /*background:red;*/
+}
