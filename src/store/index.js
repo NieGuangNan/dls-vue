@@ -21,6 +21,7 @@ const store = new Vuex.Store({
   state: {
     loading: false,
     menuList: {},
+    themecolor:'409EFF',//默认为409EFF
     sidebar: {
       collapsed: getSessionKey('state.sidebar.collapsed','false')==='true',
       show: getSessionKey('state.sidebar.show','true')==='true',
@@ -32,6 +33,10 @@ const store = new Vuex.Store({
     currentMenus:[],
   },
   mutations: {
+    //更新主题颜色
+    setThemeColor(state,curcolor){
+      this.state.themecolor = curcolor;
+    },
     //只能同步的函数
     [types.TOGGLE_DEVICE] (state, isMobile) {
       state.device.isMobile = isMobile
