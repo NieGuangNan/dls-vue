@@ -9,6 +9,7 @@ import VueProgressBar from "vue-progressbar";
 import Element from "element-ui";
 import 'element-ui/lib/theme-default/index.css';
 import ImpPanel from "./components/panel.vue";
+import i18n from './i18n';
 
 
 Vue.prototype.$http = axios
@@ -42,5 +43,6 @@ new Vue({
   store,
   router,
   el: "#root",
+  i18n,
   render: h => h(frame)
 })

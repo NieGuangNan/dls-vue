@@ -1,7 +1,9 @@
 <template>
   <header class="main-header animated" :class="{closeLogo:sidebar.collapsed,mobileLogo:device.isMobile}">
     <a href="#" class="logo">
-      <span class="logo-lg"><i class="fa fa-diamond"></i>&nbsp; <b>Vue-Admin</b></span>
+      <span class="logo-lg"><i class="fa fa-diamond"></i>&nbsp;
+        <b>Vue-Admin</b>
+      </span>
     </a>
     <nav class="navbar">
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button"
@@ -9,31 +11,41 @@
         <span class="sr-only">Toggle navigation</span>
       </a>
       <div class="navbar-custom-menu">
+        <el-dropdown trigger="click" class="navbar-dropdown">
+          <span class="el-dropdown-link">
+            {{$t('message.lang')}}<i class="el-icon-arrow-down el-icon--right"></i>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item @click.native="toggleLang('zh')" :disabled="$i18n.locale == 'zh'">中文</el-dropdown-item>
+            <el-dropdown-item @click.native="toggleLang('en')" :disabled="$i18n.locale == 'en'">English</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
         <el-dropdown class="navbar-dropdown" trigger="click">
           <div class="el-dropdown-link" style="height: auto;line-height: inherit">
             <el-badge :value="count" class="item">
-            <i class="fa fa-envelope-o"></i>
+              <i class="fa fa-envelope-o"></i>
             </el-badge>
           </div>
           <el-dropdown-menu>
             <ul class="message-list">
-            <li v-for="(item,index) in list"><!-- start message -->
-            <router-link :to="{path:'/sys/message',query:{id:item.id}}">
-            <p>{{index + 1}}. {{item.title}}</p>
-            </router-link>
-            </li>
+              <li v-for="(item,index) in list"><!-- start message -->
+                <router-link :to="{path:'/sys/message',query:{id:item.id}}">
+                  <p>{{index + 1}}. {{item.title}}</p>
+                </router-link>
+              </li>
             </ul>
           </el-dropdown-menu>
         </el-dropdown>
         <el-dropdown trigger="click" class="navbar-dropdown">
           <div class="el-dropdown-link">
-            <img :src='userInfo.avatar' style="width: 25px;height: 25px;border-radius: 50%; vertical-align: middle;" alt="U">
+            <img :src='userInfo.avatar' style="width: 25px;height: 25px;border-radius: 50%; vertical-align: middle;"
+                 alt="U">
             {{userInfo.name}}
           </div>
           <el-dropdown-menu style="padding: 0px">
             <div>
               <div class="header-pic">
-                <img :src='userInfo.avatar' class="img-circle" alt="User Image" >
+                <img :src='userInfo.avatar' class="img-circle" alt="User Image">
                 <p>{{userInfo.name}}</p>
               </div>
               <div class="pull-left">
@@ -57,42 +69,59 @@
   import {mapGetters, mapActions, mapMutations} from 'vuex'
   import types from "store/mutation-types"
   import * as api from "../../api"
-  import  auth from 'common/auth'
+  import auth from 'common/auth'
   import * as sysApi from '../../services/sys'
 
   export default {
-    data(){
+    data() {
       return {
         showMessageBox: false,
         showProfileBox: false,
         list: [],
         count: 4,
-        show:true,
+        show: true,
       }
     },
     computed: mapGetters({
       sidebar: 'sidebar',
       userInfo: 'userInfo',
-      device:'device',
+      device: 'device',
     }),
     methods: {
-      toggleMenu(collapsed,isMobile){
-        if(isMobile){
+      toggleLang(lang) {
+        if (lang == 'zh') {
+          localStorage.setItem('locale', 'zh');
+          this.$i18n.locale = localStorage.getItem('locale');
+          this.$message({
+            message: '切换为中文！',
+            type: 'success'
+          })
+        } else if (lang == 'en') {
+          localStorage.setItem('locale', 'en');
+          this.$i18n.locale = localStorage.getItem('locale');
+          this.$message({
+            message: 'Switch to English!',
+            type: 'success'
+          })
+        }
+      },
+      toggleMenu(collapsed, isMobile) {
+        if (isMobile) {
           this.toggleSidebarShow();
-        }else{
+        } else {
           this.toggleSidebar();
         }
       },
-      logout(){
+      logout() {
         this.$http.get(api.LOGOUT)
           .then(res => {
             auth.logout();
             this.$http.defaults.headers.common['authSid'] = '';
             this.$router.push({path: '/login'});
           }).catch(error => {
-            auth.logout();
-            this.$http.defaults.headers.common['authSid'] = '';
-            this.$router.push({path: '/login'});
+          auth.logout();
+          this.$http.defaults.headers.common['authSid'] = '';
+          this.$router.push({path: '/login'});
         })
       },
       ...mapMutations({
@@ -100,10 +129,10 @@
         toggleSidebarShow: types.TOGGLE_SIDEBAR_SHOW,
         setUserInfo: types.SET_USER_INFO,
       }),
-      toggleMessage(){
+      toggleMessage() {
         this.showMessageBox = !this.showMessageBox;
       },
-      toggleProfile(){
+      toggleProfile() {
         this.showProfileBox = !this.showProfileBox;
       },
       autoHide(evt) {
@@ -115,19 +144,19 @@
         }
       }
     },
-    created(){
+    created() {
       let item = window.sessionStorage.getItem("user-info");
-      if (!!item){
-          this.setUserInfo(JSON.parse(item));
+      if (!!item) {
+        this.setUserInfo(JSON.parse(item));
       }
       this.count = 0;
       this.list = [];
       sysApi.msgList()
         .then(res => {
-            if (res && res.length>0){
-                this.count = res.length;
-                this.list = res;
-            }
+          if (res && res.length > 0) {
+            this.count = res.length;
+            this.list = res;
+          }
         })
     },
     mounted() {
@@ -139,12 +168,14 @@
   }
 </script>
 <style scoped>
-  .el-dropdown ,.main-header a[data-v-cea13f84]{
-    color:#fff
+  .el-dropdown, .main-header a[data-v-cea13f84] {
+    color: #fff
   }
-  .main-header.closeLogo .sidebar-toggle[data-v-cea13f84]{
-    color:#000;
+
+  .main-header.closeLogo .sidebar-toggle[data-v-cea13f84] {
+    color: #000;
   }
+
   .animated {
     animation-duration: .2s;
   }
@@ -259,17 +290,20 @@
     }
 
   }
-  .main-header.closeLogo .navbar{
+
+  .main-header.closeLogo .navbar {
     margin-left: 44px;
   }
 
-  .main-header.closeLogo .logo{
+  .main-header.closeLogo .logo {
     width: 44px;
     padding: 0 8px;
   }
-  .main-header.closeLogo .logo .logo-lg b{
+
+  .main-header.closeLogo .logo .logo-lg b {
     display: none;
   }
+
   .main-header.closeLogo .sidebar-toggle {
     background: #f9f9f9;
   }
@@ -282,81 +316,92 @@
     content: "\f03a";
   }
 
-  .navbar-custom-menu{
+  .navbar-custom-menu {
     float: right;
   }
 
-  .navbar-custom-menu .el-dropdown-link{
+  .navbar-custom-menu .el-dropdown-link {
     cursor: pointer;
     height: 50px;
     padding: 13px 5px;
     min-width: 50px;
     text-align: center;
   }
-  .navbar-custom-menu .el-dropdown-link img{
+
+  .navbar-custom-menu .el-dropdown-link img {
     background-color: #108ee9;
   }
 
-  .navbar-custom-menu .el-dropdown-link:hover{
+  .navbar-custom-menu .el-dropdown-link:hover {
     background: #f9f9f9;
   }
+
   .message-list {
     list-style: none;
     padding: 0 10px;
   }
-  .message-list li{
+
+  .message-list li {
     list-style: none;
     height: 25px;
     line-height: 25px;
   }
-  .message-list li a{
+
+  .message-list li a {
     text-decoration: none;
     color: #666666;
   }
-  .message-list li:hover{
+
+  .message-list li:hover {
     background-color: #f9f9f9;
   }
 
-  .el-dropdown-menu .header-pic{
+  .el-dropdown-menu .header-pic {
     text-align: center;
     background-color: #108ee9;
     padding: 20px;
   }
-  .el-dropdown-menu .header-pic img{
+
+  .el-dropdown-menu .header-pic img {
     vertical-align: middle;
     height: 90px;
     width: 90px;
     border: 3px solid;
     border-color: transparent;
-    border-color: hsla(0,0%,100%,.2);
+    border-color: hsla(0, 0%, 100%, .2);
     background-color: #108ee9;
   }
-  .el-dropdown-menu .header-pic p{
+
+  .el-dropdown-menu .header-pic p {
     font-size: 1.5rem;
     color: #ffffff;
   }
-  .el-dropdown-menu .pull-left{
+
+  .el-dropdown-menu .pull-left {
     background-color: #f9f9f9;
     padding: 10px;
     display: inline-block;
     float: left;
   }
-  .el-dropdown-menu .pull-right{
+
+  .el-dropdown-menu .pull-right {
     background-color: #f9f9f9;
     padding: 10px;
     float: right;
     display: inline-block;
   }
+
   .main-header.closeLogo .sidebar-toggle[data-v-cea13f84][data-v-cea13f84],
-  .el-dropdown ,.main-header a[data-v-cea13f84]{
-    color:#fff
+  .el-dropdown, .main-header a[data-v-cea13f84] {
+    color: #fff
   }
 
-  .main-header[data-v-cea13f84],.main-header .navbar[data-v-cea13f84]{
-    background:#000;
+  .main-header[data-v-cea13f84], .main-header .navbar[data-v-cea13f84] {
+    background: #000;
   }
+
   .main-header.closeLogo .sidebar-toggle[data-v-cea13f84],
-  .main-header .navbar .sidebar-toggle[data-v-cea13f84]:hover{
-    background:#444444;
+  .main-header .navbar .sidebar-toggle[data-v-cea13f84]:hover {
+    background: #444444;
   }
 </style>
