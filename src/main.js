@@ -10,7 +10,8 @@ import Element from "element-ui";
 import 'element-ui/lib/theme-default/index.css';
 import ImpPanel from "./components/panel.vue";
 import i18n from './i18n';
-import '../theme/index.css'
+import '../theme/index.css';
+import './assets/css/theme/409EFF/index.css';
 
 Vue.prototype.$http = axios
 Vue.axios = axios
