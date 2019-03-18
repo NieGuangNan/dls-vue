@@ -3,7 +3,8 @@ const en = {
     lang: 'language:English',
     header:{
       btn1:'Alter Password',
-      btn2:'Exit'
+      btn2:'Exit',
+      userName:'Anonymous'
 
     },
     menu:{

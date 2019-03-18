@@ -89,6 +89,8 @@
           this.toggleSidebarShow(false);
         }
       },
+      //mapMutations 辅助函数将组件中的 methods 映射为 store.commit 调用
+      //将this.toggleSidebarShow() 映射为this.#store.commit(types.TOGGLE_SIDEBAR_SHOW)
       ...mapMutations({
         toggleSidebarShow: types.TOGGLE_SIDEBAR_SHOW,
       }),

@@ -3,7 +3,8 @@ const zh = {
     lang: '语言：中文',
     header:{
       btn1:'修改密码',
-      btn2:'退出'
+      btn2:'退出',
+      userName:'佚名'
 
     },
     menu:{

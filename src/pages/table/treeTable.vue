@@ -55,6 +55,8 @@
     },
     data () {
       return {
+        checked:'',
+        requestUrl:null,
         columns: TableTree.columns,
         dataSource: TableTree.dataSource,
         treeStructure: true
