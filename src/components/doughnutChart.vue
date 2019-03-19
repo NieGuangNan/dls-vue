@@ -28,7 +28,7 @@
         if (typeof json !== 'object') {
           data = eval('(' + json + ')');
         }
-        let min = Math.min(id.clientWidth, id.clientHeight);
+        let min = Math.min(id.clientWidth, this.height);
         id.style.height = min + 'px';
         id.style.width = min + 'px';
         id.style.margin = min * 0.1 + 4 + 'px';
@@ -110,6 +110,14 @@
     },
     mounted() {
       this.doughnutChart(this.$refs.doughnutChart, this.data)
+    },
+
+    updated() {
+      this.$refs.doughnutChart.style.width = 'auto';
+      this.$refs.doughnutChart.innerHTML = '';
+      this.$nextTick(function () {
+        this.doughnutChart(this.$refs.doughnutChart, this.data)
+      })
     }
   }
 
