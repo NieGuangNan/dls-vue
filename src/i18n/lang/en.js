@@ -30,6 +30,9 @@ const en = {
         items:{
           item1: {
             name:'BarGraph'
+          },
+          item2:{
+            name:'pieGraph'
           }
         }
       },

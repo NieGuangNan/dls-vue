@@ -30,6 +30,9 @@ const zh = {
         items:{
           item1: {
             name:'柱状图'
+          },
+          item2:{
+            name:'饼状图'
           }
         }
       },

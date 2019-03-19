@@ -393,6 +393,15 @@ export default {
       "icon": "fa fa-image",
       "children": [],
       "isShow": "1"
+    },{
+      "id": 104,
+      "parentId": 102,
+      "sort": 0,
+      "name": "message.menu.menu2.items.item2.name",
+      "href": "/test/2/2",
+      "icon": "fa fa-image",
+      "children": [],
+      "isShow": "1"
     }],
     "isShow": "1"
   }, {
