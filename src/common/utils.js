@@ -7,7 +7,13 @@ export const getSessionKey = (key, defaultValue) => {
   }
   return item;
 }
-
+export const getLocalKey = (key, defaultValue) => {
+  const item = window.localStorage.getItem(key);
+  if (item == undefined && defaultValue != undefined) {
+    return defaultValue
+  }
+  return item;
+}
 export const getBaseUrl = (url) => {
   var reg = /^((\w+):\/\/([^\/:]*)(?::(\d+))?)(.*)/;
   reg.exec(url);
