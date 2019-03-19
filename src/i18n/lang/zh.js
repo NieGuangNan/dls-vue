@@ -32,7 +32,7 @@ const zh = {
             name:'柱状图'
           },
           item2:{
-            name:'饼状图'
+            name:'混合图表'
           }
         }
       },

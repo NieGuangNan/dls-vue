@@ -12,9 +12,7 @@ import ImpPanel from "./components/panel.vue";
 import '@/assets/css/theme.css';
 import i18n from './i18n';
 import './assets/css/theme/409EFF/index.css';
-//全部引入
-// import VCharts from 'v-charts';
-// Vue.use(VCharts);
+
 
 Vue.prototype.$http = axios
 Vue.axios = axios
