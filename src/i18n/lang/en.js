@@ -32,7 +32,7 @@ const en = {
             name:'BarGraph'
           },
           item2:{
-            name:'pieGraph'
+            name:'MixedGraph'
           }
         }
       },

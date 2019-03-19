@@ -18,7 +18,7 @@ import resetPwd from "pages/resetPwd.vue";
 import bar from "pages/charts/bar.vue";
 import tableShow from "pages/table/tableShow"
 import treeTable from "pages/table/treeTable";
-import pie from "pages/charts/pie.vue"
+import mixedChart from "pages/charts/mixedChart.vue"
 
 
 //加载路由中间件
@@ -33,7 +33,7 @@ const router = new VueRouter({
         {path: '/test/1/1/1', component: tableShow},
         {path: '/test/1/1/2', component: treeTable},
         {path: '/test/2/1', component: bar},
-        {path: '/test/2/2', component: pie},
+        {path: '/test/2/2', component: mixedChart},
         {path: '*', component: NotFoundView}
       ]
     },
