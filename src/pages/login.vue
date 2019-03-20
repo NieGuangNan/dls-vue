@@ -71,30 +71,33 @@
         loadMenuList: 'loadMenuList' // 映射 this.load() 为 this.$store.dispatch('loadMenuList')
       }),
       login(){
+
         var redirectUrl = '/index';
         if (this.$route.query && this.$route.query != null && this.$route.query.redirect && this.$route.query.redirect != null) {
           redirectUrl = this.$route.query.redirect;
         }
-        sysApi.login(this.form).then(res => {
-          this.loginSuccess({...res,redirectUrl})
-        })
+        if (!(this.form.username&&this.form.password)){
+          this.$message('用户名、密码均不能为空');
+        }else{
+          sysApi.login(this.form).then(res => {
+            this.loginJudge({...res,redirectUrl})
+          })
+        }
+
       },
-      loginSuccess({sid,user,redirectUrl}){
+      loginJudge({sid,user,redirectUrl}){
         // console.log('触发了没？');
-        auth.login(sid);
-        window.sessionStorage.setItem("user-info", JSON.stringify(user));
-        this.setUserInfo(user);
-        this.$http.defaults.headers.common['authSid'] = sid;
-        this.loadMenuList();
-        redirectUrl && this.$router.push({path: redirectUrl});
-      },
-      loginFailed(){
-        this.open()
-      },
-      open() {
-        this.$alert('用户名或密码错', '提示', {
-          confirmButtonText: '确定',
-        });
+        if (sid&&user){
+          auth.login(sid);
+          window.sessionStorage.setItem("user-info", JSON.stringify(user));
+          this.setUserInfo(user);
+          this.$http.defaults.headers.common['authSid'] = sid;
+          this.loadMenuList();
+          redirectUrl && this.$router.push({path: redirectUrl});
+        } else {
+          this.$message('用户名或密码错');
+        }
+
       }
     }
   }

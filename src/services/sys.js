@@ -5,12 +5,15 @@ import defaultValue from "./default";
 export function login (params) {
   return new Promise((resolve, reject) => {
     axios.post(api.LOGIN, { params }).then(response => {
+      //请求后台数据，匹配成功向login返回数据，失败返回null
       resolve(response.data);
     }, err => {
       resolve(defaultValue.login);
+
     })
       .catch((error) => {
         resolve(defaultValue.login)
+        //返回提示信息
       })
   })
 }

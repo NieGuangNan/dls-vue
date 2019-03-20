@@ -215,7 +215,8 @@
               <i class="fa fa-wrench" title="配置资源" on-click={(e)=>this.settingResource(e,data.id)}></i>
               <i class="fa fa-trash" on-click={ () => this.deleteSelected(data.id) }></i>
             </span>
-          </span>);
+          </span>
+        );
       },
       settingResource(event,id){
           event.stopPropagation();

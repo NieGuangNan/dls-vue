@@ -178,6 +178,7 @@
           }, 300);
         }
       });
+
     },
     watch: {
       'sidebar.collapsed': function (val) {

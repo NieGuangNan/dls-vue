@@ -128,6 +128,11 @@
       this.$nextTick(function () {
         this.timer()
       });
+      //必须先登入再访问
+      if (!window.sessionStorage.getItem('user-info')){
+        this.$router.push('/login')
+      }
+
     },
     created() {
       // addTheme(getLocalKey('state.themecolor', '#fff'));

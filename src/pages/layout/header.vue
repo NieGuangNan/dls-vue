@@ -48,7 +48,7 @@
           <div class="el-dropdown-link">
             <img :src='userInfo.avatar' style="width: 25px;height: 25px;border-radius: 50%; vertical-align: middle;"
                  alt="U">
-            {{userInfo.name}}
+            {{$t(userInfo.name)}}
           </div>
           <el-dropdown-menu style="padding: 0px">
             <div>
@@ -118,6 +118,7 @@
             message: '切换为中文！',
             type: 'success'
           })
+          console.log(this.$i18n.locale);
         } else if (lang == 'en') {
           localStorage.setItem('locale', 'en');
           this.$i18n.locale = localStorage.getItem('locale');
@@ -125,6 +126,7 @@
             message: 'Switch to English!',
             type: 'success'
           })
+          console.log(this.$i18n.locale);
         }
         this.reload();
       },

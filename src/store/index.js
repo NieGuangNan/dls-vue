@@ -7,6 +7,7 @@ import {getCurrentMenu, getSessionKey, getLocalKey,addTheme} from '../common/uti
 
 Vue.use(Vuex)
 
+
 const store = new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',  //直接修改state 抛出异常
 
@@ -32,7 +33,7 @@ const store = new Vuex.Store({
     device: {
       isMobile: false
     },
-    userInfo: {name: '佚名'},
+    userInfo: {name:'message.header.userName'},
     currentMenus: [],
   },
   // 每个 mutation 都有一个字符串的 事件类型 (type) 和 一个 回调函数 (handler)。

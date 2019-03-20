@@ -43,6 +43,7 @@
                 <el-slider v-model="form.sort"></el-slider>
               </el-form-item>
               <el-form-item label="" :label-width="formLabelWidth">
+
                 <el-button type="primary" @click="onSubmit" v-text="form.id?'修改':'新增'"></el-button>
                 <el-button type="danger" @click="deleteSelected" icon="delete" v-show="form.id && form.id!=null">删除
                 </el-button>
@@ -529,6 +530,7 @@
   import * as api from "../../api"
   import * as sysApi from '../../services/sys'
 
+
   export default {
     mixins: [ treeter ],
     components: {
@@ -559,21 +561,17 @@
         }
       }
     },
-    // watch:{
-    //   menuTree:function () {
-    //     console.log('数据改变了 ，重新渲染')
-    //   }
-    // },
     methods: {
       selectIcon(event){
         this.form.icon = event.target.className;
         this.selectIconDialog = false;
       },
       renderContent(h, { node, data, store }) {
+        let labels=this.$t(node.label);
         return (
           <span>
             <span>
-              <span><i class={data.icon}></i>&nbsp;{node.label}</span>
+              <span><i class={data.icon}></i>&nbsp;{labels}</span>
             </span>
           </span>);
       },
@@ -673,6 +671,7 @@
     },
     created(){
       this.load();
+
     },
 
   }
