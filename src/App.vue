@@ -28,15 +28,14 @@
   import impHeader from "./pages/layout/header.vue"
   import impFooter from "./pages/layout/footer.vue"
   import {mapGetters, mapActions, mapMutations} from 'vuex'
-  import {addTheme,getLocalKey} from 'common/utils'
   import types from "./store/mutation-types"
   import 'animate.css'
 
   export default {
     name: 'app',
-    provide(){
-      return{
-        reload:this.reload
+    provide() {
+      return {
+        reload: this.reload
       }
     },
 
@@ -60,7 +59,7 @@
         isShow: false,
         headerFixed: true,
         breadcrumb: [],
-        isRouterAlive:true
+        isRouterAlive: true
       }
     },
     methods: {
@@ -83,7 +82,7 @@
       ...mapActions({
         changeCurrentMenu: 'changeCurrentMenu' // 映射 this.changeCurrentMenu() 为 this.$store.dispatch('changeCurrentMenu')
       }),
-      reload(){
+      reload() {
         this.isRouterAlive = false
         this.$nextTick(
           function () {
@@ -98,6 +97,7 @@
       }
     },
     beforeMount() {
+      this.$i18n.locale = localStorage.getItem('locale');
       const {body} = document
       const WIDTH = 784
       const handler = () => {
@@ -113,9 +113,14 @@
           }
         }
       }
-      document.addEventListener('visibilitychange', handler)
-      window.addEventListener('DOMContentLoaded', handler)
-      window.addEventListener('resize', handler)
+      const resize = () => {
+        this.getHeight();
+        this.reload()
+      }
+      document.addEventListener('visibilitychange', handler);
+      window.addEventListener('DOMContentLoaded', handler);
+      window.addEventListener('resize', handler);
+      window.addEventListener('resize', resize);
     },
     mounted() {
       //  [App.vue specific] When App.vue is finish loading finish the progress bar
@@ -125,8 +130,8 @@
       });
     },
     created() {
-      addTheme(getLocalKey('state.themecolor', '#fff'));
-      window.addEventListener('resize', this.getHeight);
+      // addTheme(getLocalKey('state.themecolor', '#fff'));
+
       this.getHeight()
 
       //  [App.vue specific] When App.vue is first loaded start the progress bar
@@ -156,7 +161,7 @@
 //      this.$router.push('/activePublic');
     },
     destroyed() {
-      window.removeEventListener('resize', this.getHeight)
+      // window.removeEventListener('resize', location.reload())
     }
   }
 

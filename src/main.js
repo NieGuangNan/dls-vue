@@ -16,6 +16,8 @@ import ImpPanel from "./components/panel.vue";
 import '@/assets/css/theme.css';
 import i18n from './i18n';
 
+import(`@/assets/css/theme/${window.localStorage.getItem('state.themecolor') ? window.localStorage.getItem('state.themecolor') : '#fff'}/index.css`);
+
 
 Vue.prototype.$http = axios
 Vue.axios = axios

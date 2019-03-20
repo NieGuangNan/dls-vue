@@ -40,7 +40,7 @@ const store = new Vuex.Store({
   mutations: {
     //更新主题颜色
     setThemeColor(state, curcolor) {
-      addTheme(curcolor);
+      // addTheme(curcolor);
       localStorage.setItem("state.themecolor", curcolor);
       state.themecolor = getLocalKey('state.themecolor', '#fff');
     },

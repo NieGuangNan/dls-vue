@@ -82,7 +82,7 @@
   import {toggleClass} from 'common/utils'
 
   export default {
-    inject:['reload'],
+    inject: ['reload'],
     data() {
       return {
         showMessageBox: false,
@@ -104,6 +104,7 @@
         },
         set(val) {
           this.$store.commit('setThemeColor', val);
+          location.reload();
         }
       }
     },

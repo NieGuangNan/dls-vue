@@ -7,11 +7,16 @@
 
 <script>
   import echarts from 'echarts'
+  import 'echarts/theme/dark.js'
+  import {getLocalKey} from "common/utils";
+  window.localStorage.getItem('state.themecolor') && window.localStorage.getItem('state.themecolor') !== '#fff' ? import(`@/assets/eCharts/theme/${window.localStorage.getItem('state.themecolor')}/index.js`) : '';
 
   export default {
     name: "echartTemplate",
     data() {
-      return {}
+      return {
+        theme: window.localStorage.getItem('state.themecolor') && window.localStorage.getItem('state.themecolor') !== '#fff' ? 'index' : ''
+      }
     },
     props: {
       height: {
@@ -34,27 +39,19 @@
     },
 
     watch: {
-      height: function () {
-        this.resize();
-      },
       option: function () {
         this.drawLine()
-      }
+      },
     },
     methods: {
       drawLine() {
         // 基于准备好的dom，初始化echarts实例
-        let myChart = echarts.init(this.$refs.eChart);
+        let myChart = echarts.init(this.$refs.eChart, this.theme);
         // 绘制图表
         myChart.setOption(this.option);
         this.alterOption ? myChart.setOption(this.alterOption) : '';
       },
-      resize() {
-        let myChart = echarts.init(this.$refs.eChart);
-        myChart.resize();
-      }
     }
-
   }
 
 </script>
