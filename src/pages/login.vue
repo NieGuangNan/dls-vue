@@ -80,12 +80,21 @@
         })
       },
       loginSuccess({sid,user,redirectUrl}){
+        // console.log('触发了没？');
         auth.login(sid);
         window.sessionStorage.setItem("user-info", JSON.stringify(user));
         this.setUserInfo(user);
         this.$http.defaults.headers.common['authSid'] = sid;
         this.loadMenuList();
         redirectUrl && this.$router.push({path: redirectUrl});
+      },
+      loginFailed(){
+        this.open()
+      },
+      open() {
+        this.$alert('用户名或密码错', '提示', {
+          confirmButtonText: '确定',
+        });
       }
     }
   }

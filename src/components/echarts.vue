@@ -1,6 +1,7 @@
 <template>
 
-  <div ref='eChart' :style="{width: '100%',height: height+'px'}" :height="height" :option="option"></div>
+  <div ref='eChart' :style="{width: '100%',height: height+'px'}" :height="height" :option="option"
+       :alterOp="alterOption"></div>
 
 </template>
 
@@ -10,8 +11,7 @@
   export default {
     name: "echartTemplate",
     data() {
-      return {
-      }
+      return {}
     },
     props: {
       height: {
@@ -24,16 +24,20 @@
       option: {
         type: Object
       },
+      alterOption: {
+        type: Object,
+        default: null
+      }
     },
     mounted() {
       this.drawLine()
     },
 
-    watch:{
-      height:function () {
+    watch: {
+      height: function () {
         this.resize();
       },
-      option:function () {
+      option: function () {
         this.drawLine()
       }
     },
@@ -43,12 +47,10 @@
         let myChart = echarts.init(this.$refs.eChart);
         // 绘制图表
         myChart.setOption(this.option);
-        // myChart.resize();
+        this.alterOption ? myChart.setOption(this.alterOption) : '';
       },
-      resize(){
+      resize() {
         let myChart = echarts.init(this.$refs.eChart);
-        // 绘制图表
-        myChart.setOption(this.option);
         myChart.resize();
       }
     }

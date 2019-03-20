@@ -559,6 +559,11 @@
         }
       }
     },
+    // watch:{
+    //   menuTree:function () {
+    //     console.log('数据改变了 ，重新渲染')
+    //   }
+    // },
     methods: {
       selectIcon(event){
         this.form.icon = event.target.className;
@@ -668,7 +673,8 @@
     },
     created(){
       this.load();
-    }
+    },
+
   }
 </script>
 

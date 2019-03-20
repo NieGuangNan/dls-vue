@@ -82,6 +82,7 @@
   import {toggleClass} from 'common/utils'
 
   export default {
+    inject:['reload'],
     data() {
       return {
         showMessageBox: false,
@@ -124,6 +125,7 @@
             type: 'success'
           })
         }
+        this.reload();
       },
       toggleMenu(collapsed, isMobile) {
         if (isMobile) {

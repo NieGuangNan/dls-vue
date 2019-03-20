@@ -12,7 +12,7 @@
             </template>
           </el-breadcrumb>
           <transition mode="out-in" enter-active-class="fadeIn" leave-active-class="fadeOut" appear>
-            <router-view :bodyHeight="bodyHeight"></router-view>
+            <router-view :bodyHeight="bodyHeight" v-if="isRouterAlive"></router-view>
           </transition>
         </section>
       </el-scrollbar>
@@ -34,6 +34,11 @@
 
   export default {
     name: 'app',
+    provide(){
+      return{
+        reload:this.reload
+      }
+    },
 
     components: {
       sideMenu,
@@ -55,6 +60,7 @@
         isShow: false,
         headerFixed: true,
         breadcrumb: [],
+        isRouterAlive:true
       }
     },
     methods: {
@@ -63,7 +69,7 @@
       },
       timer() {
         let timer = setInterval(() => {
-          if (document.readyState === 'interactive') {
+          if (document.readyState === 'interactive' || document.readyState === 'complete') {
             this.isShow = true;
             window.clearInterval(timer)
           }
@@ -76,8 +82,16 @@
       }),
       ...mapActions({
         changeCurrentMenu: 'changeCurrentMenu' // 映射 this.changeCurrentMenu() 为 this.$store.dispatch('changeCurrentMenu')
-      })
-
+      }),
+      reload(){
+        this.isRouterAlive = false
+        this.$nextTick(
+          function () {
+            this.isRouterAlive = true
+            console.log('我刷新了')
+          }
+        )
+      }
     },
     watch: {
       '$route': function (to, from) {

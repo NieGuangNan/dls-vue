@@ -2,7 +2,7 @@
   <div id="wrap">
     <el-button type="default" @click="a()">测试</el-button>
     <echarts :option="option" :height='bodyHeight/4'></echarts>
-    <echarts :option="option1" :height='bodyHeight/4'></echarts>
+    <echarts :option="option1" :height='bodyHeight/4' :alterOption="alterOption"></echarts>
   </div>
 
 </template>
@@ -63,10 +63,13 @@
     },
     data() {
       return {
-        id: "myChart",
         option: option,
         option1: option1,
-        style: {width: '100%', height: '600px'}
+        alterOption: {
+          legend:{
+            show:false
+          }
+        }
       }
     },
     methods: {
