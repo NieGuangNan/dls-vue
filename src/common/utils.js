@@ -26,7 +26,7 @@ export const keyMirror = (obj) => {
   if (obj && typeof obj === 'object') {
     for (key in obj) {
       if ({}.hasOwnProperty.call(obj, key)) {
-        mirrored[ key ] = key
+        mirrored[key] = key
       }
     }
   }
@@ -42,18 +42,18 @@ export const keyMirror = (obj) => {
  * @return  {Array}
  */
 export const arrayToTree = (array, id = 'id', pid = 'pid', children = 'children') => {
-  let data = array.map(item => ({ ...item }))
+  let data = array.map(item => ({...item}))
   let result = []
   let hash = {}
   data.forEach((item, index) => {
-    hash[ data[ index ][ id ] ] = data[ index ]
+    hash[data[index][id]] = data[index]
   })
 
   data.forEach((item) => {
-    let hashVP = hash[ item[ pid ] ]
+    let hashVP = hash[item[pid]]
     if (hashVP) {
-      !hashVP[ children ] && (hashVP[ children ] = [])
-      hashVP[ children ].push(item)
+      !hashVP[children] && (hashVP[children] = [])
+      hashVP[children].push(item)
     } else {
       result.push(item)
     }
@@ -61,18 +61,18 @@ export const arrayToTree = (array, id = 'id', pid = 'pid', children = 'children'
   return result
 }
 
-export function getCurrentMenu (location, arrayMenu) {
+export function getCurrentMenu(location, arrayMenu) {
   if (!!arrayMenu) {
     let current = []
     for (let i = 0; i < arrayMenu.length; i++) {
-      const e = arrayMenu[ i ];
+      const e = arrayMenu[i];
       const child = getCurrentMenu(location, e.children);
       if (!!child && child.length > 0) {
-        child.push({ ...e, children: null });
+        child.push({...e, children: null});
         return child;
       }
       if (e.href && pathToRegexp(e.href).exec(location)) {
-        current.push({ ...e, children: null });
+        current.push({...e, children: null});
         return current;
       }
     }
@@ -80,11 +80,32 @@ export function getCurrentMenu (location, arrayMenu) {
   }
   return null;
 }
+
 // 换肤加class函数
 export function toggleClass(element, className) {
   if (!element || !className) {
     return;
   }
   element.className = className;
+}
+
+// export function removeTheme() {
+//   let theme = document.getElementsByClassName('theme-style');
+// }
+
+export function addTheme(color) {
+  let head = document.getElementsByTagName('HEAD').item(0);
+  let style = document.createElement('style');
+  let link = document.createElement('link');
+  let theme = head.getElementsByClassName('theme-style') ? head.getElementsByClassName('theme-style') : '';
+
+  for (let item of theme) head.removeChild(item);
+  link.href = `/static/theme/${color}/index.css`;
+  style.className = 'theme-style';
+  link.rel = 'stylesheet';
+  style.type = 'text/css';
+  style.append(link);
+  head.appendChild(style);
+
 }
 

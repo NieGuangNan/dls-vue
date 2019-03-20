@@ -11,13 +11,21 @@
         <span class="sr-only">Toggle navigation</span>
       </a>
       <div class="navbar-custom-menu">
+        <template>
+          <el-radio-group v-model="themecolor">
+            <el-radio label="#fff">备选项1</el-radio>
+            <el-radio label="409eff">备选项2</el-radio>
+          </el-radio-group>
+        </template>
         <el-dropdown trigger="click" class="navbar-dropdown">
           <span class="el-dropdown-link">
-            {{$t('message.lang')}}<i class="el-icon-arrow-down el-icon--right"></i>
+            {{$t('message.lang')}}
+            <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item @click.native="toggleLang('zh')" :disabled="$i18n.locale == 'zh'">中文</el-dropdown-item>
-            <el-dropdown-item @click.native="toggleLang('en')" :disabled="$i18n.locale == 'en'">English</el-dropdown-item>
+            <el-dropdown-item @click.native="toggleLang('en')" :disabled="$i18n.locale == 'en'">English
+            </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
         <el-dropdown class="navbar-dropdown" trigger="click">
@@ -71,6 +79,7 @@
   import * as api from "../../api"
   import auth from 'common/auth'
   import * as sysApi from '../../services/sys'
+  import {toggleClass} from 'common/utils'
 
   export default {
     data() {
@@ -82,11 +91,22 @@
         show: true,
       }
     },
-    computed: mapGetters({
-      sidebar: 'sidebar',
-      userInfo: 'userInfo',
-      device: 'device',
-    }),
+    computed: {
+      ...mapGetters({
+        sidebar: 'sidebar',
+        userInfo: 'userInfo',
+        device: 'device',
+      }),
+      themecolor: {
+        get() {
+          return this.$store.state.themecolor;
+        },
+        set(val) {
+          this.$store.commit('setThemeColor', val);
+        }
+      }
+    },
+
     methods: {
       toggleLang(lang) {
         if (lang == 'zh') {
@@ -160,6 +180,9 @@
         })
     },
     mounted() {
+      // toggleClass(document.body, 'custom-' + this.$store.state.themecolor);
+      // let curcolor = this.$store.state.themecolor;
+      // this.classH2 = 'custom-' + curcolor
       // document.addEventListener('click', this.autoHide, false)
     },
     destroyed() {
@@ -199,7 +222,6 @@
   .main-header .navbar .sidebar-toggle:before {
     content: "\f03b";
   }
-
 
 
   .main-header .logo {
@@ -329,7 +351,6 @@
   .message-list li a {
     text-decoration: none;
   }
-
 
 
   .el-dropdown-menu .header-pic {

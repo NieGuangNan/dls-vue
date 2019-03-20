@@ -1,5 +1,9 @@
 import 'babel-polyfill'
 import Vue from "vue";
+// function switchTheme(themeName) {
+//   import(`@/assets/css/theme/${themeName}/index.css`)
+// }
+// switchTheme('aaa');
 import frame from "./frame.vue";
 import router from "./router";
 import store from "./store";
@@ -11,7 +15,6 @@ import 'element-ui/lib/theme-default/index.css';
 import ImpPanel from "./components/panel.vue";
 import '@/assets/css/theme.css';
 import i18n from './i18n';
-import './assets/css/theme/409EFF/index.css';
 
 
 Vue.prototype.$http = axios

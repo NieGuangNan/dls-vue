@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper fixed">
+  <div class="wrapper fixed" v-if="isShow">
     <vue-progress-bar></vue-progress-bar>
     <imp-header></imp-header>
     <side-menu></side-menu>
@@ -28,6 +28,7 @@
   import impHeader from "./pages/layout/header.vue"
   import impFooter from "./pages/layout/footer.vue"
   import {mapGetters, mapActions, mapMutations} from 'vuex'
+  import {addTheme,getLocalKey} from 'common/utils'
   import types from "./store/mutation-types"
   import 'animate.css'
 
@@ -51,6 +52,7 @@
       return {
         bodyHeight: '',
         active: true,
+        isShow: false,
         headerFixed: true,
         breadcrumb: [],
       }
@@ -58,6 +60,14 @@
     methods: {
       getHeight() {
         this.bodyHeight = document.documentElement.clientHeight
+      },
+      timer() {
+        let timer = setInterval(() => {
+          if (document.readyState === 'interactive') {
+            this.isShow = true;
+            window.clearInterval(timer)
+          }
+        }, 100)
       },
       ...mapMutations({
         toggleDevice: types.TOGGLE_DEVICE,
@@ -67,6 +77,7 @@
       ...mapActions({
         changeCurrentMenu: 'changeCurrentMenu' // 映射 this.changeCurrentMenu() 为 this.$store.dispatch('changeCurrentMenu')
       })
+
     },
     watch: {
       '$route': function (to, from) {
@@ -95,11 +106,15 @@
     mounted() {
       //  [App.vue specific] When App.vue is finish loading finish the progress bar
       this.$Progress.finish()
+      this.$nextTick(function () {
+        this.timer()
+      });
     },
     created() {
+      addTheme(getLocalKey('state.themecolor', '#fff'));
       window.addEventListener('resize', this.getHeight);
       this.getHeight()
-      // this.a();
+
       //  [App.vue specific] When App.vue is first loaded start the progress bar
       this.$Progress.start()
       //  hook the progress bar to start before we move router-view
