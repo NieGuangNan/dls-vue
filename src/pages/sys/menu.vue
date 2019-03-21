@@ -630,11 +630,11 @@
         this.form = merge({}, data);
         //console.log(this.menuTree);
         //中英文处理
-        for (let i=0;i<this.menuTree.length;i++){
-            this.menuTree[i].name = this.$t(this.menuTree[i].name);
-            for (let j=0;j<this.menuTree[i].children.length;j++){
-              this.menuTree[i].children[j].name = this.$t(this.menuTree[i].children[j].name);
-            }
+        for (let item of this.menuTree){
+          item.name = this.$t(item.name);
+          for (let child of item.children){
+            child.name = this.$t(child.name )
+          }
         }
         this.form.name = this.$t(this.form.name);
         this.form.children.name = this.$t(this.form.children.name);
