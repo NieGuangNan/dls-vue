@@ -26,7 +26,7 @@
                 </el-select-tree>
               </el-form-item>
               <el-form-item label="名称" :label-width="formLabelWidth">
-                <el-input v-model="form.name" auto-complete="off"></el-input>
+                <el-input  auto-complete="off" v-model="form.name" ></el-input>
               </el-form-item>
               <el-form-item label="链接" :label-width="formLabelWidth">
                 <el-input v-model="form.href" auto-complete="off"></el-input>
@@ -537,6 +537,10 @@
       'imp-panel': panel,
       'el-select-tree': selectTree
     },
+    model: {
+      prop: 'checked',
+      event: 'change'
+    },
     data(){
       return {
         selectIconDialog: false,
@@ -624,6 +628,17 @@
       },
       handleNodeClick(data){
         this.form = merge({}, data);
+        //console.log(this.menuTree);
+        //中英文处理
+        for (let i=0;i<this.menuTree.length;i++){
+            this.menuTree[i].name = this.$t(this.menuTree[i].name);
+            for (let j=0;j<this.menuTree[i].children.length;j++){
+              this.menuTree[i].children[j].name = this.$t(this.menuTree[i].children[j].name);
+            }
+        }
+        this.form.name = this.$t(this.form.name);
+        this.form.children.name = this.$t(this.form.children.name);
+        // console.log(this.form);
       },
       onSubmit(){
         if (this.form.id == null) {
