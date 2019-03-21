@@ -1,6 +1,6 @@
 <template>
   <div>
-    <data-table :data="tableData" :paginator="true" :row="row" @selection-change="dataTableSelectionChange">
+    <data-table :data="tableData" :paginator="true" :row="row" >
       <el-table-column
         type="selection"
         width="55">
@@ -55,7 +55,7 @@
 </template>
 
 <script>
-  import dataTable from './dataTable';
+  import dataTable from '@/components/dataTable';
   import tableData from '@/services/tableList';
 
   export default {
@@ -73,8 +73,6 @@
     methods: {
       deleteRow(index, rows) {
         rows.splice(index, 1);
-      },
-      dataTableSelectionChange(selectionList) {
       },
     },
     mounted() {

@@ -120,6 +120,31 @@ module.exports = {
     city: '普陀区',
     address: '上海市普陀区金沙江路 1516 弄',
     zip: 200333
+  }],
+  demoList:[{
+    id: 1,
+    module: '速度损失',
+    issue: '降拉速',
+    effect: '6,312.6吨',
+    total: '出现18次',
+    data: '5,449.2吨',
+    department: ''
+  },{
+    id: 2,
+    module: '时间损失',
+    issue: '非计划停机',
+    effect: '167.6吨',
+    total: '出现87次',
+    data: '5,611吨',
+    department: ''
+  },{
+    id: 3,
+    module: '速度损失',
+    issue: '堵流',
+    effect: '0.5吨',
+    total: '出现64次',
+    data: '132.5吨',
+    department: ''
   }]
 }
 

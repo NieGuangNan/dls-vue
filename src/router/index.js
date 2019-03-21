@@ -9,7 +9,7 @@ import dashboard from "pages/dashboard.vue";
 import NotFoundView from "components/404.vue";
 import menuList from "pages/sys/menu.vue";
 import role from "pages/sys/role.vue";
-import resource from "pages/sys/resource.vue";
+// import resource from "pages/sys/resource.vue";
 import login from "pages/login.vue";
 import app from "../App.vue";
 import sysUser from "pages/sys/user.vue";
@@ -19,6 +19,7 @@ import bar from "pages/charts/bar.vue";
 import tableShow from "pages/table/tableShow"
 import treeTable from "pages/table/treeTable";
 import mixedChart from "pages/charts/mixedChart.vue"
+import demo1 from "pages/test/demo1.vue"
 
 
 //加载路由中间件
@@ -32,6 +33,7 @@ const router = new VueRouter({
       path: '/test', component: app, children: [
         {path: '/test/1/1/1', component: tableShow},
         {path: '/test/1/1/2', component: treeTable},
+        {path: '/test/1/2', component: demo1},
         {path: '/test/2/1', component: bar},
         {path: '/test/2/2', component: mixedChart},
         {path: '*', component: NotFoundView}
@@ -45,7 +47,7 @@ const router = new VueRouter({
         {path: '/sys/roleList', component: role},
         {path: '/sys/userList', component: sysUser},
         {path: '/sys/userAdd', component: userAdd},
-        {path: '/sys/resource', component: resource}
+        // {path: '/sys/resource', component: resource}
       ]
     },
     {path: '*', component: NotFoundView}
@@ -58,6 +60,7 @@ sync(store, router)
 const {state} = store
 
 router.beforeEach((route, redirect, next) => {
+  console.log(676767)
   if (state.device.isMobile && state.sidebar.opened) {
     store.commit(types.TOGGLE_SIDEBAR, false)
   }

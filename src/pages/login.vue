@@ -89,7 +89,8 @@
         // console.log('触发了没？');
         if (sid&&user){
           auth.login(sid);
-          window.sessionStorage.setItem("user-info", JSON.stringify(user));
+          this.$cookieStore.setCookie("user-info", JSON.stringify(user));
+          // sessionStorage.setItem("user-info", JSON.stringify(user));
           this.setUserInfo(user);
           this.$http.defaults.headers.common['authSid'] = sid;
           this.loadMenuList();

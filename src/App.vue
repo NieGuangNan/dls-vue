@@ -30,6 +30,7 @@
   import {mapGetters, mapActions, mapMutations} from 'vuex'
   import types from "./store/mutation-types"
   import 'animate.css'
+  import {setCookie, getCookie, delCookie} from 'common/utils';
 
   export default {
     name: 'app',
@@ -121,6 +122,12 @@
       window.addEventListener('DOMContentLoaded', handler);
       window.addEventListener('resize', handler);
       window.addEventListener('resize', resize);
+      // Vue.prototype.$cookieStore = {
+      //   setCookie,
+      //   getCookie,
+      //   delCookie
+      // }
+
     },
     mounted() {
       //  [App.vue specific] When App.vue is finish loading finish the progress bar
@@ -129,7 +136,7 @@
         this.timer()
       });
       //必须先登入再访问
-      if (!window.sessionStorage.getItem('user-info')){
+      if (!this.$cookieStore.getCookie('user-info')){
         this.$router.push('/login')
       }
 
@@ -208,7 +215,7 @@
   }
 
   .content-wrapper .content {
-    padding: 1.25rem;
+    padding: 1rem;
 
     /*text-align: center;*/
   }

@@ -15,7 +15,7 @@ import 'element-ui/lib/theme-default/index.css';
 import ImpPanel from "./components/panel.vue";
 import '@/assets/css/theme.css';
 import i18n from './i18n';
-
+import {setCookie, getCookie, delCookie} from 'common/utils';
 import(`@/assets/css/theme/${window.localStorage.getItem('state.themecolor') ? window.localStorage.getItem('state.themecolor') : '#fff'}/index.css`);
 
 
@@ -23,6 +23,11 @@ Vue.prototype.$http = axios
 Vue.axios = axios
 Vue.http = axios;
 Vue.use(axios);
+Vue.prototype.$cookieStore = {
+  setCookie,
+  getCookie,
+  delCookie
+}
 
 Vue.use(Element);
 
@@ -45,6 +50,9 @@ Vue.use(VueProgressBar, {
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
+
+
+
 
 new Vue({
   store,

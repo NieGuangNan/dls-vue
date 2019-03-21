@@ -74,8 +74,6 @@
     },
     methods: {
       a() {
-        console.log(211111);
-
           this.option = option1;
         console.log(this.option)
       }

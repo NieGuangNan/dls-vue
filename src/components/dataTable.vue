@@ -4,9 +4,9 @@
       ref="multipleTable"
       :data="data"
       :row-style="rowStyle"
-      border
       @selection-change="handleSelectionChange"
-      size="medium">
+      :max-height="maxHeight"
+      >
       <slot></slot>
     </el-table>
     <el-pagination
@@ -45,9 +45,14 @@
         type: Number,
         default: 30
       },
+      maxHeight:{
+        type:String,
+        default:'auto'
+      },
       rowStyle: {
         type: Function
-      }
+      },
+      //treeTable 显示行方法
     },
     methods: {
       handleSizeChange(val) {

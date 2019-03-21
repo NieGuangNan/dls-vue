@@ -47,7 +47,7 @@
 
   import Utils from './treeTable/utils/index.js';
   import TableTree from '@/services/treeTable';
-  import dataTable from './dataTable'
+  import dataTable from '@/components/dataTable'
   export default {
     name: 'tableTree',
     components:{

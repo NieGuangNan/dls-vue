@@ -210,3 +210,41 @@
 .progressbar-label-left {
   transform: rotate(90deg);
 }
+
+/*背景色设置*/
+.bg-dark{
+  background: #444444;
+}
+.bg-blue{
+  background: #63b3e2;
+}
+.bg-red{
+  background:#e02837;
+}
+.bg-green{
+  background: #557e3b;
+}
+
+/*字体颜色设置*/
+
+.text-white{
+  color:#fff;
+}
+/*原先样式重置*/
+.el-table th,#eef1f6.el-table__footer-wrapper thead div, .el-table__header-wrapper thead div{
+  background:#fff;
+}
+
+.el-table,.el-table th, #eef1f6.el-table__footer-wrapper thead div, .el-table__header-wrapper thead div{
+  background: transparent;
+}
+.el-table,.el-table tr{
+  border:none!important;
+}
+.el-table::after, .el-table::before {
+
+   background-color: transparent;
+
+}
+
+

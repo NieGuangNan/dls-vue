@@ -2,7 +2,7 @@
 
   <imp-panel>
     <h3 class="box-title" slot="header" style="width: 100%;">
-      <el-button type="primary" icon="plus" @click="newAdd">新增</el-button>
+      <!--<el-button type="primary" icon="plus" @click="newAdd">新增</el-button>-->
       <el-button type="danger" icon="delete" @click="batchDelete">删除</el-button>
 
     </h3>
@@ -154,9 +154,10 @@
           this.$http.get(api.SYS_ROLE_DELETE + "?roleIds=" + checkKeys.join(','))
             .then(res => {
               this.$message('操作成功');
+              this.batchDeleteFromTree(this.roleTree, checkKeys);
               this.load();
             }).catch(e => {
-            this.$message('操作成功');
+            this.$message('操作失败');
             console.log(checkKeys);
             this.batchDeleteFromTree(this.roleTree, checkKeys);
           })
@@ -188,15 +189,16 @@
         })
       },
       deleteSelected(id){
+        console.log(id);
         this.$http.get(api.SYS_ROLE_DELETE + "?roleIds=" + id)
           .then(res => {
             this.$message('操作成功');
             this.deleteFromTree(this.roleTree, id);
-            this.newAdd();
+            // this.newAdd();
           }).catch(e =>{
-          this.$message('操作成功');
+          this.$message('操作失败');
           this.deleteFromTree(this.roleTree, id);
-          this.newAdd();
+          // this.newAdd();
         })
       },
       load(){
@@ -206,6 +208,7 @@
           })
       },
       renderContent(h, {node, data, store}) {
+        console.log(data);
         return (
           <span>
             <span>

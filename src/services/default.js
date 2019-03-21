@@ -411,16 +411,18 @@ export default {
     "name": "message.menu.menu3.name",
     "href": "/sys",
     "icon": "fa fa-cog",
-    "children": [{
-      "id": 108,
-      "parentId": 6,
-      "sort": 0,
-      "name": "message.menu.menu3.items.item1.name",
-      "href": "/sys/resource",
-      "icon": "fa fa-database",
-      "children": [],
-      "isShow": "1"
-    }, {
+    "children": [
+    //   {
+    //   "id": 108,
+    //   "parentId": 6,
+    //   "sort": 0,
+    //   "name": "message.menu.menu3.items.item1.name",
+    //   "href": "/sys/resource",
+    //   "icon": "fa fa-database",
+    //   "children": [],
+    //   "isShow": "1"
+    // },
+      {
       "id": 7,
       "parentId": 6,
       "sort": 1,
