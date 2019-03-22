@@ -11,12 +11,13 @@ import axios from "./common/axios";
 import filters from "./filters";
 import VueProgressBar from "vue-progressbar";
 import Element from "element-ui";
-import 'element-ui/lib/theme-default/index.css';
+import 'element-ui/lib/theme-chalk/index.css';
 import ImpPanel from "./components/panel.vue";
 import '@/assets/css/theme.css';
 import i18n from './i18n';
 import {setCookie, getCookie, delCookie} from 'common/utils';
 import(`@/assets/css/theme/${window.localStorage.getItem('state.themecolor') ? window.localStorage.getItem('state.themecolor') : '#fff'}/index.css`);
+// import '@/assets/css/theme/bbb/index.css';
 
 
 Vue.prototype.$http = axios

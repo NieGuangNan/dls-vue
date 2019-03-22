@@ -1,8 +1,6 @@
 <template>
-
   <div ref='eChart' :style="{width: '100%',height: height+'px'}" :height="height" :option="option"
        :alterOp="alterOption"></div>
-
 </template>
 
 <script>

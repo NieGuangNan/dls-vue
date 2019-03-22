@@ -34,7 +34,7 @@
               <i class="fa fa-envelope-o"></i>
             </el-badge>
           </div>
-          <el-dropdown-menu>
+          <el-dropdown-menu slot="dropdown">
             <ul class="message-list">
               <li v-for="(item,index) in list"><!-- start message -->
                 <router-link :to="{path:'/sys/message',query:{id:item.id}}">
@@ -48,9 +48,9 @@
           <div class="el-dropdown-link">
             <img :src='userInfo.avatar' style="width: 25px;height: 25px;border-radius: 50%; vertical-align: middle;"
                  alt="U">
-            {{$t(userInfo.name)}}
+            {{userInfo.name}}
           </div>
-          <el-dropdown-menu style="padding: 0px">
+          <el-dropdown-menu style="padding: 0px" slot="dropdown">
             <div>
               <div class="header-pic">
                 <img :src='userInfo.avatar' class="img-circle" alt="User Image">

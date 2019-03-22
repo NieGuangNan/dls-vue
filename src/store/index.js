@@ -3,7 +3,7 @@ import Vuex from "vuex";
 import types from "./mutation-types";
 import defaultValue from "../services/default";
 import * as api from "../api";
-import {getCurrentMenu, getSessionKey, getLocalKey,addTheme} from '../common/utils'
+import {getCurrentMenu, getSessionKey, getLocalKey, addTheme, getCookie} from '../common/utils'
 
 Vue.use(Vuex)
 
@@ -33,7 +33,7 @@ const store = new Vuex.Store({
     device: {
       isMobile: false
     },
-    userInfo: {name:'message.header.userName'},
+    userInfo: JSON.parse(getCookie("user-info")),
     currentMenus: [],
   },
   // 每个 mutation 都有一个字符串的 事件类型 (type) 和 一个 回调函数 (handler)。

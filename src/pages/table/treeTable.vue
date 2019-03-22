@@ -9,7 +9,7 @@
         </el-table-column>
         <el-table-column v-for="(column, index) in columns" :key="column.dataIndex"
                          :label="column.text" :type="column.type">
-          <template scope="scope">
+          <template slot-scope="scope">
             <span v-if="spaceIconShow(index)" v-for="(space, levelIndex) in scope.row._level" class="ms-tree-space"></span>
             <button style="border:0;background:transparent;outline:none;" class="button is-outlined is-primary is-small " v-if="toggleIconShow(index,scope.row)" @click="toggle(scope.$index)">
               <i v-if="!scope.row._expanded" class="el-icon el-icon-arrow-right" aria-hidden="true"></i>
@@ -77,8 +77,8 @@
     methods: {
       // 显示行
       showTr: function (row, index) {
-        let show = (row._parent ? (row._parent._expanded && row._parent._show) : true)
-        row._show = show
+        let show = (row.row._parent ? (row.row._parent._expanded && row.row._parent._show) : true)
+        row.row._show = show
         return show ? '' : 'display:none;'
       },
       // 展开下级
