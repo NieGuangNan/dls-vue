@@ -1,5 +1,6 @@
 // export const CONTEXT = './api';
 export const CONTEXT = './Vue-Admin';
+export const PERMISSION = ['admin', 'developer'];
 
 export const LOGIN = CONTEXT + '/login';
 export const LOGOUT = CONTEXT + '/logout';

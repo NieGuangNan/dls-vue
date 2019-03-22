@@ -16,12 +16,13 @@ import 'element-ui/lib/theme-chalk/index.css';
 import ImpPanel from "./components/panel.vue";
 import '@/assets/css/theme.css';
 import i18n from './i18n';
-import {setCookie, getCookie, delCookie} from 'common/utils';
+import {setCookie, getCookie, delCookie, permission} from 'common/utils';
 
 // import '@/assets/css/theme/bbb/index.css';
 
 
-Vue.prototype.$http = axios
+Vue.prototype.$http = axios;
+Vue.prototype.$permission = permission;
 Vue.axios = axios
 Vue.http = axios;
 Vue.use(axios);
@@ -52,8 +53,6 @@ Vue.use(VueProgressBar, {
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
-
-
 
 
 new Vue({
