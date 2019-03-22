@@ -22,15 +22,14 @@ import {setCookie, getCookie, delCookie, permission} from 'common/utils';
 
 
 Vue.prototype.$http = axios;
-Vue.prototype.$permission = permission;
-Vue.axios = axios
+Vue.axios = axios;
 Vue.http = axios;
 Vue.use(axios);
 Vue.prototype.$cookieStore = {
   setCookie,
   getCookie,
   delCookie
-}
+};
 
 Vue.use(Element);
 
@@ -49,7 +48,13 @@ Vue.use(VueProgressBar, {
   inverse: false
 })
 
-
+Vue.directive('permission', {
+  inserted: function (el, binding) {
+    if (!permission(binding.value)) {
+      el.parentNode.removeChild(el);
+    }
+  }
+});
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
