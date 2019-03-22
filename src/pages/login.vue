@@ -2,43 +2,43 @@
   <el-row>
     <el-col :span="12" :offset="6">
       <div class="login">
-      <el-row slot="body" :gutter="0" >
-      <el-col :span="24" :xs="24" :sm="16" :md="16" :lg="16">
-        <div class="login-form">
-          <div class="card-block">
-            <h1>Vue-Admin</h1>
-            <p class="text-muted">任意用户名/密码登录</p>
-            <div class="input-group m-b-1">
-              <span class="input-group-addon"><i class="fa fa-user"></i></span>
-              <input type="text" class="form-control" placeholder="user name" v-model="form.username">
+        <el-row slot="body" :gutter="0">
+          <el-col :span="24" :xs="24" :sm="16" :md="16" :lg="16">
+            <div class="login-form">
+              <div class="card-block">
+                <h1>Vue-Admin</h1>
+                <p class="text-muted">任意用户名/密码登录</p>
+                <div class="input-group m-b-1">
+                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                  <input type="text" class="form-control" placeholder="user name" v-model="form.username">
+                </div>
+                <div class="input-group m-b-2">
+                  <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                  <input type="password" class="form-control" placeholder="password" v-model="form.password"
+                         @keyup.enter="login">
+                </div>
+                <div class="row">
+                  <el-row>
+                    <el-col :span="12">
+                      <el-button type="primary" class="btn btn-primary p-x-2" @click="login">登录</el-button>
+                    </el-col>
+                    <el-col :span="12">
+                      <el-button type="button" class="btn btn-link forgot" style="float:right;">忘记密码?</el-button>
+                    </el-col>
+                  </el-row>
+                </div>
+              </div>
             </div>
-            <div class="input-group m-b-2">
-              <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-              <input type="password" class="form-control" placeholder="password" v-model="form.password"
-                     @keyup.enter="login">
+          </el-col>
+          <el-col :span="24" :xs="24" :sm="8" :md="8" :lg="8">
+            <div class="login-register">
+              <div class="card-block">
+                <h2>注册</h2>
+                <p>平台暂时只支持使用公司邮箱注册.</p>
+                <el-button type="info" class="btn btn-primary active m-t-1"> 马上注册</el-button>
+              </div>
             </div>
-            <div class="row">
-              <el-row>
-                <el-col :span="12">
-                  <el-button type="primary" class="btn btn-primary p-x-2" @click="login">登录</el-button>
-                </el-col>
-                <el-col :span="12">
-                  <el-button type="button" class="btn btn-link forgot" style="float:right;">忘记密码?</el-button>
-                </el-col>
-              </el-row>
-            </div>
-          </div>
-        </div>
-        </el-col>
-      <el-col :span="24" :xs="24" :sm="8" :md="8" :lg="8">
-        <div class="login-register">
-          <div class="card-block">
-            <h2>注册</h2>
-            <p>平台暂时只支持使用公司邮箱注册.</p>
-            <el-button type="info" class="btn btn-primary active m-t-1"> 马上注册</el-button>
-          </div>
-        </div>
-        </el-col>
+          </el-col>
         </el-row>
       </div>
     </el-col>
@@ -48,7 +48,7 @@
 <script>
   import types from '../store/mutation-types'
   import * as api from "../api"
-  import  auth from '../common/auth'
+  import auth from '../common/auth'
   import * as sysApi from '../services/sys'
   import {mapGetters, mapActions, mapMutations} from 'vuex'
 
@@ -70,26 +70,27 @@
       ...mapActions({
         loadMenuList: 'loadMenuList' // 映射 this.load() 为 this.$store.dispatch('loadMenuList')
       }),
-      login(){
+      login() {
 
         var redirectUrl = '/index';
         if (this.$route.query && this.$route.query != null && this.$route.query.redirect && this.$route.query.redirect != null) {
           redirectUrl = this.$route.query.redirect;
         }
-        if (!(this.form.username&&this.form.password)){
+        if (!(this.form.username && this.form.password)) {
           this.$message('用户名、密码均不能为空');
-        }else{
+        } else {
           sysApi.login(this.form).then(res => {
-            this.loginJudge({...res,redirectUrl})
+            this.loginJudge({...res, redirectUrl})
           })
         }
 
       },
-      loginJudge({sid,user,redirectUrl}){
+      loginJudge({sid, user, redirectUrl}) {
         // console.log('触发了没？');
-        if (sid&&user){
+        if (sid && user) {
           auth.login(sid);
           this.$cookieStore.setCookie("user-info", JSON.stringify(user));
+          this.$cookieStore.setCookie("user-access", user.access);
           // sessionStorage.setItem("user-info", JSON.stringify(user));
           this.setUserInfo(user);
           this.$http.defaults.headers.common['authSid'] = sid;

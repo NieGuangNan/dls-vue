@@ -12,6 +12,7 @@ export default {
       "createTime": "1976-08-15 06:37:12",
       "delFlag": 0,
       "status": 1,
+      "access": 'admin',
       "userType": "1",
       "no": "310000198406275362",
       "remarks": "传方半织意意列业维领细斯样年场不次。样影此么论重示般会际开出二及西高。",
@@ -393,7 +394,7 @@ export default {
       "icon": "fa fa-image",
       "children": [],
       "isShow": "1"
-    },{
+    }, {
       "id": 104,
       "parentId": 102,
       "sort": 0,
@@ -412,44 +413,44 @@ export default {
     "href": "/sys",
     "icon": "fa fa-cog",
     "children": [
-    //   {
-    //   "id": 108,
-    //   "parentId": 6,
-    //   "sort": 0,
-    //   "name": "message.menu.menu3.items.item1.name",
-    //   "href": "/sys/resource",
-    //   "icon": "fa fa-database",
-    //   "children": [],
-    //   "isShow": "1"
-    // },
+      //   {
+      //   "id": 108,
+      //   "parentId": 6,
+      //   "sort": 0,
+      //   "name": "message.menu.menu3.items.item1.name",
+      //   "href": "/sys/resource",
+      //   "icon": "fa fa-database",
+      //   "children": [],
+      //   "isShow": "1"
+      // },
       {
-      "id": 7,
-      "parentId": 6,
-      "sort": 1,
-      "name": "message.menu.menu3.items.item2.name",
-      "href": "/sys/menuList",
-      "icon": "fa fa-navicon",
-      "children": [],
-      "isShow": "1"
-    }, {
-      "id": 8,
-      "parentId": 6,
-      "sort": 2,
-      "name": "message.menu.menu3.items.item3.name",
-      "href": "/sys/roleList",
-      "icon": "fa fa-universal-access",
-      "children": [],
-      "isShow": "1"
-    }, {
-      "id": 9,
-      "parentId": 6,
-      "sort": 3,
-      "name": "message.menu.menu3.items.item4.name",
-      "href": "/sys/userList",
-      "icon": "fa fa-user-plus",
-      "children": [],
-      "isShow": "1"
-    }],
+        "id": 7,
+        "parentId": 6,
+        "sort": 1,
+        "name": "message.menu.menu3.items.item2.name",
+        "href": "/sys/menuList",
+        "icon": "fa fa-navicon",
+        "children": [],
+        "isShow": "1"
+      }, {
+        "id": 8,
+        "parentId": 6,
+        "sort": 2,
+        "name": "message.menu.menu3.items.item3.name",
+        "href": "/sys/roleList",
+        "icon": "fa fa-universal-access",
+        "children": [],
+        "isShow": "1"
+      }, {
+        "id": 9,
+        "parentId": 6,
+        "sort": 3,
+        "name": "message.menu.menu3.items.item4.name",
+        "href": "/sys/userList",
+        "icon": "fa fa-user-plus",
+        "children": [],
+        "isShow": "1"
+      }],
     "isShow": "1"
   }],
   resource: [{

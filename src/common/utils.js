@@ -137,6 +137,6 @@ export function delCookie(name) {
 
 //用户权限
 export function permission(access) {
-  return access.includes(getCookie('permission'));
+  return access.includes(getCookie('user-access'));
 }
 
