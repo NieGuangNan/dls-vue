@@ -1,5 +1,5 @@
 <template>
-  <div id="wrap">
+  <div id="wrap" >
     <el-button type="default" @click="a()">测试</el-button>
     <echarts :option="option" :height='bodyHeight/4'></echarts>
     <echarts :option="option1" :height='bodyHeight/4' :alterOption="alterOption"></echarts>

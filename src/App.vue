@@ -122,11 +122,7 @@
       window.addEventListener('DOMContentLoaded', handler);
       window.addEventListener('resize', handler);
       window.addEventListener('resize', resize);
-      // Vue.prototype.$cookieStore = {
-      //   setCookie,
-      //   getCookie,
-      //   delCookie
-      // }
+
 
     },
     mounted() {

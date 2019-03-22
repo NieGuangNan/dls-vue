@@ -20,40 +20,69 @@ import tableShow from "pages/table/tableShow"
 import treeTable from "pages/table/treeTable";
 import mixedChart from "pages/charts/mixedChart.vue"
 import demo1 from "pages/test/demo1.vue"
+import defaultValue from "@/services/default"
+import {setCookie, getCookie, delCookie} from '@/common/utils';
+
+
 
 
 //加载路由中间件
 Vue.use(VueRouter)
 
+const routes =[
+  {path: '/login', component: login,permission:['admin','developer']},
+  {
+    path: '/test/1', component: app,permission:['developer'], children: [
+      {path: '/test/1/1/1', component: tableShow,permission:['admin','developer']},
+      {path: '/test/1/1/2', component: treeTable,permission:['admin','developer']},
+      {path: '/test/1/2', component: demo1,permission:['admin','developer']},
+      {path: '*', component: NotFoundView,permission:['admin','developer']}
+    ]
+  },
+  {
+    path: '/test/2', component: app,permission:['admin','developer'], children: [
+      {path: '/test/2/1', component: bar,permission:['developer']},
+      {path: '/test/2/2', component: mixedChart,permission:['admin','developer']},
+      {path: '*', component: NotFoundView,permission:['admin','developer']}
+    ]
+  },
+  {
+    path: '', component: app,permission:['admin','developer'], children: [
+      {path: '/resetPwd', component: resetPwd,permission:['admin','developer']},
+      {path: '/index', component: dashboard,permission:['admin','developer']},
+      {path: '/sys/menuList', component: menuList,permission:['admin']},
+      {path: '/sys/roleList', component: role,permission:['admin']},
+      {path: '/sys/userList', component: sysUser,permission:['admin']},
+      {path: '/sys/userAdd', component: userAdd,permission:['admin']},
+      // {path: '/sys/resource', component: resource}
+    ]
+  },
+  {path: '*', component: NotFoundView,permission:['admin','developer']}
+];
+
+// 权限路由设置
+let userInfo = getCookie('user-info');
+let userOb=JSON.parse(userInfo);
+for (let index in routes){
+  if (routes[index].permission.indexOf(userOb.access)){
+      routes.splice(index,1);
+  }
+  for(let index2 in routes[index].children){
+    if (routes[index].children[index2].permission.indexOf(userOb.access)){
+      routes[index].children.splice(index2,1);
+    }
+  }
+}
+
+
+
 //定义路由
 const router = new VueRouter({
-  routes: [
-    {path: '/login', component: login},
-    {
-      path: '/test', component: app, children: [
-        {path: '/test/1/1/1', component: tableShow},
-        {path: '/test/1/1/2', component: treeTable},
-        {path: '/test/1/2', component: demo1},
-        {path: '/test/2/1', component: bar},
-        {path: '/test/2/2', component: mixedChart},
-        {path: '*', component: NotFoundView}
-      ]
-    },
-    {
-      path: '', component: app, children: [
-        {path: '/resetPwd', component: resetPwd},
-        {path: '/index', component: dashboard},
-        {path: '/sys/menuList', component: menuList},
-        {path: '/sys/roleList', component: role},
-        {path: '/sys/userList', component: sysUser},
-        {path: '/sys/userAdd', component: userAdd},
-        // {path: '/sys/resource', component: resource}
-      ]
-    },
-    {path: '*', component: NotFoundView}
-  ],
+  routes: routes,
   mode: 'history'
-})
+});
+
+
 
 sync(store, router)
 

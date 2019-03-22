@@ -51,7 +51,8 @@ Vue.use(VueProgressBar, {
 Vue.directive('permission', {
   inserted: function (el, binding) {
     if (!permission(binding.value)) {
-      el.parentNode.removeChild(el);
+      console.log(el);
+      el.remove()
     }
   }
 });

@@ -19,6 +19,29 @@ export default {
       "avatar": "static/img/user.png"
     }, "sid": "310000198406275362"
   },
+  routeList:[ {path: '/login', isShow:1},
+    {
+      path: '/test',isShow:0,children: [
+        {path: '/test/1/1/1', isShow:1},
+        {path: '/test/1/1/2', isShow:1},
+        {path: '/test/1/2', isShow:1},
+        {path: '/test/2/1', isShow:1},
+        {path: '/test/2/2', isShow:1},
+        {path: '*', isShow:1}
+      ]
+    },
+    {
+      path: '', isShow:1, children: [
+        {path: '/resetPwd', isShow:1},
+        {path: '/index', isShow:1},
+        {path: '/sys/menuList', isShow:1},
+        {path: '/sys/roleList', isShow:1},
+        {path: '/sys/userList', isShow:1},
+        {path: '/sys/userAdd', isShow:1},
+        // {path: '/sys/resource', component: resource}
+      ]
+    },
+    {path: '*', isShow:1}],
   msgList: [{
     "id": "310000201511210936",
     "type": 1,
@@ -326,15 +349,18 @@ export default {
   },
   menuList: [{
     "id": 1,
+    "access":['admin','developer'],
     "parentId": null,
     "sort": 0,
     "name": "message.menu.dashboard",
     "href": "/index",
     "icon": "fa fa-dashboard",
     "children": [],
-    "isShow": "0"
+    "isShow": "0",
+
   }, {
     "id": 31,
+    "access":['developer'],
     "parentId": null,
     "sort": 1,
     "name": "message.menu.menu1.name",
@@ -342,6 +368,7 @@ export default {
     "icon": "fa fa-upload",
     "children": [{
       "id": 92,
+      "access":['admin','developer'],
       "parentId": 31,
       "sort": 0,
       "name": "message.menu.menu1.items.item1.name",
@@ -349,6 +376,7 @@ export default {
       "icon": "fa fa-bank",
       "children": [{
         "id": 912,
+        "access":['admin','developer'],
         "parentId": 92,
         "sort": 0,
         "name": "message.menu.menu1.items.item1.children.child1",
@@ -358,6 +386,7 @@ export default {
         "isShow": "1"
       }, {
         "id": 913,
+        "access":['admin','developer'],
         "parentId": 92,
         "sort": 0,
         "name": "message.menu.menu1.items.item1.children.child2",
@@ -369,6 +398,7 @@ export default {
       "isShow": "1"
     }, {
       "id": 93,
+      "access":['admin','developer'],
       "parentId": 31,
       "sort": 0,
       "name": "message.menu.menu1.items.item2.name",
@@ -380,6 +410,7 @@ export default {
     "isShow": "1"
   }, {
     "id": 102,
+    "access":['admin','developer'],
     "parentId": null,
     "sort": 3,
     "name": "message.menu.menu2.name",
@@ -387,6 +418,7 @@ export default {
     "icon": "fa fa-download",
     "children": [{
       "id": 103,
+      "access":['developer'],
       "parentId": 102,
       "sort": 0,
       "name": "message.menu.menu2.items.item1.name",
@@ -396,6 +428,7 @@ export default {
       "isShow": "1"
     }, {
       "id": 104,
+      "access":['admin','developer'],
       "parentId": 102,
       "sort": 0,
       "name": "message.menu.menu2.items.item2.name",
@@ -407,6 +440,7 @@ export default {
     "isShow": "1"
   }, {
     "id": 6,
+    "access":['admin'],
     "parentId": null,
     "sort": 6,
     "name": "message.menu.menu3.name",
@@ -425,6 +459,7 @@ export default {
       // },
       {
         "id": 7,
+        "access":['admin'],
         "parentId": 6,
         "sort": 1,
         "name": "message.menu.menu3.items.item2.name",
@@ -434,6 +469,7 @@ export default {
         "isShow": "1"
       }, {
         "id": 8,
+        "access":['admin'],
         "parentId": 6,
         "sort": 2,
         "name": "message.menu.menu3.items.item3.name",
@@ -443,6 +479,7 @@ export default {
         "isShow": "1"
       }, {
         "id": 9,
+        "access":['admin'],
         "parentId": 6,
         "sort": 3,
         "name": "message.menu.menu3.items.item4.name",

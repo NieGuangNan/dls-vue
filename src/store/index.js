@@ -16,6 +16,7 @@ const store = new Vuex.Store({
   getters: {
     loading: state => state.loading,
     menuList: state => state.menuList,
+    routeList: state => state.routeList,
     sidebar: state => state.sidebar,
     userInfo: state => state.userInfo,
     device: state => state.device,
@@ -25,6 +26,7 @@ const store = new Vuex.Store({
   state: {
     loading: false,
     menuList: {},
+    routeList:{},
     themecolor: getLocalKey('state.themecolor', '#fff'),//默认为409EFF
     sidebar: {
       collapsed: getSessionKey('state.sidebar.collapsed', 'false') === 'true',
@@ -56,6 +58,9 @@ const store = new Vuex.Store({
     [types.LOAD_MENU](state, menu) {
       state.menuList = menu;
     },
+    [types.LOAD_ROUTE](state, route) {
+      state.RouteList = route;
+    },
     [types.LOAD_CURRENT_MENU](state, menu) {
       state.currentMenus = menu;
     },
@@ -85,6 +90,11 @@ const store = new Vuex.Store({
       Vue.axios.get(api.SYS_MENU_LIST).then(res => {
         commit(types.LOAD_MENU, res.data);
       }).catch(exp => commit(types.LOAD_MENU, defaultValue.menuList));
+    },
+    loadRouteList: ({commit}) => {
+      Vue.axios.get(api.SYS_ROUTE_LIST).then(res => {
+        commit(types.LOAD_ROUTE, res.data);
+      }).catch(exp => commit(types.LOAD_ROUTE, defaultValue.menuList));
     },
 
     changeCurrentMenu: ({state, commit}, {path, matched, fullPath}) => {

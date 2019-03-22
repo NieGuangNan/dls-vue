@@ -5,6 +5,7 @@ export const PERMISSION = ['admin', 'developer'];
 export const LOGIN = CONTEXT + '/login';
 export const LOGOUT = CONTEXT + '/logout';
 export const CHANGE_PWD = CONTEXT + '/changePwd';
+export const SYS_ROUTE_LIST = CONTEXT + '/route';
 
 export const SYS_MENU_GET = CONTEXT + '/sys/menu/get';
 export const SYS_MENU_UPDATE = CONTEXT + '/sys/menu/update';

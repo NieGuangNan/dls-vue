@@ -68,7 +68,8 @@
         setUserInfo: types.SET_USER_INFO
       }),
       ...mapActions({
-        loadMenuList: 'loadMenuList' // 映射 this.load() 为 this.$store.dispatch('loadMenuList')
+        loadMenuList: 'loadMenuList' ,// 映射 this.load() 为 this.$store.dispatch('loadMenuList')
+        loadRouteList:'loadRouteList'
       }),
       login() {
 
@@ -95,6 +96,7 @@
           this.setUserInfo(user);
           this.$http.defaults.headers.common['authSid'] = sid;
           this.loadMenuList();
+          this.loadRouteList();
           redirectUrl && this.$router.push({path: redirectUrl});
         } else {
           this.$message('用户名或密码错');

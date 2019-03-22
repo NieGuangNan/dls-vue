@@ -1,8 +1,10 @@
+
+
 <template>
   <div class="dashboard" ref="dashboard">
     <el-row>
       <el-col :span="24">
-        <div id="gotobedbar"></div>
+        <div id="gotobedbar" v-if="false"></div>
       </el-col>
     </el-row>
   </div>
@@ -192,11 +194,12 @@
   }
 </script>
 
+
 <style scoped>
 
   #gotobedbar {
-    width: 100%;
-    min-height: 500px;
-    margin-right: 15px;
+  width: 100%;
+  min-height: 500px;
+  margin-right: 15px;
   }
 </style>
