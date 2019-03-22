@@ -6,7 +6,7 @@
       :row-style="rowStyle"
       @selection-change="handleSelectionChange"
       :max-height="maxHeight"
-      >
+    >
       <slot></slot>
     </el-table>
     <el-pagination
@@ -45,9 +45,8 @@
         type: Number,
         default: 30
       },
-      maxHeight:{
-        type:String,
-        default:'auto'
+      maxHeight: {
+        type: Number,
       },
       rowStyle: {
         type: Function

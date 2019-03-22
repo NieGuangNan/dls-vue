@@ -4,10 +4,10 @@
 </template>
 
 <script>
+  window.localStorage.getItem('state.themecolor') && window.localStorage.getItem('state.themecolor') !== '#fff' ? import(`@/assets/eCharts/theme/${window.localStorage.getItem('state.themecolor')}/index.js`) : '';
   import echarts from 'echarts'
   import 'echarts/theme/dark.js'
   import {getLocalKey} from "common/utils";
-  window.localStorage.getItem('state.themecolor') && window.localStorage.getItem('state.themecolor') !== '#fff' ? import(`@/assets/eCharts/theme/${window.localStorage.getItem('state.themecolor')}/index.js`) : '';
 
   export default {
     name: "echartTemplate",

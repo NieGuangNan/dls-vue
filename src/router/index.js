@@ -60,7 +60,6 @@ sync(store, router)
 const {state} = store
 
 router.beforeEach((route, redirect, next) => {
-  console.log(676767)
   if (state.device.isMobile && state.sidebar.opened) {
     store.commit(types.TOGGLE_SIDEBAR, false)
   }

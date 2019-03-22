@@ -4,6 +4,7 @@ import Vue from "vue";
 //   import(`@/assets/css/theme/${themeName}/index.css`)
 // }
 // switchTheme('aaa');
+import(`@/assets/css/theme/${window.localStorage.getItem('state.themecolor') ? window.localStorage.getItem('state.themecolor') : '#fff'}/index.css`);
 import frame from "./frame.vue";
 import router from "./router";
 import store from "./store";
@@ -16,7 +17,7 @@ import ImpPanel from "./components/panel.vue";
 import '@/assets/css/theme.css';
 import i18n from './i18n';
 import {setCookie, getCookie, delCookie} from 'common/utils';
-import(`@/assets/css/theme/${window.localStorage.getItem('state.themecolor') ? window.localStorage.getItem('state.themecolor') : '#fff'}/index.css`);
+
 // import '@/assets/css/theme/bbb/index.css';
 
 
