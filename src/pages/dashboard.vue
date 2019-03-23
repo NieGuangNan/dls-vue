@@ -4,7 +4,7 @@
   <div class="dashboard" ref="dashboard">
     <el-row>
       <el-col :span="24">
-        <div id="gotobedbar" v-if="false"></div>
+        <div id="gotobedbar"></div>
       </el-col>
     </el-row>
   </div>
