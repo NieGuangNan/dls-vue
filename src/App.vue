@@ -12,13 +12,12 @@
             </template>
           </el-breadcrumb>
           <transition mode="out-in" enter-active-class="fadeIn" leave-active-class="fadeOut" appear>
-            <router-view :bodyHeight="bodyHeight" v-if="isRouterAlive"></router-view>
+            <router-view :bodyHeight="$root.bodyHeight" v-if="isRouterAlive"></router-view>
           </transition>
         </section>
       </el-scrollbar>
       <imp-footer></imp-footer>
     </div>
-
   </div>
 </template>
 
@@ -55,7 +54,6 @@
     },
     data: function () {
       return {
-        bodyHeight: '',
         active: true,
         isShow: false,
         headerFixed: true,
@@ -64,9 +62,6 @@
       }
     },
     methods: {
-      getHeight() {
-        this.bodyHeight = document.documentElement.clientHeight
-      },
       timer() {
         let timer = setInterval(() => {
           if (document.readyState === 'interactive' || document.readyState === 'complete') {
@@ -115,7 +110,6 @@
         }
       }
       const resize = () => {
-        this.getHeight();
         this.reload()
       }
       document.addEventListener('visibilitychange', handler);
@@ -132,15 +126,13 @@
         this.timer()
       });
       //必须先登入再访问
-      if (!this.$cookieStore.getCookie('user-info')){
+      if (!this.$cookieStore.getCookie('user-info')) {
         this.$router.push('/login')
       }
 
     },
     created() {
       // addTheme(getLocalKey('state.themecolor', '#fff'));
-
-      this.getHeight()
 
       //  [App.vue specific] When App.vue is first loaded start the progress bar
       this.$Progress.start()

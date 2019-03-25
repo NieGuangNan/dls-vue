@@ -7,7 +7,7 @@
     </el-row>
     <el-row>
       <el-col :span="24" >
-        <echarts :option="option" :height='bodyHeight/3'></echarts>
+        <echarts :option="option" :height='$root.bodyHeight/3'></echarts>
         <div class="bottom"></div>
       </el-col>
     </el-row>
@@ -65,7 +65,7 @@
           </el-col>
         </el-row>
         <el-row>
-          <echarts :option="option1" :height='bodyHeight/3'></echarts>
+          <echarts :option="option1" :height='$root.bodyHeight/3'></echarts>
         </el-row>
         <data-table :data="tableData">
           <el-table-column
@@ -155,7 +155,7 @@
           </el-col>
         </el-row>
         <el-row>
-          <echarts :option="option1" :height='bodyHeight/3'></echarts>
+          <echarts :option="option1" :height='$root.bodyHeight/3'></echarts>
         </el-row>
         <data-table :data="tableData" :maxHeight="200">
           <el-table-column
@@ -281,9 +281,6 @@
         components:{
           echarts,dataTable
         },
-      props: {
-        bodyHeight: {type: Number}
-      },
       data(){
           return{
             option:option,

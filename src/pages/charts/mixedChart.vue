@@ -1,8 +1,8 @@
 <template>
-  <div id="wrap" >
-    <el-button type="default" @click="a()">测试</el-button>
-    <echarts :option="option" :height='bodyHeight/4'></echarts>
-    <echarts :option="option1" :height='bodyHeight/4' :alterOption="alterOption"></echarts>
+  <div id="wrap">
+    <el-button type="default" @click="a()" v-permission="['admin']">测试</el-button>
+    <echarts :option="option" :height='$root.bodyHeight/4'></echarts>
+    <echarts :option="option1" :height='$root.bodyHeight/4' :alterOption="alterOption"></echarts>
   </div>
 
 </template>
@@ -58,9 +58,6 @@
   export default {
     name: "mixedChart",
     components: {echarts},
-    props: {
-      bodyHeight: {type: Number}
-    },
     data() {
       return {
         option: option,
