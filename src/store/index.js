@@ -4,6 +4,8 @@ import types from "./mutation-types";
 import defaultValue from "../services/default";
 import * as api from "../api";
 import {getCurrentMenu, getSessionKey, getLocalKey, addTheme, getCookie} from '../common/utils'
+import VueCookies from "vue-cookies/vue-cookies"
+
 
 Vue.use(Vuex)
 
@@ -36,7 +38,7 @@ const store = new Vuex.Store({
       isMobile: false
     },
     userInfo: JSON.parse(getCookie("user-info")),
-    currentMenus: [],
+    currentMenus:JSON.parse(VueCookies.get("menu")),
   },
   // 每个 mutation 都有一个字符串的 事件类型 (type) 和 一个 回调函数 (handler)。
   // 这个回调函数就是我们实际进行状态更改的地方，并且它会接受 state 作为第一个参数：
@@ -98,6 +100,7 @@ const store = new Vuex.Store({
     },
 
     changeCurrentMenu: ({state, commit}, {path, matched, fullPath}) => {
+
       const a = getCurrentMenu(fullPath, state.menuList);
       commit(types.LOAD_CURRENT_MENU, a.reverse());
     }

@@ -27,6 +27,7 @@
     "progressbar.js": "^1.0.1",
     "v-charts": "^1.19.0",
     "vue": "^2.6.1",
+    "vue-cookies": "^1.5.13",
     "vue-core-image-upload": "^2.3.9",
     "vue-fancybox": "^1.0.2",
     "vue-i18n": "^8.9.0",

@@ -73,10 +73,11 @@
       }),
       login() {
 
-        var redirectUrl = '/index';
-        if (this.$route.query && this.$route.query != null && this.$route.query.redirect && this.$route.query.redirect != null) {
-          redirectUrl = this.$route.query.redirect;
-        }
+        var redirectUrl = '/';
+        // if (this.$route.query && this.$route.query != null && this.$route.query.redirect && this.$route.query.redirect != null) {
+        //   console.log(78)
+        //   redirectUrl = this.$route.query.redirect;
+        // }
         if (!(this.form.username && this.form.password)) {
           this.$message('用户名、密码均不能为空');
         } else {

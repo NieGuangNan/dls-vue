@@ -7,9 +7,15 @@
       <el-scrollbar tag="div" wrapClass="content-scrollbar">
         <section class="content">
           <el-breadcrumb separator="/" style="margin-bottom: 20px;">
+
+
+            <template v-if="!currentMenus||currentMenus.length===0">
+               <el-breadcrumb-item >{{$t('message.menu.dashboard')}}</el-breadcrumb-item>
+            </template>
             <template v-for="child in currentMenus">
               <el-breadcrumb-item :to="{ path: child.href }">{{$t(child.name)}}</el-breadcrumb-item>
             </template>
+
           </el-breadcrumb>
           <transition mode="out-in" enter-active-class="fadeIn" leave-active-class="fadeOut" appear>
             <router-view :bodyHeight="$root.bodyHeight" v-if="isRouterAlive"></router-view>
@@ -45,11 +51,12 @@
       impHeader,
     },
     computed: {
+
       ...mapGetters({
         sidebar: 'sidebar',
         device: 'device',
         currentMenus: 'currentMenus',
-      }),
+      })
 
     },
     data: function () {
@@ -58,10 +65,14 @@
         isShow: false,
         headerFixed: true,
         breadcrumb: [],
-        isRouterAlive: true
+        isRouterAlive: true,
       }
     },
     methods: {
+      setLanguage(){
+        const language=this.$cookieStore.getCookie("user-info").language?this.$cookieStore.getCookie("user-info").language:'zh';
+        this.$i18n.locale =language;
+      },
       timer() {
         let timer = setInterval(() => {
           if (document.readyState === 'interactive' || document.readyState === 'complete') {
@@ -90,6 +101,12 @@
     },
     watch: {
       '$route': function (to, from) {
+      },
+      currentMenus(){
+        // sessionStorage.setItem('menu',JSON.stringify(this.currentMenus))
+        // console.log(sessionStorage.getItem('menu'));
+        this.$cookies.set('menu', JSON.stringify(this.currentMenus));
+        console.log(this.$cookies.get('menu'))
       }
     },
     beforeMount() {
@@ -119,7 +136,9 @@
 
 
     },
+
     mounted() {
+      this.setLanguage();
       //  [App.vue specific] When App.vue is finish loading finish the progress bar
       this.$Progress.finish()
       this.$nextTick(function () {
@@ -128,7 +147,12 @@
       //必须先登入再访问
       if (!this.$cookieStore.getCookie('user-info')) {
         this.$router.push('/login')
+
       }
+      // this.$cookies.remove('menu');
+      this.$cookies.set('menu', JSON.stringify(this.currentMenus));
+      console.log(this.currentMenus);
+
 
     },
     created() {
@@ -162,6 +186,7 @@
     },
     destroyed() {
       // window.removeEventListener('resize', location.reload())
+
     }
   }
 

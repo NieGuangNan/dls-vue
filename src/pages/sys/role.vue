@@ -158,7 +158,7 @@
               this.load();
             }).catch(e => {
             this.$message('操作失败');
-            console.log(checkKeys);
+            // console.log(checkKeys);
             this.batchDeleteFromTree(this.roleTree, checkKeys);
           })
         });
@@ -189,7 +189,7 @@
         })
       },
       deleteSelected(id){
-        console.log(id);
+        // console.log(id);
         this.$http.get(api.SYS_ROLE_DELETE + "?roleIds=" + id)
           .then(res => {
             this.$message('操作成功');
@@ -208,7 +208,7 @@
           })
       },
       renderContent(h, {node, data, store}) {
-        console.log(data);
+        // console.log(data);
         return (
           <span>
             <span>

@@ -14,9 +14,10 @@ export default {
       "status": 1,
       "access": 'admin',
       "userType": "1",
+      "language":'zh',
       "no": "310000198406275362",
       "remarks": "传方半织意意列业维领细斯样年场不次。样影此么论重示般会际开出二及西高。",
-      "avatar": "static/img/user.png"
+      "avatar": "/static/img/user.png"
     }, "sid": "310000198406275362"
   },
   routeList:[ {path: '/login', isShow:1},
@@ -353,7 +354,7 @@ export default {
     "parentId": null,
     "sort": 0,
     "name": "message.menu.dashboard",
-    "href": "/index",
+    "href": "/",
     "icon": "fa fa-dashboard",
     "children": [],
     "isShow": "0",

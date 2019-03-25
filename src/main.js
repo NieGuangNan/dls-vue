@@ -17,7 +17,8 @@ import ImpPanel from "./components/panel.vue";
 import '@/assets/css/theme.css';
 import i18n from './i18n';
 import {setCookie, getCookie, delCookie, permission} from 'common/utils';
-
+import VueCookies from 'vue-cookies'
+Vue.use(VueCookies);
 // import '@/assets/css/theme/bbb/index.css';
 
 
