@@ -9,7 +9,13 @@
           :value="option.value">
         </el-option>
       </el-select>
-
+      <el-input v-model="toolbar.datePicker.value"></el-input>
+      <el-date-picker
+        v-model="toolbar.datePicker.value"
+        type="date"
+        value-format="yyyy-MM-dd"
+        placeholder="选择日期">
+      </el-date-picker>
       <select-one-button :data="toolbar.selectOneButton"></select-one-button>
       <el-button @click="submitForm('ruleForm')">提交</el-button>
     </el-form>
@@ -63,12 +69,17 @@
               label: 'DCC示范工厂4'
             }],
           },
+          datePicker: {
+            value: new Date('2019-03-26'),
+          },
           selectOneButton: {
             options: [{value: 'yue', label: '月'}, {value: 'zhou', label: '周'}, {
               value: 'ri',
               label: '日'
-            }], value: 'yue'
-          },
+            }], value:
+              'yue'
+          }
+          ,
         },
         items: [{
           options: [{
@@ -95,6 +106,56 @@
             'val': {'top': '60', 'bottom': '60'},
             'label': {'left': '100', 'right': '120', 'top': '', 'bottom': '130'}
           },
+        }, {
+          options: [{
+            value: '1',
+            label: '名辰库区'
+          }, {
+            value: '2',
+            label: '名辰库区1'
+          }, {
+            value: '3',
+            label: '名辰库区2'
+          }, {
+            value: '4',
+            label: '名辰库区3'
+          }, {
+            value: '5',
+            label: '名辰库区4'
+          }],
+          value: '2',
+          id: '0',
+          data: {
+            'color': 'red',
+            'scale': '0.7',
+            'val': {'top': '60', 'bottom': '60'},
+            'label': {'left': '100', 'right': '120', 'top': '', 'bottom': '130'}
+          },
+        }, {
+          options: [{
+            value: '1',
+            label: '名辰库区'
+          }, {
+            value: '2',
+            label: '名辰库区1'
+          }, {
+            value: '3',
+            label: '名辰库区2'
+          }, {
+            value: '4',
+            label: '名辰库区3'
+          }, {
+            value: '5',
+            label: '名辰库区4'
+          }],
+          value: '2',
+          id: '0',
+          data: {
+            'color': 'yellow',
+            'scale': '0.4',
+            'val': {'top': '60', 'bottom': '60'},
+            'label': {'left': '100', 'right': '120', 'top': '', 'bottom': '130'}
+          },
         }],
 
       }
@@ -116,6 +177,84 @@
           }
         })
       },
+      select() {
+        this.items = [{
+          options: [{
+            value: '1',
+            label: '名辰库区'
+          }, {
+            value: '2',
+            label: '名辰库区1'
+          }, {
+            value: '3',
+            label: '名辰库区2'
+          }, {
+            value: '4',
+            label: '名辰库区3'
+          }, {
+            value: '5',
+            label: '名辰库区4'
+          }],
+          value: '1',
+          id: '0',
+          data: {
+            'color': 'blue',
+            'scale': '0.6',
+            'val': {'top': '60', 'bottom': '60'},
+            'label': {'left': '100', 'right': '120', 'top': '', 'bottom': '130'}
+          },
+        }, {
+          options: [{
+            value: '1',
+            label: '名辰库区'
+          }, {
+            value: '2',
+            label: '名辰库区1'
+          }, {
+            value: '3',
+            label: '名辰库区2'
+          }, {
+            value: '4',
+            label: '名辰库区3'
+          }, {
+            value: '5',
+            label: '名辰库区4'
+          }],
+          value: '3',
+          id: '0',
+          data: {
+            'color': 'green',
+            'scale': '0.8',
+            'val': {'top': '60', 'bottom': '60'},
+            'label': {'left': '100', 'right': '120', 'top': '', 'bottom': '130'}
+          },
+        }, {
+          options: [{
+            value: '1',
+            label: '名辰库区'
+          }, {
+            value: '2',
+            label: '名辰库区1'
+          }, {
+            value: '3',
+            label: '名辰库区2'
+          }, {
+            value: '4',
+            label: '名辰库区3'
+          }, {
+            value: '5',
+            label: '名辰库区4'
+          }],
+          value: '2',
+          id: '0',
+          data: {
+            'color': 'yellow',
+            'scale': '0.4',
+            'val': {'top': '60', 'bottom': '60'},
+            'label': {'left': '100', 'right': '120', 'top': '', 'bottom': '130'}
+          },
+        }]
+      }
     }
   }
 </script>

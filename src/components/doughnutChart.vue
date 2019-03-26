@@ -19,6 +19,13 @@
       }
     },
     methods: {
+      resize() {
+        this.$refs.doughnutChart.style.width = 'auto';
+        this.$refs.doughnutChart.innerHTML = '';
+        this.$nextTick(function () {
+          this.doughnutChart(this.$refs.doughnutChart, this.data)
+        })
+      },
       doughnutChart(id, json) {
         if (json === '') {
           return
@@ -110,17 +117,15 @@
 
       }
     },
+    beforeMount() {
+      window.addEventListener('resize', () => {
+        this.resize()
+      });
+    },
+
     mounted() {
       this.doughnutChart(this.$refs.doughnutChart, this.data)
     },
-
-    updated() {
-      this.$refs.doughnutChart.style.width = 'auto';
-      this.$refs.doughnutChart.innerHTML = '';
-      this.$nextTick(function () {
-        this.doughnutChart(this.$refs.doughnutChart, this.data)
-      })
-    }
   }
 
 </script>

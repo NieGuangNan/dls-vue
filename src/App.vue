@@ -127,7 +127,7 @@
         }
       }
       const resize = () => {
-        this.reload()
+        // this.reload()
       }
       document.addEventListener('visibilitychange', handler);
       window.addEventListener('DOMContentLoaded', handler);

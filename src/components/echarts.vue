@@ -1,5 +1,5 @@
 <template>
-  <div ref='eChart' :style="{width: '100%',height: height+'px'}" :height="height" :option="option"
+  <div ref='eChart' :style="{width: '100%',height: height+'px'}"
        :alterOp="alterOption"></div>
 </template>
 
@@ -35,11 +35,16 @@
     mounted() {
       this.drawLine()
     },
-
     watch: {
       option: function () {
         this.drawLine()
       },
+      alterOp:function () {
+        this.drawLine()
+      }
+    },
+    beforeMount() {
+      window.addEventListener('resize', ()=>{this.resize()});
     },
     methods: {
       drawLine() {
@@ -49,6 +54,14 @@
         myChart.setOption(this.option);
         this.alterOption ? myChart.setOption(this.alterOption) : '';
       },
+      resize(){
+        // 基于准备好的dom，初始化echarts实例
+        let myChart = echarts.init(this.$refs.eChart, this.theme);
+        // 绘制图表
+        myChart.setOption(this.option);
+        this.alterOption ? myChart.setOption(this.alterOption) : '';
+        myChart.resize();
+      }
     }
   }
 
