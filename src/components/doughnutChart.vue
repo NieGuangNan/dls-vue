@@ -29,9 +29,11 @@
           data = eval('(' + json + ')');
         }
         let min = Math.min(id.clientWidth, this.height);
-        id.style.height = min + 'px';
-        id.style.width = min + 'px';
-        id.style.margin = min * 0.1 + 4 + 'px';
+        let margin = min * 0.1 + 4;
+        id.style.margin = margin + 'px';
+        id.style.height = min - margin * 2 + 'px';
+        id.style.width = min - margin * 2 + 'px';
+
         let bar = new ProgressBar.Circle(id, {
           // color: '#aaa',
           strokeWidth: 4,

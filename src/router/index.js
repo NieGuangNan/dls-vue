@@ -20,6 +20,7 @@ import tableShow from "pages/table/tableShow"
 import treeTable from "pages/table/treeTable";
 import mixedChart from "pages/charts/mixedChart.vue"
 import demo1 from "pages/test/demo1.vue"
+import demo2 from "pages/test/demo2.vue"
 import defaultValue from "@/services/default"
 import {setCookie, getCookie, delCookie} from '@/common/utils';
 
@@ -43,6 +44,11 @@ const routes =[
     path: '/test/2', component: app,permission:['admin','developer'], children: [
       {path: '/test/2/1', component: bar,permission:['developer']},
       {path: '/test/2/2', component: mixedChart,permission:['admin','developer']},
+      {
+        path: '/test/2/3',
+        component: demo2,
+        permission: ['admin', 'developer']
+      },
       {path: '*', component: NotFoundView,permission:['admin','developer']}
     ]
   },

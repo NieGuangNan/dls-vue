@@ -1,8 +1,7 @@
 <template>
   <div>
-    <el-form :inline="true" :model="toolbar" ref="ruleForm" class="demo-form-inline">
-      <el-select v-model="toolbar.select.value" placeholder="请选择"
-                 @change="select(toolbar.select.id,toolbar.select.value)">
+    <el-form :inline="true" :model="toolbar" ref="ruleForm" style="background: #fff">
+      <el-select v-model="toolbar.select.value" placeholder="请选择">
         <el-option
           v-for="option in toolbar.select.options"
           :key="option.value"
@@ -117,10 +116,6 @@
           }
         })
       },
-      select(id, value) {
-        let a = JSON.stringify({id: id, value: value});
-        alert(a);
-      }
     }
   }
 </script>
