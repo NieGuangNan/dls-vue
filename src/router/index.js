@@ -49,7 +49,7 @@ const routes =[
   {
     path: '', component: app,permission:['admin','developer'], children: [
       {path: '/resetPwd', component: resetPwd,permission:['admin','developer']},
-      {path: '/index', component: dashboard,permission:['admin','developer']},
+      {path: '/', component: dashboard,permission:['admin','developer']},
       {path: '/sys/menuList', component: menuList,permission:['admin']},
       {path: '/sys/roleList', component: role,permission:['admin']},
       {path: '/sys/userList', component: sysUser,permission:['admin']},
@@ -63,16 +63,19 @@ const routes =[
 // 权限路由设置
 let userInfo = getCookie('user-info');
 let userOb=JSON.parse(userInfo);
-for (let index in routes){
-  if (routes[index].permission.indexOf(userOb.access)){
+if (userInfo) {
+  for (let index in routes){
+    if (routes[index].permission.indexOf(userOb.access)){
       routes.splice(index,1);
-  }
-  for(let index2 in routes[index].children){
-    if (routes[index].children[index2].permission.indexOf(userOb.access)){
-      routes[index].children.splice(index2,1);
+    }
+    for(let index2 in routes[index].children){
+      if (routes[index].children[index2].permission.indexOf(userOb.access)){
+        routes[index].children.splice(index2,1);
+      }
     }
   }
 }
+
 
 
 
