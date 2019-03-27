@@ -37,7 +37,7 @@ const store = new Vuex.Store({
     device: {
       isMobile: false
     },
-    userInfo: JSON.parse(getCookie("user-info")),
+    userInfo: VueCookies.get("user-info"),
     currentMenus:JSON.parse(VueCookies.get("menu")),
   },
   // 每个 mutation 都有一个字符串的 事件类型 (type) 和 一个 回调函数 (handler)。

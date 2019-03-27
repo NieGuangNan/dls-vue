@@ -6,17 +6,6 @@
     <div class="content-wrapper" :class="{ slideCollapse: sidebar.collapsed,mobileSide:device.isMobile}">
       <el-scrollbar tag="div" wrapClass="content-scrollbar">
         <section class="content">
-          <el-breadcrumb separator="/" style="margin-bottom: 20px;">
-
-
-            <template v-if="!currentMenus||currentMenus.length===0">
-               <el-breadcrumb-item >{{$t('message.menu.dashboard')}}</el-breadcrumb-item>
-            </template>
-            <template v-for="child in currentMenus">
-              <el-breadcrumb-item :to="{ path: child.href }">{{$t(child.name)}}</el-breadcrumb-item>
-            </template>
-
-          </el-breadcrumb>
           <transition mode="out-in" enter-active-class="fadeIn" leave-active-class="fadeOut" appear>
             <router-view :bodyHeight="$root.bodyHeight" v-if="isRouterAlive"></router-view>
           </transition>
@@ -55,7 +44,7 @@
       ...mapGetters({
         sidebar: 'sidebar',
         device: 'device',
-        currentMenus: 'currentMenus',
+
       })
 
     },
@@ -70,7 +59,7 @@
     },
     methods: {
       setLanguage(){
-        const language=this.$cookieStore.getCookie("user-info").language?this.$cookieStore.getCookie("user-info").language:'zh';
+        const language=this.$cookies.get("user-info").language?this.$cookies.get("user-info").language:'zh';
         this.$i18n.locale =language;
       },
       timer() {
@@ -86,9 +75,7 @@
         toggleSidebar: types.TOGGLE_SIDEBAR,
         toggleSidebarShow: types.TOGGLE_SIDEBAR_SHOW,
       }),
-      ...mapActions({
-        changeCurrentMenu: 'changeCurrentMenu' // 映射 this.changeCurrentMenu() 为 this.$store.dispatch('changeCurrentMenu')
-      }),
+
       reload() {
         this.isRouterAlive = false
         this.$nextTick(
@@ -102,15 +89,10 @@
     watch: {
       '$route': function (to, from) {
       },
-      currentMenus(){
-        // sessionStorage.setItem('menu',JSON.stringify(this.currentMenus))
-        // console.log(sessionStorage.getItem('menu'));
-        this.$cookies.set('menu', JSON.stringify(this.currentMenus));
-        console.log(this.$cookies.get('menu'))
-      }
+
     },
     beforeMount() {
-      this.$i18n.locale = localStorage.getItem('locale');
+      this.$i18n.locale = this.$cookies.get('locale');
       const {body} = document
       const WIDTH = 784
       const handler = () => {
@@ -149,10 +131,6 @@
         this.$router.push('/login')
 
       }
-      // this.$cookies.remove('menu');
-      this.$cookies.set('menu', JSON.stringify(this.currentMenus));
-      console.log(this.currentMenus);
-
 
     },
     created() {
@@ -228,7 +206,7 @@
   }
 
   .content-wrapper .content {
-    padding: 1rem;
+    padding: 1.5rem 1rem;
 
     /*text-align: center;*/
   }

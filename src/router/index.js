@@ -22,7 +22,9 @@ import mixedChart from "pages/charts/mixedChart.vue"
 import demo1 from "pages/test/demo1.vue"
 import demo2 from "pages/test/demo2.vue"
 import defaultValue from "@/services/default"
+
 import {setCookie, getCookie, delCookie} from '@/common/utils';
+import VueCookies from 'vue-cookies'
 
 
 
@@ -67,15 +69,14 @@ const routes =[
 ];
 
 // 权限路由设置
-let userInfo = getCookie('user-info');
-let userOb=JSON.parse(userInfo);
+let userInfo = VueCookies.get('user-info');
 if (userInfo) {
   for (let index in routes){
-    if (routes[index].permission.indexOf(userOb.access)){
+    if (routes[index].permission.indexOf(userInfo.access)){
       routes.splice(index,1);
     }
     for(let index2 in routes[index].children){
-      if (routes[index].children[index2].permission.indexOf(userOb.access)){
+      if (routes[index].children[index2].permission.indexOf(userInfo.access)){
         routes[index].children.splice(index2,1);
       }
     }

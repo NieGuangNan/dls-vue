@@ -24484,3 +24484,10 @@
 .custom-#fff .el-timeline-item__timestamp.is-bottom {
   margin-top: 8px
 }
+
+.el-breadcrumb__inner,.el-breadcrumb__item:last-child .el-breadcrumb__inner,
+.el-breadcrumb__item:last-child .el-breadcrumb__inner a,
+.el-breadcrumb__item:last-child .el-breadcrumb__inner a:hover,
+.el-breadcrumb__item:last-child .el-breadcrumb__inner:hover {
+  color: #fff;
+}

@@ -91,8 +91,9 @@
         // console.log('触发了没？');
         if (sid && user) {
           auth.login(sid);
-          this.$cookieStore.setCookie("user-info", JSON.stringify(user));
-          this.$cookieStore.setCookie("user-access", user.access);
+
+          this.$cookies.set("user-info",user);
+          this.$cookies.set("user-access", user.access);
           // sessionStorage.setItem("user-info", JSON.stringify(user));
           this.setUserInfo(user);
           this.$http.defaults.headers.common['authSid'] = sid;

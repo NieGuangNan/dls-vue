@@ -10,6 +10,16 @@
          @click.stop.prevent="toggleMenu(!sidebar.collapsed,device.isMobile)">
         <span class="sr-only">Toggle navigation</span>
       </a>
+      <el-breadcrumb separator="/" style="margin-bottom: 20px;">
+
+        <template v-if="!currentMenus||currentMenus.length===0">
+          <el-breadcrumb-item >{{$t('message.menu.dashboard')}}</el-breadcrumb-item>
+        </template>
+        <template v-for="child in currentMenus">
+          <el-breadcrumb-item >{{$t(child.name)}}</el-breadcrumb-item>
+        </template>
+
+      </el-breadcrumb>
       <div class="navbar-custom-menu">
         <template>
           <el-radio-group v-model="themecolor">
@@ -90,6 +100,7 @@
         list: [],
         count: 4,
         show: true,
+        breadcrumb: [],
       }
     },
     computed: {
@@ -97,6 +108,7 @@
         sidebar: 'sidebar',
         userInfo: 'userInfo',
         device: 'device',
+        currentMenus: 'currentMenus',
       }),
       themecolor: {
         get() {
@@ -110,18 +122,21 @@
     },
 
     methods: {
+      ...mapActions({
+        changeCurrentMenu: 'changeCurrentMenu' // 映射 this.changeCurrentMenu() 为 this.$store.dispatch('changeCurrentMenu')
+      }),
       toggleLang(lang) {
         if (lang == 'zh') {
-          localStorage.setItem('locale', 'zh');
-          this.$i18n.locale = localStorage.getItem('locale');
+          this.$cookies.set('locale', 'zh');
+          this.$i18n.locale =this.$cookies.get('locale');
           this.$message({
             message: '切换为中文！',
             type: 'success'
           })
           console.log(this.$i18n.locale);
         } else if (lang == 'en') {
-          localStorage.setItem('locale', 'en');
-          this.$i18n.locale = localStorage.getItem('locale');
+          this.$cookies.set('locale', 'en');
+          this.$i18n.locale = this.$cookies.get('locale');
           this.$message({
             message: 'Switch to English!',
             type: 'success'
@@ -185,13 +200,19 @@
         })
     },
     mounted() {
-      // toggleClass(document.body, 'custom-' + this.$store.state.themecolor);
-      // let curcolor = this.$store.state.themecolor;
-      // this.classH2 = 'custom-' + curcolor
-      // document.addEventListener('click', this.autoHide, false)
+
+      this.$cookies.set('menu', JSON.stringify(this.currentMenus));
+      console.log(this.currentMenus);
     },
     destroyed() {
       // document.removeEventListener('click', this.autoHide, false)
+    },
+    watch:{
+      currentMenus(){
+
+        this.$cookies.set('menu', JSON.stringify(this.currentMenus));
+        // console.log(this.$cookies.get('menu'))
+      }
     }
   }
 </script>
@@ -219,9 +240,9 @@
     float: left;
     background-color: transparent;
     background-image: none;
-    padding: 15px 15px;
+    padding: 16px 15px;
     font-family: fontAwesome;
-    line-height: 20px;
+    /*line-height: 20px;*/
   }
 
   .main-header .navbar .sidebar-toggle:before {
@@ -336,7 +357,7 @@
   .navbar-custom-menu .el-dropdown-link {
     cursor: pointer;
     height: 50px;
-    padding: 13px 5px;
+    padding: 15px 5px;
     min-width: 50px;
     text-align: center;
   }
@@ -385,5 +406,15 @@
     float: right;
     display: inline-block;
   }
+  .el-breadcrumb{
+
+    display: inline-block;
+    line-height: 50px;
+    font-weight: bold;
+    margin-bottom: 0!important;
+  }
+
+
+
 
 </style>

@@ -1,4 +1,5 @@
 import pathToRegexp from "path-to-regexp";
+import VueCookies from "vue-cookies/vue-cookies"
 
 
 export const getSessionKey = (key, defaultValue) => {
@@ -138,6 +139,6 @@ export function delCookie(name) {
 
 //用户权限
 export function permission(access) {
-  return access.includes(getCookie('user-access'));
+  return access.includes(VueCookies.get('user-access'));
 }
 
