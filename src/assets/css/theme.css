@@ -224,6 +224,9 @@
 .bg-green{
   background: #557e3b;
 }
+.bg-white{
+  background: #fff;
+}
 
 /*字体颜色设置*/
 
@@ -250,4 +253,15 @@
   border-right:none;
 }
 
+/*树形控件，去除父级的复选框*/
+.el-tree .is-disabled{
+  display: none;
+}
+.el-tree{
+  background: transparent;
+}
+/*弹窗背景色*/
+.el-dialog__body{
+  background:#f8f8f8 ;
+}
 

@@ -142,3 +142,9 @@ export function permission(access) {
   return access.includes(VueCookies.get('user-access'));
 }
 
+//深度clone
+export function deepClone(obj) {
+  return JSON.parse(JSON.stringify(obj))
+}
+
+

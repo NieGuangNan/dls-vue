@@ -4,7 +4,7 @@
     <imp-header></imp-header>
     <side-menu></side-menu>
     <div class="content-wrapper" :class="{ slideCollapse: sidebar.collapsed,mobileSide:device.isMobile}">
-      <el-scrollbar tag="div" wrapClass="content-scrollbar">
+      <el-scrollbar tag="div" wrap-class="content-scrollbar">
         <section class="content">
           <transition mode="out-in" enter-active-class="fadeIn" leave-active-class="fadeOut" appear>
             <router-view :bodyHeight="$root.bodyHeight" v-if="isRouterAlive"></router-view>
@@ -59,7 +59,7 @@
     },
     methods: {
       setLanguage(){
-        const language=this.$cookies.get("user-info").language?this.$cookies.get("user-info").language:'zh';
+        let language=this.$cookies.get("user-info").language?this.$cookies.get("user-info").language:'zh';
         this.$i18n.locale =language;
       },
       timer() {
@@ -215,7 +215,11 @@
     margin-left: 44px;
   }
 
+
   .content-wrapper.mobileSide {
     margin-left: 0px;
+  }
+  .scrollbar-tree{
+    height:260px;
   }
 </style>

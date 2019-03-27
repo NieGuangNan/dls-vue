@@ -122,7 +122,11 @@
         this.resize()
       });
     },
-
+    watch: {
+      data: function () {
+        this.resize()
+      }
+    },
     mounted() {
       this.doughnutChart(this.$refs.doughnutChart, this.data)
     },
