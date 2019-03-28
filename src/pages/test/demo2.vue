@@ -1,9 +1,9 @@
 <template>
-  <div >
+  <div>
     <div class="bg-white">
       <el-row>
         <el-col :span="17">
-          <el-form :inline="true" :model="toolbar" ref="ruleForm" >
+          <el-form :inline="true" :model="toolbar" ref="ruleForm">
             <el-select v-model="toolbar.select.value" placeholder="请选择">
               <el-option
                 v-for="option in toolbar.select.options"
@@ -23,21 +23,21 @@
             <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
           </el-form>
         </el-col>
-        <el-col :span="7" >
+        <el-col :span="7">
           <el-button @click="openDialog1('form1')"><i :class="changeStar"></i></el-button>
-          <el-dialog title="修改书签" width="40%" top="0" :visible.sync="dialogFormVisible">
+          <el-dialog title="修改书签" width="40%" top="0" :visible.sync="dialogFormVisible" @closed="dialogClosed('form1')">
             <el-form :model="form" ref="form1">
               <el-form-item label="系统" :label-width="formLabelWidth" prop="checkbox" v-if="select2.value===''">
                 <el-checkbox v-model="form.checkbox"></el-checkbox>
-              </el-form-item >
+              </el-form-item>
               <el-form-item label="编号" :label-width="formLabelWidth" prop="id">
-                <el-input v-model="form.id" ></el-input>
+                <el-input v-model="form.id"></el-input>
               </el-form-item>
               <el-form-item label="中文" :label-width="formLabelWidth" prop="zh">
-                <el-input v-model="form.zh" ></el-input>
+                <el-input v-model="form.zh"></el-input>
               </el-form-item>
               <el-form-item label="英文" :label-width="formLabelWidth" prop="en">
-                <el-input v-model="form.en" ></el-input>
+                <el-input v-model="form.en"></el-input>
               </el-form-item>
               <el-form-item label="备注" :label-width="formLabelWidth" prop="mark">
                 <el-input v-model="form.mark" type="textarea" :rows="2"></el-input>
@@ -46,11 +46,14 @@
             <div slot="footer" class="dialog-footer">
               <el-row type="flex" justify="space-between">
                 <el-col :span="4">
-                  <el-button @click="deleteDialog1()" type="danger" v-if="select2.value!==''"><i class="el-icon-delete"></i>&nbsp;删除</el-button>
+                  <el-button @click="deleteDialog1()" type="danger" v-if="select2.value!==''"><i
+                    class="el-icon-delete"></i>&nbsp;删除
+                  </el-button>
                 </el-col>
                 <el-col :span="9">
                   <el-button @click="cancelDialog1"><i class="el-icon-close"></i>&nbsp;取消</el-button>
-                  <el-button type="primary" @click="submitDialog1(form)"><i class="el-icon-printer"></i>&nbsp;确定</el-button>
+                  <el-button type="primary" @click="submitDialog1(form)"><i class="el-icon-printer"></i>&nbsp;确定
+                  </el-button>
                 </el-col>
               </el-row>
 
@@ -68,25 +71,29 @@
               <el-tag type="success" v-else style="float: right;">用户</el-tag>
             </el-option>
           </el-select>
-          <el-button type="primary" @click="dialogFormVisible1 = true"><i class="el-icon-bell"></i>&nbsp;&nbsp;KPI</el-button>
+          <el-button type="primary" @click="dialogFormVisible1 = true"><i class="el-icon-bell"></i>&nbsp;&nbsp;KPI
+          </el-button>
           <el-dialog title="KPI" width="65%" top="0" :visible.sync="dialogFormVisible1">
             <div class="content1">
               <h3>已选择KPI</h3>
-                <template v-for="item of dataKpi">
-                  <span class="dialogBox bg-blue">{{item}}</span>
-                </template>
+              <template v-for="item of dataKpi">
+                <span class="dialogBox bg-blue">{{item}}</span>
+              </template>
             </div>
             <div class="content2">
               <h3>KPI树</h3>
-              <el-input v-model="select2.value" style="width: 50%;"></el-input> <el-button type="success"><i class="el-icon-refresh"></i>&nbsp;刷新</el-button>
-              <el-scrollbar  tag="div" wrap-class="scrollbar-tree">
-                <el-tree :data="data" :props="defaultProps"  node-key="id"  ref="tree" @node-click="handleNodeClick" show-checkbox></el-tree>
+              <el-input v-model="select2.value" style="width: 50%;"></el-input>
+              <el-button type="success"><i class="el-icon-refresh"></i>&nbsp;刷新</el-button>
+              <el-scrollbar tag="div" wrap-class="scrollbar-tree">
+                <el-tree :data="data" :props="defaultProps" node-key="id" ref="tree" @node-click="handleNodeClick"
+                         show-checkbox></el-tree>
 
               </el-scrollbar>
             </div>
             <div slot="footer" class="dialog-footer">
               <el-button @click="dialogFormVisible1= false"><i class="el-icon-close"></i>&nbsp;取消</el-button>
-              <el-button type="primary" @click="dialogFormVisible1 = false"><i class="el-icon-check"></i>&nbsp;完成</el-button>
+              <el-button type="primary" @click="dialogFormVisible1 = false"><i class="el-icon-check"></i>&nbsp;完成
+              </el-button>
             </div>
           </el-dialog>
         </el-col>
@@ -122,7 +129,7 @@
     components: {SelectOneButton, DoughnutChart},
     data() {
       return {
-        arr:[],
+        arr: [],
         //KPI
         dataKpi: ['名辰库区-钢铁料单耗', '名辰库区-溶剂单耗'
           , '名辰库区-合金单耗', '名辰库区-产量单耗', '名辰库区-周期时间单耗',
@@ -226,7 +233,7 @@
         },
         formLabelWidth: '100px',
         //select
-        select2:{
+        select2: {
           options: [],
           value: '',
         },
@@ -344,67 +351,75 @@
       }
     },
     methods: {
-      openDialog1(formName){
+      dialogClosed(formName) {
+        this.$refs[formName].resetFields()
+      },
+      openDialog1(formName) {
         this.dialogFormVisible = true;
         let _this = this;
-        if (this.select2.value!==''){
-           this.arr= this.select2.options.filter(function (item) {
-             return item.id===_this.select2.value
-           });
-           this.form=this.arr[0];
-        }else{
-          this.$refs[formName].resetFields();
+        if (this.select2.value !== '') {
+          this.arr = deepClone(this.select2.options).filter(function (item) {
+            return item.id === _this.select2.value
+          });
+          this.form = this.arr[0];
         }
       },
-      cancelDialog1(){
+      cancelDialog1() {
         this.dialogFormVisible = false;
-        this.select2.value=''
+        this.select2.value = ''
       },
-      deleteDialog1(){
-
-        if (this.select2.value!=='') {
-            let _this = this;
-            let num = _this.select2.options.indexOf(this.arr[0]);
-            this.$confirm('此操作将永久删除该书签, 是否继续?', '提示', {
-              confirmButtonText: '确定',
-              cancelButtonText: '取消',
-              type: 'warning'
-            }).then(() => {
-              _this.select2.options.splice(num, 1);
-              this.dialogFormVisible = false;
-              this.$message({
-                type: 'success',
-                message: '删除成功!'
-              });
-              this.select2.value = '';
-            }).catch(() => {
-              this.dialogFormVisible = false;
-              this.$message({
-                type: 'info',
-                message: '已取消删除'
-              });
-              this.select2.value = '';
-            });
-
-        }
+      deleteDialog1() {
+        this.$confirm('此操作将永久删除该书签, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.select2.options = this.select2.options.filter((item) => item.id !== this.select2.value);
+          this.dialogFormVisible = false;
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+          this.select2.value = '';
+        }).catch(() => {
+          this.dialogFormVisible = false;
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });
+          this.select2.value = '';
+        });
       },
       submitDialog1(form) {
-        if (this.select2.value!==''){
+        if (this.select2.value !== '') {
+
+
           let _this = this;
           let num = _this.select2.options.indexOf(this.arr[0]);
-          this.select2.options[num]=this.form;
-          this.select2.value='';
+          this.select2.options[num] = this.form;
+
+          // console.log(this.form);
+          // console.log(this.select2.options);
+          // this.select2.options = this.select2.options.map((item, key) => {
+          //   console.log(item);
+          //   console.log(key);
+          //   return item.id === this.select2.value ? this.form : item
+          // });
+          // console.log(this.select2.options);
+
+
+          this.select2.value = '';
           this.dialogFormVisible = false;
 
-        }else{
+        } else {
           let stringForm = deepClone(form);
           this.select2.options.push(stringForm);
-          this.select2.value='';
+          this.select2.value = '';
           this.dialogFormVisible = false;
         }
 
       },
-      handleNodeClick(){
+      handleNodeClick() {
         console.log(this.$refs.tree.getCheckedNodes());
       },
 
@@ -415,11 +430,6 @@
           })
           .catch(_ => {
           });
-      },
-      aa(val) {
-
-        alert(val)
-
       },
       submitForm(formName) {
         this.$refs[formName].validate(valid => {
@@ -513,24 +523,9 @@
     },
     computed: {
       changeStar() { //星星图标
-        let star=null;
-        if (this.select2.options.length > 0) {
-          return star = {
-            'el-icon-star-on': true,
-            'el-icon-star-off': false
-          }
-        } else {
-          return star = {
-            'el-icon-star-on': false,
-            'el-icon-star-off': true
-          }
-        }
+        return this.select2.options.length > 0 ? 'el-icon-star-on' : 'el-icon-star-off'
       }
     },
-    // updated() {
-    //   console.log(this.value);
-    //   console.log(typeof this.value);
-    // }
 
   }
 </script>
@@ -552,20 +547,19 @@
     padding: 10px 0;
     background-color: #f9fafc;
   }
-  .content1 h3,.content2 h3{
-    border-left:2px solid #67C23A;
-    padding-left:10px;
+
+  .content1 h3, .content2 h3 {
+    border-left: 2px solid #67C23A;
+    padding-left: 10px;
     margin: 10px -5px;
   }
-  .dialogBox{
+
+  .dialogBox {
     display: inline-block;
     text-align: center;
     width: 20%;
-    margin:5px 20px;
+    margin: 5px 20px;
   }
-
-
-
 
 
 </style>
