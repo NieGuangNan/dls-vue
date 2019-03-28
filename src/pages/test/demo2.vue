@@ -2,101 +2,106 @@
   <div>
     <div class="bg-white">
       <el-row>
-        <el-col :span="17">
+        <!--<el-col :span="15">-->
           <el-form :inline="true" :model="toolbar" ref="ruleForm">
-            <el-select v-model="toolbar.select.value" placeholder="请选择">
-              <el-option
-                v-for="option in toolbar.select.options"
-                :key="option.value"
-                :label="option.label"
-                :value="option.value">
-              </el-option>
-            </el-select>
-            <!--<el-input v-model="toolbar.datePicker.value"></el-input>-->
-            <el-date-picker
-              v-model="toolbar.datePicker.value"
-              type="date"
-              value-format="yyyy-MM-dd"
-              placeholder="选择日期">
-            </el-date-picker>
-            <select-one-button :data="toolbar.selectOneButton"></select-one-button>
-            <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
-          </el-form>
-        </el-col>
-        <el-col :span="7">
-          <el-button @click="openDialog1('form1')"><i :class="changeStar"></i></el-button>
-          <el-dialog title="修改书签" width="40%" top="0" :visible.sync="dialogFormVisible" @closed="dialogClosed('form1')">
-            <el-form :model="form" ref="form1">
-              <el-form-item label="系统" :label-width="formLabelWidth" prop="checkbox" v-if="select2.value===''">
-                <el-checkbox v-model="form.checkbox"></el-checkbox>
-              </el-form-item>
-              <el-form-item label="编号" :label-width="formLabelWidth" prop="id">
-                <el-input v-model="form.id"></el-input>
-              </el-form-item>
-              <el-form-item label="中文" :label-width="formLabelWidth" prop="zh">
-                <el-input v-model="form.zh"></el-input>
-              </el-form-item>
-              <el-form-item label="英文" :label-width="formLabelWidth" prop="en">
-                <el-input v-model="form.en"></el-input>
-              </el-form-item>
-              <el-form-item label="备注" :label-width="formLabelWidth" prop="mark">
-                <el-input v-model="form.mark" type="textarea" :rows="2"></el-input>
-              </el-form-item>
-            </el-form>
-            <div slot="footer" class="dialog-footer">
-              <el-row type="flex" justify="space-between">
-                <el-col :span="4">
-                  <el-button @click="deleteDialog1()" type="danger" v-if="select2.value!==''"><i
-                    class="el-icon-delete"></i>&nbsp;删除
-                  </el-button>
-                </el-col>
-                <el-col :span="9">
-                  <el-button @click="cancelDialog1"><i class="el-icon-close"></i>&nbsp;取消</el-button>
-                  <el-button type="primary" @click="submitDialog1(form)"><i class="el-icon-printer"></i>&nbsp;确定
-                  </el-button>
-                </el-col>
-              </el-row>
+            <div style="float: left">
+              <el-select v-model="toolbar.select.value" placeholder="请选择">
+                <el-option
+                  v-for="option in toolbar.select.options"
+                  :key="option.value"
+                  :label="option.label"
+                  :value="option.value">
+                </el-option>
+              </el-select>
+              <!--<el-input v-model="toolbar.datePicker.value"></el-input>-->
+              <el-date-picker
+                v-model="toolbar.datePicker.value"
+                type="date"
+                value-format="yyyy-MM-dd"
+                placeholder="选择日期">
+              </el-date-picker>
+              <select-one-button :data="toolbar.selectOneButton"></select-one-button>
+              <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+            </div>
+            <div style="float: right">
+              <el-button @click="openDialog1('form1')"><i :class="changeStar"></i></el-button>
+              <el-dialog title="修改书签" width="40%" top="0" :visible.sync="dialogFormVisible" @closed="dialogClosed('form1')">
+                <el-form :model="form" ref="form1">
+                  <el-form-item label="系统" :label-width="formLabelWidth" prop="checkbox" v-if="select2.value===''">
+                    <el-checkbox v-model="form.checkbox"></el-checkbox>
+                  </el-form-item>
+                  <el-form-item label="编号" :label-width="formLabelWidth" prop="id">
+                    <el-input v-model="form.id"></el-input>
+                  </el-form-item>
+                  <el-form-item label="中文" :label-width="formLabelWidth" prop="zh">
+                    <el-input v-model="form.zh"></el-input>
+                  </el-form-item>
+                  <el-form-item label="英文" :label-width="formLabelWidth" prop="en">
+                    <el-input v-model="form.en"></el-input>
+                  </el-form-item>
+                  <el-form-item label="备注" :label-width="formLabelWidth" prop="mark">
+                    <el-input v-model="form.mark" type="textarea" :rows="2"></el-input>
+                  </el-form-item>
+                </el-form>
+                <div slot="footer" class="dialog-footer">
+                  <el-row type="flex" justify="space-between">
+                    <el-col :span="4">
+                      <el-button @click="deleteDialog1()" type="danger" v-if="select2.value!==''"><i
+                        class="el-icon-delete"></i>&nbsp;删除
+                      </el-button>
+                    </el-col>
+                    <el-col :span="20">
+                      <el-button @click="cancelDialog1"><i class="el-icon-close"></i>&nbsp;取消</el-button>
+                      <el-button type="primary" @click="submitDialog1(form)"><i class="el-icon-printer"></i>&nbsp;确定
+                      </el-button>
+                    </el-col>
+                  </el-row>
 
 
-            </div>
-          </el-dialog>
-          <el-select v-model="select2.value">
-            <el-option
-              v-for="item in select2.options"
-              :key="item.id"
-              :label="item.id"
-              :value="item.id">
-              <span style="float: left">{{ item.id }}</span>
-              <el-tag type="warning" v-if="item.checkbox" style="float: right;">系统</el-tag>
-              <el-tag type="success" v-else style="float: right;">用户</el-tag>
-            </el-option>
-          </el-select>
-          <el-button type="primary" @click="dialogFormVisible1 = true"><i class="el-icon-bell"></i>&nbsp;&nbsp;KPI
-          </el-button>
-          <el-dialog title="KPI" width="65%" top="0" :visible.sync="dialogFormVisible1">
-            <div class="content1">
-              <h3>已选择KPI</h3>
-              <template v-for="item of dataKpi">
-                <span class="dialogBox bg-blue">{{item}}</span>
-              </template>
-            </div>
-            <div class="content2">
-              <h3>KPI树</h3>
-              <el-input v-model="select2.value" style="width: 50%;"></el-input>
-              <el-button type="success"><i class="el-icon-refresh"></i>&nbsp;刷新</el-button>
-              <el-scrollbar tag="div" wrap-class="scrollbar-tree">
-                <el-tree :data="data" :props="defaultProps" node-key="id" ref="tree" @node-click="handleNodeClick"
-                         show-checkbox></el-tree>
-
-              </el-scrollbar>
-            </div>
-            <div slot="footer" class="dialog-footer">
-              <el-button @click="dialogFormVisible1= false"><i class="el-icon-close"></i>&nbsp;取消</el-button>
-              <el-button type="primary" @click="dialogFormVisible1 = false"><i class="el-icon-check"></i>&nbsp;完成
+                </div>
+              </el-dialog>
+              <el-select v-model="select2.value">
+                <el-option
+                  v-for="item in select2.options"
+                  :key="item.id"
+                  :label="item.id"
+                  :value="item.id">
+                  <span style="float: left">{{ item.id }}</span>
+                  <el-tag type="warning" v-if="item.checkbox" style="float: right;">系统</el-tag>
+                  <el-tag type="success" v-else style="float: right;">用户</el-tag>
+                </el-option>
+              </el-select>
+              <el-button type="primary" @click="dialogFormVisible1 = true"><i class="el-icon-bell"></i>&nbsp;&nbsp;KPI
               </el-button>
+              <el-dialog title="KPI" width="65%" top="0" :visible.sync="dialogFormVisible1">
+                <div class="content1">
+                  <h3>已选择KPI</h3>
+                  <template v-for="item of dataKpi">
+                    <span class="dialogBox bg-blue">{{item}}</span>
+                  </template>
+                </div>
+                <div class="content2">
+                  <h3>KPI树</h3>
+                  <el-input v-model="select2.value" style="width: 50%;"></el-input>
+                  <el-button type="success"><i class="el-icon-refresh"></i>&nbsp;刷新</el-button>
+                  <el-scrollbar tag="div" wrap-class="scrollbar-tree">
+                    <el-tree :data="data" :props="defaultProps" node-key="id" ref="tree" @check="handleNodeClick"
+                             show-checkbox></el-tree>
+
+                  </el-scrollbar>
+                </div>
+                <div slot="footer" class="dialog-footer">
+                  <el-button @click="dialogFormVisible1= false"><i class="el-icon-close"></i>&nbsp;取消</el-button>
+                  <el-button type="primary" @click="dialogFormVisible1 = false"><i class="el-icon-check"></i>&nbsp;完成
+                  </el-button>
+                </div>
+              </el-dialog>
             </div>
-          </el-dialog>
-        </el-col>
+          </el-form>
+        <!--</el-col>-->
+        <!--<el-col :span="9">-->
+         <!---->
+        <!--</el-col>-->
       </el-row>
     </div>
     <el-row :gutter="10">
@@ -352,16 +357,16 @@
     },
     methods: {
       dialogClosed(formName) {
-        this.$refs[formName].resetFields()
+        // this.$refs[formName].resetFields()
       },
-      openDialog1(formName) {
+      openDialog1() {
         this.dialogFormVisible = true;
         let _this = this;
         if (this.select2.value !== '') {
           this.arr = deepClone(this.select2.options).filter(function (item) {
             return item.id === _this.select2.value
           });
-          this.form = this.arr[0];
+          this.form = deepClone(this.arr[0]);
         }
       },
       cancelDialog1() {
@@ -390,27 +395,18 @@
           this.select2.value = '';
         });
       },
+
       submitDialog1(form) {
         if (this.select2.value !== '') {
-
-
           let _this = this;
-          let num = _this.select2.options.indexOf(this.arr[0]);
-          this.select2.options[num] = this.form;
-
-          // console.log(this.form);
-          // console.log(this.select2.options);
-          // this.select2.options = this.select2.options.map((item, key) => {
-          //   console.log(item);
-          //   console.log(key);
-          //   return item.id === this.select2.value ? this.form : item
-          // });
-          // console.log(this.select2.options);
-
+          console.log(this.form);
+          console.log(this.arr[0]);
+          for (let i in this.select2.options) {
+            this.select2.options[i].id === this.select2.value ? this.select2.options[i] = this.form : '';
+          }
 
           this.select2.value = '';
           this.dialogFormVisible = false;
-
         } else {
           let stringForm = deepClone(form);
           this.select2.options.push(stringForm);
@@ -420,7 +416,14 @@
 
       },
       handleNodeClick() {
-        console.log(this.$refs.tree.getCheckedNodes());
+        this.dataKpi = [];
+        for (let item of this.$refs.tree.getCheckedNodes()) {
+          if (!item.disabled) {
+            let label = deepClone(item.label);
+            this.dataKpi.push(label);
+          }
+        }
+
       },
 
       handleClose(done) {

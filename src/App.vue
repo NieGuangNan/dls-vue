@@ -58,9 +58,10 @@
       }
     },
     methods: {
-      setLanguage(){
-        let language=this.$cookies.get("user-info").language?this.$cookies.get("user-info").language:'zh';
+      setLanguage() {
+        let language = this.$cookies.get("user-info") && this.$cookies.get("user-info").language ? this.$cookies.get("user-info").language : 'zh';
         this.$i18n.locale =language;
+
       },
       timer() {
         let timer = setInterval(() => {
@@ -219,7 +220,8 @@
   .content-wrapper.mobileSide {
     margin-left: 0px;
   }
-  .scrollbar-tree{
-    height:260px;
+
+  .scrollbar-tree {
+    height: 260px;
   }
 </style>
