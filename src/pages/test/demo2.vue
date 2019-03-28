@@ -27,7 +27,7 @@
           <el-button @click="openDialog1('form1')"><i :class="changeStar"></i></el-button>
           <el-dialog title="修改书签" width="40%" top="0" :visible.sync="dialogFormVisible">
             <el-form :model="form" ref="form1">
-              <el-form-item label="系统" :label-width="formLabelWidth" prop="checkbox" v-if="!deleteBtnShow">
+              <el-form-item label="系统" :label-width="formLabelWidth" prop="checkbox" v-if="select2.value===''">
                 <el-checkbox v-model="form.checkbox"></el-checkbox>
               </el-form-item >
               <el-form-item label="编号" :label-width="formLabelWidth" prop="id">
@@ -46,7 +46,7 @@
             <div slot="footer" class="dialog-footer">
               <el-row type="flex" justify="space-between">
                 <el-col :span="4">
-                  <el-button @click="deleteDialog1()" type="danger" v-if="deleteBtnShow"><i class="el-icon-delete"></i>&nbsp;删除</el-button>
+                  <el-button @click="deleteDialog1()" type="danger" v-if="select2.value!==''"><i class="el-icon-delete"></i>&nbsp;删除</el-button>
                 </el-col>
                 <el-col :span="9">
                   <el-button @click="cancelDialog1"><i class="el-icon-close"></i>&nbsp;取消</el-button>
@@ -57,9 +57,9 @@
 
             </div>
           </el-dialog>
-          <el-select v-model="init">
+          <el-select v-model="select2.value">
             <el-option
-              v-for="item in options"
+              v-for="item in select2.options"
               :key="item.id"
               :label="item.id"
               :value="item.id">
@@ -78,10 +78,10 @@
             </div>
             <div class="content2">
               <h3>KPI树</h3>
-              <el-input v-model="init" style="width: 50%;"></el-input> <el-button type="success"><i class="el-icon-refresh"></i>&nbsp;刷新</el-button>
+              <el-input v-model="select2.value" style="width: 50%;"></el-input> <el-button type="success"><i class="el-icon-refresh"></i>&nbsp;刷新</el-button>
               <el-scrollbar  tag="div" wrap-class="scrollbar-tree">
-                <el-tree :data="data" :props="defaultProps"  show-checkbox></el-tree>
-                <!--@node-click="handleNodeClick"-->
+                <el-tree :data="data" :props="defaultProps"  node-key="id"  ref="tree" @node-click="handleNodeClick" show-checkbox></el-tree>
+
               </el-scrollbar>
             </div>
             <div slot="footer" class="dialog-footer">
@@ -122,8 +122,6 @@
     components: {SelectOneButton, DoughnutChart},
     data() {
       return {
-        //删除按钮是否显示
-        deleteBtnShow:false,
         arr:[],
         //KPI
         dataKpi: ['名辰库区-钢铁料单耗', '名辰库区-溶剂单耗'
@@ -228,8 +226,11 @@
         },
         formLabelWidth: '100px',
         //select
-        options: [],
-        init: '',
+        select2:{
+          options: [],
+          value: '',
+        },
+
         toolbar: {
           select: {
             id: '0',
@@ -346,66 +347,66 @@
       openDialog1(formName){
         this.dialogFormVisible = true;
         let _this = this;
-        if (this.init!==''){
-          this.deleteBtnShow=true;
-           this.arr= this.options.filter(function (item) {
-             return item.id===_this.init
+        if (this.select2.value!==''){
+           this.arr= this.select2.options.filter(function (item) {
+             return item.id===_this.select2.value
            });
            this.form=this.arr[0];
         }else{
           this.$refs[formName].resetFields();
-          this.deleteBtnShow=false;
         }
       },
       cancelDialog1(){
         this.dialogFormVisible = false;
-        this.init=''
+        this.select2.value=''
       },
       deleteDialog1(){
 
-        if (this.init!=='') {
+        if (this.select2.value!=='') {
             let _this = this;
-            let num = _this.options.indexOf(this.arr[0]);
+            let num = _this.select2.options.indexOf(this.arr[0]);
             this.$confirm('此操作将永久删除该书签, 是否继续?', '提示', {
               confirmButtonText: '确定',
               cancelButtonText: '取消',
               type: 'warning'
             }).then(() => {
-              _this.options.splice(num, 1);
+              _this.select2.options.splice(num, 1);
               this.dialogFormVisible = false;
               this.$message({
                 type: 'success',
                 message: '删除成功!'
               });
-              this.init = '';
+              this.select2.value = '';
             }).catch(() => {
               this.dialogFormVisible = false;
               this.$message({
                 type: 'info',
                 message: '已取消删除'
               });
-              this.init = '';
+              this.select2.value = '';
             });
 
         }
       },
       submitDialog1(form) {
-        if (this.init!==''){
-          this.dialogFormVisible = false;
+        if (this.select2.value!==''){
           let _this = this;
-          let num = _this.options.indexOf(this.arr[0]);
-          this.options[num]=this.form;
-          this.init=''
+          let num = _this.select2.options.indexOf(this.arr[0]);
+          this.select2.options[num]=this.form;
+          this.select2.value='';
+          this.dialogFormVisible = false;
 
         }else{
-          this.dialogFormVisible = false;
           let stringForm = deepClone(form);
-          this.options.push(stringForm);
-          this.init=''
+          this.select2.options.push(stringForm);
+          this.select2.value='';
+          this.dialogFormVisible = false;
         }
 
       },
-
+      handleNodeClick(){
+        console.log(this.$refs.tree.getCheckedNodes());
+      },
 
       handleClose(done) {
         this.$confirm('确认关闭？')
@@ -513,7 +514,7 @@
     computed: {
       changeStar() { //星星图标
         let star=null;
-        if (this.options.length > 0) {
+        if (this.select2.options.length > 0) {
           return star = {
             'el-icon-star-on': true,
             'el-icon-star-off': false
@@ -527,8 +528,8 @@
       }
     },
     // updated() {
-    //   console.log(this.init);
-    //   console.log(typeof this.init);
+    //   console.log(this.value);
+    //   console.log(typeof this.value);
     // }
 
   }
