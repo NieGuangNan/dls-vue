@@ -24,10 +24,10 @@
           </el-form>
         </el-col>
         <el-col :span="7" >
-          <el-button @click="dialogFormVisible = true"><i class="el-icon-star-off"></i></el-button>
+          <el-button @click="openDialog1('form1')"><i :class="changeStar"></i></el-button>
           <el-dialog title="修改书签" width="40%" top="0" :visible.sync="dialogFormVisible">
             <el-form :model="form" ref="form1">
-              <el-form-item label="系统" :label-width="formLabelWidth" prop="checkbox">
+              <el-form-item label="系统" :label-width="formLabelWidth" prop="checkbox" v-if="!deleteBtnShow">
                 <el-checkbox v-model="form.checkbox"></el-checkbox>
               </el-form-item >
               <el-form-item label="编号" :label-width="formLabelWidth" prop="id">
@@ -46,18 +46,18 @@
             <div slot="footer" class="dialog-footer">
               <el-row type="flex" justify="space-between">
                 <el-col :span="4">
-                  <el-button @click="dialogFormVisible = false" type="danger"><i class="el-icon-delete"></i>&nbsp;删除</el-button>
+                  <el-button @click="deleteDialog1()" type="danger" v-if="deleteBtnShow"><i class="el-icon-delete"></i>&nbsp;删除</el-button>
                 </el-col>
                 <el-col :span="9">
-                  <el-button @click="cancelDialog('form1')"><i class="el-icon-close"></i>&nbsp;取消</el-button>
-                  <el-button type="primary" @click="submitDialog(form,'form1')"><i class="el-icon-printer"></i>&nbsp;确定</el-button>
+                  <el-button @click="dialogFormVisible = false"><i class="el-icon-close"></i>&nbsp;取消</el-button>
+                  <el-button type="primary" @click="submitDialog1(form)"><i class="el-icon-printer"></i>&nbsp;确定</el-button>
                 </el-col>
               </el-row>
 
 
             </div>
           </el-dialog>
-          <el-select v-model="a">
+          <el-select v-model="init">
             <el-option
               v-for="item in options"
               :key="item.id"
@@ -78,9 +78,10 @@
             </div>
             <div class="content2">
               <h3>KPI树</h3>
-              <el-input v-model="input" style="width: 50%;"></el-input> <el-button type="success"><i class="el-icon-refresh"></i>&nbsp;刷新</el-button>
+              <el-input v-model="init" style="width: 50%;"></el-input> <el-button type="success"><i class="el-icon-refresh"></i>&nbsp;刷新</el-button>
               <el-scrollbar  tag="div" wrap-class="scrollbar-tree">
-                <el-tree :data="data" :props="defaultProps" @node-click="handleNodeClick" show-checkbox></el-tree>
+                <el-tree :data="data" :props="defaultProps"  show-checkbox></el-tree>
+                <!--@node-click="handleNodeClick"-->
               </el-scrollbar>
             </div>
             <div slot="footer" class="dialog-footer">
@@ -121,10 +122,13 @@
     components: {SelectOneButton, DoughnutChart},
     data() {
       return {
+        //删除按钮是否显示
+        deleteBtnShow:false,
+        arr:[],
         //KPI
-        dataKpi:['名辰库区-钢铁料单耗','名辰库区-溶剂单耗'
-          ,'名辰库区-合金单耗','名辰库区-产量单耗','名辰库区-周期时间单耗',
-          '名辰库区-转炉炉数','名辰库区-一次性通过率'],
+        dataKpi: ['名辰库区-钢铁料单耗', '名辰库区-溶剂单耗'
+          , '名辰库区-合金单耗', '名辰库区-产量单耗', '名辰库区-周期时间单耗',
+          '名辰库区-转炉炉数', '名辰库区-一次性通过率'],
         //tree
         data: [{
           label: '',
@@ -132,80 +136,80 @@
             label: '成本',
             children: [{
               label: '钢铁料单耗'
-            },{
+            }, {
               label: '溶剂单耗'
-            },{
+            }, {
               label: '合金单耗'
-            },{
+            }, {
               label: '石灰石单耗'
             }],
-            disabled:true
-          },{
+            disabled: true
+          }, {
             label: '产量',
             children: [{
               label: '产量'
-            },{
+            }, {
               label: '周期时间'
-            },{
+            }, {
               label: '转炉炉数'
-            },{
+            }, {
               label: '小时产量'
             }],
-            disabled:true
-          },{
+            disabled: true
+          }, {
             label: '质量',
             children: [{
               label: '一次通过率'
-            },{
+            }, {
               label: '一倒T命中率'
-            },{
+            }, {
               label: '一倒C命中率'
-            },{
+            }, {
               label: '一倒P命中率'
             }],
-            disabled:true
-          },{
+            disabled: true
+          }, {
             label: '设备',
             children: [{
               label: '煤气回收时间'
-            },{
+            }, {
               label: '氩站进站温度'
-            },{
+            }, {
               label: '氩站出站温度'
-            },{
+            }, {
               label: '转炉炉况评分'
             }],
-            disabled:true
+            disabled: true
           }],
-          disabled:true
+          disabled: true
         }, {
           label: '',
           children: [{
             label: '产量',
             children: [{
               label: 'OEE'
-            },{
+            }, {
               label: '计划检修时间'
-            },{
+            }, {
               label: '计划检修延时时间'
-            },{
+            }, {
               label: '非计划停机时间'
             }],
-            disabled:true
-          },{
+            disabled: true
+          }, {
             label: '质量',
             children: [{
               label: '一次合格支数（率）'
-            },{
+            }, {
               label: '一次合格重量（率）'
-            },{
+            }, {
               label: '大包平台温度'
-            },{
+            }, {
               label: '中包温度'
             }],
-            disabled:true
+            disabled: true
           },],
-          disabled:true
+          disabled: true
         }],
         defaultProps: {
           children: 'children',
@@ -216,7 +220,7 @@
         dialogFormVisible1: false,
 
         form: {
-          checkbox:false,
+          checkbox: false,
           id: '',
           zh: '',
           en: '',
@@ -225,12 +229,12 @@
         formLabelWidth: '100px',
         //select
         options: [],
-
-        a: '',
+        init: '',
         toolbar: {
-          select:{
+          select: {
             id: '0',
-            value: '1', options: [{
+            value: '1',
+            options: [{
               value: '1',
               label: 'DCC示范工厂'
             }, {
@@ -247,10 +251,10 @@
               label: 'DCC示范工厂4'
             }],
           },
-          datePicker:{
+          datePicker: {
             value: new Date('2019-03-26'),
           },
-         selectOneButton:{
+          selectOneButton: {
             options: [{value: 'yue', label: '月'}, {value: 'zhou', label: '周'}, {
               value: 'ri',
               label: '日'
@@ -258,7 +262,7 @@
               'yue'
           }
 
-    },
+        },
         items: [{
           options: [{
             value: '1',
@@ -339,24 +343,71 @@
       }
     },
     methods: {
+      openDialog1(formName){
+        this.dialogFormVisible = true;
+        let _this = this;
+        if (this.init!==''){
+          this.deleteBtnShow=true;
+           this.arr= this.options.filter(function (item) {
+             return item.id===_this.init
+           });
+           this.form=this.arr[0];
+        }else{
+          this.$refs[formName].resetFields();
+          this.deleteBtnShow=false;
+        }
+      },
+      deleteDialog1(){
 
-      cancelDialog(formName){
-        this.dialogFormVisible = false;
-        this.$refs[formName].resetFields();
+        if (this.init!=='') {
+            let _this = this;
+            let num = _this.options.indexOf(this.arr[0]);
+            this.$confirm('此操作将永久删除该书签, 是否继续?', '提示', {
+              confirmButtonText: '确定',
+              cancelButtonText: '取消',
+              type: 'warning'
+            }).then(() => {
+              _this.options.splice(num, 1);
+              this.dialogFormVisible = false;
+              this.$message({
+                type: 'success',
+                message: '删除成功!'
+              });
+            }).catch(() => {
+              this.dialogFormVisible = false;
+              this.$message({
+                type: 'info',
+                message: '已取消删除'
+              });
+            });
+            this.init = '';
+
+        }
       },
-      submitDialog(form,formName) {
-        this.dialogFormVisible = false;
-        let stringForm = deepClone(form);
-        this.options.push(stringForm);
-        this.$refs[formName].resetFields();
+      submitDialog1(form) {
+        if (this.init!==''){
+          this.dialogFormVisible = false;
+          let _this = this;
+          let num = _this.options.indexOf(this.arr[0]);
+          this.options[num]=this.form;
+          this.init=''
+
+        }else{
+          this.dialogFormVisible = false;
+          let stringForm = deepClone(form);
+          this.options.push(stringForm);
+        }
+
       },
+
 
       handleClose(done) {
         this.$confirm('确认关闭？')
           .then(_ => {
             done();
           })
-          .catch(_ => {});
+          .catch(_ => {
+          });
       },
       aa(val) {
 
@@ -452,7 +503,28 @@
           },
         }]
       }
-    }
+    },
+    computed: {
+      changeStar() { //星星图标
+        let star=null;
+        if (this.options.length > 0) {
+          return star = {
+            'el-icon-star-on': true,
+            'el-icon-star-off': false
+          }
+        } else {
+          return star = {
+            'el-icon-star-on': false,
+            'el-icon-star-off': true
+          }
+        }
+      }
+    },
+    // updated() {
+    //   console.log(this.init);
+    //   console.log(typeof this.init);
+    // }
+
   }
 </script>
 

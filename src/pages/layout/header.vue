@@ -202,7 +202,6 @@
     mounted() {
 
       this.$cookies.set('menu', JSON.stringify(this.currentMenus));
-      console.log(this.currentMenus);
     },
     destroyed() {
       // document.removeEventListener('click', this.autoHide, false)
