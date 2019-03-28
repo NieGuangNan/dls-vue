@@ -49,7 +49,7 @@
                   <el-button @click="deleteDialog1()" type="danger" v-if="deleteBtnShow"><i class="el-icon-delete"></i>&nbsp;删除</el-button>
                 </el-col>
                 <el-col :span="9">
-                  <el-button @click="dialogFormVisible = false"><i class="el-icon-close"></i>&nbsp;取消</el-button>
+                  <el-button @click="cancelDialog1"><i class="el-icon-close"></i>&nbsp;取消</el-button>
                   <el-button type="primary" @click="submitDialog1(form)"><i class="el-icon-printer"></i>&nbsp;确定</el-button>
                 </el-col>
               </el-row>
@@ -357,6 +357,10 @@
           this.deleteBtnShow=false;
         }
       },
+      cancelDialog1(){
+        this.dialogFormVisible = false;
+        this.init=''
+      },
       deleteDialog1(){
 
         if (this.init!=='') {
@@ -373,14 +377,15 @@
                 type: 'success',
                 message: '删除成功!'
               });
+              this.init = '';
             }).catch(() => {
               this.dialogFormVisible = false;
               this.$message({
                 type: 'info',
                 message: '已取消删除'
               });
+              this.init = '';
             });
-            this.init = '';
 
         }
       },
@@ -396,6 +401,7 @@
           this.dialogFormVisible = false;
           let stringForm = deepClone(form);
           this.options.push(stringForm);
+          this.init=''
         }
 
       },
