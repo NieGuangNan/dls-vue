@@ -353,13 +353,7 @@
            });
            this.form=this.arr[0];
         }else{
-          this.form={
-            checkbox: false,
-            id: '',
-            zh: '',
-            en: '',
-            mark: '',
-          };
+          this.$refs[formName].resetFields();
           this.deleteBtnShow=false;
         }
       },
