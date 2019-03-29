@@ -264,4 +264,7 @@
 .el-dialog__body{
   background:#f8f8f8 ;
 }
-
+/*表单样式重置*/
+.el-form-item__content{
+  margin-left: 30px !important;
+}

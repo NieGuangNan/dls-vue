@@ -25,7 +25,7 @@
             </div>
             <div style="float: right">
               <el-button @click="openDialog1('form1')"><i :class="changeStar"></i></el-button>
-              <el-dialog title="修改书签" width="40%" top="0" :visible.sync="dialogFormVisible" @closed="dialogClosed('form1')">
+              <el-dialog title="修改书签" width="30%" top="0" :visible.sync="dialogFormVisible" @closed="dialogClosed('form1')">
                 <el-form :model="form" ref="form1">
                   <el-form-item label="系统" :label-width="formLabelWidth" prop="checkbox" v-if="select2.value===''">
                     <el-checkbox v-model="form.checkbox"></el-checkbox>
@@ -563,6 +563,7 @@
     width: 20%;
     margin: 5px 20px;
   }
+
 
 
 </style>
