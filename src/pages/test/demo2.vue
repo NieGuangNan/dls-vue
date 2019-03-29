@@ -359,16 +359,11 @@
     },
     methods: {
       dialogClosed(formName) {
-        this.$nextTick(() => {
-          this.$refs[formName].resetFields()
-        })
+        this.$refs[formName].resetFields()
       },
       openDialog1() {
         this.dialogFormVisible = true;
-        this.$nextTick(() => {
-          this.select2.value !== '' ? this.form = deepClone(this.select2.options).filter((item) => item.id === this.select2.value)[0] : '';
-        });
-        console.log(this.form)
+        this.select2.value !== '' ? this.form = deepClone(this.select2.options).filter((item) => item.id === this.select2.value)[0] : '';
       },
       cancelDialog1() {
         this.select2.value = '';
