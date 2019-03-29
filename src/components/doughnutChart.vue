@@ -1,5 +1,5 @@
 <template>
-  <div :data="data" :height="height" ref="doughnutChart" :style="{height:height+'px'}">
+  <div ref="doughnutChart" :style="{height:height+'px'}">
   </div>
 </template>
 

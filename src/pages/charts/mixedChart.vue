@@ -63,15 +63,20 @@
         option: option,
         option1: option1,
         alterOption: {
-          legend:{
-            show:false
-          }
+          legend: {
+            show: false
+          },
+          // tooltip: {
+          //   formatter: function (params, ticket, callback) {
+          //     return '1';
+          //   }
+          // },
         }
       }
     },
     methods: {
       a() {
-          this.option = option1;
+        this.option = option1;
         console.log(this.option)
       }
     }

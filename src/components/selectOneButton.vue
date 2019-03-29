@@ -1,7 +1,7 @@
 <template>
   <el-button-group>
-    <el-button v-for="(item,index) in data.options" :type="isChoose == item.value ? 'primary' : 'default'"
-               @click="onchange(index,item.value)"
+    <el-button v-for="item in data.options" :type="data.value === item.value ? 'primary' : 'default'"
+               @click="onchange(item.value)"
                :icon="item.icon">{{item.label}}
     </el-button>
   </el-button-group>
@@ -10,11 +10,6 @@
 <script>
   export default {
     name: "selectOneButton",
-    data() {
-      return {
-        isChoose: this.data.value
-      }
-    },
     props: {
       data: {
         type: Object,
@@ -22,8 +17,7 @@
       }
     },
     methods: {
-      onchange(index, value) {
-        this.isChoose = value;
+      onchange(value) {
         this.data.value = value;
         this.$emit("change", value)
       }
