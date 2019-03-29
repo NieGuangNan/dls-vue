@@ -29,7 +29,7 @@
                        :close-on-click-modal="false" :close-on-press-escape="false"
                        @closed="dialogClosed('form1')">
               <el-form :model="form" ref="form1">
-                <el-form-item label="系统" :label-width="formLabelWidth" prop="checkbox" v-if="select2.value===''">
+                <el-form-item label="系统" :label-width="formLabelWidth" prop="checkbox" v-show="select2.value===''">
                   <el-checkbox v-model="form.checkbox"></el-checkbox>
                 </el-form-item>
                 <el-form-item label="编号" :label-width="formLabelWidth" prop="id">
@@ -359,15 +359,20 @@
     },
     methods: {
       dialogClosed(formName) {
-        this.$refs[formName].resetFields()
+        this.$nextTick(() => {
+          this.$refs[formName].resetFields()
+        })
       },
       openDialog1() {
         this.dialogFormVisible = true;
-        this.select2.value !== '' ? this.form = deepClone(this.select2.options).filter((item) => item.id === this.select2.value)[0] : '';
+        this.$nextTick(() => {
+          this.select2.value !== '' ? this.form = deepClone(this.select2.options).filter((item) => item.id === this.select2.value)[0] : '';
+        });
+        console.log(this.form)
       },
       cancelDialog1() {
+        this.select2.value = '';
         this.dialogFormVisible = false;
-        this.select2.value = ''
       },
       deleteDialog1() {
         this.$confirm('此操作将永久删除该书签, 是否继续?', '提示', {
@@ -376,44 +381,39 @@
           type: 'warning'
         }).then(() => {
           this.select2.options = this.select2.options.filter((item) => item.id !== this.select2.value);
+          this.select2.value = '';
           this.dialogFormVisible = false;
           this.$message({
             type: 'success',
             message: '删除成功!'
           });
-          this.select2.value = '';
         }).catch(() => {
+          this.select2.value = '';
           this.dialogFormVisible = false;
           this.$message({
             type: 'info',
             message: '已取消删除'
           });
-          this.select2.value = '';
         });
       },
-
       submitDialog1(form) {
+        this.select2.value !== '' ? this.updateOptions(form) : this.createOptions(form);
+      },
+      updateOptions(form) {
         const _form = deepClone(form);
-        if (this.select2.value !== '') {
-          this.select2.options = this.select2.options.map((item) => item.id === this.select2.value ? _form : item);
-          this.select2.value = '';
-          this.dialogFormVisible = false;
-        } else {
-          this.select2.options.push(_form);
-          this.select2.value = '';
-          this.dialogFormVisible = false;
-        }
-
+        this.select2.options = this.select2.options.map((item) => item.id === this.select2.value ? _form : item);
+        this.select2.value = '';
+        this.dialogFormVisible = false;
+      },
+      createOptions(form) {
+        const _form = deepClone(form);
+        this.select2.options.push(_form);
+        this.select2.value = '';
+        this.dialogFormVisible = false;
       },
       handleNodeClick() {
-        this.dataKpi = [];
-        for (let item of this.$refs.tree.getCheckedNodes()) {
-          if (!item.disabled) {
-            let label = deepClone(item.label);
-            this.dataKpi.push(label);
-          }
-        }
-
+        let checkedNodes = this.$refs.tree.getCheckedNodes().filter((item) => !item.disabled);
+        this.dataKpi = checkedNodes.map((item) => item.label);
       },
 
       handleClose(done) {
