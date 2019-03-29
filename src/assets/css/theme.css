@@ -260,10 +260,12 @@
 .el-tree{
   background: transparent;
 }
-/*弹窗背景色*/
+/*弹窗*/
 .el-dialog__body{
   background:#f8f8f8 ;
+  margin: 0 auto;
 }
+
 /*表单样式重置*/
 .el-form-item__content{
   margin-left: 30px !important;

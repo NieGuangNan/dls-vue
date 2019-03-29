@@ -25,7 +25,8 @@
             </div>
             <div style="float: right">
               <el-button @click="openDialog1('form1')"><i :class="changeStar"></i></el-button>
-              <el-dialog title="修改书签" width="30%" top="0" :visible.sync="dialogFormVisible" @closed="dialogClosed('form1')">
+              <el-dialog title="修改书签" width="30%" top="0" :visible.sync="dialogFormVisible" @closed="dialogClosed('form1')"
+                         :close-on-click-modal="false" :close-on-press-escape="false">
                 <el-form :model="form" ref="form1">
                   <el-form-item label="系统" :label-width="formLabelWidth" prop="checkbox" v-if="select2.value===''">
                     <el-checkbox v-model="form.checkbox"></el-checkbox>
@@ -73,7 +74,8 @@
               </el-select>
               <el-button type="primary" @click="dialogFormVisible1 = true"><i class="el-icon-bell"></i>&nbsp;&nbsp;KPI
               </el-button>
-              <el-dialog title="KPI" width="65%" top="0" :visible.sync="dialogFormVisible1">
+              <el-dialog title="KPI" width="65%" top="0" :visible.sync="dialogFormVisible1"
+                         :close-on-click-modal="false" :close-on-press-escape="false">
                 <div class="content1">
                   <h3>已选择KPI</h3>
                   <template v-for="item of dataKpi">
@@ -236,7 +238,7 @@
           en: '',
           mark: '',
         },
-        formLabelWidth: '100px',
+        formLabelWidth: '130px',
         //select
         select2: {
           options: [],
@@ -563,6 +565,7 @@
     width: 20%;
     margin: 5px 20px;
   }
+
 
 
 
