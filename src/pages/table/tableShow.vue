@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="tableShowWrap">
     <data-table :data="tableData" :paginator="true" :row="row" >
       <el-table-column
         type="selection"
@@ -42,11 +42,10 @@
         <template slot-scope="scope">
           <el-button
             @click.native.prevent="deleteRow(scope.$index, tableData)"
-            type="text"
             size="small">
             移除
           </el-button>
-          <el-button type="text" size="small">编辑</el-button>
+          <el-button size="small">编辑</el-button>
         </template>
       </el-table-column>
     </data-table>
@@ -83,5 +82,8 @@
 </script>
 
 <style scoped>
+  #tableShowWrap{
+    padding: 0 1rem 1rem;
+  }
 
 </style>

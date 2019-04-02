@@ -23,7 +23,7 @@
       <div class="navbar-custom-menu">
         <template>
           <el-radio-group v-model="themecolor">
-            <el-radio label="#fff">备选项1</el-radio>
+            <el-radio label="aaa">备选项1</el-radio>
             <el-radio label="409eff">备选项2</el-radio>
           </el-radio-group>
         </template>
@@ -133,7 +133,7 @@
             message: '切换为中文！',
             type: 'success'
           })
-          console.log(this.$i18n.locale);
+         // console.log(this.$i18n.locale);
         } else if (lang == 'en') {
           this.$cookies.set('locale', 'en');
           this.$i18n.locale = this.$cookies.get('locale');
@@ -141,8 +141,9 @@
             message: 'Switch to English!',
             type: 'success'
           })
-          console.log(this.$i18n.locale);
+
         }
+        console.log(this.$i18n.locale);
         this.reload();
       },
       toggleMenu(collapsed, isMobile) {
@@ -239,9 +240,9 @@
     float: left;
     background-color: transparent;
     background-image: none;
-    padding: 16px 15px;
+    padding:0 15px;
     font-family: fontAwesome;
-    /*line-height: 20px;*/
+    line-height: 56px;
   }
 
   .main-header .navbar .sidebar-toggle:before {
@@ -255,9 +256,9 @@
     transition: width 0.3s ease-in-out;
     display: block;
     float: left;
-    height: 50px;
+    height: 56px;
     font-size: 20px;
-    line-height: 50px;
+    line-height: 56px;
     text-align: center;
     width: 230px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -281,7 +282,7 @@
     margin-bottom: 0;
     margin-left: 230px;
     border: none;
-    min-height: 50px;
+    min-height: 56px;
     border-radius: 0;
   }
 
@@ -354,11 +355,12 @@
   }
 
   .navbar-custom-menu .el-dropdown-link {
+    display: inline-block;
     cursor: pointer;
-    height: 50px;
     padding: 15px 5px;
     min-width: 50px;
     text-align: center;
+
   }
 
 
@@ -381,6 +383,7 @@
   .el-dropdown-menu .header-pic {
     text-align: center;
     padding: 20px;
+
   }
 
   .el-dropdown-menu .header-pic img {
@@ -398,20 +401,23 @@
     padding: 10px;
     display: inline-block;
     float: left;
+
   }
 
   .el-dropdown-menu .pull-right {
     padding: 10px;
     float: right;
     display: inline-block;
+
   }
   .el-breadcrumb{
-
-    display: inline-block;
-    line-height: 50px;
+    float:left ;
+    line-height: 56px;
     font-weight: bold;
-    margin-bottom: 0!important;
+    margin: 0 !important; ;
+
   }
+
 
 
 

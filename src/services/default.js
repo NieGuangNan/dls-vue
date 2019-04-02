@@ -361,7 +361,7 @@ export default {
 
   }, {
     "id": 31,
-    "access":['developer'],
+    "access":['admin','developer'],
     "parentId": null,
     "sort": 1,
     "name": "message.menu.menu1.name",
@@ -419,7 +419,7 @@ export default {
     "icon": "fa fa-download",
     "children": [{
       "id": 103,
-      "access":['developer'],
+      "access":['admin','developer'],
       "parentId": 102,
       "sort": 0,
       "name": "message.menu.menu2.items.item1.name",

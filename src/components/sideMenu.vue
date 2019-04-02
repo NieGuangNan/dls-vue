@@ -114,7 +114,7 @@
 
   .main-sidebar {
     position: fixed;
-    top: 50px;
+    top: 56px;
     left: 0;
     bottom: 0;
     height: calc(100vh - 50px);

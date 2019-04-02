@@ -1,114 +1,41 @@
-/*按钮样式*/
-/*.el-button--primary {*/
-  /*color: #E0E0E3 !important;*/
-  /*background-color: transparent !important;*/
-  /*border-color: #f6a821 !important;*/
-  /*z-index: 2;*/
-/*}*/
-/*.el-button--primary:hover,*/
-/*.el-button--primary:focus,*/
-/*.el-button--primary:active,*/
-/*.el-button--primary.active,*/
-/*.el-button--primary:active:focus,*/
-/*.el-button--primary:active:hover,*/
-/*.el-button--primary.active:hover,*/
-/*.el-button--primary.active:focus ,*/
-/*.el-button--primary:not(:disabled):not(.disabled):active,*/
-/*.el-button--primary:not(:disabled):not(.disabled).active{*/
-  /*background-color: rgba(246, 168, 33, 0.1) !important;*/
-  /*color: #fff !important;*/
-  /*border-color: #f6a821 !important;*/
-/*}*/
 
+html{
+  background-color: #363839;
+}
+.content-scrollbar{
+  background:#1c1d1e;
+  border-radius: 5px;
+}
+/*背景色设置*/
+.bg-dark{
+  background: #444444;
+}
+.bg-blue{
+  background: #63b3e2;
+}
+.bg-red{
+  background:#e02837;
+}
+.bg-green{
+  background: #557e3b;
+}
+.bg-white{
+  background: #fff;
+}
 
-/*.el-button--success {*/
-  /*color: #E0E0E3 !important;*/
-  /*background-color: transparent !important;*/
-  /*border-color: #0f83c9 !important;*/
-  /*z-index: 2;*/
-/*}*/
-/*.el-button--success:hover,*/
-/*.el-button--success:focus,*/
-/*.el-button--success:active,*/
-/*.el-button--success.active,*/
-/*.el-button--success:active:focus,*/
-/*.el-button--success:active:hover,*/
-/*.el-button--success.active:hover,*/
-/*.el-button--success.active:focus {*/
-  /*background-color: rgba(15, 131, 201, 0.1) !important;*/
-  /*color: #fff !important;*/
-  /*border-color: #0f83c9 !important;*/
-/*}*/
+/*字体颜色设置*/
 
-
-/*.el-button--default {*/
-  /*color: #E0E0E3 !important;*/
-  /*background-color: transparent !important;*/
-  /*border-color: #616779 !important;*/
-/*}*/
-/*.el-button--default:hover,*/
-/*.el-button--default:focus,*/
-/*.el-button--default:active,*/
-/*.el-button--default.active,*/
-/*.open .dropdown-toggle.el-button--default,*/
-/*.el-button--default:active:focus,*/
-/*.el-button--default:active:hover,*/
-/*.el-button--default.active:hover,*/
-/*.el-button--default.active:focus {*/
-  /*background-color: #3d404c !important;*/
-  /*color: #ffffff !important;*/
-/*}*/
-
-
-/*.el-button--danger {*/
-  /*color: #E0E0E3 !important;*/
-  /*background-color: transparent !important;*/
-  /*border-color: #db524b !important;*/
-/*}*/
-/*.el-button--danger:hover,*/
-/*.el-button--danger:focus,*/
-/*.el-button--danger:active,*/
-/*.el-button--danger.active,*/
-/*.open .dropdown-toggle.el-button--danger,*/
-/*.el-button--danger:active:focus,*/
-/*.el-button--danger:active:hover,*/
-/*.el-button--danger.active:hover,*/
-/*.el-button--danger.active:focus {*/
-  /*background-color: rgba(219, 82, 75, 0.1) !important;*/
-  /*color: #fff !important;*/
-  /*border-color: #db524b !important;*/
-/*}*/
-
-
-/*.el-button--white {*/
-  /*color: #E0E0E3 !important;*/
-  /*background-color: transparent !important;*/
-  /*border-color: #616779 !important;*/
-/*}*/
-/*.el-button--white:hover,*/
-/*.el-button--white:focus,*/
-/*.el-button--white:active,*/
-/*.el-button--white.active,*/
-/*.open .dropdown-toggle.el-button--white,*/
-/*.el-button--white:active:focus,*/
-/*.el-button--white:active:hover,*/
-/*.el-button--white.active:hover,*/
-/*.el-button--white.active:focus {*/
-  /*background-color: #3d404c !important;*/
-  /*color: #ffffff !important;*/
-/*}*/
-
+.text-white{
+  color:#fff;
+}
+.text-black{
+  color:#000!important;
+}
 /*header样式*/
 
 .el-dropdown-menu .header-pic p,
 .el-dropdown ,.main-header a[data-v-cea13f84]{
   color:#fff !important;
-}
-.main-header.closeLogo .sidebar-toggle[data-v-cea13f84]{
-  color:#000;
-}
-.main-header[data-v-cea13f84],.main-header .navbar[data-v-cea13f84]{
-  background:#000;
 }
 .main-header.closeLogo .sidebar-toggle[data-v-cea13f84],
 .main-header .navbar .sidebar-toggle[data-v-cea13f84]:hover,
@@ -134,20 +61,31 @@
 .el-dropdown-menu .header-pic img{
   border-color: transparent;
   border-color: hsla(0,0%,100%,.2);
-  background-color: #108ee9;
 }
 .main-header,.main-header a{
   color: #48576a;
 }
 
+.el-dropdown-menu.el-popper{
+  background: #444444;
+}
+.el-dropdown-menu .header-pic{
+  background: #1c1d1e;
+}
+.el-dropdown-menu .pull-left,.el-dropdown-menu .pull-right{
+  background: #333;
+}
+.el-breadcrumb__inner{
+  color:#fff !important;
+}
+
 
 /*side-menu样式*/
 
-.el-menu-style li.el-menu-item:hover, .el-menu-style div.el-submenu__title:hover{
-  background: #000000!important;
-}
-.el-menu-item.is-active{
-  color:orange;
+.el-menu-item.is-active,
+.el-menu-sub.is-opened > .el-submenu__title i,
+.el-menu-sub.is-opened > .el-submenu__title{
+  color:orange!important;
 }
 .el-menu-item,.el-submenu__title{
   color:#fff
@@ -156,12 +94,12 @@
 .el-menu-style,
 .el-menu-style .el-menu,
 .vue-scrollbar{
-  background-color: #444444 !important;
-}
+  background-color: #1f2021 !important;
 
-.el-menu-style .el-menu-item:hover,
-.el-menu-style .el-submenu__title:hover{
-  background-color: #eeeeee !important;
+
+}
+.main-sidebar.animated.showSlide.expandSide{
+  border-right: 8px solid #333;
 }
 
 /*footer样式*/
@@ -211,35 +149,16 @@
   transform: rotate(90deg);
 }
 
-/*背景色设置*/
-.bg-dark{
-  background: #444444;
-}
-.bg-blue{
-  background: #63b3e2;
-}
-.bg-red{
-  background:#e02837;
-}
-.bg-green{
-  background: #557e3b;
-}
-.bg-white{
-  background: #fff;
-}
 
-/*字体颜色设置*/
 
-.text-white{
-  color:#fff;
-}
 /*原先样式重置*/
-.el-table th,#eef1f6.el-table__footer-wrapper thead div, .el-table__header-wrapper thead div{
-  background:#fff;
+.el-tree--highlight-current .el-tree-node.is-current>.el-tree-node__content,
+.is-current, .is-focusable ,.is-checked{
+  background: transparent!important;
 }
 
 .el-table,.el-table th, #eef1f6.el-table__footer-wrapper thead div, .el-table__header-wrapper thead div{
-  background: transparent;
+  background: transparent !important;
 }
 .el-table,.el-table tr{
   border:none!important;
@@ -250,7 +169,13 @@
 
 }
 .el-menu{
-  border-right:none;
+  border-right:none!important;
+}
+.el-tree,.el-card {
+  background: transparent!important;
+}
+.el-table tr{
+  background: transparent!important;
 }
 
 /*树形控件，去除父级的复选框*/
@@ -260,13 +185,127 @@
 .el-tree{
   background: transparent;
 }
-/*弹窗*/
-.el-dialog__body{
-  background:#f8f8f8 ;
-  margin: 0 auto;
+
+
+/*自定义类的样式*/
+/*系统管理*/
+.box{
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
+  border: 1px solid #d3dce6;
+
 }
 
-/*表单样式重置*/
-.el-form-item__content{
-  margin-left: 30px !important;
+.box {
+  background: transparent;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
+
+.box .overlay.dark,
+.overlay-wrapper .overlay.dark {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.box-header {
+  color: #444;
+}
+.box-header.with-border {
+  border-bottom: 1px solid #f4f4f4;
+}
+
+.box-header > .box-tools .dropdown-menu > li > a {
+  color: #444!important;
+}
+
+.box-footer {
+  border-top: 1px solid #f4f4f4;
+  background-color: transparent;
+}
+.el-form-item__label{
+  color:#fff !important;
+}
+
+
+/*demo1页面样式*/
+
+
+.bottom{
+  border-bottom: 1vmin solid #333;
+}
+
+/*topBar页面样式*/
+.topBar{
+  margin: -1rem -8px 5px;
+  background:#101010;
+  padding: 0.8rem 0.5rem;
+}
+
+.el-dialog{
+  background:#262629 !important;
+}
+.el-dialog__title{
+  color:#fff!important;
+}
+.el-dialog__body{
+background:#2f2f33 ;
+margin: 0 auto;
+}
+.grid-content {
+  background: #3b3b40;
+}
+
+#buttonGroup .el-button--primary{
+  border-color:transparent;
+  background:#a5abb0;
+  color: #000;
+}
+
+/*login样式*/
+.login {
+  border: 1px solid #cfd8dc;
+  background-color: #20a8d8;
+}
+
+.login .el-button {
+  border-radius: 0;
+}
+
+.login .el-button.forgot, .login .el-button.forgot:hover {
+  color:#000;
+}
+
+.login .login-form {
+  background-color: #FFFFFF;
+
+}
+
+#loginWrap .btn-link:focus, #loginWrap .btn-link:hover {
+  color: #167495;
+  background-color: transparent;
+}
+
+#loginWrap .btn-link, #loginWrap .btn-link:active, #loginWrap .btn-link:focus, #loginWrap .btn-link:hover {
+  border-color: transparent;
+}
+
+
+#loginWrap .input-group-addon {
+
+  color: #607d8b;
+  background-color: #cfd8dc;
+  border: 1px solid rgba(0, 0, 0, .15);
+}
+
+#loginWrap .form-control {
+
+  color: #607d8b;
+  background: #fff none;
+  border: 1px solid rgba(0, 0, 0, .15);
+
+}
+
+.login .login-register {
+
+  background-color: #20a8d8;
+  color: #fff;
+}
+

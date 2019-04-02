@@ -1,6 +1,6 @@
 <template>
 
-  <div >
+  <div id="treeTableWrap">
     <data-table :data="data" :rowStyle="showTr">
       <template>
         <el-table-column
@@ -11,7 +11,7 @@
                          :label="column.text" :type="column.type">
           <template slot-scope="scope">
             <span v-if="spaceIconShow(index)" v-for="(space, levelIndex) in scope.row._level" class="ms-tree-space"></span>
-            <button style="border:0;background:transparent;outline:none;" class="button is-outlined is-primary is-small " v-if="toggleIconShow(index,scope.row)" @click="toggle(scope.$index)">
+            <button style="border:0;background:transparent;outline:none;color:#fff" class="button is-outlined is-primary is-small " v-if="toggleIconShow(index,scope.row)" @click="toggle(scope.$index)">
               <i v-if="!scope.row._expanded" class="el-icon el-icon-arrow-right" aria-hidden="true"></i>
               <i v-if="scope.row._expanded" class="el-icon el-icon-arrow-right el-table__expand-icon--expanded" aria-hidden="true"></i>
             </button>
@@ -173,6 +173,9 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  #treeTableWrap{
+    padding: 0 1rem 1rem;
+  }
   .ms-tree-space{position: relative;
     top: 1px;
     display: inline-block;

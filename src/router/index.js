@@ -35,7 +35,7 @@ Vue.use(VueRouter)
 const routes =[
   {path: '/login', component: login,permission:['admin','developer']},
   {
-    path: '/test/1', component: app,permission:['developer'], children: [
+    path: '/test/1', component: app,permission:['admin','developer'], children: [
       {path: '/test/1/1/1', component: tableShow,permission:['admin','developer']},
       {path: '/test/1/1/2', component: treeTable,permission:['admin','developer']},
       {path: '/test/1/2', component: demo1,permission:['admin','developer']},
@@ -44,7 +44,7 @@ const routes =[
   },
   {
     path: '/test/2', component: app,permission:['admin','developer'], children: [
-      {path: '/test/2/1', component: bar,permission:['developer']},
+      {path: '/test/2/1', component: bar,permission:['admin','developer']},
       {path: '/test/2/2', component: mixedChart,permission:['admin','developer']},
       {
         path: '/test/2/3',

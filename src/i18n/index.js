@@ -6,7 +6,8 @@ import ElementLocale from 'element-ui/lib/locale';
 Vue.use(VueI18n);
 const i18n = new VueI18n({
   locale: 'zh',
-  messages
+  messages,
+  silentTranslationWarn: true
 });
 ElementLocale.i18n((key, value) => i18n.t(key, value));
 

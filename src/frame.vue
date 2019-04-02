@@ -12,7 +12,6 @@
 </script>
 <style>
   html {
-    background-color: #f5f5f5;
     font-size: 14px;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;

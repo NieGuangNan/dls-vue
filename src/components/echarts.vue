@@ -3,7 +3,7 @@
 </template>
 
 <script>
-  window.localStorage.getItem('state.themecolor') && window.localStorage.getItem('state.themecolor') !== '#fff' ? import(`@/assets/eCharts/theme/${window.localStorage.getItem('state.themecolor')}/index.js`) : '';
+  window.localStorage.getItem('state.themecolor') && window.localStorage.getItem('state.themecolor') !== 'aaa' ? import(`@/assets/eCharts/theme/${window.localStorage.getItem('state.themecolor')}/index.js`) : '';
   import echarts from 'echarts'
   import 'echarts/theme/dark.js'
   import {getLocalKey} from "common/utils";
@@ -12,7 +12,7 @@
     name: "echartTemplate",
     data() {
       return {
-        theme: window.localStorage.getItem('state.themecolor') && window.localStorage.getItem('state.themecolor') !== '#fff' ? 'index' : ''
+        theme: window.localStorage.getItem('state.themecolor') && window.localStorage.getItem('state.themecolor') !== 'aaa' ? 'index' : ''
       }
     },
     props: {

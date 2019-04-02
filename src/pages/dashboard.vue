@@ -48,7 +48,10 @@
       orient:'vertical',
       left:'right',
       top:'middle',//如果 top 的值为'top', 'middle', 'bottom'，组件会根据相应的位置自动对齐。
-      itemGap:20
+      itemGap:20,
+      textStyle:{
+        color:'#fff'
+      }
     },
     toolbox: {
       show: true,

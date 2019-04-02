@@ -1,10 +1,5 @@
 <template>
-  <div class="wrap">
-    <el-row>
-      <el-col :span="24" >
-        <div class="bar">工具栏</div>
-      </el-col>
-    </el-row>
+  <div id="demo1Warp">
     <el-row>
       <el-col :span="24" >
         <echarts :option="option" :height='$root.bodyHeight/3'></echarts>
@@ -12,7 +7,7 @@
       </el-col>
     </el-row>
     <el-row>
-      <el-col :span="12" style="border-right: 1vmin solid #e4e4e4;">
+      <el-col :span="12" style="border-right: 1vmin solid #333;">
         <el-row>
           <el-col :span="6" :offset="1">
             <div class="ibox" >
@@ -67,6 +62,7 @@
         <el-row>
           <echarts :option="option1" :height='$root.bodyHeight/3'></echarts>
         </el-row>
+        <div class="bottom"></div>
         <data-table :data="tableData">
           <el-table-column
             prop="module"
@@ -157,42 +153,42 @@
         <el-row>
           <echarts :option="option1" :height='$root.bodyHeight/3'></echarts>
         </el-row>
-        <data-table :data="tableData" :maxHeight="200">
+        <div class="bottom"></div>
+        <data-table :data="tableData" >
           <el-table-column
             prop="module"
             sortable
             label="模块"
-            width="100"
+
           >
           </el-table-column>
           <el-table-column
             prop="issue"
             label="主要问题"
-            width="100"
+
           >
           </el-table-column>
           <el-table-column
             prop="effect"
             label="影响"
-            width="100"
+
           >
           </el-table-column>
           <el-table-column
             prop="total"
             label="累计（过去一个月）"
-            width="200"
           >
           </el-table-column>
           <el-table-column
             prop="data"
             label=""
-            width="100"
+
           >
           </el-table-column>
           <el-table-column
             prop="department"
             label="责任部门"
-            width="100"
+
           >
           </el-table-column>
         </data-table>
@@ -212,17 +208,37 @@
   const option = {
     tooltip: {},
     xAxis: {
-      data: ["03-12", "03-13", "03-14", "03-15", "03-16", "03-17", "03-18", "03-19"]
+      data: ["03-12", "03-13", "03-14", "03-15", "03-16", "03-17", "03-18", "03-19"],
+      axisLine:{
+        lineStyle:{
+          color:'#fff',
+        }
+      }
     },
     yAxis: {
       name:'炼钢总产量（吨）',
       interval:'20000',
+      axisLine:{
+        lineStyle:{
+          color:'#fff',
+
+        }
+      },
+      splitLine:{
+        lineStyle:{
+          type:'dashed'
+        }
+      }
+
     },
     legend: {
       show: true,
       right:'1%',
       top:'1%',
-      icon:"circle"
+      icon:"circle",
+      textStyle:{
+        color:'#fff'
+      }
 
     },
     series: [{
@@ -231,7 +247,7 @@
       type: 'bar',
       label:{
         show:true,
-        color:'#000',
+        color:'#fff',
         position:'top',
       },
       data: [19515, 19511, 0, 0, 37675, 18562,0,0]
@@ -245,14 +261,27 @@
   const option1 = {
     tooltip: {},
     xAxis: {
-      data: ["总时间", "计划停机", "非计划停机", "实际作业时间", "速度损失", "质量损失", "有效作业时间"]
+      data: ["总时间", "计划停机", "非计划停机", "实际作业时间", "速度损失", "质量损失", "有效作业时间"],
+      axisLine:{
+        lineStyle:{
+          color:'#fff',
+        }
+      }
     },
     yAxis: {
       max:'4000',
       Interval:'1000',
+      axisLine:{
+        lineStyle:{
+          color:'#fff',
+        }
+      },
       splitLine:{
-
+       lineStyle:{
+         type:'dashed'
+       }
       }
+
     },
     series: [{
 
@@ -260,7 +289,7 @@
       type: 'bar',
       label:{
         show:true,
-        color:'#000',
+        color:'#fff',
       },
       data: [2880, 0, 0,2806, 2805, 0,0],
       itemStyle:{
@@ -292,15 +321,10 @@
 </script>
 
 <style scoped>
- .bar{
-   background:#e4e4e4;
- }
-  .wrap{
-    background: #eee;
+  #demo1Warp{
+
   }
-  .bottom{
-    border-bottom: 1vmin solid #e4e4e4;
-  }
+
   .ibox{
     line-height: 3vmin;
     margin-top: 1vmin;

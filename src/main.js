@@ -1,4 +1,4 @@
-import(`@/assets/css/theme/${window.localStorage.getItem('state.themecolor') ? window.localStorage.getItem('state.themecolor') : '#fff'}/index.css`);
+ import(`@/assets/css/theme/${window.localStorage.getItem('state.themecolor') ? window.localStorage.getItem('state.themecolor') : 'aaa'}/index.css`);
 import 'babel-polyfill'
 import Vue from "vue";
 // function switchTheme(themeName) {

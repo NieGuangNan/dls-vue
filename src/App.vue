@@ -4,7 +4,7 @@
     <imp-header></imp-header>
     <side-menu></side-menu>
     <div class="content-wrapper" :class="{ slideCollapse: sidebar.collapsed,mobileSide:device.isMobile}">
-      <el-scrollbar tag="div" wrap-class="content-scrollbar">
+      <el-scrollbar tag="div" wrap-class="content-scrollbar" >
         <section class="content">
           <transition mode="out-in" enter-active-class="fadeIn" leave-active-class="fadeOut" appear>
             <router-view :bodyHeight="$root.bodyHeight" v-if="isRouterAlive"></router-view>
@@ -60,7 +60,7 @@
     methods: {
       setLanguage() {
         let language = this.$cookies.get("user-info") && this.$cookies.get("user-info").language ? this.$cookies.get("user-info").language : 'zh';
-        this.$i18n.locale =language;
+        this.$i18n.locale =this.$cookies.get('locale')?this.$cookies.get('locale'):language;
 
       },
       timer() {
@@ -78,10 +78,10 @@
       }),
 
       reload() {
-        this.isRouterAlive = false
+        this.isRouterAlive = false;
         this.$nextTick(
           function () {
-            this.isRouterAlive = true
+            this.isRouterAlive = true;
             console.log('我刷新了')
           }
         )
@@ -188,18 +188,20 @@
     box-sizing: border-box;
   }
 
-
+  /*.content{*/
+    /*background-color: #1c1d1e;*/
+  /*}*/
   .content-wrapper {
     -webkit-transition: -webkit-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
     -moz-transition: -moz-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
     -o-transition: -o-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out, margin 0.3s ease-in-out;
     margin-left: 230px;
-    padding-top: 50px;
+    padding-top: 56px;
   }
 
   .content-scrollbar {
-    height: calc(100vh - 80px);
+    height: calc(100vh - 80px)!important;
   }
 
   .content-wrapper .el-scrollbar__bar.is-vertical {
@@ -207,7 +209,9 @@
   }
 
   .content-wrapper .content {
-    padding: 1.5rem 1rem;
+    /*padding: 0 1rem 1rem;*/
+    margin-top: 1rem;
+
 
     /*text-align: center;*/
   }
@@ -220,8 +224,9 @@
   .content-wrapper.mobileSide {
     margin-left: 0px;
   }
-
-  .scrollbar-tree {
-    height: 260px;
+  .scrollbar-tree{
+    height:260px !important;
   }
+
+
 </style>

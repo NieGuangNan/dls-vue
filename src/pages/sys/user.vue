@@ -9,10 +9,14 @@
           </router-link>
         </el-col>
         <el-col :span="12">
-          <div class="el-input" style="width: 200px; float: right;">
-            <i class="el-input__icon el-icon-search"></i>
-            <input type="text" placeholder="输入用户名称" v-model="searchKey" @keyup.enter="search($event)"
-                   class="el-input__inner">
+          <div class="el-input" style="width:200px;float: right;">
+            <el-input
+              v-model="searchKey"
+              @keyup.enter="search($event)"
+              placeholder="输入用户名称"
+              >
+              <i slot="prefix" class="el-input__icon el-icon-search"></i>
+            </el-input>
           </div>
         </el-col>
       </el-row>

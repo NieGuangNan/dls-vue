@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <el-row class="bg-white">
+  <div id="demo2Wrap">
+    <el-row class="topBar">
       <el-form :inline="true" :model="toolbar" ref="ruleForm">
         <div style="float: left">
           <el-select v-model="toolbar.select.value" placeholder="请选择">
@@ -11,7 +11,6 @@
               :value="option.value">
             </el-option>
           </el-select>
-          <!--<el-input v-model="toolbar.datePicker.value"></el-input>-->
           <el-date-picker
             v-model="toolbar.datePicker.value"
             type="date"
@@ -19,7 +18,7 @@
             placeholder="选择日期">
           </el-date-picker>
           <select-one-button :data="toolbar.selectOneButton"></select-one-button>
-          <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+          <el-button type="warning" @click="submitForm('ruleForm')">提交</el-button>
         </div>
         <div style="float: right">
           <el-button @click="openDialog1('form1')"><i :class="changeStar"></i></el-button>
@@ -69,7 +68,7 @@
               <el-tag type="success" v-else style="float: right;">用户</el-tag>
             </el-option>
           </el-select>
-          <el-button type="primary" @click="dialogFormVisible1 = true"><i class="el-icon-bell"></i>&nbsp;&nbsp;KPI
+          <el-button type="warning" @click="dialogFormVisible1 = true"><i class="el-icon-bell"></i>&nbsp;&nbsp;KPI
           </el-button>
           <el-dialog title="KPI" width="65%" top="0" :visible.sync="dialogFormVisible1"
                      :close-on-click-modal="false" :close-on-press-escape="false">
@@ -83,7 +82,7 @@
               <h3>KPI树</h3>
               <el-input v-model="select2.value" style="width: 50%;"></el-input>
               <el-button type="success"><i class="el-icon-refresh"></i>&nbsp;刷新</el-button>
-              <el-scrollbar tag="div" wrap-class="scrollbar-tree">
+              <el-scrollbar tag="div" wrap-class="scrollbar-tree" :native="true">
                 <el-tree :data="data" :props="defaultProps" node-key="id" ref="tree" @check="handleNodeClick"
                          show-checkbox></el-tree>
 
@@ -100,7 +99,7 @@
     </el-row>
     <el-row :gutter="10">
       <el-col :span="6" v-for="item in items">
-        <div class="grid-content bg-white">
+        <div class="grid-content">
           <div>1
             <el-select v-model="item.value" placeholder="请选择" @change="select(item.id,item.value)">
               <el-option
@@ -229,7 +228,7 @@
           en: '',
           mark: '',
         },
-        formLabelWidth: '130px',
+        formLabelWidth: '100px',
         //select
         select2: {
           options: [],
@@ -510,6 +509,9 @@
 </script>
 
 <style scoped>
+  #demo2Wrap{
+    padding: 0 1rem 1rem;
+  }
   .el-col {
     /*margin-bottom: 10px;*/
     padding: 5px;
@@ -520,6 +522,8 @@
     height: 100%;
     /*border-radius: 4px;*/
     min-height: 36px;
+    padding: 0.5rem;
+
   }
 
   .row-bg {
@@ -539,6 +543,7 @@
     width: 20%;
     margin: 5px 20px;
   }
+
 
 
 </style>

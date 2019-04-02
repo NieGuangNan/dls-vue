@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div id="barWrap">
 
     <div id="test"
          option="option"></div>
@@ -26,5 +26,8 @@ export default {
 </script>
 
 <style scoped>
+  #barWrap{
+    padding: 0 1rem 1rem;
+  }
 
 </style>
