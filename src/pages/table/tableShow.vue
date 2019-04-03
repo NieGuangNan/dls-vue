@@ -42,10 +42,10 @@
         <template slot-scope="scope">
           <el-button
             @click.native.prevent="deleteRow(scope.$index, tableData)"
-            size="small">
+            size="small" type="danger">
             移除
           </el-button>
-          <el-button size="small">编辑</el-button>
+          <el-button type="primary" size="small">编辑</el-button>
         </template>
       </el-table-column>
     </data-table>

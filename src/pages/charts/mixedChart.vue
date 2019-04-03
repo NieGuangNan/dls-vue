@@ -1,6 +1,7 @@
 <template>
   <div id="mixedChartWrap">
-    <el-button type="default" @click="a()" v-permission="['admin']">测试</el-button>
+    <el-button type="default" @click="a()" v-permission="['admin']" class="fal fa-acorn">
+     测试</el-button>
     <echarts :option="option" :height='$root.bodyHeight/3'></echarts>
     <echarts :option="option1" :height='$root.bodyHeight/3' :alterOption="alterOption"></echarts>
   </div>

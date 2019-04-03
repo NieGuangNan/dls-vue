@@ -25,6 +25,10 @@ Vue.use(VueCookies);
  import 'vuescroll/dist/vuescroll.css';
  Vue.use(vueScroll);
 
+ import "@fortawesome/fontawesome-pro/css/all.css"
+
+
+
 
 Vue.prototype.$http = axios;
 Vue.axios = axios;

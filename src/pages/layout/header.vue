@@ -41,7 +41,7 @@
         <el-dropdown class="navbar-dropdown" trigger="click">
           <div class="el-dropdown-link" style="height: auto;line-height: inherit">
             <el-badge :value="count" class="item">
-              <i class="fa fa-envelope-o"></i>
+              <i class="fal fa-envelope"></i>
             </el-badge>
           </div>
           <el-dropdown-menu slot="dropdown">

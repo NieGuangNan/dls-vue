@@ -11,7 +11,7 @@
           </transition>
         </section>
       </el-scrollbar>
-      <!--<imp-footer></imp-footer>-->
+      <imp-footer></imp-footer>
     </div>
   </div>
 </template>
@@ -230,11 +230,12 @@
   ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
+
   }
   /*滚动条的滑块*/
     ::-webkit-scrollbar-thumb {
-      background-color: #a1a3a9;
-      border-radius: 3px;
+      background-color: #656666;
+      border-radius: 5px;
     }
 
 

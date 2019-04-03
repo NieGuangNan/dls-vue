@@ -29,7 +29,6 @@
   }
 
   .error-page .errorWarp .title {
-    color: #666;
     font-size: 36px;
     padding: 15px 30px;
     margin-bottom: 10px;
@@ -39,18 +38,15 @@
 
   .error-page .errorWarp .desc {
     font-size: 24px;
-    color: #474747;
     font-weight: bold;
     line-height: 30px;
   }
 
   .error-page .errorWarp .backBtn {
     display: inline-block;
-    color: #444;
     margin-bottom: 20px;
     margin-top: 50px;
     padding: 15px 30px;
-    border: 1px solid #444;
     border-radius: 5px;
     cursor: pointer;
   }

@@ -148,7 +148,7 @@ $--disabled-border-base: $--border-color-light !default;
 
 /* Icon
 -------------------------- */
-$--icon-color: #666 !default;
+$--icon-color: $--color-white !default;
 $--icon-color-base: $--color-info !default;
 
 /* Checkbox
@@ -272,30 +272,30 @@ $--select-disabled-border: $--disabled-border-base !default;
 $--select-font-size: $--font-size-base !default;
 $--select-close-hover-color: $--color-text-secondary !default;
 
-$--select-input-color: $--color-text-placeholder !default;
-$--select-multiple-input-color: #666 !default;
+$--select-input-color: $--color-white !default;
+$--select-multiple-input-color: $--color-white !default;
 $--select-input-focus-background: $--color-primary !default;
 $--select-input-font-size: 14px !default;
 
-$--select-option-color: $--color-text-regular !default;
+$--select-option-color: $--color-white !default;
 $--select-option-disabled-color: $--color-text-placeholder !default;
 $--select-option-disabled-background: $--color-white !default;
 $--select-option-height: 34px !default;
 $--select-option-hover-background: #f8a621 !default;
 $--select-option-selected: $--color-primary !default;
-$--select-option-selected-hover: $--background-color-base !default;
+$--select-option-selected-hover: $--color-white !default;
 
 $--select-group-color: $--color-info !default;
 $--select-group-height: 30px !default;
 $--select-group-font-size: 12px !default;
 
-$--select-dropdown-background: #494b54 !default;
+$--select-dropdown-background: #363839 !default;
 $--select-dropdown-shadow: $--box-shadow-light !default;
 $--select-dropdown-empty-color: #999 !default;
 $--select-dropdown-max-height: 274px !default;
 $--select-dropdown-padding: 6px 0 !default;
 $--select-dropdown-empty-padding: 10px 0 !default;
-$--select-dropdown-border: solid 1px $--border-color-light !default;
+$--select-dropdown-border: solid 1px transparent !default;
 
 /* Alert
 -------------------------- */
@@ -378,7 +378,7 @@ $--input-border: none !default;
 $--input-border-color: transparent !default;
 $--input-border-radius: $--border-radius-base !default;
 $--input-border-color-hover: transparent !default;
-$--input-fill: #494b54 !default;
+$--input-fill: #363839 !default;
 $--input-fill-disabled: $--disabled-fill-base !default;
 $--input-color-disabled: $--font-color-disabled-base !default;
 $--input-icon-color: $--color-text-placeholder !default;
@@ -478,7 +478,7 @@ $--button-mini-padding-vertical: 7px !default;
 $--button-mini-padding-horizontal: 15px !default;
 
 /// color|[]|Color|0
-$--button-default-font-color: $--color-white !default;
+$--button-default-font-color: #e0e0e3 !default;
 /// color|[]|Color|0
 $--button-default-background-color: transparent !default;
 /// color|[]|Color|0
@@ -494,36 +494,36 @@ $--button-disabled-border-color: $--border-color-lighter !default;
 /// color|[]|Color|0
 $--button-primary-border-color: $--color-primary !default;
 /// color|[]|Color|0
-$--button-primary-font-color: $--color-white !default;
+$--button-primary-font-color: #e0e0e3 !default;
 /// color|[]|Color|0
 $--button-primary-background-color: transparent !default;
 /// color|[]|Color|0
 $--button-success-border-color: $--color-success !default;
 /// color|[]|Color|0
-$--button-success-font-color: $--color-white !default;
+$--button-success-font-color: #e0e0e3 !default;
 /// color|[]|Color|0
 $--button-success-background-color: $--color-success !default;
 /// color|[]|Color|0
 $--button-warning-border-color: $--color-warning !default;
 /// color|[]|Color|0
-$--button-warning-font-color: $--color-white !default;
+$--button-warning-font-color: #e0e0e3 !default;
 /// color|[]|Color|0
 $--button-warning-background-color: transparent !default;
 /// color|[]|Color|0
 $--button-danger-border-color: $--color-danger !default;
 /// color|[]|Color|0
-$--button-danger-font-color: $--color-white !default;
+$--button-danger-font-color: #e0e0e3 !default;
 /// color|[]|Color|0
 $--button-danger-background-color: transparent !default;
 /// color|[]|Color|0
 $--button-info-border-color: $--color-info !default;
 /// color|[]|Color|0
-$--button-info-font-color: $--color-white !default;
+$--button-info-font-color: #e0e0e3 !default;
 /// color|[]|Color|0
 $--button-info-background-color: transparent !default;
 
-$--button-hover-tint-percent: 20% !default;
-$--button-active-shade-percent: 10% !default;
+//$--button-hover-tint-percent: 20% !default;
+//$--button-active-shade-percent: 10% !default;
 
 
 /* cascader
@@ -631,14 +631,14 @@ $--tag-danger-color: $--color-danger !default;
 
 /* Tree
 -------------------------- */
-$--tree-node-hover-color: $--color-primary-light-3 !default;
+$--tree-node-hover-color: $--color-primary !default;
 $--tree-text-color: $--color-white !default;
 $--tree-expand-icon-color: $--color-white !default;
 
 /* Dropdown
 -------------------------- */
 $--dropdown-menu-box-shadow: $--box-shadow-light !default;
-$--dropdown-menuItem-hover-fill: #767676 !default;
+$--dropdown-menuItem-hover-fill: $--color-primary !default;
 $--dropdown-menuItem-hover-color: $--link-color !default;
 
 /* Badge

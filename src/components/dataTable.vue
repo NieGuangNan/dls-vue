@@ -78,8 +78,8 @@
     margin: 20px auto;
     white-space: nowrap;
     padding: 2px 5px;
-    color: #303133;
     font-weight: 700;
+    float: right;
   }
 
 

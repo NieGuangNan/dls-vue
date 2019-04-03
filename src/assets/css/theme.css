@@ -37,11 +37,12 @@ html{
 .el-dropdown ,.main-header a[data-v-cea13f84]{
   color:#fff !important;
 }
+
 .main-header.closeLogo .sidebar-toggle[data-v-cea13f84],
 .main-header .navbar .sidebar-toggle[data-v-cea13f84]:hover,
 .navbar-custom-menu .el-dropdown-link[data-v-cea13f84]:hover
 {
-  background:#444444;
+  background:#444444 !important;
 }
 .el-dropdown-menu .header-pic,
 .navbar-custom-menu .el-dropdown-link img{
@@ -53,10 +54,11 @@ html{
   background: #f9f9f9;
 }
 .message-list li a{
-  color: #666666;
+  color: #fff;
 }
 .message-list li:hover{
-  background-color: #f9f9f9;
+  background-color: #f8a621;
+  /*color:#fff;*/
 }
 .el-dropdown-menu .header-pic img{
   border-color: transparent;
@@ -104,7 +106,7 @@ html{
 
 /*footer样式*/
 .main-footer {
-  color:#444;
+  color:#e0e0e3;
   /*background:red;*/
 }
 
@@ -160,9 +162,7 @@ html{
 .el-table,.el-table th, #eef1f6.el-table__footer-wrapper thead div, .el-table__header-wrapper thead div{
   background: transparent !important;
 }
-/*.el-table,.el-table tr{*/
-  /*border:none!important;*/
-/*}*/
+
 .el-table::after, .el-table::before {
 
    background-color: transparent;
@@ -181,6 +181,43 @@ html{
 .el-table--group,.el-table,.el-table tr,
 .el-table td, .el-table th.is-leaf{
   border-bottom:1px solid #484c5a !important;
+}
+.el-select-dropdown__item.selected.hover{
+  color:#fff;
+}
+
+
+.el-input__inner:hover{
+  color:#fff!important;
+}
+.el-input.el-input--suffix,.el-input__inner{
+  color:#e0e0e3!important;
+}
+.el-table__expand-icon{
+  color:#fff!important;
+}
+/*按钮*/
+.el-button{
+  padding:12px 10px!important; ;
+}
+
+.el-button:focus,.el-button:hover{
+  color:#fff !important;
+}
+.el-button--default:focus, .el-button--default:hover{
+  background: #3b3b40 !important;
+  border:1px solid #616779 !important;
+
+}
+.el-button--primary:focus, .el-button--primary:hover
+{
+  background:rgba(246, 168, 33, 0.1) !important;
+}
+.el-button--success:focus, .el-button--success:hover{
+  background-color: rgba(15, 131, 201, 0.1) !important;
+}
+.el-button--danger:focus, .el-button--danger:hover{
+  background-color: rgba(219, 82, 75, 0.1) !important;
 }
 
   /*树形控件，去除父级的复选框*/
@@ -228,6 +265,9 @@ html{
 .el-form-item__label{
   color:#fff !important;
 }
+.el-dropdown-menu{
+  border:none !important;
+}
 
 
 /*demo1页面样式*/
@@ -258,11 +298,13 @@ margin: 0 auto;
   background: #3b3b40;
 }
 
-#buttonGroup .el-button--primary{
-  border-color:transparent;
-  background:#a5abb0;
-  color: #000;
+#buttonGroup .el-button--primary,
+#buttonGroup .el-button--primary:hover{
+  border-color:transparent !important;
+  background:#a5abb0 !important;
+  color: #000 !important;
 }
+
 
 /*login样式*/
 .login {
@@ -314,3 +356,23 @@ margin: 0 auto;
   color: #fff;
 }
 
+/*404页面*/
+.error-page .errorWarp .title {
+  color: #fff;
+}
+.error-page .errorWarp .desc {
+  color: #e0e0e3;
+}
+
+.error-page .errorWarp .backBtn {
+  color: #fff;
+  border: 1px solid #fff;
+
+}
+
+.fas:before{
+  font-weight: 900 !important;
+}
+.fal:before{
+  font-weight: 300 !important;
+}
