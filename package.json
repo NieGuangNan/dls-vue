@@ -5,7 +5,7 @@
   "author": "Lanux",
   "private": true,
   "scripts": {
-    "dev": "node build/dev-server.js",
+    "dev": "node build/dev-server.js --host 192.168.199.247",
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src",
     "mock": "babel-node build/mock-server.js --presets es2015,stage-0",
@@ -16,7 +16,7 @@
     "axios": "^0.16.2",
     "echarts": "^4.1.0",
     "echarts-liquidfill": "^2.0.4",
-    "element-ui": "^2.6.3",
+    "element-ui": "^2.7.0",
     "font-awesome": "^4.7.0",
     "gulp": "^4.0.0",
     "gulp-clean-css": "^4.0.0",
