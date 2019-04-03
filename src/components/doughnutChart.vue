@@ -21,12 +21,14 @@
     methods: {
       resize() {
         this.$refs.doughnutChart.style.width = 'auto';
+        this.$refs.doughnutChart.style.margin = 0;
         this.$refs.doughnutChart.innerHTML = '';
         this.$nextTick(function () {
           this.doughnutChart(this.$refs.doughnutChart, this.data)
         })
       },
       doughnutChart(id, json) {
+        console.log(this.height);
         if (json === '') {
           return
         }
