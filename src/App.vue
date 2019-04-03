@@ -11,7 +11,7 @@
           </transition>
         </section>
       </el-scrollbar>
-      <imp-footer></imp-footer>
+      <!--<imp-footer></imp-footer>-->
     </div>
   </div>
 </template>

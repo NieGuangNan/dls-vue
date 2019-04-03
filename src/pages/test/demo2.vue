@@ -383,18 +383,16 @@
       },
       submitDialog1(form) {
         this.select2.value !== '' ? this.updateOptions(form) : this.createOptions(form);
+        this.select2.value = '';
+        this.dialogFormVisible = false;
       },
       updateOptions(form) {
         const _form = deepClone(form);
         this.select2.options = this.select2.options.map((item) => item.id === this.select2.value ? _form : item);
-        this.select2.value = '';
-        this.dialogFormVisible = false;
       },
       createOptions(form) {
         const _form = deepClone(form);
         this.select2.options.push(_form);
-        this.select2.value = '';
-        this.dialogFormVisible = false;
       },
       handleNodeClick() {
         let checkedNodes = this.$refs.tree.getCheckedNodes().filter((item) => !item.disabled);
