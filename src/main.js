@@ -21,6 +21,10 @@ import VueCookies from 'vue-cookies'
 Vue.use(VueCookies);
 // import '@/assets/css/theme/bbb/index.css';
 
+ import vueScroll from 'vuescroll';
+ import 'vuescroll/dist/vuescroll.css';
+ Vue.use(vueScroll);
+
 
 Vue.prototype.$http = axios;
 Vue.axios = axios;
@@ -57,6 +61,7 @@ Vue.directive('permission', {
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 });
+
 
 new Vue({
   store,

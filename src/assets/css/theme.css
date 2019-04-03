@@ -160,9 +160,9 @@ html{
 .el-table,.el-table th, #eef1f6.el-table__footer-wrapper thead div, .el-table__header-wrapper thead div{
   background: transparent !important;
 }
-.el-table,.el-table tr{
-  border:none!important;
-}
+/*.el-table,.el-table tr{*/
+  /*border:none!important;*/
+/*}*/
 .el-table::after, .el-table::before {
 
    background-color: transparent;
@@ -177,8 +177,13 @@ html{
 .el-table tr{
   background: transparent!important;
 }
+.el-table--border,
+.el-table--group,.el-table,.el-table tr,
+.el-table td, .el-table th.is-leaf{
+  border-bottom:1px solid #484c5a !important;
+}
 
-/*树形控件，去除父级的复选框*/
+  /*树形控件，去除父级的复选框*/
 .el-tree .is-disabled{
   display: none;
 }

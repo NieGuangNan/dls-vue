@@ -18,7 +18,7 @@
             placeholder="选择日期">
           </el-date-picker>
           <select-one-button :data="toolbar.selectOneButton"></select-one-button>
-          <el-button type="warning" @click="submitForm('ruleForm')">提交</el-button>
+          <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
         </div>
         <div style="float: right">
           <el-button @click="openDialog1('form1')"><i :class="changeStar"></i></el-button>
@@ -68,7 +68,7 @@
               <el-tag type="success" v-else style="float: right;">用户</el-tag>
             </el-option>
           </el-select>
-          <el-button type="warning" @click="dialogFormVisible1 = true"><i class="el-icon-bell"></i>&nbsp;&nbsp;KPI
+          <el-button type="primary" @click="dialogFormVisible1 = true"><i class="el-icon-bell"></i>&nbsp;&nbsp;KPI
           </el-button>
           <el-dialog title="KPI" width="65%" top="0" :visible.sync="dialogFormVisible1"
                      :close-on-click-modal="false" :close-on-press-escape="false">

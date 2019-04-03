@@ -15,7 +15,7 @@ $--color-transition-base: color .2s cubic-bezier(.645,.045,.355,1) !default;
 /* Color
 -------------------------- */
 /// color|[主题色,primary color,color primario]|BrandColor|0
-$--color-primary:#363839 !default;
+$--color-primary:#f6a821 !default;
 ///Popover 弹出框  el-select-dropdown el-input__inner .el-button.is-plain(朴素按钮 el-form-item__content)
 /// color|[基础白色,basic white,basic white]|BackgroundColor|4
 $--color-white: #fff !default;
@@ -34,9 +34,9 @@ $--color-primary-light-9: mix($--color-white, $--color-primary, 90%) !default; /
 ///tag,button el-message el-progress steps(步骤条) el-form notification（通知）
 
 /// color|[成功颜色,success color,success color]|SecondaryColor|1
-$--color-success: #1bbf89 !default;
+$--color-success: #0f83c9 !default;
 /// color|[警告颜色,warning color,warning color]|SecondaryColor|1
-$--color-warning: #f7af3e!default;
+$--color-warning: pink!default;
 /// color|[危险颜色,danger color,danger color]|SecondaryColor|1
 $--color-danger: #db524b !default;
 /// color|[信息颜色,info color,info color]|SecondaryColor|1
@@ -492,7 +492,7 @@ $--button-disabled-background-color: #5b5e69 !default;
 $--button-disabled-border-color: $--border-color-lighter !default;
 
 /// color|[]|Color|0
-$--button-primary-border-color: #0f83c9 !default;
+$--button-primary-border-color: $--color-primary !default;
 /// color|[]|Color|0
 $--button-primary-font-color: $--color-white !default;
 /// color|[]|Color|0
@@ -560,7 +560,7 @@ $--table-border-color:#242424  !default;
 $--table-border: 1px solid  transparent !default;
 $--table-text-color: $--color-white !default;
 $--table-header-color: $--color-white !default;
-$--table-row-hover-background: $--color-primary-light-3 !default;
+$--table-row-hover-background: #767676 !default;
 $--table-current-row-background: transparent !default;
 $--table-header-background: #000 !default;
 $--table-footer-background: transparent !default;
@@ -638,7 +638,7 @@ $--tree-expand-icon-color: $--color-white !default;
 /* Dropdown
 -------------------------- */
 $--dropdown-menu-box-shadow: $--box-shadow-light !default;
-$--dropdown-menuItem-hover-fill: $--color-primary-light-9 !default;
+$--dropdown-menuItem-hover-fill: #767676 !default;
 $--dropdown-menuItem-hover-color: $--link-color !default;
 
 /* Badge
