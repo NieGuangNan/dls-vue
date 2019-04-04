@@ -541,7 +541,9 @@
     width: 20%;
     margin: 5px 20px;
   }
-
+.topBar{
+  margin: -1rem -8px -0.5rem;
+}
 
 
 </style>

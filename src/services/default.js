@@ -348,22 +348,33 @@ export default {
       "avatar": "http://dummyimage.com/100x100/79f2c2/757575.png&text=B"
     }], total: 99
   },
-  menuList: [{
-    "id": 1,
+  menuList: [ {
+    "id": 2,
     "access":['admin','developer'],
     "parentId": null,
     "sort": 0,
+    "name": "message.menu.home",
+    "href": "/home",
+    "icon": "fa fa-home",
+    "children": [],
+    "isShow": "0",
+
+  },{
+    "id": 1,
+    "access":['admin','developer'],
+    "parentId": null,
+    "sort": 1,
     "name": "message.menu.dashboard",
     "href": "/",
     "icon": "fa fa-dashboard",
     "children": [],
     "isShow": "0",
 
-  }, {
+  },{
     "id": 31,
     "access":['admin','developer'],
     "parentId": null,
-    "sort": 1,
+    "sort": 2,
     "name": "message.menu.menu1.name",
     "href": "/test/1",
     "icon": "fa fa-upload",

@@ -9,6 +9,7 @@ const en = {
     },
     menu:{
       dashboard:'DashBoard',
+      home:'Home',
       menu1:{
         name:'Test1',
         items:{

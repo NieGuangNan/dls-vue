@@ -5,6 +5,7 @@ html{
 .content-scrollbar{
   background:#1c1d1e;
   border-radius: 5px;
+  border-right:13px solid #333;
 }
 /*背景色设置*/
 .bg-dark{
@@ -26,10 +27,21 @@ html{
 /*字体颜色设置*/
 
 .text-white{
-  color:#fff;
+  color:#fff !important;
 }
 .text-black{
   color:#000!important;
+}
+.text-primary{
+  color:#f8a621 !important;
+}
+/*图标设置*/
+
+.fas:before{
+  font-weight: 900 !important;
+}
+.fal:before{
+  font-weight: 300 !important;
 }
 /*header样式*/
 
@@ -198,7 +210,10 @@ html{
 }
 /*按钮*/
 .el-button{
-  padding:12px 10px!important; ;
+  padding:11px 10px!important; ;
+}
+.el-button:before{
+  padding-right: 6px;
 }
 
 .el-button:focus,.el-button:hover{
@@ -277,9 +292,9 @@ html{
   border-bottom: 1vmin solid #333;
 }
 
-/*topBar页面样式*/
+/*topBar样式*/
 .topBar{
-  margin: -1rem -8px 5px;
+  margin: -1rem 0 -0.5rem;
   background:#101010;
   padding: 0.8rem 0.5rem;
 }
@@ -370,9 +385,4 @@ margin: 0 auto;
 
 }
 
-.fas:before{
-  font-weight: 900 !important;
-}
-.fal:before{
-  font-weight: 300 !important;
-}
+

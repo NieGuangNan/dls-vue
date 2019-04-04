@@ -21,6 +21,7 @@ import treeTable from "pages/table/treeTable";
 import mixedChart from "pages/charts/mixedChart.vue"
 import demo1 from "pages/test/demo1.vue"
 import demo2 from "pages/test/demo2.vue"
+import home from "pages/home.vue"
 import defaultValue from "@/services/default"
 
 import {setCookie, getCookie, delCookie} from '@/common/utils';
@@ -56,6 +57,7 @@ const routes =[
   },
   {
     path: '', component: app,permission:['admin','developer'], children: [
+      {path: '/home', component: home,permission:['admin','developer']},
       {path: '/resetPwd', component: resetPwd,permission:['admin','developer']},
       {path: '/', component: dashboard,permission:['admin','developer']},
       {path: '/sys/menuList', component: menuList,permission:['admin']},

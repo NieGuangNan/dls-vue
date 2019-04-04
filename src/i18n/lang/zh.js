@@ -9,6 +9,7 @@ const zh = {
     },
     menu:{
       dashboard:'仪表盘',
+      home:'首页',
       menu1:{
         name:'测试1',
         items:{
