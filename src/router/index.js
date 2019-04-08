@@ -22,6 +22,7 @@ import mixedChart from "pages/charts/mixedChart.vue"
 import demo1 from "pages/test/demo1.vue"
 import demo2 from "pages/test/demo2.vue"
 import home from "pages/home.vue"
+import barCharts from "pages/charts/barCharts"
 import defaultValue from "@/services/default"
 
 import {setCookie, getCookie, delCookie} from '@/common/utils';
@@ -50,6 +51,10 @@ const routes =[
       {
         path: '/test/2/3',
         component: demo2,
+        permission: ['admin', 'developer']
+      },{
+        path: '/test/2/4',
+        component: barCharts,
         permission: ['admin', 'developer']
       },
       {path: '*', component: NotFoundView,permission:['admin','developer']}

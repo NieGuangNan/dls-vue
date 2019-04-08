@@ -29,7 +29,7 @@ const store = new Vuex.Store({
     loading: false,
     menuList: {},
     routeList:{},
-    themecolor: getLocalKey('state.themecolor', '#fff'),//默认为409EFF
+    themecolor: getLocalKey('state.themecolor', 'dark'),//默认为409EFF
     sidebar: {
       collapsed: getSessionKey('state.sidebar.collapsed', 'false') === 'true',
       show: getSessionKey('state.sidebar.show', 'true') === 'true',
@@ -46,8 +46,10 @@ const store = new Vuex.Store({
     //更新主题颜色
     setThemeColor(state, curcolor) {
       // addTheme(curcolor);
+      // VueCookies.set("state.themecolor", curcolor);
+      // state.themecolor=VueCookies.get('state.themecolor','dark');
       localStorage.setItem("state.themecolor", curcolor);
-      state.themecolor = getLocalKey('state.themecolor', '#fff');
+       state.themecolor = getLocalKey('state.themecolor', 'dark');
     },
     //只能同步的函数
     // 使用常量替代 Mutation 事件类型

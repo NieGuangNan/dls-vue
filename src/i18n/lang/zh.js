@@ -34,7 +34,13 @@ const zh = {
           },
           item2:{
             name:'混合图表'
-          }
+          },
+          item3:{
+            name:'甜甜圈'
+          },
+          item4:{
+            name:'堆叠图'
+          },
         }
       },
       menu3:{

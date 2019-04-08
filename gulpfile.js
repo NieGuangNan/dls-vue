@@ -10,5 +10,5 @@ gulp.task('css-wrap', function () {
       selector: '' /* 添加的命名空间 */
     }))
     .pipe(cleanCSS())
-    .pipe(gulp.dest('src/assets/css/theme/aaa')) /* 存放的目录 */
+    .pipe(gulp.dest('src/assets/css/theme/white')) /* 存放的目录 */
 });

@@ -1,10 +1,10 @@
- import(`@/assets/css/theme/${window.localStorage.getItem('state.themecolor') ? window.localStorage.getItem('state.themecolor') : 'aaa'}/index.css`);
+import(`@/assets/css/theme/${window.localStorage.getItem('state.themecolor') ? window.localStorage.getItem('state.themecolor') : 'dark'}/index.css`);
 import 'babel-polyfill'
 import Vue from "vue";
 // function switchTheme(themeName) {
 //   import(`@/assets/css/theme/${themeName}/index.css`)
 // }
-// switchTheme('aaa');
+// switchTheme('dark');
 import frame from "./frame.vue";
 import router from "./router";
 import store from "./store";
@@ -26,7 +26,7 @@ Vue.use(VueCookies);
  Vue.use(vueScroll);
  import "@fortawesome/fontawesome-pro/css/all.css"
  import 'element-ui/lib/theme-chalk/base.css';
- // collapse 展开折叠
+ // collapse 展开折叠过渡动画
  import CollapseTransition from 'element-ui/lib/transitions/collapse-transition';
  Vue.component(CollapseTransition.name, CollapseTransition);
 

@@ -36,8 +36,8 @@
                 <el-radio class="radio" v-model="form.isShow" label="0">不显示</el-radio>
               </el-form-item>
               <el-form-item label="图标" :label-width="formLabelWidth">
-                <i :class="form.icon "  v-model="form.icon" style="color:#f8a621"></i>
-                <el-button type="text" @click="selectIconDialog=true" style="color:#f8a621">选择</el-button>
+                <i :class="form.icon "  v-model="form.icon" class="text-primary"></i>
+                <el-button type="text" @click="selectIconDialog=true" class="text-primary">选择</el-button>
               </el-form-item>
               <el-form-item label="排序" :label-width="formLabelWidth">
                 <el-slider v-model="form.sort"></el-slider>

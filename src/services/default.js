@@ -453,8 +453,18 @@ export default {
       "access":['admin','developer'],
       "parentId": 102,
       "sort": 0,
-      "name": "message.menu.menu2.items.item2.name",
+      "name": "message.menu.menu2.items.item3.name",
       "href": "/test/2/3",
+      "icon": "fa fa-image",
+      "children": [],
+      "isShow": "1"
+    },{
+      "id": 106,
+      "access":['admin','developer'],
+      "parentId": 102,
+      "sort": 0,
+      "name": "message.menu.menu2.items.item4.name",
+      "href": "/test/2/4",
       "icon": "fa fa-image",
       "children": [],
       "isShow": "1"

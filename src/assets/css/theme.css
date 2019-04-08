@@ -1,11 +1,11 @@
 
 html{
-  background-color: #363839;
+  background-color: #fff;
 }
 .content-scrollbar{
-  background:#1c1d1e;
+  background:#fff;
   border-radius: 5px;
-  border-right:13px solid #333;
+  /*border-right:13px solid #333;*/
 }
 /*背景色设置*/
 .bg-dark{
@@ -33,7 +33,7 @@ html{
   color:#000!important;
 }
 .text-primary{
-  color:#f8a621 !important;
+  color:#1ab394 !important;
 }
 /*图标设置*/
 
@@ -47,14 +47,14 @@ html{
 
 .el-dropdown-menu .header-pic p,
 .el-dropdown ,.main-header a[data-v-cea13f84]{
-  color:#fff !important;
+  color:#1ab394 !important;
 }
 
 .main-header.closeLogo .sidebar-toggle[data-v-cea13f84],
 .main-header .navbar .sidebar-toggle[data-v-cea13f84]:hover,
 .navbar-custom-menu .el-dropdown-link[data-v-cea13f84]:hover
 {
-  background:#444444 !important;
+  background:#eee !important;
 }
 .el-dropdown-menu .header-pic,
 .navbar-custom-menu .el-dropdown-link img{
@@ -66,10 +66,10 @@ html{
   background: #f9f9f9;
 }
 .message-list li a{
-  color: #fff;
+  color: #1ab394;
 }
 .message-list li:hover{
-  background-color: #f8a621;
+  background-color: #ddd;
   /*color:#fff;*/
 }
 .el-dropdown-menu .header-pic img{
@@ -81,16 +81,19 @@ html{
 }
 
 .el-dropdown-menu.el-popper{
-  background: #444444;
+  background: #fff;
 }
 .el-dropdown-menu .header-pic{
-  background: #1c1d1e;
+  background: #fff;
 }
 .el-dropdown-menu .pull-left,.el-dropdown-menu .pull-right{
-  background: #333;
+  background: #aaa;
 }
 .el-breadcrumb__inner{
-  color:#fff !important;
+  color:#1ab394 !important;
+}
+.el-dropdown-menu__item.is-disabled{
+  color:#ddd!important;
 }
 
 
@@ -99,7 +102,7 @@ html{
 .el-menu-item.is-active,
 .el-menu-sub.is-opened > .el-submenu__title i,
 .el-menu-sub.is-opened > .el-submenu__title{
-  color:orange!important;
+  color:#1ab394!important;
 }
 .el-menu-item,.el-submenu__title{
   color:#fff
@@ -108,13 +111,14 @@ html{
 .el-menu-style,
 .el-menu-style .el-menu,
 .vue-scrollbar{
-  background-color: #1f2021 !important;
+  background-color: #2f4050 !important;
 
 
 }
-.main-sidebar.animated.showSlide.expandSide{
-  border-right: 8px solid #333;
-}
+/*.main-sidebar.animated.showSlide.expandSide{*/
+  /*border-right: 8px solid #fff;*/
+/*}*/
+
 
 /*footer样式*/
 .main-footer {
@@ -192,18 +196,17 @@ html{
 .el-table--border,
 .el-table--group,.el-table,.el-table tr,
 .el-table td, .el-table th.is-leaf{
-  border-bottom:1px solid #484c5a !important;
+  border-bottom:1px solid #e7eaec !important;
 }
 .el-select-dropdown__item.selected.hover{
-  color:#fff;
+  color:#000;
 }
-
 
 .el-input__inner:hover{
-  color:#fff!important;
+  color:#000!important;
 }
 .el-input.el-input--suffix,.el-input__inner{
-  color:#e0e0e3!important;
+  color:#000!important;
 }
 .el-table__expand-icon{
   color:#fff!important;
@@ -216,24 +219,6 @@ html{
   padding-right: 6px;
 }
 
-.el-button:focus,.el-button:hover{
-  color:#fff !important;
-}
-.el-button--default:focus, .el-button--default:hover{
-  background: #3b3b40 !important;
-  border:1px solid #616779 !important;
-
-}
-.el-button--primary:focus, .el-button--primary:hover
-{
-  background:rgba(246, 168, 33, 0.1) !important;
-}
-.el-button--success:focus, .el-button--success:hover{
-  background-color: rgba(15, 131, 201, 0.1) !important;
-}
-.el-button--danger:focus, .el-button--danger:hover{
-  background-color: rgba(219, 82, 75, 0.1) !important;
-}
 
   /*树形控件，去除父级的复选框*/
 .el-tree .is-disabled{
@@ -277,47 +262,50 @@ html{
   border-top: 1px solid #f4f4f4;
   background-color: transparent;
 }
-.el-form-item__label{
-  color:#fff !important;
-}
+
 .el-dropdown-menu{
   border:none !important;
 }
-
 
 /*demo1页面样式*/
 
 
 .bottom{
-  border-bottom: 1vmin solid #333;
+  border-bottom: 1vmin solid #eee;
+}
+.right{
+  border-right: 1vmin solid #eee;
 }
 
 /*topBar样式*/
 .topBar{
   margin: -1rem 0 -0.5rem;
-  background:#101010;
+  background:#fff;
   padding: 0.8rem 0.5rem;
 }
 
 .el-dialog{
-  background:#262629 !important;
+  background:#fff !important;
 }
 .el-dialog__title{
-  color:#fff!important;
+  color:#333!important;
 }
 .el-dialog__body{
-background:#2f2f33 ;
+background:#f8fafb ;
 margin: 0 auto;
 }
+.el-input__inner:focus{
+  border-color:#eee!important;
+}
+/*demo2*/
 .grid-content {
-  background: #3b3b40;
+  background: #fff;
 }
 
 #buttonGroup .el-button--primary,
 #buttonGroup .el-button--primary:hover{
   border-color:transparent !important;
-  background:#a5abb0 !important;
-  color: #000 !important;
+  color: #fff !important;
 }
 
 
@@ -386,11 +374,11 @@ margin: 0 auto;
 }
 /*home页面*/
 #home .box-wrap{
-  border-bottom:8px solid #333333;
+  border-bottom:8px solid #eee;
 }
 
 #home .box-title>span{
-  background: black;
+  background: #ddd;
 }
 
 #home .app-box{

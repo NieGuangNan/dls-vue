@@ -23,8 +23,8 @@
       <div class="navbar-custom-menu">
         <template>
           <el-radio-group v-model="themecolor">
-            <el-radio label="aaa">备选项1</el-radio>
-            <el-radio label="409eff">备选项2</el-radio>
+            <el-radio label="dark">备选项1</el-radio>
+            <el-radio label="white">备选项2</el-radio>
           </el-radio-group>
         </template>
         <el-dropdown trigger="click" class="navbar-dropdown">

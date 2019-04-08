@@ -7,7 +7,7 @@
       </el-col>
     </el-row>
     <el-row>
-      <el-col :span="12" style="border-right: 1vmin solid #333;">
+      <el-col :span="12" class="right">
         <el-row>
           <el-col :span="6" :offset="1">
             <div class="ibox" >
@@ -209,21 +209,10 @@
     tooltip: {},
     xAxis: {
       data: ["03-12", "03-13", "03-14", "03-15", "03-16", "03-17", "03-18", "03-19"],
-      axisLine:{
-        lineStyle:{
-          color:'#fff',
-        }
-      }
     },
     yAxis: {
       name:'炼钢总产量（吨）',
       interval:'20000',
-      axisLine:{
-        lineStyle:{
-          color:'#fff',
-
-        }
-      },
       splitLine:{
         lineStyle:{
           type:'dashed'
@@ -236,10 +225,6 @@
       right:'1%',
       top:'1%',
       icon:"circle",
-      textStyle:{
-        color:'#fff'
-      }
-
     },
     series: [{
       name: '基准',
@@ -247,7 +232,6 @@
       type: 'bar',
       label:{
         show:true,
-        color:'#fff',
         position:'top',
       },
       data: [19515, 19511, 0, 0, 37675, 18562,0,0]
@@ -262,20 +246,10 @@
     tooltip: {},
     xAxis: {
       data: ["总时间", "计划停机", "非计划停机", "实际作业时间", "速度损失", "质量损失", "有效作业时间"],
-      axisLine:{
-        lineStyle:{
-          color:'#fff',
-        }
-      }
     },
     yAxis: {
       max:'4000',
       Interval:'1000',
-      axisLine:{
-        lineStyle:{
-          color:'#fff',
-        }
-      },
       splitLine:{
        lineStyle:{
          type:'dashed'
@@ -285,11 +259,11 @@
     },
     series: [{
 
-      // color: 'rgb(99,179,226)',
+       color: 'rgb(99,179,226)',
       type: 'bar',
       label:{
         show:true,
-        color:'#fff',
+        // color:'#fff',
       },
       data: [2880, 0, 0,2806, 2805, 0,0],
       itemStyle:{

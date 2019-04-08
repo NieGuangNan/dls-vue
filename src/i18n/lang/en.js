@@ -34,7 +34,13 @@ const en = {
           },
           item2:{
             name:'MixedGraph'
-          }
+          },
+          item3:{
+            name:'Gauge'
+          },
+          item4:{
+            name:'PileBar'
+          },
         }
       },
       menu3:{

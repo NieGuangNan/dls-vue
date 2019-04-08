@@ -11,22 +11,13 @@
   import echarts from '@/components/echarts'
 
   const option = {
-    title: {text: '在Vue中使用echarts',textStyle: {color:'#fff'}},
+    title: {text: '在Vue中使用echarts',
+      },
     tooltip: {},
     xAxis: {
       data: ["数据1", "数据2", "数据3", "数据4", "数据5", "数据6"],
-      axisLine:{
-        lineStyle:{
-          color:'#fff',
-        }
-      }
     },
     yAxis: {
-      axisLine:{
-        lineStyle:{
-          color:'#fff',
-        }
-      },
       splitLine:{
         lineStyle:{
           type:'dashed'
@@ -37,49 +28,32 @@
       show: true,
       right:'1%',
       top:'1%',
-      textStyle:{
-        color:'#fff'
-      }
     },
     series: [{
       name: '销量',
-      color: 'pink',
       type: 'bar',
       label:{
         show:true,
-        color:'#fff',
         position:'top',
       },
       data: [5, 20, 36, 10, 10, 20]
     }, {
       name: '好评数',
       type: 'line',
-      color: 'orange',
       label:{
         show:true,
-        color:'#fff',
         position:'top',
       },
       data: [8, 20, 39, 14, 20, 25]
     }]
   };
   const option1 = {
-    title: {text: '在Vue中使用echarts',textStyle: {color:'#fff'}},
+    title: {text: '在Vue中使用echarts'},
     tooltip: {},
     xAxis: {
       data: ["数据1", "数据2", "数据3", "数据4", "数据5", "数据6"],
-      axisLine:{
-        lineStyle:{
-          color:'#fff',
-        }
-      }
     },
     yAxis: {
-      axisLine:{
-        lineStyle:{
-          color:'#fff',
-        }
-      },
       splitLine:{
         lineStyle:{
           type:'dashed'
@@ -91,21 +65,17 @@
     },
     series: [{
       name: '销量666',
-      color: 'pink',
       type: 'bar',
       label:{
         show:true,
-        color:'#fff',
         position:'top',
       },
       data: [5, 2, 36, 10, 10, 20]
     }, {
       name: '好评数',
       type: 'line',
-      color: 'orange',
       label:{
         show:true,
-        color:'#fff',
         position:'top',
       },
       data: [8, 2, 39, 14, 20, 25]
