@@ -18,38 +18,42 @@
              收藏
         </span>
       </el-row>
-      <el-row class="box-content" >
-        <template v-for="item of collection" v-if="show">
-          <div class="app-box"  >
-            <i class="fas fa-star text-primary"></i>
-            <div class="app-content">
-              <i :class="item.centerIcon"></i>
-              <div>{{item.title}}</div>
-            </div>
-          </div>
-        </template>
-      </el-row>
-    </el-row>
-    <template v-for="item of appData">
-      <el-row  class="box-wrap">
-        <el-row class="box-title">
-        <span class=" text-primary" @click="toggleOnOff(item.id)">
-          <i  :class="item.show?'fa fa-chevron-down':'fa fa-chevron-up'"></i>
-            {{item.title}}
-        </span>
-        </el-row>
-        <el-row class="box-content" v-if="item.show">
-          <template v-for="child of item.content">
-            <div class="app-box" :class="{disabled:child.disabled}" >
-              <i :class="{'fal fa-star':!child.disabled}" @click="stars($event,item.id)"></i>
+      <el-collapse-transition>
+        <el-row class="box-content" v-if="show">
+          <template v-for="item of collection" >
+            <div class="app-box"  >
+              <i class="fas fa-star text-primary"></i>
               <div class="app-content">
-                <i :class="child.centerIcon"></i>
-                <div>{{child.title}}</div>
+                <i :class="item.centerIcon"></i>
+                <div>{{item.title}}</div>
               </div>
             </div>
           </template>
         </el-row>
-      </el-row>
+      </el-collapse-transition>
+    </el-row>
+    <template v-for="item of appData">
+        <el-row  class="box-wrap">
+          <el-row class="box-title">
+          <span class=" text-primary" @click="toggleOnOff(item.id)">
+            <i  :class="item.show?'fa fa-chevron-down':'fa fa-chevron-up'"></i>
+              {{item.title}}
+          </span>
+          </el-row>
+          <el-collapse-transition>
+              <el-row class="box-content" v-if="item.show">
+              <template v-for="child of item.content">
+                <div class="app-box" :class="{disabled:child.disabled}" >
+                  <i :class="{'fal fa-star':!child.disabled}" @click="stars($event,item.id)"></i>
+                  <div class="app-content">
+                    <i :class="child.centerIcon"></i>
+                    <div>{{child.title}}</div>
+                  </div>
+                </div>
+              </template>
+            </el-row>
+         </el-collapse-transition>
+        </el-row>
     </template>
 
   </div>
@@ -57,6 +61,8 @@
 </template>
 
 <script>
+  import CollapseTransition from 'element-ui/lib/transitions/collapse-transition'
+
 
   const appData=[
     {
@@ -228,6 +234,7 @@
 
           }
         },
+      comments:{CollapseTransition},
       methods:{
         toggleOnOff(id){
           for(let item of this.appData ){
@@ -239,20 +246,22 @@
           if (ev.target.className==='fas fa-star text-primary'){
               ev.target.className='fal fa-star';
             for(let item of this.collection ){
-                if(ev.target.parentNode.innerText===item.title){
-                  let num =_this.collection.indexOf(item);
-                  _this.collection.splice(num,1);
-                }
+              ev.target.parentNode.innerText===item.title?_this.collection.splice(_this.collection.indexOf(item),1):'';
+                // if(ev.target.parentNode.innerText===item.title){
+                //   let num =_this.collection.indexOf(item);
+                //   _this.collection.splice(num,1);
+                // }
             }
 
           }else{
             ev.target.className='fas fa-star text-primary';
             for(let item of this.appData ){
               for (let child of item.content){
-                if(item.id===id && ev.target.parentNode.innerText===child.title){
-                  _this.collection.push(child);
-                  console.log(_this.collection);
-                }
+                item.id===id && ev.target.parentNode.innerText===child.title?_this.collection.push(child):'';
+                // if(item.id===id && ev.target.parentNode.innerText===child.title){
+                //   _this.collection.push(child);
+                //   console.log(_this.collection);
+                // }
               }
 
             }

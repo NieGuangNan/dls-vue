@@ -24,8 +24,11 @@ Vue.use(VueCookies);
  import vueScroll from 'vuescroll';
  import 'vuescroll/dist/vuescroll.css';
  Vue.use(vueScroll);
-
  import "@fortawesome/fontawesome-pro/css/all.css"
+ import 'element-ui/lib/theme-chalk/base.css';
+ // collapse 展开折叠
+ import CollapseTransition from 'element-ui/lib/transitions/collapse-transition';
+ Vue.component(CollapseTransition.name, CollapseTransition);
 
 
 
@@ -34,6 +37,7 @@ Vue.prototype.$http = axios;
 Vue.axios = axios;
 Vue.http = axios;
 Vue.use(axios);
+
 Vue.prototype.$cookieStore = {
   setCookie,
   getCookie,
