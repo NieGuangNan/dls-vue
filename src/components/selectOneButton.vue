@@ -1,7 +1,7 @@
 <template>
   <div id="buttonGroup">
     <el-button-group>
-      <el-button v-for="item in data.options" :type="data.value === item.value ? 'primary' : 'default'"
+      <el-button v-for="item in data.options" :key="item.value" :type="data.value === item.value ? 'primary' : 'default'"
                  @click="onchange(item.value)"
                  :icon="item.icon">{{item.label}}
       </el-button>

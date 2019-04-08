@@ -98,7 +98,7 @@
       </el-form>
     </el-row>
     <el-row :gutter="10">
-      <el-col :span="6" v-for="item in items">
+      <el-col :span="6" v-for="item in items" :key="item.id">
         <div class="grid-content">
           <div>1
             <el-select v-model="item.value" placeholder="请选择" @change="select(item.id,item.value)">
