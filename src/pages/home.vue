@@ -61,8 +61,6 @@
 </template>
 
 <script>
-  import CollapseTransition from 'element-ui/lib/transitions/collapse-transition'
-
 
   const appData=[
     {
@@ -234,7 +232,6 @@
 
           }
         },
-      comments:{CollapseTransition},
       methods:{
         toggleOnOff(id){
           for(let item of this.appData ){
@@ -247,10 +244,6 @@
               ev.target.className='fal fa-star';
             for(let item of this.collection ){
               ev.target.parentNode.innerText===item.title?_this.collection.splice(_this.collection.indexOf(item),1):'';
-                // if(ev.target.parentNode.innerText===item.title){
-                //   let num =_this.collection.indexOf(item);
-                //   _this.collection.splice(num,1);
-                // }
             }
 
           }else{
@@ -258,10 +251,6 @@
             for(let item of this.appData ){
               for (let child of item.content){
                 item.id===id && ev.target.parentNode.innerText===child.title?_this.collection.push(child):'';
-                // if(item.id===id && ev.target.parentNode.innerText===child.title){
-                //   _this.collection.push(child);
-                //   console.log(_this.collection);
-                // }
               }
 
             }
@@ -273,29 +262,26 @@
 </script>
 
 <style scoped>
-  .box-wrap{
+.box-wrap{
     height:30%;
-    border-bottom:8px solid #333333;
   }
 
-  .box-title{
+.box-title{
     padding: 0.5rem 1rem;
   }
-  .box-title>span{
+.box-title>span{
     display: inline-block;
     font-size: 1.1rem;
     line-height: 25px;
-    background: black;
     border-radius: 20px;
     padding: 0 0.5rem;
     cursor: pointer;
   }
-  .box-content{
+.box-content{
     margin: 8px;
     display: flex;
   }
-
-  .app-box{
+ .app-box{
     width: calc(12.5vw - 45px);
     height: calc(12.5vw - 45px);
     padding: 10px;
@@ -303,48 +289,29 @@
     margin-left:8px;
     position: relative;
     cursor: pointer;
-    border: 2px solid #363839;
-    color: #fff;
     border-radius: 5px;
     transition: all .3s ease-in-out;
-    background: #101010;
+
 
   }
-  .app-box .fa-star {
+  #home .app-box .fa-star {
     font-size: 1vw;
     margin: 5px;
     position: absolute;
     top: 0;
     right: 0;
-    color: rgb(103, 106, 108);
   }
-
 
   .app-content i {
     font-size: 3vw;
-    color: #fff;
     margin:1.8vw 0 0.6vw;
   }
   .app-content>div{
     font-weight: 500;
   }
-  .disabled {
-     background: #363839!important;
-     border: 2px solid #363839 !important;
-   }
 
   .disabled, .disabled .app-content i {
-    color: #999999 !important;
     pointer-events: none;
-  }
-  .app-box:hover {
-    background: #101010;
-    box-shadow: 0 0 8px 0 #949596;
-    border: 2px solid #f6a821;
-    color: #f6a821;
-  }
-  .app-box:hover i {
-    color: #f6a821;
   }
   .el-form-item{
     margin-bottom: 0!important;

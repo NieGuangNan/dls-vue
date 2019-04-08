@@ -384,5 +384,45 @@ margin: 0 auto;
   border: 1px solid #fff;
 
 }
+/*home页面*/
+#home .box-wrap{
+  border-bottom:8px solid #333333;
+}
 
+#home .box-title>span{
+  background: black;
+}
+
+#home .app-box{
+
+  border: 2px solid #363839;
+  color: #fff;
+  background: #101010;
+}
+#home .app-box .fa-star {
+
+  color: rgb(103, 106, 108);
+}
+
+#home .app-content i {
+  color: #fff;
+
+}
+#home .disabled {
+  background: #363839!important;
+  border: 2px solid #363839 !important;
+}
+
+#home .disabled, #home .disabled .app-content i {
+  color: #999999 !important;
+}
+#home .app-box:hover {
+  background: #101010;
+  box-shadow: 0 0 8px 0 #949596;
+  border: 2px solid #f6a821;
+  color: #f6a821;
+}
+#home .app-box:hover i {
+  color: #f6a821;
+}
 

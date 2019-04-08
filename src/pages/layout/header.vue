@@ -1,7 +1,7 @@
 <template>
   <header class="main-header animated" :class="{closeLogo:sidebar.collapsed,mobileLogo:device.isMobile}">
     <a href="#" class="logo">
-      <span class="logo-lg"><i class="fa fa-diamond"></i>&nbsp;
+      <span class="logo-lg"><i class="fa fa-gem"></i>&nbsp;
         <b>Vue-Admin</b>
       </span>
     </a>
