@@ -3,17 +3,15 @@
 </template>
 
 <script>
-  VueCookies.get('themeColor') ? import(`@/assets/eCharts/theme/${VueCookies.get('themeColor')}/index.js`) : '';
   import echarts from 'echarts'
-  import 'echarts/theme/dark.js'
-  import {getLocalKey} from "common/utils";
-  import VueCookies from "vue-cookies/vue-cookies"
+  import * as api from "../api";
 
   export default {
     name: "echartTemplate",
     data() {
+      const themeColor = this.$cookies.isKey('themeColor') ? this.$cookies.get('themeColor') : api.THEME_COLOR;
       return {
-        theme:this.$cookies.get('themeColor') ? 'index' : '',
+        themeColor: themeColor
       }
     },
     props: {
@@ -39,28 +37,36 @@
       option: function () {
         this.drawLine()
       },
-      alterOp:function () {
+      alterOp: function () {
         this.drawLine()
-      }
+      },
     },
     beforeMount() {
-      window.addEventListener('resize', ()=>{this.resize()});
+      window.addEventListener('resize', () => {
+        this.resize()
+      });
     },
     methods: {
       drawLine() {
-        // 基于准备好的dom，初始化echarts实例
-        let myChart = echarts.init(this.$refs.eChart, this.theme);
-        // 绘制图表
-        myChart.setOption(this.option);
-        this.alterOption ? myChart.setOption(this.alterOption) : '';
+
+        this.$http.get(`/static/theme/eCharts/theme/${this.themeColor}/index.json`).then(res => {
+          echarts.registerTheme('index', res.data);
+          let myChart = echarts.init(this.$refs.eChart, 'index');
+          // 绘制图表
+          myChart.setOption(this.option);
+          this.alterOption ? myChart.setOption(this.alterOption) : '';
+        });
       },
-      resize(){
-        // 基于准备好的dom，初始化echarts实例
-        let myChart = echarts.init(this.$refs.eChart, this.theme);
-        // 绘制图表
-        myChart.setOption(this.option);
-        this.alterOption ? myChart.setOption(this.alterOption) : '';
-        myChart.resize();
+      resize() {
+        this.$http.get(`/static/theme/eCharts/theme/${this.themeColor}/index.json`).then(res => {
+          echarts.registerTheme('index', res.data);
+          let myChart = echarts.init(this.$refs.eChart, 'index');
+          // 绘制图表
+          myChart.setOption(this.option);
+          this.alterOption ? myChart.setOption(this.alterOption) : '';
+          myChart.resize();
+        });
+
       }
     }
   }

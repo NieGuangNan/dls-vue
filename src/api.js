@@ -44,3 +44,5 @@ export const SYS_SET_USER_ROLE = CONTEXT + '/sys/user/setRoles';
 export const MSG_TOP_TEN = CONTEXT + '/messageList';
 export const TEST_DATA = CONTEXT + '/static/data/data.json';
 
+export const THEME_COLOR = 'dark';
+

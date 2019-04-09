@@ -4,7 +4,7 @@
     <imp-header></imp-header>
     <side-menu></side-menu>
     <div class="content-wrapper" :class="{ slideCollapse: sidebar.collapsed,mobileSide:device.isMobile}">
-      <el-scrollbar tag="div" wrap-class="content-scrollbar" >
+      <el-scrollbar tag="div" wrap-class="content-scrollbar">
         <section class="content">
           <transition mode="out-in" enter-active-class="fadeIn" leave-active-class="fadeOut" appear>
             <router-view :bodyHeight="$root.bodyHeight" v-if="isRouterAlive"></router-view>
@@ -60,7 +60,7 @@
     methods: {
       setLanguage() {
         let language = this.$cookies.get("user-info") && this.$cookies.get("user-info").language ? this.$cookies.get("user-info").language : 'zh';
-        this.$i18n.locale =this.$cookies.get('locale')?this.$cookies.get('locale'):language;
+        this.$i18n.locale = this.$cookies.get('locale') ? this.$cookies.get('locale') : language;
 
       },
       timer() {
@@ -172,7 +172,6 @@
 </script>
 
 <style>
-
   .animated {
     animation-duration: .2s;
   }
@@ -189,7 +188,7 @@
   }
 
   /*.content{*/
-    /*background-color: #1c1d1e;*/
+  /*background-color: #1c1d1e;*/
   /*}*/
   .content-wrapper {
     -webkit-transition: -webkit-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
@@ -224,19 +223,22 @@
   .content-wrapper.mobileSide {
     margin-left: 0px;
   }
-  .scrollbar-tree{
-    height:260px !important;
+
+  .scrollbar-tree {
+    height: 260px !important;
   }
+
   ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
 
   }
+
   /*滚动条的滑块*/
-    ::-webkit-scrollbar-thumb {
-      background-color: #656666;
-      border-radius: 5px;
-    }
+  ::-webkit-scrollbar-thumb {
+    background-color: #656666;
+    border-radius: 5px;
+  }
 
 
 </style>

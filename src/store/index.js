@@ -6,7 +6,6 @@ import * as api from "../api";
 import {getCurrentMenu, getSessionKey, getLocalKey, addTheme, getCookie} from '../common/utils'
 import VueCookies from "vue-cookies/vue-cookies"
 
-
 Vue.use(Vuex)
 
 
@@ -28,8 +27,8 @@ const store = new Vuex.Store({
   state: {
     loading: false,
     menuList: {},
-    routeList:{},
-    themeColor:VueCookies.get("themeColor")?VueCookies.get("themeColor"):'dark',
+    routeList: {},
+    themeColor: VueCookies.get("themeColor") ? VueCookies.get("themeColor") : api.THEME_COLOR,
     sidebar: {
       collapsed: getSessionKey('state.sidebar.collapsed', 'false') === 'true',
       show: getSessionKey('state.sidebar.show', 'true') === 'true',
@@ -38,7 +37,7 @@ const store = new Vuex.Store({
       isMobile: false
     },
     userInfo: VueCookies.get("user-info"),
-    currentMenus:JSON.parse(VueCookies.get("menu")),
+    currentMenus: JSON.parse(VueCookies.get("menu")),
   },
   // 每个 mutation 都有一个字符串的 事件类型 (type) 和 一个 回调函数 (handler)。
   // 这个回调函数就是我们实际进行状态更改的地方，并且它会接受 state 作为第一个参数：
@@ -46,7 +45,7 @@ const store = new Vuex.Store({
     //更新主题颜色
     setThemeColor(state, curColor) {
       VueCookies.set("themeColor", curColor);
-      state.themeColor=VueCookies.get('themeColor');
+      state.themeColor = VueCookies.get('themeColor');
     },
     //只能同步的函数
     // 使用常量替代 Mutation 事件类型

@@ -13,10 +13,10 @@
       <el-breadcrumb separator="/" style="margin-bottom: 20px;">
 
         <template v-if="!currentMenus||currentMenus.length===0">
-          <el-breadcrumb-item >{{$t('message.menu.dashboard')}}</el-breadcrumb-item>
+          <el-breadcrumb-item>{{$t('message.menu.dashboard')}}</el-breadcrumb-item>
         </template>
         <template v-for="child in currentMenus">
-          <el-breadcrumb-item >{{$t(child.name)}}</el-breadcrumb-item>
+          <el-breadcrumb-item>{{$t(child.name)}}</el-breadcrumb-item>
         </template>
 
       </el-breadcrumb>
@@ -128,12 +128,12 @@
       toggleLang(lang) {
         if (lang == 'zh') {
           this.$cookies.set('locale', 'zh');
-          this.$i18n.locale =this.$cookies.get('locale');
+          this.$i18n.locale = this.$cookies.get('locale');
           this.$message({
             message: '切换为中文！',
             type: 'success'
           })
-         // console.log(this.$i18n.locale);
+          // console.log(this.$i18n.locale);
         } else if (lang == 'en') {
           this.$cookies.set('locale', 'en');
           this.$i18n.locale = this.$cookies.get('locale');
@@ -201,14 +201,13 @@
         })
     },
     mounted() {
-
       this.$cookies.set('menu', JSON.stringify(this.currentMenus));
     },
     destroyed() {
       // document.removeEventListener('click', this.autoHide, false)
     },
-    watch:{
-      currentMenus(){
+    watch: {
+      currentMenus() {
 
         this.$cookies.set('menu', JSON.stringify(this.currentMenus));
         // console.log(this.$cookies.get('menu'))
@@ -240,7 +239,7 @@
     float: left;
     background-color: transparent;
     background-image: none;
-    padding:0 15px;
+    padding: 0 15px;
     font-family: fontAwesome;
     line-height: 40px;
   }
@@ -410,16 +409,14 @@
     display: inline-block;
 
   }
-  .el-breadcrumb{
-    float:left ;
+
+  .el-breadcrumb {
+    float: left;
     line-height: 40px;
     font-weight: bold;
-    margin: 0 !important; ;
+    margin: 0 !important;;
 
   }
-
-
-
 
 
 </style>
