@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <el-card>
     <el-table
       ref="multipleTable"
       :data="data"
@@ -18,7 +18,7 @@
       layout="total, prev, pager, next, jumper"
       :total="total">
     </el-pagination>
-  </div>
+  </el-card>
 </template>
 
 <script>

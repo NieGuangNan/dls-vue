@@ -98,7 +98,7 @@
       </el-form>
     </el-row>
     <el-row :gutter="10">
-      <el-col :span="6" v-for="item in items" :key="item.id">
+      <el-col :span="6" v-for="item in items" :key="item.value">
         <div class="grid-content">
           <div>1
             <el-select v-model="item.value" placeholder="请选择" @change="select(item.id,item.value)">
@@ -335,7 +335,7 @@
             value: '5',
             label: '名辰库区4'
           }],
-          value: '2',
+          value: '3',
           id: '0',
           data: {
             'color': 'yellow',
@@ -541,9 +541,7 @@
     width: 20%;
     margin: 5px 20px;
   }
-.topBar{
-  margin: -1rem -8px -0.5rem;
-}
+
 
 
 </style>

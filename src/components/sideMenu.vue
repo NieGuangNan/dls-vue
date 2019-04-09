@@ -114,10 +114,10 @@
 
   .main-sidebar {
     position: fixed;
-    top: 56px;
+    top: 40px;
     left: 0;
     bottom: 0;
-    height: calc(100vh - 50px);
+    height: calc(100vh - 40px);
     width: 44px;
     z-index: 810;
     -webkit-transition: -webkit-transform 0.3s ease-in-out, width 0.3s ease-in-out;

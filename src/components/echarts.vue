@@ -3,16 +3,17 @@
 </template>
 
 <script>
-  window.localStorage.getItem('state.themecolor') ? import(`@/assets/eCharts/theme/${window.localStorage.getItem('state.themecolor')}/index.js`) : '';
+  VueCookies.get('themeColor') ? import(`@/assets/eCharts/theme/${VueCookies.get('themeColor')}/index.js`) : '';
   import echarts from 'echarts'
   import 'echarts/theme/dark.js'
   import {getLocalKey} from "common/utils";
+  import VueCookies from "vue-cookies/vue-cookies"
 
   export default {
     name: "echartTemplate",
     data() {
       return {
-        theme:window.localStorage.getItem('state.themecolor') ? 'index' : '',
+        theme:this.$cookies.get('themeColor') ? 'index' : '',
       }
     },
     props: {

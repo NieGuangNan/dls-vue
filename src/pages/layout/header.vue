@@ -22,7 +22,7 @@
       </el-breadcrumb>
       <div class="navbar-custom-menu">
         <template>
-          <el-radio-group v-model="themecolor">
+          <el-radio-group v-model="themeColor">
             <el-radio label="dark">备选项1</el-radio>
             <el-radio label="white">备选项2</el-radio>
           </el-radio-group>
@@ -110,9 +110,9 @@
         device: 'device',
         currentMenus: 'currentMenus',
       }),
-      themecolor: {
+      themeColor: {
         get() {
-          return this.$store.state.themecolor;
+          return this.$store.state.themeColor;
         },
         set(val) {
           this.$store.commit('setThemeColor', val);
@@ -242,7 +242,7 @@
     background-image: none;
     padding:0 15px;
     font-family: fontAwesome;
-    line-height: 56px;
+    line-height: 40px;
   }
 
   .main-header .navbar .sidebar-toggle:before {
@@ -256,9 +256,9 @@
     transition: width 0.3s ease-in-out;
     display: block;
     float: left;
-    height: 56px;
+    height: 40px;
     font-size: 20px;
-    line-height: 56px;
+    line-height: 40px;
     text-align: center;
     width: 230px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -272,7 +272,7 @@
     display: block;
     height: 38px;
     line-height: 38px;
-    margin-top: 6px;
+    /*margin-top: 6px;*/
   }
 
   .main-header .navbar {
@@ -282,7 +282,7 @@
     margin-bottom: 0;
     margin-left: 230px;
     border: none;
-    min-height: 56px;
+    min-height: 40px;
     border-radius: 0;
   }
 
@@ -357,7 +357,7 @@
   .navbar-custom-menu .el-dropdown-link {
     display: inline-block;
     cursor: pointer;
-    padding: 15px 5px;
+    padding: 8px 5px;
     min-width: 50px;
     text-align: center;
 
@@ -412,7 +412,7 @@
   }
   .el-breadcrumb{
     float:left ;
-    line-height: 56px;
+    line-height: 40px;
     font-weight: bold;
     margin: 0 !important; ;
 

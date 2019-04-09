@@ -1,4 +1,5 @@
-import(`@/assets/css/theme/${window.localStorage.getItem('state.themecolor') ? window.localStorage.getItem('state.themecolor') : 'dark'}/index.css`);
+import(`@/assets/css/theme/${VueCookies.get('themeColor') ? VueCookies.get('themeColor') : 'dark'}/index.css`);
+
 import 'babel-polyfill'
 import Vue from "vue";
 // function switchTheme(themeName) {
@@ -12,20 +13,18 @@ import axios from "./common/axios";
 import filters from "./filters";
 import VueProgressBar from "vue-progressbar";
 import Element from "element-ui";
-import 'element-ui/lib/theme-chalk/index.css';
 import ImpPanel from "./components/panel.vue";
 import '@/assets/css/theme.css';
 import i18n from './i18n';
 import {setCookie, getCookie, delCookie, permission} from 'common/utils';
 import VueCookies from 'vue-cookies'
 Vue.use(VueCookies);
-// import '@/assets/css/theme/bbb/index.css';
 
  import vueScroll from 'vuescroll';
  import 'vuescroll/dist/vuescroll.css';
  Vue.use(vueScroll);
  import "@fortawesome/fontawesome-pro/css/all.css"
- import 'element-ui/lib/theme-chalk/base.css';
+ // import 'element-ui/lib/theme-chalk/base.css';
  // collapse 展开折叠过渡动画
  import CollapseTransition from 'element-ui/lib/transitions/collapse-transition';
  Vue.component(CollapseTransition.name, CollapseTransition);

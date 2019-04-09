@@ -29,7 +29,7 @@ const store = new Vuex.Store({
     loading: false,
     menuList: {},
     routeList:{},
-    themecolor: getLocalKey('state.themecolor', 'dark'),//默认为409EFF
+    themeColor:VueCookies.get("themeColor")?VueCookies.get("themeColor"):'dark',
     sidebar: {
       collapsed: getSessionKey('state.sidebar.collapsed', 'false') === 'true',
       show: getSessionKey('state.sidebar.show', 'true') === 'true',
@@ -44,12 +44,9 @@ const store = new Vuex.Store({
   // 这个回调函数就是我们实际进行状态更改的地方，并且它会接受 state 作为第一个参数：
   mutations: {
     //更新主题颜色
-    setThemeColor(state, curcolor) {
-      // addTheme(curcolor);
-      // VueCookies.set("state.themecolor", curcolor);
-      // state.themecolor=VueCookies.get('state.themecolor','dark');
-      localStorage.setItem("state.themecolor", curcolor);
-       state.themecolor = getLocalKey('state.themecolor', 'dark');
+    setThemeColor(state, curColor) {
+      VueCookies.set("themeColor", curColor);
+      state.themeColor=VueCookies.get('themeColor');
     },
     //只能同步的函数
     // 使用常量替代 Mutation 事件类型

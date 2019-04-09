@@ -3,10 +3,13 @@ html{
   background-color: #fff;
 }
 .content-scrollbar{
-  background:#fff;
+  background:#f3f3f4;
   border-radius: 5px;
+  padding:0 5px 10px;
+
   /*border-right:13px solid #333;*/
 }
+
 /*背景色设置*/
 .bg-dark{
   background: #444444;
@@ -211,9 +214,18 @@ html{
 .el-table__expand-icon{
   color:#fff!important;
 }
+.el-select{
+  width: 129px!important;
+}
+.el-date-editor.el-input{
+  width: 140px!important;
+}
+.el-input--prefix .el-input__inner{
+  padding-right: 0px!important;
+}
 /*按钮*/
 .el-button{
-  padding:11px 10px!important; ;
+  padding:7px 10px!important; ;
 }
 .el-button:before{
   padding-right: 6px;
@@ -279,9 +291,9 @@ html{
 
 /*topBar样式*/
 .topBar{
-  margin: -1rem 0 -0.5rem;
+  margin: -1rem -0.8rem 0.5rem ;
   background:#fff;
-  padding: 0.8rem 0.5rem;
+  padding: 0.4rem 0.5rem;
 }
 
 .el-dialog{
@@ -373,6 +385,7 @@ margin: 0 auto;
 
 }
 /*home页面*/
+#home{background:#fff;height:100%;}
 #home .box-wrap{
   border-bottom:8px solid #eee;
 }

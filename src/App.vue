@@ -197,11 +197,11 @@
     -o-transition: -o-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out, margin 0.3s ease-in-out;
     margin-left: 230px;
-    padding-top: 56px;
+    padding-top: 40px;
   }
 
   .content-scrollbar {
-    height: calc(100vh - 80px)!important;
+    height: calc(100vh - 70px)!important;
   }
 
   .content-wrapper .el-scrollbar__bar.is-vertical {

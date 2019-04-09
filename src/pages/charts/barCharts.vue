@@ -2,7 +2,7 @@
     <div id="barCharts">
       <el-row>
         <el-col :span="24" >
-          <echarts :option="option" :height='$root.bodyHeight/2'></echarts>
+          <echarts :option="option" :height='$root.bodyHeight-200'></echarts>
         </el-col>
       </el-row>
     </div>
