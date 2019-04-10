@@ -225,12 +225,11 @@ html{
 }
 /*按钮*/
 .el-button{
-  padding:7px 10px!important; ;
+  padding:6px 10px!important; ;
 }
 .el-button:before{
    padding-right: 6px;
  }
-
 
   /*树形控件，去除父级的复选框*/
 .el-tree .is-disabled{

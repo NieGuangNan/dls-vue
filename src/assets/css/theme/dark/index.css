@@ -24728,10 +24728,21 @@ html {
 .el-table__expand-icon {
   color: #fff !important;
 }
+.popper__arrow::after{
+  border-bottom-color:rgb(47,49,50)!important;
+  /*background:rgb(47,49,50)!important;*/
+}
+.el-popper[x-placement^=bottom] .popper__arrow::after {
+  top: 1px;
+  margin-left: -6px;
+  border-top-width: 0;
+  border-bottom-color:rgb(47,49,50)!important;
+  /* border-bottom-color: #fff; */
+}
 
 /*按钮*/
 .el-button{
-  padding:7px 10px!important;
+  padding:6px 10px!important;
 }
 .el-button:before{
   padding-right: 6px;
