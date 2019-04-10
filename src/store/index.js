@@ -28,7 +28,7 @@ const store = new Vuex.Store({
     loading: false,
     menuList: {},
     routeList: {},
-    themeColor: VueCookies.get("themeColor") ? VueCookies.get("themeColor") : api.THEME_COLOR,
+    themeColor: VueCookies.get("themeColor") ? VueCookies.get("themeColor") : api.DEFAULT_THEME,
     sidebar: {
       collapsed: getSessionKey('state.sidebar.collapsed', 'false') === 'true',
       show: getSessionKey('state.sidebar.show', 'true') === 'true',

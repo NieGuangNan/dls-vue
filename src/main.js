@@ -1,4 +1,4 @@
-import(`@/assets/css/theme/${VueCookies.isKey('themeColor') ? VueCookies.get('themeColor') : api.THEME_COLOR}/index.css`);
+import(`@/assets/css/theme/${VueCookies.isKey('themeColor') ? VueCookies.get('themeColor') : api.DEFAULT_THEME}/index.css`);
 import 'babel-polyfill'
 import Vue from "vue";
 import frame from "./frame.vue";
@@ -13,6 +13,7 @@ import '@/assets/css/theme.css';
 import i18n from './i18n';
 import VueCookies from 'vue-cookies'
 import * as api from "./api";
+import querystring from 'querystring'
 import {setCookie, getCookie, delCookie, permission} from 'common/utils';
 
 Vue.use(VueCookies);

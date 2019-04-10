@@ -9,7 +9,7 @@
   export default {
     name: "echartTemplate",
     data() {
-      const themeColor = this.$cookies.isKey('themeColor') ? this.$cookies.get('themeColor') : api.THEME_COLOR;
+      const themeColor = this.$cookies.isKey('themeColor') ? this.$cookies.get('themeColor') : api.DEFAULT_THEME;
       return {
         themeColor: themeColor
       }
@@ -48,7 +48,6 @@
     },
     methods: {
       drawLine() {
-
         this.$http.get(`/static/theme/eCharts/theme/${this.themeColor}/index.json`).then(res => {
           echarts.registerTheme('index', res.data);
           let myChart = echarts.init(this.$refs.eChart, 'index');

@@ -58,6 +58,18 @@
       }
     },
     methods: {
+      token() {
+        this.$http.post('http://localhost:9990/oauth/token', {
+          client_id: 'platform',
+          client_secret: 'platform-secret',
+          grant_type: 'password',
+          username: 'admin',
+          password: 'mckyf666'
+        },).then((res) => {
+          console.log(res)
+
+        })
+      },
       setLanguage() {
         let language = this.$cookies.get("user-info") && this.$cookies.get("user-info").language ? this.$cookies.get("user-info").language : 'zh';
         this.$i18n.locale = this.$cookies.get('locale') ? this.$cookies.get('locale') : language;
@@ -121,6 +133,7 @@
     },
 
     mounted() {
+      this.token();
       this.setLanguage();
       //  [App.vue specific] When App.vue is finish loading finish the progress bar
       this.$Progress.finish()
@@ -200,7 +213,7 @@
   }
 
   .content-scrollbar {
-    height: calc(100vh - 70px)!important;
+    height: calc(100vh - 70px) !important;
   }
 
   .content-wrapper .el-scrollbar__bar.is-vertical {
