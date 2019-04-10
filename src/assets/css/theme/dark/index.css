@@ -731,8 +731,8 @@
   color: #949ba2;
   display: inline-block;
   font-size: inherit;
-  height: 40px;
-  line-height: 40px;
+  height: 30px;
+  line-height: 30px;
   outline: 0;
   padding: 0 15px;
   -webkit-transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
@@ -794,7 +794,7 @@
   text-align: center;
   -webkit-transition: all .3s;
   transition: all .3s;
-  line-height: 40px
+  line-height: 30px;
 }
 
 .el-input__icon:after {
@@ -2006,8 +2006,8 @@
   color: #949ba2;
   display: inline-block;
   font-size: inherit;
-  height: 40px;
-  line-height: 40px;
+  height: 30px;
+  line-height: 30px;
   outline: 0;
   padding: 0 15px;
   -webkit-transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
@@ -2069,7 +2069,7 @@
   text-align: center;
   -webkit-transition: all .3s;
   transition: all .3s;
-  line-height: 40px
+  line-height: 30px
 }
 
 .el-input__icon:after {
@@ -3922,8 +3922,8 @@
   color: #949ba2;
   display: inline-block;
   font-size: inherit;
-  height: 40px;
-  line-height: 40px;
+  height: 30px;
+  line-height: 30px;
   outline: 0;
   padding: 0 15px;
   -webkit-transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
@@ -3985,7 +3985,7 @@
   text-align: center;
   -webkit-transition: all .3s;
   transition: all .3s;
-  line-height: 40px
+  line-height: 30px
 }
 
 .el-input__icon:after {
@@ -4282,8 +4282,8 @@
   color: #949ba2;
   display: inline-block;
   font-size: inherit;
-  height: 40px;
-  line-height: 40px;
+  height: 30px;
+  line-height: 30px;
   outline: 0;
   padding: 0 15px;
   -webkit-transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
@@ -4345,7 +4345,7 @@
   text-align: center;
   -webkit-transition: all .3s;
   transition: all .3s;
-  line-height: 40px
+  line-height: 30px
 }
 
 .el-input__icon:after {
@@ -4708,7 +4708,7 @@
   border: 1px solid #dcdfe6;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  height: 40px
+  height: 30px
 }
 
 .el-radio.is-bordered.is-checked {
@@ -5041,7 +5041,7 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   line-height: normal;
-  height: 40px
+  height: 30px
 }
 
 .el-checkbox.is-bordered.is-checked {
@@ -5789,8 +5789,8 @@
   color: #949ba2;
   display: inline-block;
   font-size: inherit;
-  height: 40px;
-  line-height: 40px;
+  height: 30px;
+  line-height: 30px;
   outline: 0;
   padding: 0 15px;
   -webkit-transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
@@ -5852,7 +5852,7 @@
   text-align: center;
   -webkit-transition: all .3s;
   transition: all .3s;
-  line-height: 40px
+  line-height: 30px
 }
 
 .el-input__icon:after {
@@ -7084,7 +7084,7 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   line-height: normal;
-  height: 40px
+  height: 30px
 }
 
 .el-checkbox.is-bordered.is-checked {
@@ -7918,7 +7918,7 @@
   display: inline-block;
   padding-left: 10px;
   padding-right: 10px;
-  line-height: 40px;
+  line-height: 30px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   overflow: hidden;
@@ -8281,7 +8281,7 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   line-height: normal;
-  height: 40px
+  height: 30px
 }
 
 .el-checkbox.is-bordered.is-checked {
@@ -10087,8 +10087,8 @@
   color: #949ba2;
   display: inline-block;
   font-size: inherit;
-  height: 40px;
-  line-height: 40px;
+  height: 30px;
+  line-height: 30px;
   outline: 0;
   padding: 0 15px;
   -webkit-transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
@@ -10150,7 +10150,7 @@
   text-align: center;
   -webkit-transition: all .3s;
   transition: all .3s;
-  line-height: 40px
+  line-height: 30px
 }
 
 .el-input__icon:after {
@@ -11968,8 +11968,8 @@
   color: #949ba2;
   display: inline-block;
   font-size: inherit;
-  height: 40px;
-  line-height: 40px;
+  height: 30px;
+  line-height: 30px;
   outline: 0;
   padding: 0 15px;
   -webkit-transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
@@ -12031,7 +12031,7 @@
   text-align: center;
   -webkit-transition: all .3s;
   transition: all .3s;
-  line-height: 40px
+  line-height: 30px
 }
 
 .el-input__icon:after {
@@ -13406,8 +13406,8 @@
   color: #949ba2;
   display: inline-block;
   font-size: inherit;
-  height: 40px;
-  line-height: 40px;
+  height: 30px;
+  line-height: 30px;
   outline: 0;
   padding: 0 15px;
   -webkit-transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
@@ -13469,7 +13469,7 @@
   text-align: center;
   -webkit-transition: all .3s;
   transition: all .3s;
-  line-height: 40px
+  line-height: 30px
 }
 
 .el-input__icon:after {
@@ -14053,14 +14053,14 @@
   float: left;
   font-size: 14px;
   color: #606266;
-  line-height: 40px;
+  line-height: 30px;
   padding: 0 12px 0 0;
   -webkit-box-sizing: border-box;
   box-sizing: border-box
 }
 
 .el-form-item__content {
-  line-height: 40px;
+  line-height: 30px;
   position: relative;
   font-size: 14px
 }
@@ -14245,10 +14245,10 @@
 
 .el-tabs__item {
   padding: 0 20px;
-  height: 40px;
+  height: 30px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  line-height: 40px;
+  line-height: 30px;
   display: inline-block;
   list-style: none;
   font-size: 14px;
@@ -15131,7 +15131,7 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   line-height: normal;
-  height: 40px
+  height: 30px
 }
 
 .el-checkbox.is-bordered.is-checked {
@@ -15953,8 +15953,8 @@
   color: #949ba2;
   display: inline-block;
   font-size: inherit;
-  height: 40px;
-  line-height: 40px;
+  height: 30px;
+  line-height: 30px;
   outline: 0;
   padding: 0 15px;
   -webkit-transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
@@ -16016,7 +16016,7 @@
   text-align: center;
   -webkit-transition: all .3s;
   transition: all .3s;
-  line-height: 40px
+  line-height: 30px
 }
 
 .el-input__icon:after {
@@ -21816,8 +21816,8 @@
   color: #949ba2;
   display: inline-block;
   font-size: inherit;
-  height: 40px;
-  line-height: 40px;
+  height: 30px;
+  line-height: 30px;
   outline: 0;
   padding: 0 15px;
   -webkit-transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
@@ -21879,7 +21879,7 @@
   text-align: center;
   -webkit-transition: all .3s;
   transition: all .3s;
-  line-height: 40px
+  line-height: 30px
 }
 
 .el-input__icon:after {
@@ -22153,7 +22153,7 @@
   display: inline-block;
   position: relative;
   font-size: 14px;
-  line-height: 40px
+  line-height: 30px
 }
 
 .el-cascader .el-input, .el-cascader .el-input__inner {
@@ -22859,8 +22859,8 @@
   color: #949ba2;
   display: inline-block;
   font-size: inherit;
-  height: 40px;
-  line-height: 40px;
+  height: 30px;
+  line-height: 30px;
   outline: 0;
   padding: 0 15px;
   -webkit-transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
@@ -22922,7 +22922,7 @@
   text-align: center;
   -webkit-transition: all .3s;
   transition: all .3s;
-  line-height: 40px
+  line-height: 30px
 }
 
 .el-input__icon:after {
@@ -23719,7 +23719,7 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   line-height: normal;
-  height: 40px
+  height: 30px
 }
 
 .el-checkbox.is-bordered.is-checked {
@@ -24231,8 +24231,8 @@
 }
 
 .el-transfer-panel .el-transfer-panel__header {
-  height: 40px;
-  line-height: 40px;
+  height: 30px;
+  line-height: 30px;
   background: #1c1d1e;
   margin: 0;
   padding-left: 15px;
@@ -24244,7 +24244,7 @@
 
 .el-transfer-panel .el-transfer-panel__header .el-checkbox {
   display: block;
-  line-height: 40px
+  line-height: 30px
 }
 
 .el-transfer-panel .el-transfer-panel__header .el-checkbox .el-checkbox__label {
@@ -24262,7 +24262,7 @@
 }
 
 .el-transfer-panel .el-transfer-panel__footer {
-  height: 40px;
+  height: 30px;
   background: #fff;
   margin: 0;
   padding: 0;
@@ -24730,13 +24730,13 @@ html {
 }
 
 /*按钮*/
-.el-button {
-  padding: 11px 10px !important;;
+.el-button{
+  padding:7px 10px!important;
 }
-
-.el-button:before {
+.el-button:before{
   padding-right: 6px;
 }
+
 
 .el-button:focus, .el-button:hover {
   color: #fff !important;
@@ -24827,12 +24827,11 @@ html {
 
 /*topBar样式*/
 .topBar {
-  /*margin: -1rem 0 -0.5rem;*/
+
   background: #101010;
   padding: 0.4rem 0.5rem;
   margin: -1rem -1rem 0.5rem ;
-  /*background:#fff;*/
-  /*padding: 0.4rem 0.5rem;*/
+
 }
 
 .el-dialog {
@@ -24848,9 +24847,9 @@ html {
   margin: 0 auto;
 }
 
-.grid-content {
-  background: #3b3b40;
-}
+/*.grid-content {*/
+  /*background: #3b3b40;*/
+/*}*/
 
 #buttonGroup .el-button--primary,
 #buttonGroup .el-button--primary:hover {
@@ -24971,3 +24970,36 @@ html {
   color: #f6a821;
 }
 
+/*ibox*/
+.ibox {
+  border: 1px solid black;
+  padding: 0 !important;
+  font-weight: 500;
+  box-shadow: none !important;
+  background: #3b3b40
+}
+
+
+.ibox .ibox {
+  border: none;
+  background: transparent;
+  padding: 10px 20px 10px 20px !important;
+}
+
+.ibox .ibox-title {
+  /*border-bottom: 1px solid black;*/
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  color: white;
+}
+.ibox-title h3, .ibox-title span {
+  vertical-align: middle;
+}
+.ibox-title h3 i {
+  margin-right: 5px;
+}
+.ibox .ibox-content{
+  padding: 0 10px 10px;
+}

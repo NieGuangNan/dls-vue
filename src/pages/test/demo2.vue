@@ -99,18 +99,23 @@
     </el-row>
     <el-row :gutter="10">
       <el-col :span="6" v-for="item in items" :key="item.value">
-        <div class="grid-content">
-          <div>1
-            <el-select v-model="item.value" placeholder="请选择" @change="select(item.id,item.value)">
-              <el-option
-                v-for="option in item.options"
-                :key="option.value"
-                :label="option.label"
-                :value="option.value">
-              </el-option>
+        <div class=" ibox">
+          <div>
+            <div class="ibox-title">1
+              <el-select v-model="item.value" placeholder="请选择" @change="select(item.id,item.value)">
+                <el-option
+                  v-for="option in item.options"
+                  :key="option.value"
+                  :label="option.label"
+                  :value="option.value">
+                </el-option>
             </el-select>
+            </div>
           </div>
-          <doughnut-chart :data="item.data" :height="$root.bodyHeight/3"/>
+          <div class="ibox-content">
+            <doughnut-chart :data="item.data" :height="$root.bodyHeight/3"/>
+          </div>
+
         </div>
       </el-col>
     </el-row>

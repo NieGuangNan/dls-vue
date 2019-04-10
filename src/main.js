@@ -16,6 +16,7 @@ import * as api from "./api";
 import querystring from 'querystring'
 import {setCookie, getCookie, delCookie, permission} from 'common/utils';
 
+
 Vue.use(VueCookies);
 // import '@/assets/css/theme/bbb/index.css';
 
@@ -24,7 +25,7 @@ import 'vuescroll/dist/vuescroll.css';
 
 Vue.use(vueScroll);
 import "@fortawesome/fontawesome-pro/css/all.css"
-// import 'element-ui/lib/theme-chalk/base.css';
+ import 'element-ui/lib/theme-chalk/base.css';
 // collapse 展开折叠过渡动画
 import CollapseTransition from 'element-ui/lib/transitions/collapse-transition';
 

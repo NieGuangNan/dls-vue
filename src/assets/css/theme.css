@@ -228,8 +228,8 @@ html{
   padding:7px 10px!important; ;
 }
 .el-button:before{
-  padding-right: 6px;
-}
+   padding-right: 6px;
+ }
 
 
   /*树形控件，去除父级的复选框*/
@@ -427,3 +427,32 @@ margin: 0 auto;
   color: #f6a821;
 }
 
+/*ibox*/
+.ibox {
+  padding: 0 !important;
+  font-weight: 500;
+  box-shadow: none !important;
+  background: #fff;
+  height: 100%;
+
+}
+
+.ibox .ibox {
+  border: none;
+  background: transparent;
+  padding: 10px 20px 10px 20px !important;
+}
+
+.ibox .ibox-title {
+  padding: 8px 20px;
+
+}
+.ibox-title h3, .ibox-title span {
+  vertical-align: middle;
+}
+.ibox-title h3 i {
+  margin-right: 5px;
+}
+.ibox .ibox-content{
+  padding: 0 10px 10px;
+}
