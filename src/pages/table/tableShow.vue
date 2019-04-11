@@ -1,6 +1,6 @@
 <template>
   <div id="tableShowWrap">
-    <data-table :data="tableData" :paginator="true" :row="row" :maxHeight="500">
+    <data-table :data="tableData" :paginator="true" :row="row" :maxHeight="$root.bodyHeight-200">
       <el-table-column
         type="selection"
         width="55">

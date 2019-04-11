@@ -794,7 +794,7 @@
   text-align: center;
   -webkit-transition: all .3s;
   transition: all .3s;
-  line-height: 30px;
+  line-height: 30px
 }
 
 .el-input__icon:after {
@@ -1462,12 +1462,12 @@
 }
 
 .el-pagination button:hover {
-  color: #4a4b54
+  color: #fff
 }
 
 .el-pagination button:disabled {
-  color: #c0c4cc;
-  background-color: #5b5e69;
+  color: #fff;
+  background-color: transparent;
   cursor: not-allowed
 }
 
@@ -1540,7 +1540,7 @@
 }
 
 .el-pagination__sizes .el-input .el-input__inner:hover {
-  border-color: #4a4b54
+  border-color: #fff
 }
 
 .el-pagination__total {
@@ -1608,7 +1608,7 @@
 }
 
 .el-pagination.is-background .el-pager li:not(.disabled):hover {
-  color: #4a4b54
+  color: #fff
 }
 
 .el-pagination.is-background .el-pager li:not(.disabled).active {
@@ -1676,11 +1676,11 @@
 }
 
 .el-pager li:hover {
-  color: #4a4b54
+  color: #fff
 }
 
 .el-pager li.active {
-  color: #4a4b54;
+  color: #fff;
   cursor: default
 }
 
@@ -3258,7 +3258,7 @@
   padding: 0 20px;
   margin: 0;
   font-size: 14px;
-  color: #fff;
+  color: #606266;
   cursor: pointer;
   outline: 0
 }
@@ -4522,7 +4522,7 @@
   position: relative;
   display: inline-block;
   width: 180px;
-  line-height: 38px
+  line-height: 28px
 }
 
 .el-input-number .el-input {
@@ -4531,8 +4531,8 @@
 
 .el-input-number .el-input__inner {
   -webkit-appearance: none;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 40px;
+  padding-right: 40px;
   text-align: center
 }
 
@@ -4540,7 +4540,7 @@
   position: absolute;
   z-index: 1;
   top: 1px;
-  width: 40px;
+  width: 30px;
   height: auto;
   text-align: center;
   background: #1c1d1e;
@@ -4646,12 +4646,12 @@
 
 .el-input-number.is-controls-right .el-input__inner {
   padding-left: 15px;
-  padding-right: 50px
+  padding-right: 40px
 }
 
 .el-input-number.is-controls-right .el-input-number__decrease, .el-input-number.is-controls-right .el-input-number__increase {
   height: auto;
-  line-height: 19px
+  line-height: 14px
 }
 
 .el-input-number.is-controls-right .el-input-number__decrease [class*=el-icon], .el-input-number.is-controls-right .el-input-number__increase [class*=el-icon] {
@@ -7918,7 +7918,7 @@
   display: inline-block;
   padding-left: 10px;
   padding-right: 10px;
-  line-height: 30px;
+  line-height: 40px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   overflow: hidden;
@@ -14053,14 +14053,14 @@
   float: left;
   font-size: 14px;
   color: #606266;
-  line-height: 30px;
+  line-height: 40px;
   padding: 0 12px 0 0;
   -webkit-box-sizing: border-box;
   box-sizing: border-box
 }
 
 .el-form-item__content {
-  line-height: 30px;
+  line-height: 40px;
   position: relative;
   font-size: 14px
 }
@@ -14245,10 +14245,10 @@
 
 .el-tabs__item {
   padding: 0 20px;
-  height: 30px;
+  height: 40px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  line-height: 30px;
+  line-height: 40px;
   display: inline-block;
   list-style: none;
   font-size: 14px;
@@ -16193,7 +16193,7 @@
   position: relative;
   display: inline-block;
   width: 180px;
-  line-height: 38px
+  line-height: 28px
 }
 
 .el-input-number .el-input {
@@ -16202,8 +16202,8 @@
 
 .el-input-number .el-input__inner {
   -webkit-appearance: none;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 40px;
+  padding-right: 40px;
   text-align: center
 }
 
@@ -16211,7 +16211,7 @@
   position: absolute;
   z-index: 1;
   top: 1px;
-  width: 40px;
+  width: 30px;
   height: auto;
   text-align: center;
   background: #1c1d1e;
@@ -16317,12 +16317,12 @@
 
 .el-input-number.is-controls-right .el-input__inner {
   padding-left: 15px;
-  padding-right: 50px
+  padding-right: 40px
 }
 
 .el-input-number.is-controls-right .el-input-number__decrease, .el-input-number.is-controls-right .el-input-number__increase {
   height: auto;
-  line-height: 19px
+  line-height: 14px
 }
 
 .el-input-number.is-controls-right .el-input-number__decrease [class*=el-icon], .el-input-number.is-controls-right .el-input-number__increase [class*=el-icon] {
@@ -24231,8 +24231,8 @@
 }
 
 .el-transfer-panel .el-transfer-panel__header {
-  height: 30px;
-  line-height: 30px;
+  height: 40px;
+  line-height: 40px;
   background: #1c1d1e;
   margin: 0;
   padding-left: 15px;
@@ -24244,7 +24244,7 @@
 
 .el-transfer-panel .el-transfer-panel__header .el-checkbox {
   display: block;
-  line-height: 30px
+  line-height: 40px
 }
 
 .el-transfer-panel .el-transfer-panel__header .el-checkbox .el-checkbox__label {
@@ -24262,7 +24262,7 @@
 }
 
 .el-transfer-panel .el-transfer-panel__footer {
-  height: 30px;
+  height: 40px;
   background: #fff;
   margin: 0;
   padding: 0;
@@ -24485,9 +24485,64 @@
   margin-top: 8px
 }
 
+
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-/*自定义样式*/
+
+
+/*原先样式重置*/
+
+.el-table--border,
+.el-table--group, .el-table, .el-table tr,
+.el-table td, .el-table th.is-leaf {
+  border-bottom: 1px solid #484c5a !important;
+}
+
+.el-select-dropdown__item.selected.hover {
+  color: #fff;
+}
+
+
+.el-input__inner:hover {
+  color: #fff !important;
+}
+
+.el-input.el-input--suffix, .el-input__inner {
+  color: #e0e0e3 !important;
+}
+
+.el-table__expand-icon {
+  color: #fff !important;
+}
+
+.el-popper[x-placement^=bottom] .popper__arrow,.el-popper[x-placement^=bottom] .popper__arrow::after {
+
+  border-bottom-color:rgb(54,56,57)!important;
+}
+.el-select-dropdown {
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.8) !important;
+
+}
+.el-card{
+  background:#1c1d1e ;
+}
+/*页码*/
+.el-pager li.active{
+  color:#fff !important;
+  border: 1px solid #f8a621;
+}
+.el-pagination__total,.el-pagination__jump,
+.el-pager li.btn-quicknext, .el-pager li.btn-quickprev,
+.el-pagination .btn-next .el-icon,
+.el-pagination .btn-prev .el-icon{
+  color:#fff!important;
+}
+/*滚动条的滑块*/
+::-webkit-scrollbar-thumb {
+  background-color: #656666;
+}
+
+/*自定义样式*//*自定义样式*//*自定义样式*//*自定义样式*//*自定义样式*//*自定义样式*/
 html {
   background-color: #363839;
 }
@@ -24498,52 +24553,18 @@ html {
   border-right: 13px solid #333;
 }
 
-/*背景色设置*/
-.bg-dark {
-  background: #444444;
-}
 
-.bg-blue {
-  background: #63b3e2;
-}
-
-.bg-red {
-  background: #e02837;
-}
-
-.bg-green {
-  background: #557e3b;
-}
-
-.bg-white {
-  background: #fff;
-}
 
 /*字体颜色设置*/
-
-.text-white {
-  color: #fff !important;
-}
-
-.text-black {
-  color: #000 !important;
-}
 
 .text-primary {
   color: #f8a621 !important;
 }
 
-/*图标设置*/
-
-.fas:before {
-  font-weight: 900 !important;
-}
-
-.fal:before {
-  font-weight: 300 !important;
-}
-
 /*header样式*/
+.main-header{
+  border-bottom:1px solid #1c1d1e
+}
 
 .el-dropdown-menu .header-pic p,
 .el-dropdown, .main-header a[data-v-cea13f84] {
@@ -24625,6 +24646,11 @@ html {
 
 
 }
+.el-menu-style.el-menu>li.el-menu-sub.el-submenu.is-active.is-opened,
+.el-menu-style.el-menu>li.el-menu-sub.el-submenu.is-opened,
+.el-menu-style.el-menu>.el-menu-item.el-menu-each.is-active{
+  border-left:4px solid #f8a621;
+}
 
 .main-sidebar.animated.showSlide.expandSide {
   border-right: 8px solid #333;
@@ -24638,112 +24664,21 @@ html {
 
 /*progressbar.js甜甜圈*/
 .progressbar-text {
-  text-align: center;
-  font-size: 0;
-  line-height: 0;
   color: black !important;
 }
 
-.progressbar-text > span {
-  display: block;
-}
-
-.progressbar-text > span.span-top {
-  line-height: 1.3;
-}
-
 .progressbar-text > span.span-bottom {
-  line-height: 1.3;
+
   color: #676a6c;
 }
 
 .progressbar-text > span.span-line {
-  height: 1px;
   border: 1px solid black;
-  margin: 0 auto;
-}
-
-.progressbar-label-right, .progressbar-label-left, .progressbar-label-bottom, .progressbar-label-top {
-  display: block;
-  position: absolute;
-  line-height: 1;
-}
-
-.progressbar-label-right {
-  transform: rotate(-90deg);
-}
-
-.progressbar-label-left {
-  transform: rotate(90deg);
-}
-
-
-/*原先样式重置*/
-.el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content,
-.is-current, .is-focusable, .is-checked {
-  background: transparent !important;
-}
-
-.el-table, .el-table th, #eef1f6.el-table__footer-wrapper thead div, .el-table__header-wrapper thead div {
-  background: transparent !important;
-}
-
-.el-table::after, .el-table::before {
-
-  background-color: transparent;
 
 }
 
-.el-menu {
-  border-right: none !important;
-}
 
-.el-tree, .el-card {
-  background: transparent !important;
-}
-
-.el-table tr {
-  background: transparent !important;
-}
-
-.el-table--border,
-.el-table--group, .el-table, .el-table tr,
-.el-table td, .el-table th.is-leaf {
-  border-bottom: 1px solid #484c5a !important;
-}
-
-.el-select-dropdown__item.selected.hover {
-  color: #fff;
-}
-
-
-.el-input__inner:hover {
-  color: #fff !important;
-}
-
-.el-input.el-input--suffix, .el-input__inner {
-  color: #e0e0e3 !important;
-}
-
-.el-table__expand-icon {
-  color: #fff !important;
-}
-
-.el-popper[x-placement^=bottom] .popper__arrow,.el-popper[x-placement^=bottom] .popper__arrow::after {
-
-  border-bottom-color:rgb(54,56,57)!important;
-}
-.el-select-dropdown {
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.8) !important;
-
-}
 /*按钮*/
-.el-button{
-  padding:6px 10px!important;
-}
-.el-button:before{
-  padding-right: 6px;
-}
 
 
 .el-button:focus, .el-button:hover {
@@ -24768,17 +24703,8 @@ html {
   background-color: rgba(219, 82, 75, 0.1) !important;
 }
 
-/*树形控件，去除父级的复选框*/
-.el-tree .is-disabled {
-  display: none;
-}
-
-.el-tree {
-  background: transparent;
-}
 
 
-/*自定义类的样式*/
 /*系统管理*/
 .box {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04);
@@ -24835,12 +24761,9 @@ html {
 
 /*topBar样式*/
 .topBar {
-
   background: #101010;
-  padding: 0.4rem 0.5rem;
-  margin: -1rem -1rem 0.5rem ;
-
 }
+
 
 .el-dialog {
   background: #262629 !important;
@@ -24854,10 +24777,6 @@ html {
   background: #2f2f33;
   margin: 0 auto;
 }
-
-/*.grid-content {*/
-  /*background: #3b3b40;*/
-/*}*/
 
 #buttonGroup .el-button--primary,
 #buttonGroup .el-button--primary:hover {
@@ -24981,33 +24900,12 @@ html {
 /*ibox*/
 .ibox {
   border: 1px solid black;
-  padding: 0 !important;
-  font-weight: 500;
-  box-shadow: none !important;
   background: #3b3b40
 }
-
-
 .ibox .ibox {
-  border: none;
   background: transparent;
-  padding: 10px 20px 10px 20px !important;
 }
 
 .ibox .ibox-title {
-  /*border-bottom: 1px solid black;*/
-  padding-left: 20px !important;
-  padding-right: 20px !important;
-  padding-top: 8px !important;
-  padding-bottom: 8px !important;
   color: white;
-}
-.ibox-title h3, .ibox-title span {
-  vertical-align: middle;
-}
-.ibox-title h3 i {
-  margin-right: 5px;
-}
-.ibox .ibox-content{
-  padding: 0 10px 10px;
 }

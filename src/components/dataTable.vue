@@ -1,24 +1,26 @@
 <template>
-  <el-card>
-    <el-table
-      ref="multipleTable"
-      :data="data"
-      :row-style="rowStyle"
-      @selection-change="handleSelectionChange"
-      :max-height="maxHeight"
-    >
-      <slot></slot>
-    </el-table>
-    <el-pagination
-      v-if="paginator"
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-      :current-page="currentPage4"
-      :page-size="row"
-      layout="total, prev, pager, next, jumper"
-      :total="total">
-    </el-pagination>
-  </el-card>
+  <div>
+    <el-card>
+      <el-table
+        ref="multipleTable"
+        :data="data"
+        :row-style="rowStyle"
+        @selection-change="handleSelectionChange"
+        :max-height="maxHeight"
+      >
+        <slot></slot>
+      </el-table>
+      <el-pagination
+        v-if="paginator"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="currentPage4"
+        :page-size="row"
+        layout="total, prev, pager, next, jumper"
+        :total="total">
+      </el-pagination>
+    </el-card>
+  </div>
 </template>
 
 <script>
@@ -27,7 +29,7 @@
     name: "dataTable",
     data() {
       return {
-        currentPage4: 8,
+        currentPage4: 1,
         total: 0,
         multipleSelection: [],
       }

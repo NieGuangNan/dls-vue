@@ -11,7 +11,7 @@
           </transition>
         </section>
       </el-scrollbar>
-      <imp-footer></imp-footer>
+      <!--<imp-footer></imp-footer>-->
     </div>
   </div>
 </template>
@@ -213,7 +213,7 @@
   }
 
   .content-scrollbar {
-    height: calc(100vh - 70px) !important;
+    height: calc(100vh - 40px) !important;
   }
 
   .content-wrapper .el-scrollbar__bar.is-vertical {
@@ -239,18 +239,6 @@
 
   .scrollbar-tree {
     height: 260px !important;
-  }
-
-  ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-
-  }
-
-  /*滚动条的滑块*/
-  ::-webkit-scrollbar-thumb {
-    background-color: #656666;
-    border-radius: 5px;
   }
 
 

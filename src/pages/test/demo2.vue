@@ -521,14 +521,6 @@
   }
 
 
-  .grid-content {
-    height: 100%;
-    /*border-radius: 4px;*/
-    min-height: 36px;
-    padding: 0.5rem;
-
-  }
-
   .row-bg {
     padding: 10px 0;
     background-color: #f9fafc;

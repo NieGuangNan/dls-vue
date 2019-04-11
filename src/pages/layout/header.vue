@@ -229,10 +229,10 @@
   .main-header {
     position: fixed;
     min-width: 100%;
-    box-shadow: 0 2px 3px hsla(0, 0%, 7%, .1), 0 0 0 1px hsla(0, 0%, 7%, .1);
     z-index: 1999;
     animation-name: slideInDown;
     animation-fill-mode: both;
+
   }
 
   .main-header .navbar .sidebar-toggle {
@@ -356,7 +356,7 @@
   .navbar-custom-menu .el-dropdown-link {
     display: inline-block;
     cursor: pointer;
-    padding: 8px 5px;
+    padding: 8px 5px 7px;
     min-width: 50px;
     text-align: center;
 

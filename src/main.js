@@ -9,7 +9,8 @@ import filters from "./filters";
 import VueProgressBar from "vue-progressbar";
 import Element from "element-ui";
 import ImpPanel from "./components/panel.vue";
-import '@/assets/css/theme.css';
+// import '@/assets/css/theme.css';
+import '@/assets/css/public.css';  //公共样式
 import i18n from './i18n';
 import VueCookies from 'vue-cookies'
 import * as api from "./api";

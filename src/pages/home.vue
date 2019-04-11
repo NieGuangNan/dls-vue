@@ -1,6 +1,6 @@
 <template>
   <div id="home">
-    <el-row class="topBar">
+    <el-row class="topBar topBar-margin-none">
       <el-form :inline="true" :model="formInline">
         <el-form-item label="">
           <el-input v-model="formInline.user"></el-input>
@@ -346,5 +346,6 @@
   .el-form-item {
     margin-bottom: 0 !important;
   }
+
 
 </style>

@@ -31,7 +31,7 @@
 <style scoped>
   #buttonGroup{
     display: inline-block;
-    vertical-align: top;
+    vertical-align:4%;
   }
 
 
