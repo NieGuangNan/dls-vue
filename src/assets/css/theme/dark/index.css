@@ -24728,18 +24728,15 @@ html {
 .el-table__expand-icon {
   color: #fff !important;
 }
-.popper__arrow::after{
-  border-bottom-color:rgb(47,49,50)!important;
-  /*background:rgb(47,49,50)!important;*/
-}
-.el-popper[x-placement^=bottom] .popper__arrow::after {
-  top: 1px;
-  margin-left: -6px;
-  border-top-width: 0;
-  border-bottom-color:rgb(47,49,50)!important;
-  /* border-bottom-color: #fff; */
-}
 
+.el-popper[x-placement^=bottom] .popper__arrow,.el-popper[x-placement^=bottom] .popper__arrow::after {
+
+  border-bottom-color:rgb(54,56,57)!important;
+}
+.el-select-dropdown {
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.8) !important;
+
+}
 /*按钮*/
 .el-button{
   padding:6px 10px!important;
