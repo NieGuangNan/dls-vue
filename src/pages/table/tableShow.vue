@@ -52,7 +52,6 @@
         </el-table-column>
       </data-table>
     </div>
-
   </div>
 
 </template>
