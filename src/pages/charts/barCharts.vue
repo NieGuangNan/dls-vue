@@ -1,5 +1,6 @@
 <template>
     <div id="barCharts">
+      <div class="topBar"></div>
       <div class="ibox">
         <el-row>
           <el-col :span="24" >

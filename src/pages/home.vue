@@ -11,51 +11,51 @@
       </el-form>
 
     </el-row>
-    <el-row class="box-wrap">
-      <el-row class="box-title">
+      <el-row class="box-wrap">
+        <el-row class="box-title">
         <span class=" text-primary" @click="show=!show">
           <i :class="show?'fa fa-chevron-down':'fa fa-chevron-up'"></i>
              收藏
         </span>
-      </el-row>
-      <el-collapse-transition>
-        <el-row class="box-content" v-if="show">
-          <template v-for="item of collection">
-            <div class="app-box">
-              <i class="fas fa-star text-primary"></i>
-              <div class="app-content">
-                <i :class="item.centerIcon"></i>
-                <div>{{item.title}}</div>
-              </div>
-            </div>
-          </template>
-        </el-row>
-      </el-collapse-transition>
-    </el-row>
-    <template v-for="item of appData">
-      <el-row class="box-wrap">
-        <el-row class="box-title">
-          <span class=" text-primary" @click="toggleOnOff(item.id)">
-            <i :class="item.show?'fa fa-chevron-down':'fa fa-chevron-up'"></i>
-              {{item.title}}
-          </span>
         </el-row>
         <el-collapse-transition>
-          <el-row class="box-content" v-if="item.show">
-            <template v-for="child of item.content">
-              <div class="app-box" :class="{disabled:child.disabled}">
-                <i :class="{'fal fa-star':!child.disabled}" @click="stars($event,item.id)"></i>
+          <el-row class="box-content" v-if="show">
+            <template v-for="item of collection">
+              <div class="app-box">
+                <i class="fas fa-star text-primary"></i>
                 <div class="app-content">
-                  <i :class="child.centerIcon"></i>
-                  <div>{{child.title}}</div>
+                  <i :class="item.centerIcon"></i>
+                  <div>{{item.title}}</div>
                 </div>
               </div>
             </template>
           </el-row>
         </el-collapse-transition>
       </el-row>
-    </template>
+    <template v-for="item of appData">
+      <el-row class="box-wrap">
+          <el-row class="box-title">
+          <span class=" text-primary" @click="toggleOnOff(item.id)">
+            <i :class="item.show?'fa fa-chevron-down':'fa fa-chevron-up'"></i>
+              {{item.title}}
+          </span>
+          </el-row>
+          <el-collapse-transition>
+            <el-row class="box-content" v-if="item.show">
+              <template v-for="child of item.content">
+                <div class="app-box" :class="{disabled:child.disabled}">
+                  <i :class="{'fal fa-star':!child.disabled}" @click="stars($event,item.id)"></i>
+                  <div class="app-content">
+                    <i :class="child.centerIcon"></i>
+                    <div>{{child.title}}</div>
+                  </div>
+                </div>
+              </template>
+            </el-row>
+          </el-collapse-transition>
+        </el-row>
 
+      </template>
   </div>
 
 </template>
@@ -288,6 +288,7 @@
 <style scoped>
   .box-wrap {
     height: 30%;
+    margin-left: 0.5rem
   }
 
   .box-title {

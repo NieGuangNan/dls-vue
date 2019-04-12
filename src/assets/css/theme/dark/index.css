@@ -24518,6 +24518,9 @@
 
   border-bottom-color:rgb(54,56,57)!important;
 }
+.el-date-picker.el-popper[x-placement^=bottom] .popper__arrow,
+.el-date-picker.el-popper[x-placement^=bottom] .popper__arrow::after
+{    border-bottom-color: #fff!important;}
 .el-select-dropdown {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.8) !important;
 
@@ -24543,13 +24546,13 @@
 
 /*自定义样式*//*自定义样式*//*自定义样式*//*自定义样式*//*自定义样式*//*自定义样式*/
 html {
-  background-color: #363839;
+  background-color: rgb(54, 56, 57);
 }
 
-.content-scrollbar {
-  background: #1c1d1e;
+/*.content-scrollbar {*/
+  /*background: #1c1d1e;*/
 
-}
+/*}*/
 
 /*字体颜色设置*/
 
@@ -24558,9 +24561,6 @@ html {
 }
 
 /*header样式*/
-.main-header{
-  border-bottom:1px solid #1c1d1e
-}
 
 .el-dropdown-menu .header-pic p,
 .el-dropdown, .main-header a[data-v-cea13f84] {
@@ -24650,9 +24650,9 @@ html {
   background:#2a2d35!important;
 }
 
-.main-sidebar.animated.showSlide.expandSide {
-  border-right: 8px solid #333;
-}
+/*.main-sidebar.animated.showSlide.expandSide {*/
+  /*border-right: 8px solid rgb(54, 56, 57);*/
+/*}*/
 
 /*footer样式*/
 .main-footer {
@@ -24661,19 +24661,21 @@ html {
 }
 
 /*progressbar.js甜甜圈*/
-.progressbar-text {
-  color: black !important;
+.progressbar-text,.progressbar-label-top,.progressbar-label-bottom,
+.progressbar-label-right,.progressbar-label-left {
+  color: #fff !important;
 }
 
 .progressbar-text > span.span-bottom {
 
-  color: #676a6c;
+  color: #ccc;
 }
 
 .progressbar-text > span.span-line {
   border: 1px solid black;
 
 }
+
 
 
 /*按钮*/
@@ -24706,7 +24708,7 @@ html {
 /*系统管理*/
 .box {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .12), 0 0 6px 0 rgba(0, 0, 0, .04);
-  border: 1px solid #d3dce6;
+  /*border: 1px solid #d3dce6;*/
 
 }
 
@@ -24760,6 +24762,7 @@ html {
 /*topBar样式*/
 .topBar {
   background: #101010;
+  margin: -0.5rem -0.5rem 0.5rem 0.5rem;
 }
 
 
@@ -24858,6 +24861,7 @@ html {
 /*home页面*/
 #home .box-wrap {
   border-bottom: 8px solid #333333;
+  background: rgb(31, 32, 33);
 }
 
 #home .box-title > span {
@@ -24904,7 +24908,7 @@ html {
 /*ibox*/
 .ibox {
   border: 1px solid black;
-  background: #3b3b40
+  background: rgb(31, 32, 33);
 }
 .ibox .ibox {
   background: transparent;

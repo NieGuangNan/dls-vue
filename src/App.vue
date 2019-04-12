@@ -220,13 +220,7 @@
     display: none;
   }
 
-  .content-wrapper .content {
-    /*padding: 0 1rem 1rem;*/
-    margin-top: 1rem;
 
-
-    /*text-align: center;*/
-  }
 
   .content-wrapper.slideCollapse {
     margin-left: 44px;

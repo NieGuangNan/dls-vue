@@ -2,6 +2,7 @@
 
 <template>
   <div class="dashboard" ref="dashboard">
+    <div class="topBar"></div>
     <div class="ibox">
       <el-row>
         <el-col :span="24">

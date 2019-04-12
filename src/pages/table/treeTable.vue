@@ -1,6 +1,7 @@
 <template>
 
   <div id="treeTableWrap">
+    <div class="topBar"></div>
     <div class="ibox">
       <el-table
         :data="tableData"

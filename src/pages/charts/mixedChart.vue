@@ -1,5 +1,6 @@
 <template>
   <div id="mixedChartWrap">
+    <div class="topBar"></div>
     <div class="ibox">
       <el-button type="default" @click="a()" v-permission="['admin']" class="fal fa-acorn">测试</el-button>
       <echarts :option="option" :height='$root.bodyHeight/3'></echarts>

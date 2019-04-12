@@ -1,7 +1,91 @@
+/*原先样式重置*/
+.el-col[data-v-35657914]{
+  padding: 0!important;
+}
+.el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content,
+.is-current, .is-focusable, .is-checked {
+  background: transparent !important;
+}
+
+.el-table, .el-table th, #eef1f6.el-table__footer-wrapper thead div, .el-table__header-wrapper thead div {
+  background: transparent !important;
+}
+
+.el-table::after, .el-table::before {
+
+  background-color: transparent;
+
+}
+.el-input,.el-select {
+  width: 144px ;
+}
+
+.el-date-editor.el-input {
+  width: 140px !important;
+}
+
+.el-input--prefix .el-input__inner {
+  padding-right: 0px !important;
+}
+
+.el-menu {
+  border-right: none !important;
+}
+
+.el-tree {
+  background: transparent !important;
+}
+
+.el-table tr {
+  background: transparent !important;
+}
+
+
+/*/treeTable/*/
+.el-table [class*=el-table__row--level] .el-table__expand-icon {
+  display: inline-block;
+  width: 14px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+/*按钮*/
+.el-button{
+  padding:6px 10px!important;
+}
+.el-button:before{
+  padding-right: 6px;
+}
+
+
+/*树形控件，去除父级的复选框*/
+.el-tree .is-disabled {
+  display: none;
+}
+
+.el-tree {
+  background: transparent;
+}
+/*滚动条的滑块*/
+::-webkit-scrollbar {
+  width: 8px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+}
+
 .content-scrollbar {
   border-radius: 5px;
   padding-right: 8px;
 }
+.content-wrapper .content {
+  margin-top: 0.5rem;
+
+}
+
+
+
 /*背景色设置*/
 .bg-dark {
   background: #444444;
@@ -82,73 +166,14 @@
 }
 
 
-/*原先样式重置*/
-.el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content,
-.is-current, .is-focusable, .is-checked {
-  background: transparent !important;
-}
 
-.el-table, .el-table th, #eef1f6.el-table__footer-wrapper thead div, .el-table__header-wrapper thead div {
-  background: transparent !important;
-}
-
-.el-table::after, .el-table::before {
-
-  background-color: transparent;
-
-}
-
-.el-menu {
-  border-right: none !important;
-}
-
-.el-tree {
-  background: transparent !important;
-}
-
-.el-table tr {
-  background: transparent !important;
-}
-/*/treeTable/*/
-.el-table [class*=el-table__row--level] .el-table__expand-icon {
-  display: inline-block;
-  width: 14px;
-  vertical-align: middle;
-  margin-right: 5px;
-}
-
-/*按钮*/
-.el-button{
-  padding:6px 10px!important;
-}
-.el-button:before{
-  padding-right: 6px;
-}
-
-
-/*树形控件，去除父级的复选框*/
-.el-tree .is-disabled {
-  display: none;
-}
-
-.el-tree {
-  background: transparent;
-}
-/*滚动条的滑块*/
-::-webkit-scrollbar {
-  width: 8px;
-  height: 10px;
-}
-::-webkit-scrollbar-thumb {
-  border-radius: 5px;
-}
 
 /*ibox*/
 
 .ibox {
   padding: 5px !important;
   font-weight: 500;
-  margin-left: 8px;
+  margin-left:0.5rem;
   box-shadow: none !important;
 
 }
@@ -177,11 +202,14 @@
 
 /*topBar*/
 .topBar {
-  margin: -1rem -0.5rem 0.5rem -1rem;
+
   padding: 0.4rem 0.5rem;
+  border-radius: 5px 5px 0 0 ;
+  height:40px;
 }
 .topBar-margin-none{
-  margin-left:0 ;
+  /*margin-left:0 ;*/
+  /*margin-right:-0.5rem ;*/
   margin-bottom: 0;
   padding-top:0 ;
   padding-bottom: 0;

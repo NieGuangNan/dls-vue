@@ -97,7 +97,7 @@
         </div>
       </el-form>
     </el-row>
-    <el-row :gutter="10">
+    <el-row >
       <el-col :span="6" v-for="item in items" :key="item.value">
         <div class=" ibox">
           <div>
@@ -512,9 +512,7 @@
 </script>
 
 <style scoped>
-  #demo2Wrap{
-    padding: 0 1rem 1rem;
-  }
+
   .el-col {
     /*margin-bottom: 10px;*/
     padding: 5px;

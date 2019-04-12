@@ -1,18 +1,25 @@
 <template>
-  <div class="box">
-    <div class="box-header" v-if="title || $slots.header" :class="{'with-border':widthBorder}">
-      <slot name="header"><h3 class="box-title" v-text="title" v-if="title"></h3></slot>
-    </div>
-    <div class="box-body">
-      <slot name="body" v-if="$slots.body">
-        暂无内容显示
-      </slot>
-      <slot v-else>
-      </slot>
-    </div>
-    <div class="box-footer" v-text="footer" v-if="footer">
+  <div>
+    <div class="topBar"></div>
+    <div class="ibox">
+      <div class="box">
+        <div class="box-header" v-if="title || $slots.header" :class="{'with-border':widthBorder}">
+          <slot name="header"><h3 class="box-title" v-text="title" v-if="title"></h3></slot>
+        </div>
+        <div class="box-body">
+          <slot name="body" v-if="$slots.body">
+            暂无内容显示
+          </slot>
+          <slot v-else>
+          </slot>
+        </div>
+        <div class="box-footer" v-text="footer" v-if="footer">
+        </div>
+      </div>
     </div>
   </div>
+
+
 </template>
 <script type="text/javascript">
   export default{
