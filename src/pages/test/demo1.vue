@@ -1,200 +1,201 @@
 <template>
   <div id="demo1Warp">
-    <el-row>
-      <el-col :span="24" >
-        <echarts :option="option" :height='$root.bodyHeight/3'></echarts>
-        <div class="bottom"></div>
-      </el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="12" class="right">
-        <el-row>
-          <el-col :span="6" :offset="1">
-            <div class="ibox" >
-              <el-row >
-                <el-col :span="12">
-                  <div class="bg-dark text-white ibox-item">
-                    <h5 >基准</h5>
-                  </div>
-                </el-col>
-                <el-col :span="12">
-                  <div class="bg-blue text-white ibox-item">
-                    <h5>实际</h5><span>0吨</span>
-                  </div>
-                </el-col>
-              </el-row>
-            </div>
+    <div class="ibox">
+      <el-row>
+        <el-col :span="24" >
+          <echarts :option="option" :height='$root.bodyHeight/3'></echarts>
+          <div class="bottom"></div>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col :span="12" >
+          <el-row>
+            <el-col :span="6" :offset="1">
+              <div class="ibox" >
+                <el-row >
+                  <el-col :span="12">
+                    <div class="bg-dark text-white ibox-item">
+                      <h5 >基准</h5>
+                    </div>
+                  </el-col>
+                  <el-col :span="12">
+                    <div class="bg-blue text-white ibox-item">
+                      <h5>实际</h5><span>0吨</span>
+                    </div>
+                  </el-col>
+                </el-row>
+              </div>
 
-          </el-col>
-          <el-col :span="6" :offset="2">
-            <div class="ibox" >
-              <el-row >
-                <el-col :span="12">
-                  <div class="bg-dark text-white ibox-item">
-                    <h5 >基准</h5><span>83%</span>
-                  </div>
-                </el-col>
-                <el-col :span="12">
-                  <div class="bg-green text-white ibox-item">
-                    <h5>实际</h5><span>97.43%</span>
-                  </div>
-                </el-col>
-              </el-row>
-            </div>
-          </el-col>
-          <el-col :span="6" :offset="2">
-            <div class="ibox" >
-              <el-row >
-                <el-col :span="12">
-                  <div class="bg-dark text-white ibox-item">
-                    <h5 >基准</h5><span>135</span>
-                  </div>
-                </el-col>
-                <el-col :span="12">
-                  <div class="bg-red text-white ibox-item">
-                    <h5>实际</h5><span>0</span>
-                  </div>
-                </el-col>
-              </el-row>
-            </div>
-          </el-col>
-        </el-row>
-        <el-row>
-          <echarts :option="option1" :height='$root.bodyHeight/3'></echarts>
-        </el-row>
-        <div class="bottom"></div>
-        <data-table :data="tableData">
-          <el-table-column
-            prop="module"
-            sortable
-            label="模块"
-          >
-          </el-table-column>
-          <el-table-column
-            prop="issue"
-            label="主要问题"
-          >
-          </el-table-column>
-          <el-table-column
-            prop="effect"
-            label="影响"
-          >
-          </el-table-column>
-          <el-table-column
-            prop="total"
-            label="累计（过去一个月）"
-          >
-          </el-table-column>
-          <el-table-column
-            prop="data"
-            label=""
-          >
-          </el-table-column>
-          <el-table-column
-            prop="department"
-            label="责任部门"
-          >
-          </el-table-column>
-        </data-table>
+            </el-col>
+            <el-col :span="6" :offset="2">
+              <div class="ibox" >
+                <el-row >
+                  <el-col :span="12">
+                    <div class="bg-dark text-white ibox-item">
+                      <h5 >基准</h5><span>83%</span>
+                    </div>
+                  </el-col>
+                  <el-col :span="12">
+                    <div class="bg-green text-white ibox-item">
+                      <h5>实际</h5><span>97.43%</span>
+                    </div>
+                  </el-col>
+                </el-row>
+              </div>
+            </el-col>
+            <el-col :span="6" :offset="2">
+              <div class="ibox" >
+                <el-row >
+                  <el-col :span="12">
+                    <div class="bg-dark text-white ibox-item">
+                      <h5 >基准</h5><span>135</span>
+                    </div>
+                  </el-col>
+                  <el-col :span="12">
+                    <div class="bg-red text-white ibox-item">
+                      <h5>实际</h5><span>0</span>
+                    </div>
+                  </el-col>
+                </el-row>
+              </div>
+            </el-col>
+          </el-row>
+          <el-row>
+            <echarts :option="option1" :height='$root.bodyHeight/3'></echarts>
+          </el-row>
+          <div class="bottom"></div>
+          <data-table :data="tableData">
+            <el-table-column
+              prop="module"
+              sortable
+              label="模块"
+            >
+            </el-table-column>
+            <el-table-column
+              prop="issue"
+              label="主要问题"
+            >
+            </el-table-column>
+            <el-table-column
+              prop="effect"
+              label="影响"
+            >
+            </el-table-column>
+            <el-table-column
+              prop="total"
+              label="累计（过去一个月）"
+            >
+            </el-table-column>
+            <el-table-column
+              prop="data"
+              label=""
+            >
+            </el-table-column>
+            <el-table-column
+              prop="department"
+              label="责任部门"
+            >
+            </el-table-column>
+          </data-table>
 
-      </el-col>
-      <el-col :span="12">
-        <el-row>
-          <el-col :span="6" :offset="1">
-            <div class="ibox" >
-              <el-row >
-                <el-col :span="12">
-                  <div class="bg-dark text-white ibox-item">
-                    <h5 >基准</h5>
-                  </div>
-                </el-col>
-                <el-col :span="12">
-                  <div class="bg-blue text-white ibox-item">
-                    <h5>实际</h5><span>0吨</span>
-                  </div>
-                </el-col>
-              </el-row>
-            </div>
+        </el-col>
+        <el-col :span="12" class="left">
+          <el-row>
+            <el-col :span="6" :offset="1">
+              <div class="ibox" >
+                <el-row >
+                  <el-col :span="12">
+                    <div class="bg-dark text-white ibox-item">
+                      <h5 >基准</h5>
+                    </div>
+                  </el-col>
+                  <el-col :span="12">
+                    <div class="bg-blue text-white ibox-item">
+                      <h5>实际</h5><span>0吨</span>
+                    </div>
+                  </el-col>
+                </el-row>
+              </div>
 
-          </el-col>
-          <el-col :span="6" :offset="2">
-            <div class="ibox" >
-              <el-row >
-                <el-col :span="12">
-                  <div class="bg-dark text-white ibox-item">
-                    <h5 >基准</h5><span>83%</span>
-                  </div>
-                </el-col>
-                <el-col :span="12">
-                  <div class="bg-green text-white ibox-item">
-                    <h5>实际</h5><span>97.43%</span>
-                  </div>
-                </el-col>
-              </el-row>
-            </div>
-          </el-col>
-          <el-col :span="6" :offset="2">
-            <div class="ibox" >
-              <el-row >
-                <el-col :span="12">
-                  <div class="bg-dark text-white ibox-item">
-                    <h5 >基准</h5><span>135</span>
-                  </div>
-                </el-col>
-                <el-col :span="12">
-                  <div class="bg-red text-white ibox-item">
-                    <h5>实际</h5><span>0</span>
-                  </div>
-                </el-col>
-              </el-row>
-            </div>
-          </el-col>
-        </el-row>
-        <el-row>
-          <echarts :option="option1" :height='$root.bodyHeight/3'></echarts>
-        </el-row>
-        <div class="bottom"></div>
-        <data-table :data="tableData" >
-          <el-table-column
-            prop="module"
-            sortable
-            label="模块"
+            </el-col>
+            <el-col :span="6" :offset="2">
+              <div class="ibox" >
+                <el-row >
+                  <el-col :span="12">
+                    <div class="bg-dark text-white ibox-item">
+                      <h5 >基准</h5><span>83%</span>
+                    </div>
+                  </el-col>
+                  <el-col :span="12">
+                    <div class="bg-green text-white ibox-item">
+                      <h5>实际</h5><span>97.43%</span>
+                    </div>
+                  </el-col>
+                </el-row>
+              </div>
+            </el-col>
+            <el-col :span="6" :offset="2">
+              <div class="ibox" >
+                <el-row >
+                  <el-col :span="12">
+                    <div class="bg-dark text-white ibox-item">
+                      <h5 >基准</h5><span>135</span>
+                    </div>
+                  </el-col>
+                  <el-col :span="12">
+                    <div class="bg-red text-white ibox-item">
+                      <h5>实际</h5><span>0</span>
+                    </div>
+                  </el-col>
+                </el-row>
+              </div>
+            </el-col>
+          </el-row>
+          <el-row>
+            <echarts :option="option1" :height='$root.bodyHeight/3'></echarts>
+          </el-row>
+          <div class="bottom"></div>
+          <data-table :data="tableData" >
+            <el-table-column
+              prop="module"
+              sortable
+              label="模块"
 
-          >
-          </el-table-column>
-          <el-table-column
-            prop="issue"
-            label="主要问题"
+            >
+            </el-table-column>
+            <el-table-column
+              prop="issue"
+              label="主要问题"
 
-          >
-          </el-table-column>
-          <el-table-column
-            prop="effect"
-            label="影响"
+            >
+            </el-table-column>
+            <el-table-column
+              prop="effect"
+              label="影响"
 
-          >
-          </el-table-column>
-          <el-table-column
-            prop="total"
-            label="累计（过去一个月）"
-          >
-          </el-table-column>
-          <el-table-column
-            prop="data"
-            label=""
+            >
+            </el-table-column>
+            <el-table-column
+              prop="total"
+              label="累计（过去一个月）"
+            >
+            </el-table-column>
+            <el-table-column
+              prop="data"
+              label=""
 
-          >
-          </el-table-column>
-          <el-table-column
-            prop="department"
-            label="责任部门"
+            >
+            </el-table-column>
+            <el-table-column
+              prop="department"
+              label="责任部门"
 
-          >
-          </el-table-column>
-        </data-table>
-      </el-col>
-    </el-row>
-
+            >
+            </el-table-column>
+          </data-table>
+        </el-col>
+      </el-row>
+    </div>
   </div>
 
     

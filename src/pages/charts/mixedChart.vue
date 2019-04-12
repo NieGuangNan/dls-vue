@@ -1,8 +1,10 @@
 <template>
   <div id="mixedChartWrap">
-    <el-button type="default" @click="a()" v-permission="['admin']" class="fal fa-acorn">测试</el-button>
-    <echarts :option="option" :height='$root.bodyHeight/3'></echarts>
-    <echarts :option="option1" :height='$root.bodyHeight/3' :alterOption="alterOption"></echarts>
+    <div class="ibox">
+      <el-button type="default" @click="a()" v-permission="['admin']" class="fal fa-acorn">测试</el-button>
+      <echarts :option="option" :height='$root.bodyHeight/3'></echarts>
+      <echarts :option="option1" :height='$root.bodyHeight/3' :alterOption="alterOption"></echarts>
+    </div>
   </div>
 
 </template>
@@ -16,6 +18,9 @@
     tooltip: {},
     xAxis: {
       data: ["数据1", "数据2", "数据3", "数据4", "数据5", "数据6"],
+      splitLine:{
+        show:false
+      }
     },
     yAxis: {
       splitLine:{
@@ -52,6 +57,9 @@
     tooltip: {},
     xAxis: {
       data: ["数据1", "数据2", "数据3", "数据4", "数据5", "数据6"],
+      splitLine:{
+        show:false
+      }
     },
     yAxis: {
       splitLine:{
@@ -112,10 +120,6 @@
 </script>
 
 <style scoped>
-  #mixedChartWrap {
-    padding: 0 1rem 1rem;
-
-  }
 
 
 </style>

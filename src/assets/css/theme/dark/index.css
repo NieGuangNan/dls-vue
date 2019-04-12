@@ -24502,7 +24502,6 @@
   color: #fff;
 }
 
-
 .el-input__inner:hover {
   color: #fff !important;
 }
@@ -24549,11 +24548,8 @@ html {
 
 .content-scrollbar {
   background: #1c1d1e;
-  border-radius: 5px;
-  border-right: 13px solid #333;
+
 }
-
-
 
 /*字体颜色设置*/
 
@@ -24573,7 +24569,7 @@ html {
 
 .main-header.closeLogo .sidebar-toggle[data-v-cea13f84],
 .main-header .navbar .sidebar-toggle[data-v-cea13f84]:hover,
-.navbar-custom-menu .el-dropdown-link[data-v-cea13f84]:hover {
+.navbar-dropdown.el-dropdown:hover{
   background: #444444 !important;
 }
 
@@ -24583,8 +24579,7 @@ html {
 }
 
 .el-dropdown-menu .pull-left,
-.el-dropdown-menu .pull-right,
-.navbar-custom-menu .el-dropdown-link:hover {
+.el-dropdown-menu .pull-right{
   background: #f9f9f9;
 }
 
@@ -24644,12 +24639,15 @@ html {
 .vue-scrollbar {
   background-color: #1f2021 !important;
 
-
 }
 .el-menu-style.el-menu>li.el-menu-sub.el-submenu.is-active.is-opened,
-.el-menu-style.el-menu>li.el-menu-sub.el-submenu.is-opened,
-.el-menu-style.el-menu>.el-menu-item.el-menu-each.is-active{
+.el-menu-style.el-menu>li.el-menu-sub.el-submenu.is-opened{
   border-left:4px solid #f8a621;
+}
+.el-menu-style.el-menu>li.el-menu-sub.el-submenu.is-opened>ul,
+.el-menu-style.el-menu>li.el-menu-sub.el-submenu.is-opened>ul li,
+.el-menu-style.el-menu>li.el-menu-sub.el-submenu.is-opened>div{
+  background:#2a2d35!important;
 }
 
 .main-sidebar.animated.showSlide.expandSide {
@@ -24755,8 +24753,8 @@ html {
   border-bottom: 1vmin solid #333;
 }
 
-.right {
-  border-right: 1vmin solid #333;
+.left {
+  border-left: 1vmin solid #333;
 }
 
 /*topBar样式*/
@@ -24767,6 +24765,12 @@ html {
 
 .el-dialog {
   background: #262629 !important;
+}
+.el-dialog__header{
+  border-bottom: 1px solid #3d404c;
+}
+.el-dialog__footer{
+  border-top: 1px solid #3d404c;
 }
 
 .el-dialog__title {

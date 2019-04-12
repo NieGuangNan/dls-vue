@@ -213,7 +213,7 @@
   }
 
   .content-scrollbar {
-    height: calc(100vh - 40px) !important;
+    height: calc(100vh - 35px) !important;
   }
 
   .content-wrapper .el-scrollbar__bar.is-vertical {

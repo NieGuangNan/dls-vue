@@ -352,7 +352,9 @@
   .navbar-custom-menu {
     float: right;
   }
-
+  .navbar-dropdown.el-dropdown{
+    height:40px;
+  }
   .navbar-custom-menu .el-dropdown-link {
     display: inline-block;
     cursor: pointer;

@@ -388,7 +388,7 @@ $--input-max-width: 129px !default;
 $--input-hover-border: #DDDDDD !default;
 $--input-clear-hover-color: #DDDDDD !default;
 
-$--input-focus-border: transparent !default;
+$--input-focus-border: $--color-primary !default;
 $--input-focus-fill: transparent !default;
 
 $--input-disabled-fill: $--disabled-fill-base !default;

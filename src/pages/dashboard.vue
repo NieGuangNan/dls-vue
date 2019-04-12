@@ -2,16 +2,23 @@
 
 <template>
   <div class="dashboard" ref="dashboard">
-    <el-row>
-      <el-col :span="24">
-        <div id="gotobedbar"></div>
-      </el-col>
-    </el-row>
+    <div class="ibox">
+      <el-row>
+        <el-col :span="24">
+          <div id="gotobedbar">
+            <echarts :option="option" :height="$root.bodyHeight-110"></echarts>
+          </div>
+
+        </el-col>
+      </el-row>
+    </div>
+
   </div>
 </template>
 
 <script>
-  import echarts from 'echarts';
+  // import echarts from 'echarts';
+  import echarts from '@/components/echarts'
   import macarons from 'echarts/theme/macarons';
   import data from '../../static/data/data.json';
   import {mapGetters, mapActions, mapMutations} from 'vuex'
@@ -49,9 +56,6 @@
       left:'right',
       top:'middle',//如果 top 的值为'top', 'middle', 'bottom'，组件会根据相应的位置自动对齐。
       itemGap:20,
-      textStyle:{
-        color:'#fff'
-      }
     },
     toolbox: {
       show: true,
@@ -63,7 +67,6 @@
       y: 'top',                  // 垂直安放位置，默认为全图顶端，可选为：
                                  // 'top' ¦ 'bottom' ¦ 'center'
                                  // ¦ {number}（y坐标，单位px）
-      color: ['#1e90ff', '#22bb22', '#4b0082', '#d2691e'],
       feature: {
         mark: {show: true},
         dataView: {show: true, readOnly: false},
@@ -83,7 +86,11 @@
       {
         type: 'category',
         boundaryGap: false,
-        data: getBeforeDate(30)
+        data: getBeforeDate(30),
+        splitLine:{
+          show:false
+        }
+
       }
     ],
     yAxis: [
@@ -151,8 +158,12 @@
   export default {
     data() {
       return {
-        chart: null
+        chart: null,
+        option:option,
       };
+    },
+    components:{
+      echarts
     },
     computed: {
       ...mapGetters({
@@ -160,40 +171,40 @@
         device: 'device',
       }),
     },
-    methods: {
-
-      drawbar(id) {
-        let o = document.getElementById(id);
-        let height = document.documentElement.clientHeight;
-        height -= 120;
-        o.style.height= height+"px";
-        this.chart = echarts.init(o,'macarons');
-        this.chart.setOption(option);
-      }
-    },
-    mounted() {
-      this.$nextTick(function () {
-        this.drawbar('gotobedbar');
-        var that = this;
-        var resizeTimer = null;
-        window.onresize = function () {
-          if (resizeTimer) clearTimeout(resizeTimer);
-          resizeTimer = setTimeout(function () {
-            that.drawbar('gotobedbar');
-          }, 300);
-        }
-      });
-
-    },
-    watch: {
-      'sidebar.collapsed': function (val) {
-        this.chart = {}
-        var that = this;
-        setTimeout(function () {
-          that.drawbar('gotobedbar');
-        }, 300);
-      },
-    }
+    // methods: {
+    //
+    //   drawbar(id) {
+    //     let o = document.getElementById(id);
+    //     let height = document.documentElement.clientHeight;
+    //     height -= 120;
+    //     o.style.height= height+"px";
+    //     this.chart = echarts.init(o,'macarons');
+    //     this.chart.setOption(option);
+    //   }
+    // },
+    // mounted() {
+    //   this.$nextTick(function () {
+    //     this.drawbar('gotobedbar');
+    //     var that = this;
+    //     var resizeTimer = null;
+    //     window.onresize = function () {
+    //       if (resizeTimer) clearTimeout(resizeTimer);
+    //       resizeTimer = setTimeout(function () {
+    //         that.drawbar('gotobedbar');
+    //       }, 300);
+    //     }
+    //   });
+    //
+    // },
+    // watch: {
+    //   'sidebar.collapsed': function (val) {
+    //     this.chart = {}
+    //     var that = this;
+    //     setTimeout(function () {
+    //       that.drawbar('gotobedbar');
+    //     }, 300);
+    //   },
+    // }
   }
 </script>
 

@@ -1,28 +1,31 @@
 <template>
 
   <div id="treeTableWrap">
-    <el-table
-      :data="tableData"
-      style="width: 100%;margin-bottom: 20px;"
-      border
-      row-key="id">
-      <el-table-column
-        prop="date"
-        label="日期"
-        sortable
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="name"
-        label="姓名"
-        sortable
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="address"
-        label="地址">
-      </el-table-column>
-    </el-table>
+    <div class="ibox">
+      <el-table
+        :data="tableData"
+        style="width: 100%;margin-bottom: 20px;"
+        border
+        row-key="id">
+        <el-table-column
+          prop="date"
+          label="日期"
+          sortable
+          width="180">
+        </el-table-column>
+        <el-table-column
+          prop="name"
+          label="姓名"
+          sortable
+          width="180">
+        </el-table-column>
+        <el-table-column
+          prop="address"
+          label="地址">
+        </el-table-column>
+      </el-table>
+    </div>
+
   </div>
 </template>
 
@@ -112,7 +115,4 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  #treeTableWrap{
-    padding: 0 1rem 1rem;
-  }
 </style>

@@ -1,10 +1,13 @@
 <template>
     <div id="barCharts">
-      <el-row>
-        <el-col :span="24" >
-          <echarts :option="option" :height='$root.bodyHeight-200'></echarts>
-        </el-col>
-      </el-row>
+      <div class="ibox">
+        <el-row>
+          <el-col :span="24" >
+            <echarts :option="option" :height='$root.bodyHeight-200'></echarts>
+          </el-col>
+        </el-row>
+      </div>
+
     </div>
 </template>
 
@@ -27,11 +30,17 @@
       containLabel: true
     },
     xAxis:  {
-      type: 'value'
+      type: 'value',
+      splitLine:{
+        show:false
+      }
     },
     yAxis: {
       type: 'category',
-      data: ['周一','周二','周三','周四','周五','周六','周日']
+      data: ['周一','周二','周三','周四','周五','周六','周日'],
+      splitLine:{
+        show:false
+      }
     },
     series: [
       {

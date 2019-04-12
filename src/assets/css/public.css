@@ -1,3 +1,7 @@
+.content-scrollbar {
+  border-radius: 5px;
+  padding-right: 8px;
+}
 /*背景色设置*/
 .bg-dark {
   background: #444444;
@@ -142,8 +146,9 @@
 /*ibox*/
 
 .ibox {
-  padding: 0 !important;
+  padding: 5px !important;
   font-weight: 500;
+  margin-left: 8px;
   box-shadow: none !important;
 
 }
@@ -172,12 +177,11 @@
 
 /*topBar*/
 .topBar {
-  margin: -1rem -1rem 0.5rem ;
+  margin: -1rem -0.5rem 0.5rem -1rem;
   padding: 0.4rem 0.5rem;
 }
 .topBar-margin-none{
   margin-left:0 ;
-  margin-right:0 ;
   margin-bottom: 0;
   padding-top:0 ;
   padding-bottom: 0;
