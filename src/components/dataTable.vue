@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="dataTable">
       <el-table
         ref="multipleTable"
         :data="data"
@@ -47,11 +47,7 @@
       },
       maxHeight: {
         type: Number,
-      },
-      rowStyle: {
-        type: Function
-      },
-      //treeTable 显示行方法
+      }
     },
     methods: {
       handleSizeChange(val) {
@@ -80,6 +76,11 @@
     padding: 2px 5px;
     font-weight: 700;
     float: right;
+  }
+  #dataTable:after{
+    content: " ";
+    display: table;
+    clear: both;
   }
 
 

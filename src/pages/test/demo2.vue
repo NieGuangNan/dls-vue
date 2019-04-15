@@ -99,7 +99,7 @@
     </el-row>
     <el-row >
       <el-col :span="6" v-for="item in items" :key="item.value">
-        <div class=" ibox">
+        <div class=" ibox ibox-margin">
           <div>
             <div class="ibox-title">1
               <el-select v-model="item.value" placeholder="请选择" @change="select(item.id,item.value)">
