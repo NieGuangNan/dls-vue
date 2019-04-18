@@ -72,6 +72,7 @@
 <style scoped>
   .el-pagination {
     margin: 20px auto;
+    margin: 20px auto;
     white-space: nowrap;
     padding: 2px 5px;
     font-weight: 700;
@@ -82,6 +83,5 @@
     display: table;
     clear: both;
   }
-
 
 </style>
