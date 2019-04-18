@@ -3,7 +3,6 @@
       <el-table
         ref="multipleTable"
         :data="data"
-        :row-style="rowStyle"
         @selection-change="handleSelectionChange"
         :max-height="maxHeight"
       >

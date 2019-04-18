@@ -46,7 +46,7 @@ input:focus{
 
 /*自定义类的样式*//*自定义类的样式*//*自定义类的样式*//*自定义类的样式*//*自定义类的样式*/
 
-html {
+html,.main-header {
   background-color: #fff;
 }
 
@@ -366,9 +366,10 @@ html {
 
 }
 
-#home .disabled {
+.disabled>.app-box{
   background: #eee !important;
   border: 2px solid #eee !important;
+  color:#999!important;
 }
 
 #home .disabled, #home .disabled .app-content i {

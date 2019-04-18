@@ -297,17 +297,5 @@
 </script>
 
 <style scoped>
-  #demo1Warp{
 
-  }
-
-  .ibox{
-    line-height: 3vmin;
-    margin-top: 1vmin;
-    font-weight: bold;
-  }
- .ibox-item{
-   height:6vmin;
-   padding: 0 0.5vmin 0 ;
- }
 </style>

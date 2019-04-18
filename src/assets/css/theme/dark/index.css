@@ -24545,14 +24545,9 @@
 }
 
 /*自定义样式*//*自定义样式*//*自定义样式*//*自定义样式*//*自定义样式*//*自定义样式*/
-html {
+html, .main-header {
   background-color: rgb(54, 56, 57);
 }
-
-/*.content-scrollbar {*/
-  /*background: #1c1d1e;*/
-
-/*}*/
 
 /*字体颜色设置*/
 
@@ -24885,9 +24880,10 @@ html {
 
 }
 
-#home .disabled {
+.disabled>.app-box{
   background: #363839 !important;
   border: 2px solid #363839 !important;
+  color:#999!important;
 }
 
 #home .disabled, #home .disabled .app-content i {

@@ -8,6 +8,8 @@ const zh = {
 
     },
     menu:{
+      collection :'收藏',
+      sysCatalogue:'系统',
       dashboard:'仪表盘',
       home:'首页',
       menu1:{

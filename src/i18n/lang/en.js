@@ -8,16 +8,18 @@ const en = {
 
     },
     menu:{
+      collection :'Collection',
       dashboard:'DashBoard',
+      sysCatalogue:'System',
       home:'Home',
       menu1:{
         name:'Test1',
         items:{
           item1:{
-            name:'TestTable',
+            name:'Test Table',
             children:{
-              child1:'ShowTable',
-              child2:'TreeTable'
+              child1:'Show Table',
+              child2:'Tree Table'
             }
           },
           item2:{
@@ -30,33 +32,33 @@ const en = {
         name:'Test2',
         items:{
           item1: {
-            name:'BarGraph'
+            name:'Bar Graph'
           },
           item2:{
-            name:'MixedGraph'
+            name:'Mixed Graph'
           },
           item3:{
             name:'Gauge'
           },
           item4:{
-            name:'PileBar'
+            name:'Pile Bar'
           },
         }
       },
       menu3:{
-        name:'SystemManagement',
+        name:'System Management',
         items:{
           item1:{
-            name:'ResourceManagement'
+            name:'Resource Management'
           },
           item2:{
-            name:'MenuManagement'
+            name:'Menu Management'
           },
           item3:{
-            name:'RoleManagement'
+            name:'Role Management'
           },
           item4:{
-            name:'UserManagement'
+            name:'User Management'
           },
         }
       }

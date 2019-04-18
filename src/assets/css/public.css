@@ -1,4 +1,19 @@
 /*原先样式重置*/
+.animated {
+  animation-duration: .2s;
+}
+
+blockquote, body, dd, dl, dt, fieldset, figure, h1, h2, h3, h4, h5, h6, hr, html, iframe, legend, li, ol, p, pre, textarea, ul {
+  margin: 0;
+  padding: 0;
+}
+
+*, :after, :before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 .el-col[data-v-35657914]{
   padding: 0!important;
 }
@@ -38,6 +53,9 @@
 
 .el-table tr {
   background: transparent !important;
+}
+a{
+  text-decoration: none;
 }
 
 
@@ -185,6 +203,10 @@
   border: none;
   margin: 0.5rem 0 0 0.5rem;
   padding: 10px 20px 10px 20px !important;
+}
+.ibox-item{
+  height:6vmin;
+  padding: 0 0.5vmin 0 ;
 }
 
 .ibox .ibox-title {

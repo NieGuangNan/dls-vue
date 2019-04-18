@@ -62,9 +62,9 @@ const routes =[
   },
   {
     path: '', component: app,permission:['admin','developer'], children: [
-      {path: '/home', component: home,permission:['admin','developer']},
+      {path: '/', component: home,permission:['admin','developer']},
       {path: '/resetPwd', component: resetPwd,permission:['admin','developer']},
-      {path: '/', component: dashboard,permission:['admin','developer']},
+      {path: '/dashboard', component: dashboard,permission:['admin','developer']},
       {path: '/sys/menuList', component: menuList,permission:['admin']},
       {path: '/sys/roleList', component: role,permission:['admin']},
       {path: '/sys/userList', component: sysUser,permission:['admin']},
@@ -89,8 +89,6 @@ if (userInfo) {
     }
   }
 }
-
-
 
 
 //定义路由
