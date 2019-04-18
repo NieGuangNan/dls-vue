@@ -24,7 +24,10 @@
                         <el-button type="primary" class="btn btn-primary p-x-2 text-black" @click="login">登录</el-button>
                       </el-col>
                       <el-col :span="12">
-                        <el-button type="button" class="btn btn-link forgot" style="float:right;">忘记密码?</el-button>
+                        <router-link to="/resetPwd">
+                          <el-button type="text" class="btn btn-link forgot" style="float:right;">忘记密码?</el-button>
+                        </router-link>
+
                       </el-col>
                     </el-row>
                   </div>
@@ -36,7 +39,10 @@
                 <div class="card-block">
                   <h2>注册</h2>
                   <p>平台暂时只支持使用公司邮箱注册.</p>
-                  <el-button type="info" class="btn btn-primary active m-t-1"> 马上注册</el-button>
+                  <router-link to="/register">
+                    <el-button type="info" class="btn btn-primary active m-t-1"> 马上注册</el-button>
+                  </router-link>
+
                 </div>
               </div>
             </el-col>

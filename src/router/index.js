@@ -11,6 +11,7 @@ import menuList from "pages/sys/menu.vue";
 import role from "pages/sys/role.vue";
 // import resource from "pages/sys/resource.vue";
 import login from "pages/login.vue";
+import register from "pages/register.vue";
 import app from "../App.vue";
 import sysUser from "pages/sys/user.vue";
 import userAdd from "pages/sys/userAdd.vue";
@@ -23,7 +24,7 @@ import demo1 from "pages/test/demo1.vue"
 import demo2 from "pages/test/demo2.vue"
 import home from "pages/home.vue"
 import barCharts from "pages/charts/barCharts"
-import defaultValue from "@/services/default"
+
 
 import {setCookie, getCookie, delCookie} from '@/common/utils';
 import VueCookies from 'vue-cookies'
@@ -36,6 +37,8 @@ Vue.use(VueRouter)
 
 const routes =[
   {path: '/login', component: login,permission:['admin','developer']},
+  {path: '/register', component: register,permission:['admin','developer']},
+  {path: '/resetPwd', component: resetPwd,permission:['admin','developer']},
   {
     path: '/test/1', component: app,permission:['admin','developer'], children: [
       {path: '/test/1/1/1', component: tableShow,permission:['admin','developer']},
@@ -69,7 +72,6 @@ const routes =[
       {path: '/sys/roleList', component: role,permission:['admin']},
       {path: '/sys/userList', component: sysUser,permission:['admin']},
       {path: '/sys/userAdd', component: userAdd,permission:['admin']},
-      // {path: '/sys/resource', component: resource}
     ]
   },
   {path: '*', component: NotFoundView,permission:['admin','developer']}

@@ -82,7 +82,7 @@
 
   import panel from "../../components/panel.vue"
   import selectTree from "../../components/selectTree.vue"
-  import treeter from "../../components/treeter"
+  import treeter from "../../services/treeter"
   import * as sysApi from '../../services/sys'
 
 

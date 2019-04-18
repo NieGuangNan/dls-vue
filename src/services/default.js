@@ -20,29 +20,6 @@ export default {
       "avatar": "/static/img/user.png"
     }, "sid": "310000198406275362"
   },
-  routeList:[ {path: '/login', isShow:1},
-    {
-      path: '/test',isShow:0,children: [
-        {path: '/test/1/1/1', isShow:1},
-        {path: '/test/1/1/2', isShow:1},
-        {path: '/test/1/2', isShow:1},
-        {path: '/test/2/1', isShow:1},
-        {path: '/test/2/2', isShow:1},
-        {path: '*', isShow:1}
-      ]
-    },
-    {
-      path: '', isShow:1, children: [
-        {path: '/resetPwd', isShow:1},
-        {path: '/index', isShow:1},
-        {path: '/sys/menuList', isShow:1},
-        {path: '/sys/roleList', isShow:1},
-        {path: '/sys/userList', isShow:1},
-        {path: '/sys/userAdd', isShow:1},
-        // {path: '/sys/resource', component: resource}
-      ]
-    },
-    {path: '*', isShow:1}],
   msgList: [{
     "id": "310000201511210936",
     "type": 1,
@@ -479,16 +456,6 @@ export default {
     "href": "/sys",
     "icon": "fa fa-cog",
     "children": [
-      //   {
-      //   "id": 108,
-      //   "parentId": 6,
-      //   "sort": 0,
-      //   "name": "message.menu.menu3.items.item1.name",
-      //   "href": "/sys/resource",
-      //   "icon": "fa fa-database",
-      //   "children": [],
-      //   "isShow": "1"
-      // },
       {
         "id": 7,
         "access":['admin'],

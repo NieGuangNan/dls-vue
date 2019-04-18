@@ -11,20 +11,16 @@
           </transition>
         </section>
       </el-scrollbar>
-      <!--<imp-footer></imp-footer>-->
     </div>
   </div>
 </template>
 
 <script>
-  import Vue from 'vue'
   import sideMenu from './components/sideMenu.vue'
   import impHeader from "./pages/layout/header.vue"
-  import impFooter from "./pages/layout/footer.vue"
   import {mapGetters, mapActions, mapMutations} from 'vuex'
   import types from "./store/mutation-types"
   import 'animate.css'
-  import {setCookie, getCookie, delCookie} from 'common/utils';
 
   export default {
     name: 'app',
@@ -36,7 +32,6 @@
 
     components: {
       sideMenu,
-      impFooter,
       impHeader,
     },
     computed: {

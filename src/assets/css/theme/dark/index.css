@@ -24802,7 +24802,7 @@ html, .main-header {
 }
 
 .login .el-button.forgot, .login .el-button.forgot:hover {
-  color: #000;
+  color: #000!important;
 }
 
 .login .login-form {
@@ -24833,6 +24833,9 @@ html, .main-header {
   background: #fff none;
   border: 1px solid rgba(0, 0, 0, .15);
 
+}
+#loginWrap .el-button:hover{
+  color:#f8a621!important;
 }
 
 .login .login-register {

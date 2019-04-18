@@ -524,7 +524,7 @@
 
   import panel from "../../components/panel.vue"
   import selectTree from "../../components/selectTree.vue"
-  import treeter from "../../components/treeter"
+  import treeter from "../../services/treeter"
   import merge from 'element-ui/src/utils/merge';
 
   import * as api from "../../api"
@@ -532,7 +532,7 @@
 
 
   export default {
-    mixins: [ treeter ],
+    mixins: [ treeter ],//混入 (mixin)， 来分发 Vue 组件中的可复用功能
     components: {
       'imp-panel': panel,
       'el-select-tree': selectTree
@@ -576,6 +576,9 @@
           item.name = this.$t(item.name);
           for (let child of item.children){
             child.name = this.$t(child.name )
+            for (let children of child.children){
+              children.name = this.$t(children.name )
+            }
           }
         }
         return (

@@ -29,7 +29,6 @@
   import {mapGetters, mapActions, mapMutations} from 'vuex'
   import types from "../store/mutation-types"
 
-
   export default {
     props: {
       show: Boolean,
