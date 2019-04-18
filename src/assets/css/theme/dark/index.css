@@ -24759,6 +24759,9 @@ html, .main-header {
   background: #101010;
   margin: -0.5rem -0.5rem 0 0.5rem;
 }
+.topBar-margin-none{
+  margin-right: 0!important;
+}
 
 
 .el-dialog {
