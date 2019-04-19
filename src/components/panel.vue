@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="topBar"></div>
+    <div class="topBar" v-if="onOffTopBar"></div>
     <div class="ibox">
       <div class="box">
         <div class="box-header" v-if="title || $slots.header" :class="{'with-border':widthBorder}">
@@ -33,6 +33,10 @@
       },
       footer: {
         type: String
+      },
+      onOffTopBar:{
+        type:Boolean,
+        default:true
       }
     }
   }

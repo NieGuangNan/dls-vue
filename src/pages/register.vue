@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="">
+  <imp-panel title="注册" :onOffTopBar="false">
     <el-form :model="registerValidateForm" label-width="100px"  ref="registerValidateForm">
       <el-form-item
         prop="email"
@@ -25,7 +25,7 @@
       <el-button type="primary" @click="submitForm('registerValidateForm')">注册</el-button>
       <el-button @click="resetForm('registerValidateForm')">重置</el-button>
     </el-form>
-  </div>
+  </imp-panel>
 </template>
 ·
 <script>

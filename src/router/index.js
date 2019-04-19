@@ -40,7 +40,6 @@ Vue.use(VueRouter)
 const routes =[
   {path: '/login', component: login,permission:['admin','developer']},
   {path: '/register', component: register,permission:['admin','developer']},
-  {path: '/resetPwd', component: resetPwd,permission:['admin','developer']},
   {
     path: '/test/1', component: app,permission:['admin','developer'], children: [
       {path: '/test/1/1/1', component: tableShow,permission:['admin','developer']},
@@ -113,12 +112,12 @@ router.beforeEach((route, redirect, next) => {
   if (state.device.isMobile && state.sidebar.opened) {
     store.commit(types.TOGGLE_SIDEBAR, false)
   }
-  if (!auth.loggedIn() && route.path !== '/login') {
-    next({
-      path: '/login',
-      query: {redirect: route.fullPath}
-    })
-  } else {
+  if (!auth.loggedIn() && route.path !== '/login' && route.path !=='/register') {
+   next({
+     path: '/login',
+     query: {redirect: route.fullPath}
+   })
+ } else {
     next()
   }
 })

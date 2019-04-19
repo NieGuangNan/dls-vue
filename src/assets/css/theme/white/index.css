@@ -269,57 +269,6 @@ html,.main-header {
   color: #fff !important;
 }
 
-
-/*login样式*/
-.login {
-  border: 1px solid #cfd8dc;
-  background-color: #20a8d8;
-}
-
-.login .el-button {
-  border-radius: 0;
-}
-
-.login .el-button.forgot, .login .el-button.forgot:hover {
-  color: #000;
-}
-
-.login .login-form {
-  background-color: #FFFFFF;
-
-}
-
-#loginWrap .btn-link:focus, #loginWrap .btn-link:hover {
-  color: #167495;
-  background-color: transparent;
-}
-
-#loginWrap .btn-link, #loginWrap .btn-link:active, #loginWrap .btn-link:focus, #loginWrap .btn-link:hover {
-  border-color: transparent;
-}
-
-
-#loginWrap .input-group-addon {
-
-  color: #607d8b;
-  background-color: #cfd8dc;
-  border: 1px solid rgba(0, 0, 0, .15);
-}
-
-#loginWrap .form-control {
-
-  color: #607d8b;
-  background: #fff none;
-  border: 1px solid rgba(0, 0, 0, .15);
-
-}
-
-.login .login-register {
-
-  background-color: #20a8d8;
-  color: #fff;
-}
-
 /*404页面*/
 .error-page .errorWarp .title {
   color: #000;
