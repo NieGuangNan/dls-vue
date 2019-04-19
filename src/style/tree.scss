@@ -38,7 +38,7 @@ $tree: v-tree;
   transition: all linear 0.3s;
 
   circle {
-    stroke: rgb(106, 106, 106);
+    //stroke: rgb(106, 106, 106);
     fill: #fff;
     stroke-width: 2px;
     transform: scale(1);
@@ -50,4 +50,7 @@ $tree: v-tree;
     stroke-width: 2px;
     cursor: pointer;
   }
+}
+.v-tree__collapse-icon-stroke{
+  stroke: rgb(106, 106, 106);
 }

@@ -90,7 +90,7 @@ export const treeProps = {
         },
         transitionDuration: {
             type: Number,
-            default: 500
+            default: 0
         },
         allowForeignObjects: {
             type: Boolean,
