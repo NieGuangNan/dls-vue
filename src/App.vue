@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper fixed" v-if="isShow">
     <vue-progress-bar></vue-progress-bar>
-    <imp-header></imp-header>
+    <imp-header :onOffMenu="onOffMenu"></imp-header>
     <side-menu v-if="onOffMenu"></side-menu>
     <div class="content-wrapper" :class="{ slideCollapse: sidebar.collapsed,mobileSide:device.isMobile,marginLeft:onOffMenu}">
       <el-scrollbar tag="div" wrap-class="content-scrollbar">

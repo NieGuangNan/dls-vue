@@ -64,93 +64,8 @@
 </template>
 
 <script>
-  import qs from 'qs';
-  import impHeader from "pages/layout/header.vue"
-
-  const appData = [
-    {
-      id: 1,
-      title: 'message.menu.sysCatalogue',
-      content: [
-        {
-          title: 'message.menu.dashboard',
-          centerIcon: 'fa fa-dashboard',
-          link:'/dashboard',
-          disabled: true
-        }],
-      show: true
-    },
-    {
-      id: 2,
-      title: 'message.menu.menu1.name',
-      content: [
-        {
-          title: 'message.menu.menu1.items.item1.children.child1',
-          centerIcon: 'fa fa-bank',
-          link:'/test/1/1/1',
-          disabled: false
-        }, {
-          title: 'message.menu.menu1.items.item1.children.child2',
-          centerIcon: 'fa fa-area-chart',
-          link:'/test/1/1/2',
-          disabled: false
-        }, {
-          title: 'message.menu.menu1.items.item2.name',
-          centerIcon: 'fa fa-area-chart',
-          link:'/test/1/2',
-          disabled: false
-        }],
-      show: true
-    },
-    {
-      id: 3,
-      title: "message.menu.menu2.name",
-      content: [
-        {
-          title: 'message.menu.menu2.items.item1.name',
-          centerIcon: 'fa fa-image',
-          link:'/test/2/1',
-          disabled: false
-        }, {
-          title: 'message.menu.menu2.items.item2.name',
-          centerIcon: 'fa fa-image',
-          link:'/test/2/1',
-          disabled: false
-        }, {
-          title: 'message.menu.menu2.items.item3.name',
-          centerIcon: 'fa fa-image',
-          link:'/test/2/3',
-          disabled: false
-        }, {
-          title: 'message.menu.menu2.items.item4.name',
-          centerIcon: 'fa fa-image',
-          link:'/test/2/4',
-          disabled: false
-        }],
-      show: true
-    },
-    {
-      id: 4,
-      title: 'message.menu.menu3.name',
-      content: [
-        {
-          title: 'message.menu.menu3.items.item2.name',
-          centerIcon: 'fa fa-navicon',
-          link:'/sys/menuList',
-          disabled: false
-        },{
-          title: 'message.menu.menu3.items.item3.name',
-          centerIcon: 'fa fa-navicon',
-          link:'/sys/roleList',
-          disabled: false
-        },{
-          title: 'message.menu.menu3.items.item4.name',
-          centerIcon: 'fa fa-user-plus',
-          link:'/sys/userList',
-          disabled: false
-        }],
-      show: true
-    }];
+  import defaultValue from "@/services/default"
+  const appData = defaultValue.appList;
   export default {
     name: "home1",
     data() {
@@ -164,7 +79,6 @@
 
       }
     },
-    components:{impHeader},
     methods: {
       token() {
         this.$http.post('http://localhost:8889/oauth/token', {

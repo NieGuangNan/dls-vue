@@ -6,7 +6,7 @@
       </span>
     </a>
     <nav class="navbar">
-      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button"
+      <a href="#" class="sidebar-toggle" v-if="onOffMenu" data-toggle="offcanvas" role="button"
          @click.stop.prevent="toggleMenu(!sidebar.collapsed,device.isMobile)">
         <span class="sr-only">Toggle navigation</span>
       </a>
@@ -102,6 +102,12 @@
         show: true,
         breadcrumb: [],
       }
+    },
+    props:{
+      onOffMenu: {
+        type: Boolean,
+        default: true
+      },
     },
     computed: {
       ...mapGetters({
