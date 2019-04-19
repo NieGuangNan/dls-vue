@@ -17,7 +17,6 @@ import * as api from "./api";
 import querystring from 'querystring'
 import {setCookie, getCookie, delCookie, permission} from 'common/utils';
 
-
 Vue.use(VueCookies);
 // import '@/assets/css/theme/bbb/index.css';
 

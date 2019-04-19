@@ -5,13 +5,15 @@
   "author": "Lanux",
   "private": true,
   "scripts": {
-    "dev": "node build/dev-server.js --host 192.168.199.247",
+    "dev": "node build/dev-server.js --host 192.168.199.103",
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src",
     "mock": "babel-node build/mock-server.js --presets es2015,stage-0",
     "mockdev": "npm run dev & npm run mock"
   },
   "dependencies": {
+    "d3": "^5.3.0",
+    "uuid": "^3.2.1",
     "animate.css": "3.5.2",
     "axios": "^0.16.2",
     "echarts": "^4.1.0",

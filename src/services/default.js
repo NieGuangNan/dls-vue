@@ -395,6 +395,26 @@ export default {
       "icon": "fa fa-area-chart",
       "children": [],
       "isShow": "1"
+    },{
+      "id": 94,
+      "access":['admin','developer'],
+      "parentId": 31,
+      "sort": 0,
+      "name": "vertical",
+      "href": "/test/1/3",
+      "icon": "fa fa-area-chart",
+      "children": [],
+      "isShow": "1"
+    },{
+      "id": 95,
+      "access":['admin','developer'],
+      "parentId": 31,
+      "sort": 0,
+      "name": "horizontal",
+      "href": "/test/1/4",
+      "icon": "fa fa-area-chart",
+      "children": [],
+      "isShow": "1"
     }],
     "isShow": "1"
   }, {

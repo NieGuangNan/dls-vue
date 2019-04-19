@@ -9,6 +9,8 @@ import dashboard from "pages/dashboard.vue";
 import NotFoundView from "components/404.vue";
 import menuList from "pages/sys/menu.vue";
 import role from "pages/sys/role.vue";
+import vertical from "pages/vertical.vue";
+import horizontal from "pages/horizontal.vue";
 // import resource from "pages/sys/resource.vue";
 import login from "pages/login.vue";
 import register from "pages/register.vue";
@@ -44,6 +46,8 @@ const routes =[
       {path: '/test/1/1/1', component: tableShow,permission:['admin','developer']},
       {path: '/test/1/1/2', component: treeTable,permission:['admin','developer']},
       {path: '/test/1/2', component: demo1,permission:['admin','developer']},
+      {path: '/test/1/3', component: vertical,permission:['admin','developer']},
+      {path: '/test/1/4', component: horizontal,permission:['admin','developer']},
       {path: '*', component: NotFoundView,permission:['admin','developer']}
     ]
   },
