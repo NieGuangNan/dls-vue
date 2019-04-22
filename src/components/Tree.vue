@@ -186,17 +186,29 @@
 
         return hits;
       },
+      nodeCollapse(nodes) {
+        nodes.map((node) => {
+          if (node.data.collapse == false) {
+            const data = [...this.data];
+            const targetNode = this.findNodeById(node.data.id, data)[0];
+            this.collapseNode(targetNode);
+
+            this.data = data;
+          }
+        })
+      },
       update() {
       }
     },
     mounted() {
       this.bindZoomListener();
-      console.log(this.tree);
+
       const {width, height} = this.$refs[this.svgRef].getBoundingClientRect();
       this.viewPort = {
         width,
         height
       };
+      this.nodeCollapse(this.tree.nodes);
       // console.log(this.viewPort)
     }
   };
