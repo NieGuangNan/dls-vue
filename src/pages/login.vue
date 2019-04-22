@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div id="loginWrap">
     <el-row>
       <div class="login">
@@ -9,14 +9,12 @@
           <el-form-item label="" prop="password">
             <el-input v-model="form.password" placeholder="密码"></el-input>
           </el-form-item>
-          <p v-if="tip" class='tip'>{{tip}}</p>
+          <span v-if="tip" class='tip'>{{tip}}</span>
           <el-form-item>
             <el-button type="primary" class="btn btn-primary " @click="login">登录</el-button>
-            <!--<el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>-->
           </el-form-item>
         </el-form>
-
-        <p style="text-align: center">Copyright  &copy; 2019</p>
+        <p>Copyright  &copy; 2019</p>
       </div>
     </el-row>
   </div>
@@ -52,10 +50,6 @@
       login() {
 
         var redirectUrl = '/';
-        // if (this.$route.query && this.$route.query != null && this.$route.query.redirect && this.$route.query.redirect != null) {
-        //   console.log(78)
-        //   redirectUrl = this.$route.query.redirect;
-        // }
         if (!(this.form.username && this.form.password)) {
           this.tip='用户名、密码均不能为空';
         } else {
@@ -66,7 +60,7 @@
 
       },
       loginJudge({sid, user, redirectUrl}) {
-        // console.log('触发了没？');
+
         if (sid && user) {
           auth.login(sid);
           this.$cookies.set("user-info",user);
@@ -99,10 +93,17 @@
   .login {
     width: 360px;
     color: white;
-    background: rgba(68, 70, 79, 0.5);
+    background: rgba(68, 70, 79, 0.6);
     border-color: #484c5a;
-    padding: 15px;
+    padding: 30px 15px 15px;
+    border-radius: 5px;
 
+  }
+  .login p{
+    padding-bottom: 10px;
+    color:#949ba2;
+    text-align: center;
+    margin-top: -5px;
   }
   .el-form{
     position:relative;
@@ -124,9 +125,6 @@
   }
   .login .el-form-item{
     margin-bottom: 15px;
-  }
-  .login .el-input__inner{
-    height:34px;
   }
 
   .login .login-form .card-block {

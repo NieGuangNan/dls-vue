@@ -13,16 +13,20 @@ axios.defaults.headers.common[ 'authUid' ] = auth.getUid();
 axios.defaults.headers.common[ 'authSid' ] = auth.getSid();
 
 //POST传参序列化
+//添加请求拦截器
 axios.interceptors.request.use((config) => {
+  // 在发送请求之前做些什么
   if (config.method === 'post') {
     config.data = qs.stringify(config.data);
   }
   return config;
 }, (error) => {
+  // 对请求错误做些什么
   return Promise.reject(error);
 });
 
 //返回状态判断
+//添加响应拦截器
 axios.interceptors.response.use(
   response => {
     if (response.data && response.data.code) {

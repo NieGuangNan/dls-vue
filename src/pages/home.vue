@@ -143,7 +143,7 @@
 <style scoped>
   .box-wrap {
     height: 30%;
-    margin-left: 0.5rem
+
   }
 
   .box-title {

@@ -95,14 +95,12 @@ a{
 
 .content-scrollbar {
   border-radius: 5px;
-  padding-right: 8px;
+  padding:0 0.5rem;
 }
 .content-wrapper .content {
   margin-top: 0.5rem;
 
 }
-
-
 
 /*背景色设置*/
 .bg-dark {
@@ -191,17 +189,13 @@ a{
 .ibox {
   padding: 5px !important;
   font-weight: 500;
-  margin-left:0.5rem;
   box-shadow: none !important;
 
 }
-.ibox-margin{
-  margin-top:0.5rem;
-}
+
 
 .ibox .ibox {
   border: none;
-  margin: 0.5rem 0 0 0.5rem;
   padding: 10px 20px 10px 20px !important;
 }
 .ibox-item{
@@ -210,11 +204,7 @@ a{
 }
 
 .ibox .ibox-title {
-
-  padding-left: 20px !important;
-  padding-right: 20px !important;
-  padding-top: 8px !important;
-  padding-bottom: 8px !important;
+  padding:8px 20px;
 }
 .ibox-title h3, .ibox-title span {
   vertical-align: middle;
@@ -242,4 +232,9 @@ a{
 /*side-menu*/
 .el-menu-style.el-menu>li:not(.is-opened){
   border-left:4px solid transparent;
+}
+/*login页面*/
+#loginWrap .login .el-input__inner{
+  height:34px;
+  background: #494b54!important;
 }

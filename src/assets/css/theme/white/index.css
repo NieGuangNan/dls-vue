@@ -25,8 +25,6 @@
   color: #000 !important;
 }
 
-
-
 .el-pager li.active {
   color: #fff !important;
   background: #1ab394;
@@ -179,7 +177,7 @@ html,.main-header {
 }
 
 .progressbar-text > span.span-line {
-  border: 1px solid black;
+  border: 1px solid #676a6c;
 }
 
 /*系统管理*/
@@ -220,21 +218,10 @@ html,.main-header {
   border: none !important;
 }
 
-/*demo1页面样式*/
-
-
-.bottom {
-  border-bottom: 1vmin solid #f3f3f4;
-}
-
-.left {
-  border-left: 1vmin solid #f3f3f4;
-}
-
 /*topBar样式*/
 .topBar {
   background: #fff;
-  margin: -0.5rem -0.5rem 0.5rem 0;
+  margin: -0.5rem -0.5rem 0 -0.5rem;
   border-bottom: 1px solid #e7eaec;
 }
 
@@ -256,6 +243,9 @@ html,.main-header {
 .el-dialog__body {
   background: #f8fafb;
   margin: 0 auto;
+}
+.el-dialog__headerbtn .el-dialog__close{
+  color:#444
 }
 
 /*demo2*/
@@ -289,9 +279,8 @@ html,.main-header {
 
 #home .box-wrap {
   border-bottom: 8px solid #f3f3f4;
-  margin-left: 8px;
   background: #fff;
-
+  margin: 0 -0.5rem;
 }
 
 #home .box-title > span {
@@ -339,8 +328,11 @@ html,.main-header {
 /*ibox*/
 .ibox {
   background: #fff;
+  margin-top:0.5rem;
 }
-
+.ibox-margin{
+  margin-right:0.5rem
+}
 .ibox .ibox {
   background: transparent;
 }

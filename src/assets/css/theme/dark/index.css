@@ -24669,7 +24669,7 @@ html, .main-header {
 }
 
 .progressbar-text > span.span-line {
-  border: 1px solid black;
+  border: 1px solid #676a6c;
 
 }
 
@@ -24744,22 +24744,10 @@ html, .main-header {
   border: none !important;
 }
 
-
-/*demo1页面样式*/
-
-
-.bottom {
-  border-bottom: 1vmin solid #333;
-}
-
-.left {
-  border-left: 1vmin solid #333;
-}
-
 /*topBar样式*/
 .topBar {
   background: #101010;
-  margin: -0.5rem -0.5rem 0 0.5rem;
+  margin: -0.5rem -0.5rem 0 0;
 }
 .topBar-margin-none{
   margin-right: 0!important;
@@ -24776,7 +24764,10 @@ html, .main-header {
   border-top: 1px solid #3d404c;
 }
 
-.el-dialog__title {
+.el-dialog__title,
+.el-dialog__body .content1 h3,
+.el-dialog__body .content2 h3,
+.el-dialog__headerbtn .el-dialog__close{
   color: #fff !important;
 }
 
@@ -24811,6 +24802,7 @@ html, .main-header {
 /*home页面*/
 #home .box-wrap {
   border-bottom: 8px solid #333333;
+  /*margin-left: 0.5rem;*/
   background: rgb(31, 32, 33);
 }
 
@@ -24860,6 +24852,10 @@ html, .main-header {
 .ibox {
   border: 1px solid black;
   background: rgb(31, 32, 33);
+  margin-bottom:0.5rem;
+}
+.ibox-margin{
+  margin-right:0.5rem
 }
 .ibox .ibox {
   background: transparent;

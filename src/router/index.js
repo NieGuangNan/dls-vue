@@ -11,7 +11,6 @@ import menuList from "pages/sys/menu.vue";
 import role from "pages/sys/role.vue";
 import vertical from "pages/vertical.vue";
 import horizontal from "pages/horizontal.vue";
-// import resource from "pages/sys/resource.vue";
 import login from "pages/login.vue";
 import register from "pages/register.vue";
 import app from "../App.vue";
@@ -100,6 +99,7 @@ if (userInfo) {
 const router = new VueRouter({
   routes: routes,
   mode: 'history'
+  //利用 history.pushState API 来完成 URL 跳转而无须重新加载页面
 });
 
 
@@ -108,6 +108,7 @@ sync(store, router)
 
 const {state} = store
 
+//全局前置导航守卫
 router.beforeEach((route, redirect, next) => {
   if (state.device.isMobile && state.sidebar.opened) {
     store.commit(types.TOGGLE_SIDEBAR, false)

@@ -12,11 +12,14 @@
       </a>
       <el-breadcrumb separator="/" style="margin-bottom: 20px;">
 
-        <template v-if="!currentMenus||currentMenus.length===0">
-          <el-breadcrumb-item>{{$t('message.menu.dashboard')}}</el-breadcrumb-item>
+        <!--<template v-if="!currentMenus||currentMenus.length===0">-->
+          <!--<el-breadcrumb-item>{{$t('message.menu.dashboard')}}</el-breadcrumb-item>-->
+        <!--</template>-->
+        <template v-if="!onOffMenu">
+          <el-breadcrumb-item>{{$t('message.menu.home')}}</el-breadcrumb-item>
         </template>
-        <template v-for="child in currentMenus">
-          <el-breadcrumb-item>{{$t(child.name)}}</el-breadcrumb-item>
+        <template v-for="child in currentMenus" v-else>
+          <el-breadcrumb-item >{{$t(child.name)}}</el-breadcrumb-item>
         </template>
 
       </el-breadcrumb>
@@ -360,6 +363,7 @@
   }
   .navbar-dropdown.el-dropdown{
     height:40px;
+    font-weight: 500;
   }
   .navbar-custom-menu .el-dropdown-link {
     display: inline-block;
@@ -369,8 +373,6 @@
     text-align: center;
 
   }
-
-
   .message-list {
     list-style: none;
     padding: 0 10px;
