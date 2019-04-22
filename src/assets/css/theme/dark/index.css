@@ -24557,8 +24557,10 @@ html, .main-header {
 
 /*header样式*/
 
+
+
 .el-dropdown-menu .header-pic p,
-.el-dropdown, .main-header a[data-v-cea13f84] {
+.el-dropdown, .main-header a[data-v-cea13f84],.el-dropdown-menu__item {
   color: #fff !important;
 }
 
