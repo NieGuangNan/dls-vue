@@ -84,7 +84,7 @@
 
   #loginWrap{
     height:100%;
-    background: url("/static/img/login-bg-mck-yf.png");
+    background: url("/static/img/login-bg-mck-yf.png") center center no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;

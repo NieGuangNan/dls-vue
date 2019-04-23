@@ -24747,7 +24747,7 @@ html, .main-header {
 /*topBar样式*/
 .topBar {
   background: #101010;
-  margin: -0.5rem -0.5rem 0 0;
+  margin: 0rem -0.5rem 0 0;
 }
 .topBar-margin-none{
   margin-right: 0!important;
@@ -24864,3 +24864,20 @@ html, .main-header {
 .ibox .ibox-title {
   color: white;
 }
+
+/*horizontal*/
+.v-tree__link-base{stroke: rgb(54, 56, 57)}
+.v-tree__collapse-icon circle{fill:rgb(31, 32, 33)}
+
+.treeBox{
+  color:#ddd;
+  border:2px solid rgb(54, 56, 57);
+}
+.treeBox .el-col-10>span,.treeBox .el-col-14>span{
+  color:#ddd;
+}
+
+.treeBox .el-col-10>p,.treeBox .el-col-14>p{
+  color:#fff
+}
+

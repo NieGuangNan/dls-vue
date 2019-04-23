@@ -97,10 +97,6 @@ a{
   border-radius: 5px;
   padding:0 0.5rem;
 }
-.content-wrapper .content {
-  margin-top: 0.5rem;
-
-}
 
 /*背景色设置*/
 .bg-dark {
@@ -130,7 +126,13 @@ a{
 }
 
 .text-black {
-  color: #000 !important;
+   color: #000 !important;
+ }
+.text-red {
+  color: #e02837 !important;
+}
+.text-green {
+  color: #557e3b !important;
 }
 
 /*图标设置*/
