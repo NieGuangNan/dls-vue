@@ -10,14 +10,15 @@
                 :pathFunc="pathFunc"
                 :orientation="orientation"
                 :linkData="link"
-                :nodeSize="nodeSize"
+                :nodeSize="link.data.attributes.data.length>1?{x:240,y:70+(link.data.attributes.data.length-1)*50}:nodeSize"
                 :transitionDuration="transitionDuration"
                 :deepFactor="deepFactor"
           />
 
           <Node v-for="node in tree.nodes" :key="node.data.id"
                 :nodeData="node"
-                :nodeSize="nodeSize"
+                :nodeSize="node.data.attributes.data.length>1?{x:240,y:70+(node.data.attributes.data.length-1)*50}:nodeSize"
+
                 :transitionDuration="transitionDuration"
                 :orientation="orientation"
                 :nodeSvgShape="nodeSvgShape"
@@ -28,6 +29,7 @@
           />
         </g>
       </transition>
+      <!--:nodeSize="node.data.attributes.expansionSize?node.data.attributes.expansionSize:nodeSize"-->
     </svg>
   </div>
 </template>
@@ -65,7 +67,7 @@
     computed: {
       treemap() {
         // tree layout
-        const {x, y} = this.nodeSize;
+        const {x, y} = {x:240,y:100};
         const treemap = tree()
         // .size([this.viewPort.width, this.viewPort.height])
           .nodeSize(this.orientation === "horizontal" ? [y, x] : [x, y])
@@ -208,8 +210,14 @@
         width,
         height
       };
+
+                `translate(154.47318612120137,427.65660934232073) scale(0.8574539533919983)`;
+
       this.nodeCollapse(this.tree.nodes);
-      // console.log(this.viewPort)
+      console.log(this.tree.nodes);
+      // console.log(this.nodeSize);
+      // console.log(this.tree.links);
+      // console.log(this.tree.links[2].data.attributes.expansionSize);
     }
   };
 </script>

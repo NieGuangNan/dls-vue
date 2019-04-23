@@ -24866,18 +24866,19 @@ html, .main-header {
 }
 
 /*horizontal*/
-.v-tree__link-base{stroke: rgb(54, 56, 57)}
+.v-tree__link-base,.v-tree__collapse-icon line, .v-tree__collapse-icon-stroke,
+.v-tree__collapse-icon polyline{stroke: rgb(54, 56, 57)}
 .v-tree__collapse-icon circle{fill:rgb(31, 32, 33)}
 
 .treeBox{
   color:#ddd;
   border:2px solid rgb(54, 56, 57);
 }
-.treeBox .el-col-10>span,.treeBox .el-col-14>span{
+.treeBox .el-col-11>span,.treeBox .el-col-13>span{
   color:#ddd;
 }
 
-.treeBox .el-col-10>p,.treeBox .el-col-14>p{
+.treeBox .el-col-11>p,.treeBox .el-col-13>p{
   color:#fff
 }
 

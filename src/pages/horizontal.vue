@@ -3,7 +3,7 @@
     <div class="tree-progress" style="height: 100vh;">
       <Tree
         ref="treeContainer"
-        :nodeSize="{x:240,y:70}"
+        :nodeSize="{x:width,y:height}"
         :initData="data"
         :translate="translate"
         pathFunc="straight"
@@ -12,25 +12,22 @@
         :transitionDuration=0
       >
         <template slot-scope="scope">
-          <!--<template v-if="scope.depth === 0">-->
-            <!--<div class="base-node salad-root">-->
-              <!--<p>{{scope.data.name}}</p>-->
-            <!--</div>-->
-          <!--</template>-->
           <template>
             <div class="base-node salad" @click="handleClick(scope)">
               <template v-if="scope.depth === 0">
-                <div class="treeBox" :class="{'border-red':scope.data.attributes.attributes.borderColor==='1','border-green':scope.data.attributes.attributes.borderColor==='2'}">
+                <div class="treeBox" :class="{'border-red':scope.data.attributes.borderColor==='1','border-green':scope.data.attributes.borderColor==='2'}">
                   <el-row>
-                    <el-col :span="10">
-                      <span :class="{'text-red':scope.data.attributes.attributes.borderColor!=='2','text-green':scope.data.attributes.attributes.borderColor==='2'}">{{scope.data.attributes.attributes.leftTop}}</span>
-                      <p>{{scope.data.attributes.attributes.leftBottom}}</p>
+                    <el-col :span="11">
+                      <span :class="{'text-red':scope.data.attributes.borderColor!=='2','text-green':scope.data.attributes.borderColor==='2'}">{{scope.data.attributes.quota}}</span>
+                      <p>{{scope.data.attributes.name}}</p>
                     </el-col>
-                    <el-col :span="14" style="text-align: right">
-                      <p >{{scope.data.attributes.attributes.rightTop}}</p>
-                      <span v-if="scope.data.attributes.attributes.rightBottom1">FY Var:</span>
-                      <span>{{scope.data.attributes.attributes.rightBottom1}}</span>
-                      <span>{{scope.data.attributes.attributes.rightBottom2}}</span>
+                    <el-col :span="13" >
+                      <p >影响: <span>{{scope.data.attributes.effect}}<b v-if="scope.data.attributes.effect!=='0'">元/吨</b></span></p>
+                      <template v-for="item in scope.data.attributes.data">
+                        <p>基准: <span>{{item.datum}}<b v-if="item.datum!=='0'">元/吨</b></span></p>
+                        <p>实际: <span class='text-blue' :class="{'text-red':scope.data.attributes.borderColor==='1','text-green':scope.data.attributes.borderColor==='2'}">{{item.fact}}<b v-if="item.fact!=='0'">元/吨</b></span></p>
+
+                      </template>
 
                     </el-col>
                   </el-row>
@@ -39,16 +36,17 @@
               <template v-else>
                 <div class="treeBox" :class="{'border-red':scope.data.attributes.borderColor==='1','border-green':scope.data.attributes.borderColor==='2'}">
                   <el-row>
-                    <el-col :span="10">
-                      <span :class="{'text-red':scope.data.attributes.borderColor!=='2','text-green':scope.data.attributes.borderColor==='2'}">{{scope.data.attributes.leftTop}}</span>
-                      <p>{{scope.data.attributes.leftBottom}}</p>
+                    <el-col :span="11">
+                      <span :class="{'text-red':scope.data.attributes.borderColor==='1','text-green':scope.data.attributes.borderColor==='2'}">{{scope.data.attributes.quota}}</span>
+                      <p>{{scope.data.attributes.name}}</p>
                     </el-col>
-                    <el-col :span="14" style="text-align: right">
-                      <p >{{scope.data.attributes.rightTop}}</p>
-                      <span v-if="scope.data.attributes.rightBottom1">FY Var:</span>
-                      <span>{{scope.data.attributes.rightBottom1}}</span>
-                      <span>{{scope.data.attributes.rightBottom2}}</span>
+                    <el-col :span="13" >
+                      <p >影响: <span>{{scope.data.attributes.effect}}<b v-if="scope.data.attributes.effect!=='0'">元/吨</b></span></p>
+                      <template v-for="item in scope.data.attributes.data">
+                        <p>基准: <span>{{item.datum}}<b v-if="item.datum!=='0'">元/吨</b></span></p>
+                        <p>实际: <span class='text-blue' :class="{'text-red':scope.data.attributes.borderColor==='1','text-green':scope.data.attributes.borderColor==='2'}">{{item.fact}}<b v-if="item.fact!=='0'">元/吨</b></span></p>
 
+                      </template>
                     </el-col>
                   </el-row>
                 </div>
@@ -68,164 +66,180 @@
 <script>
   // import treeData from "../mock/salad";
   import Tree from "../components/Tree";
+  let treeData = [{
+    id: '0',
+    attributes: {
+      quota:'',
+      name:'炼钢成本',
+      effect:'0 ',
+      data:[
+        {
+          datum:'0',
+          fact:'2,706.81',
+        }],
+
+      borderColor:'0'
+    },
+    children: [
+      {
+        id: '1',
+        collapse: true,
+        attributes: {
+          quota:'',
+          name:'60T炼钢成本',
+          effect:'0',
+          data:[
+            {
+              datum:'0',
+              fact:'2,704.12',
+            }],
+
+          borderColor:'0'
+        },
+        children: [
+          {
+            id: '1',
+            attributes: {
+              quota:'7% 好',
+              name:'钢铁料成本',
+              effect:'0',
+              data:[
+                {
+                  datum:'2,306.33',
+                  fact:'2,295.37',
+                },{
+                  datum:'111',
+                  fact:'2222',
+                }],
+              borderColor:'2'
+            }},{
+            id: '2',
+            attributes: {
+              quota:'7% 好',
+              name:'合金成本',
+              effect:'0',
+              data:[
+                {
+                  datum:'225.56',
+                  fact:'208.41',
+                },{
+                  datum:'111',
+                  fact:'2222',
+                }],
+
+              borderColor:'2'
+            }},{
+            id: '3',
+            attributes: {
+              quota:'7% 差',
+              name:'溶剂成本',
+              effect:'16.69',
+              data:[
+                {
+                  datum:'7.79',
+                  fact:'24.48',
+                },{
+                  datum:'111',
+                  fact:'2222',
+                }],
+
+              borderColor:'1'
+            }},{
+            id: '4',
+            attributes: {
+              quota:'7% 差',
+              name:'其它',
+              effect:'14.57',
+              data:[
+                {
+                  datum:'80.29',
+                  fact:'94.86',
+                }],
+
+              borderColor:'1'
+            }},]
+
+      },
+      {
+        id: '2',
+        attributes: {
+          quota:' ',
+          name:'120T炼钢成本',
+          effect:'0',
+          data:[
+            {
+              datum:'0',
+              fact:'2,708.06',
+            }],
+
+          borderColor:'0'},
+        children:[
+          {
+            id: '1',
+            attributes: {
+              quota:'7% 好',
+              name:'钢铁料成本',
+              effect:'0',
+              data:[
+                {
+                  datum:'2,331.97',
+                  fact:'2,139.98',
+                },{
+                  datum:'111',
+                  fact:'2222',
+                }],
+
+              borderColor:'2'
+            }},{
+            id: '2',
+            attributes: {
+              quota:'9% 差',
+              name:'合金成本',
+              effect:'101.97',
+              data:[
+                {
+                  datum:'39.8',
+                  fact:'141.77',
+                }],
+
+              borderColor:'1'
+            }},{
+            id: '3',
+            attributes: {
+              quota:'19% 差',
+              name:'溶剂成本',
+              effect:'23.35',
+              data:[
+                {
+                  datum:'7.79',
+                  fact:'31.14',
+                }],
+
+              borderColor:'1'
+            }},{
+            id: '4',
+            attributes: {
+              quota:'28% 好',
+              name:'其它',
+              data:[
+                {
+                  datum:'141.12',
+                  fact:'129.67',
+                }],
+              effect:'0',
+
+              borderColor:'2'
+            }}]
+      }],
+  },];
 
   export default {
     name: 'horizontal',
     data() {
-      let treeData = [{
-        name: '0',
-        attributes: {
-          attributes: {
-            leftTop:'',
-            leftBottom:'Balance Sheet',
-            rightTop:' ',
-            rightBottom1:'',
-            rightBottom2:'',
-            borderColor:'0'
-          }
-        },
-        children: [{
-          name: '1、',
-          collapse: true,
-          attributes: {
-            leftTop:'2% worse',
-            leftBottom:'Assets',
-            rightTop:'2,381,0',
-            rightBottom1:'75%',
-            rightBottom2:'(6,883.6)',
-            borderColor:'1'
-          },
-          children: [{
-            name: '1、',
-            attributes: {
-              leftTop:'7% worse',
-              leftBottom:'Current Assets',
-              rightTop:'664.3',
-              rightBottom1:'91%',
-              rightBottom2:'(6,897.3)',
-              borderColor:'1'
-            },
-            children:[{
-              name: '1、',
-              attributes: {
-                leftTop:'19% worse',
-                leftBottom:'Cash',
-                rightTop:'220.0',
-                rightBottom1:'19%',
-                rightBottom2:'(50.1)',
-                borderColor:'1'
-              }},{
-              name: '2、',
-              attributes: {
-                leftTop:' ',
-                leftBottom:'Net Receivables',
-                rightTop:'225.3',
-                rightBottom1:'16%',
-                rightBottom2:'30.2',
-                borderColor:'2'
-              }},{
-              name: '3、',
-              attributes: {
-                leftTop:' ',
-                leftBottom:'Inventory',
-                rightTop:'182.5',
-                rightBottom1:'3%',
-                rightBottom2:'4.5',
-                borderColor:'2'
-              }},{
-              name: '4、',
-              attributes: {
-                leftTop:' ',
-                leftBottom:'Other Current Assets',
-                rightTop:'36.5',
-                rightBottom1:'99%',
-                rightBottom2:'(6,882.3)',
-                borderColor:'1'
-              }},
-
-            ]
-          },{
-            name: '2、',
-            attributes: {
-              leftTop:' ',
-              leftBottom:'long term Assets',
-              rightTop:'1,716.7',
-              rightBottom1:'1%',
-              rightBottom2:'13.7',
-              borderColor:'0'
-            }
-          },]
-        },
-          {
-            name: '2、',
-            attributes: {
-              leftTop:'2% better',
-              leftBottom:'Liabilities and SE',
-              rightTop:'2,381.0',
-              rightBottom1:'49%',
-              rightBottom2:'(2,247.2)',
-              borderColor:'2'
-            }
-          },
-          {
-            name: '3、',
-            attributes: {
-              leftTop:' ',
-              leftBottom:'Financial Ratios',
-              rightTop:'',
-              rightBottom1:'',
-              rightBottom2:'',
-              borderColor:'0'},
-            children:[{
-              name: '1、',
-              attributes: {
-                leftTop:'7% worse',
-                leftBottom:'Current Ratio',
-                rightTop:'1.25',
-                rightBottom1:'92%',
-                rightBottom2:'(14.47)',
-                borderColor:'0'
-              }},{
-              name: '2、',
-              attributes: {
-                leftTop:'9% worse',
-                leftBottom:'Quick Ratio',
-                rightTop:'0.90',
-                rightBottom1:'94%',
-                rightBottom2:'(14.44)',
-                borderColor:'0'
-              }},{
-              name: '3、',
-              attributes: {
-                leftTop:'19% worse',
-                leftBottom:'Cash Ratio',
-                rightTop:'0.41',
-                rightBottom1:'27%',
-                rightBottom2:'(0.15)',
-                borderColor:'0'
-              }},{
-              name: '4、',
-              attributes: {
-                leftTop:'28% worse',
-                leftBottom:'Working Capital',
-                rightTop:'130.9',
-                rightBottom1:'98%',
-                rightBottom2:'(6,949.5)',
-                borderColor:'0'
-              }},{
-              name: '5、',
-              attributes: {
-                leftTop:'15% worse',
-                leftBottom:'Debt to Equlity Ratio',
-                rightTop:'1.93',
-                rightBottom1:'>99%',
-                rightBottom2:'1.41',
-                borderColor:'0'
-              }}]
-          }],
-      },];
       return {
         data: treeData,
+        width:240,
+        height:70,
         translate: {
           x: 0,
           y: 0
@@ -247,158 +261,7 @@
         console.log(val)
       },
       handleClick(scope) {
-        this.data = [{
-          name: '0',
-          attributes: {
-            attributes: {
-              leftTop:'',
-              leftBottom:'Balance Sheet',
-              rightTop:' ',
-              rightBottom1:'',
-              rightBottom2:'',
-              borderColor:'0'
-            }
-          },
-          children: [{
-            name: '1、',
-            collapse: false,
-            attributes: {
-              leftTop:'2% worse',
-              leftBottom:'Assets',
-              rightTop:'2,381,0',
-              rightBottom1:'75%',
-              rightBottom2:'(6,883.6)',
-              borderColor:'1'
-            },
-            children: [{
-              name: '1、',
-              attributes: {
-                leftTop:'7% worse',
-                leftBottom:'Current Assets',
-                rightTop:'664.3',
-                rightBottom1:'91%',
-                rightBottom2:'(6,897.3)',
-                borderColor:'1'
-              },
-              children:[{
-                name: '1、',
-                attributes: {
-                  leftTop:'19% worse',
-                  leftBottom:'Cash',
-                  rightTop:'220.0',
-                  rightBottom1:'19%',
-                  rightBottom2:'(50.1)',
-                  borderColor:'1'
-                }},{
-                name: '2、',
-                attributes: {
-                  leftTop:' ',
-                  leftBottom:'Net Receivables',
-                  rightTop:'225.3',
-                  rightBottom1:'16%',
-                  rightBottom2:'30.2',
-                  borderColor:'2'
-                }},{
-                name: '3、',
-                attributes: {
-                  leftTop:' ',
-                  leftBottom:'Inventory',
-                  rightTop:'182.5',
-                  rightBottom1:'3%',
-                  rightBottom2:'4.5',
-                  borderColor:'2'
-                }},{
-                name: '4、',
-                attributes: {
-                  leftTop:' ',
-                  leftBottom:'Other Current Assets',
-                  rightTop:'36.5',
-                  rightBottom1:'99%',
-                  rightBottom2:'(6,882.3)',
-                  borderColor:'1'
-                }},
-
-              ]
-            },{
-              name: '2、',
-              attributes: {
-                leftTop:' ',
-                leftBottom:'long term Assets',
-                rightTop:'1,716.7',
-                rightBottom1:'1%',
-                rightBottom2:'13.7',
-                borderColor:'0'
-              }
-            },]
-          },
-            {
-              name: '2、',
-              attributes: {
-                leftTop:'2% better',
-                leftBottom:'Liabilities and SE',
-                rightTop:'2,381.0',
-                rightBottom1:'49%',
-                rightBottom2:'(2,247.2)',
-                borderColor:'2'
-              }
-            },
-            {
-              name: '3、',
-              attributes: {
-                leftTop:' ',
-                leftBottom:'Financial Ratios',
-                rightTop:'',
-                rightBottom1:'',
-                rightBottom2:'',
-                borderColor:'0'},
-              children:[{
-                name: '1、',
-                attributes: {
-                  leftTop:'7% worse',
-                  leftBottom:'Current Ratio',
-                  rightTop:'1.25',
-                  rightBottom1:'92%',
-                  rightBottom2:'(14.47)',
-                  borderColor:'0'
-                }},{
-                name: '2、',
-                attributes: {
-                  leftTop:'9% worse',
-                  leftBottom:'Quick Ratio',
-                  rightTop:'0.90',
-                  rightBottom1:'94%',
-                  rightBottom2:'(14.44)',
-                  borderColor:'0'
-                }},{
-                name: '3、',
-                attributes: {
-                  leftTop:'19% worse',
-                  leftBottom:'Cash Ratio',
-                  rightTop:'0.41',
-                  rightBottom1:'27%',
-                  rightBottom2:'(0.15)',
-                  borderColor:'0'
-                }},{
-                name: '4、',
-                attributes: {
-                  leftTop:'28% worse',
-                  leftBottom:'Working Capital',
-                  rightTop:'130.9',
-                  rightBottom1:'98%',
-                  rightBottom2:'(6,949.5)',
-                  borderColor:'0'
-                }},{
-                name: '5、',
-                attributes: {
-                  leftTop:'15% worse',
-                  leftBottom:'Debt to Equlity Ratio',
-                  rightTop:'1.93',
-                  rightBottom1:'>99%',
-                  rightBottom2:'1.41',
-                  borderColor:'0'
-                }}]
-            }],
-        },];
+        this.data = treeData ;
         // console.log(scope);
       },
       pathFunc(linkData, start, end) {
@@ -407,6 +270,8 @@
     },
     mounted() {
       this.setTreeCenter();
+
+
     }
   };
 </script>
@@ -415,9 +280,7 @@
 
   .treeBox{
     border-radius: 5px;
-    width: 230px;
-    height:70px;
-    padding: 0 5px;
+    padding: 0 3px 0 5px;
     font-size: 10px;
     display: flex;
     align-items: center;
@@ -431,10 +294,20 @@
   .treeBox .el-row{
     width: 100%;
   }
-  .treeBox .el-col-10>p,.treeBox .el-col-10>span,.treeBox .el-col-14>span{
+ .treeBox .el-col-11>span,.treeBox .el-col-13>p{
     font-size: 12px;
   }
-  .treeBox .el-col-14>p{
-    font-size: 16px;
+  .treeBox .el-col-11>p{
+    font-size: 14px;
+  }
+  .treeBox .el-row{
+    display: flex;
+    align-items: center;
+  }
+  .treeBox .el-col-13>p b{
+    /*font-size: 12px;*/
+    display: inline-block;
+    transform: scale(0.7);
+    vertical-align: -9%;
   }
 </style>
