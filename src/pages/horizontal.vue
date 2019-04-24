@@ -310,4 +310,8 @@
     transform: scale(0.7);
     vertical-align: -9%;
   }
+  .ibox{
+    position: fixed;
+    width: 100%;
+  }
 </style>
