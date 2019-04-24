@@ -85,7 +85,7 @@
   #loginWrap{
     height:100%;
     background: url("/static/img/login-bg-mck-yf.png") center center no-repeat;
-    background-size:100% 100%;
+    background-size:cover;
     display: flex;
     justify-content: center;
     align-items: center;

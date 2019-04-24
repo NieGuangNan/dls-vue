@@ -1,4 +1,5 @@
-import(`@/assets/css/theme/${VueCookies.isKey('themeColor') ? VueCookies.get('themeColor') : api.DEFAULT_THEME}/index.css`);
+import '@/assets/css/public.css';  //公共样式
+import(`@/assets/css/theme/${VueCookies.isKey('themeColor') ? VueCookies.get('themeColor') : api.DEFAULT_THEME}/index.css`);//主题样式
 import 'babel-polyfill'
 import Vue from "vue";
 import frame from "./frame.vue";
@@ -10,7 +11,7 @@ import VueProgressBar from "vue-progressbar";
 import Element from "element-ui";
 import ImpPanel from "./components/panel.vue";
 // import '@/assets/css/theme.css';
-import '@/assets/css/public.css';  //公共样式
+
 import i18n from './i18n';
 import VueCookies from 'vue-cookies'
 import * as api from "./api";
