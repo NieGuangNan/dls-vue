@@ -238,8 +238,5 @@ a{
 .el-menu-style.el-menu>li:not(.is-opened){
   border-left:4px solid transparent;
 }
-/*login页面*/
-#loginWrap .login .el-input__inner{
-  height:34px;
-  background: #494b54!important;
-}
+
+

@@ -351,3 +351,14 @@ html,.main-header {
 .treeBox .tree-col-10>p,.treeBox .tree-col-14>p{
   color:#000
 }
+
+/*login*/
+.login {
+  color: rgb(103, 106, 108);
+  background:white;
+  border-color: rgb(103, 106, 108);
+
+}
+#loginWrap .login .el-input__inner {
+  background: rgb(232, 240, 254)!important;
+}

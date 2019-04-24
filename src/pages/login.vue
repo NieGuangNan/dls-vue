@@ -85,6 +85,7 @@
   #loginWrap{
     height:100%;
     background: url("/static/img/login-bg-mck-yf.png") center center no-repeat;
+    background-size:100% 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -92,9 +93,6 @@
 
   .login {
     width: 360px;
-    color: white;
-    background: rgba(68, 70, 79, 0.6);
-    border-color: #484c5a;
     padding: 30px 15px 15px;
     border-radius: 5px;
 
@@ -117,7 +115,9 @@
     z-index: 99999;
 
   }
-
+  #loginWrap .login .el-input__inner{
+    height:34px;
+  }
   .login .el-button {
     width: 100%;
     color:#fff;
