@@ -338,6 +338,10 @@
     width: 100%;
     align-items: center;
   }
+  .ibox{
+    position: fixed;
+    width: 100%;
+  }
 
   .myFont1 {
     display: inline-block;
