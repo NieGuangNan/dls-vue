@@ -344,10 +344,10 @@ html,.main-header {
   color:#555;
   border:2px solid #ddd;
 }
-.treeBox .el-col-10>span,.treeBox .el-col-14>span{
+.treeBox .tree-col-10>span,.treeBox .tree-col-14>span{
    color:#555;
  }
 
-.treeBox .el-col-10>p,.treeBox .el-col-14>p{
+.treeBox .tree-col-10>p,.treeBox .tree-col-14>p{
   color:#000
 }

@@ -24874,11 +24874,11 @@ html, .main-header {
   color:#ddd;
   border:2px solid rgb(54, 56, 57);
 }
-.treeBox .el-col-11>span,.treeBox .el-col-13>span{
+.treeBox .tree-col-11>span,.treeBox .tree-col-13>span{
   color:#ddd;
 }
 
-.treeBox .el-col-11>p,.treeBox .el-col-13>p{
+.treeBox .tree-col-11>p,.treeBox .tree-col-13>p{
   color:#fff
 }
 

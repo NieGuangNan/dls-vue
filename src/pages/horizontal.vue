@@ -15,40 +15,50 @@
           <template>
             <div class="base-node salad" @click="handleClick(scope)">
               <template v-if="scope.depth === 0">
-                <div class="treeBox" :class="{'border-red':scope.data.attributes.borderColor==='1','border-green':scope.data.attributes.borderColor==='2'}">
-                  <el-row>
-                    <el-col :span="11">
-                      <span :class="{'text-red':scope.data.attributes.borderColor!=='2','text-green':scope.data.attributes.borderColor==='2'}">{{scope.data.attributes.quota}}</span>
+                <div class="treeBox"
+                     :class="{'border-red':scope.data.attributes.borderColor==='1','border-green':scope.data.attributes.borderColor==='2'}">
+                  <div class="tree-row">
+                    <div class="tree-col-11">
+                      <span
+                        :class="{'text-red':scope.data.attributes.borderColor!=='2','text-green':scope.data.attributes.borderColor==='2'}">{{scope.data.attributes.quota}}</span>
                       <p>{{scope.data.attributes.name}}</p>
-                    </el-col>
-                    <el-col :span="13" >
-                      <p >影响: <span>{{scope.data.attributes.effect}}<b v-if="scope.data.attributes.effect!=='0'">元/吨</b></span></p>
+                    </div>
+                    <div class="tree-col-13">
+                      <p>影响: <span>{{scope.data.attributes.effect}}<sub v-if="scope.data.attributes.effect!=='0'" :class="{myFont1:fontOnOff,myFont2:!fontOnOff}">元/吨</sub></span>
+                      </p>
                       <template v-for="item in scope.data.attributes.data">
-                        <p>基准: <span>{{item.datum}}<b v-if="item.datum!=='0'">元/吨</b></span></p>
-                        <p>实际: <span class='text-blue' :class="{'text-red':scope.data.attributes.borderColor==='1','text-green':scope.data.attributes.borderColor==='2'}">{{item.fact}}<b v-if="item.fact!=='0'">元/吨</b></span></p>
+                        <p>基准: <span>{{item.datum}}<sub v-if="item.datum!=='0'" :class="{myFont1:fontOnOff,myFont2:!fontOnOff}">元/吨</sub></span></p>
+                        <p>实际: <span class='text-blue'
+                                     :class="{'text-red':scope.data.attributes.borderColor==='1','text-green':scope.data.attributes.borderColor==='2'}">{{item.fact}}<sub
+                          v-if="item.fact!=='0'" :class="{myFont1:fontOnOff,myFont2:!fontOnOff}">元/吨</sub></span></p>
 
                       </template>
 
-                    </el-col>
-                  </el-row>
+                    </div>
+                  </div>
                 </div>
               </template>
               <template v-else>
-                <div class="treeBox" :class="{'border-red':scope.data.attributes.borderColor==='1','border-green':scope.data.attributes.borderColor==='2'}">
-                  <el-row>
-                    <el-col :span="11">
-                      <span :class="{'text-red':scope.data.attributes.borderColor==='1','text-green':scope.data.attributes.borderColor==='2'}">{{scope.data.attributes.quota}}</span>
+                <div class="treeBox"
+                     :class="{'border-red':scope.data.attributes.borderColor==='1','border-green':scope.data.attributes.borderColor==='2'}">
+                  <div class="tree-row">
+                    <div class="tree-col-11">
+                      <span
+                        :class="{'text-red':scope.data.attributes.borderColor==='1','text-green':scope.data.attributes.borderColor==='2'}">{{scope.data.attributes.quota}}</span>
                       <p>{{scope.data.attributes.name}}</p>
-                    </el-col>
-                    <el-col :span="13" >
-                      <p >影响: <span>{{scope.data.attributes.effect}}<b v-if="scope.data.attributes.effect!=='0'">元/吨</b></span></p>
+                    </div>
+                    <div class="tree-col-13">
+                      <p>影响: <span>{{scope.data.attributes.effect}}<sub v-if="scope.data.attributes.effect!=='0'" :class="{myFont1:fontOnOff,myFont2:!fontOnOff}">元/吨</sub></span>
+                      </p>
                       <template v-for="item in scope.data.attributes.data">
-                        <p>基准: <span>{{item.datum}}<b v-if="item.datum!=='0'">元/吨</b></span></p>
-                        <p>实际: <span class='text-blue' :class="{'text-red':scope.data.attributes.borderColor==='1','text-green':scope.data.attributes.borderColor==='2'}">{{item.fact}}<b v-if="item.fact!=='0'">元/吨</b></span></p>
+                        <p>基准: <span>{{item.datum}}<sub v-if="item.datum!=='0'" :class="{myFont1:fontOnOff,myFont2:!fontOnOff}">元/吨</sub></span></p>
+                        <p>实际: <span class='text-blue'
+                                     :class="{'text-red':scope.data.attributes.borderColor==='1','text-green':scope.data.attributes.borderColor==='2'}">{{item.fact}}<sub
+                          v-if="item.fact!=='0'" :class="{myFont1:fontOnOff,myFont2:!fontOnOff}">元/吨</sub></span></p>
 
                       </template>
-                    </el-col>
-                  </el-row>
+                    </div>
+                  </div>
                 </div>
 
               </template>
@@ -66,53 +76,55 @@
 <script>
   // import treeData from "../mock/salad";
   import Tree from "../components/Tree";
+
   let treeData = [{
     id: '0',
     attributes: {
-      quota:'',
-      name:'炼钢成本',
-      effect:'0 ',
-      data:[
+      quota: '',
+      name: '炼钢成本',
+      effect: '0 ',
+      data: [
         {
-          datum:'0',
-          fact:'2,706.81',
+          datum: '0',
+          fact: '2,706.81',
         }],
 
-      borderColor:'0'
+      borderColor: '0'
     },
     children: [
       {
         id: '1',
         collapse: true,
         attributes: {
-          quota:'',
-          name:'60T炼钢成本',
-          effect:'0',
-          data:[
+          quota: '',
+          name: '60T炼钢成本',
+          effect: '0',
+          data: [
             {
-              datum:'0',
-              fact:'2,704.12',
+              datum: '0',
+              fact: '2,704.12',
             }],
 
-          borderColor:'0'
+          borderColor: '0'
         },
         children: [
           {
             id: '1',
             attributes: {
-              quota:'7% 好',
-              name:'钢铁料成本',
-              effect:'0',
-              data:[
+              quota: '7% 好',
+              name: '钢铁料成本',
+              effect: '0',
+              data: [
                 {
-                  datum:'2,306.33',
-                  fact:'2,295.37',
-                },{
-                  datum:'111',
-                  fact:'2222',
+                  datum: '2,306.33',
+                  fact: '2,295.37',
+                }, {
+                  datum: '111',
+                  fact: '2222',
                 }],
-              borderColor:'2'
-            }},{
+              borderColor: '2'
+            }
+          }, {
             id: '2',
             attributes: {
               quota:'7% 好',
@@ -237,6 +249,7 @@
     name: 'horizontal',
     data() {
       return {
+        fontOnOff:true,
         data: treeData,
         width:240,
         height:70,
@@ -266,10 +279,24 @@
       },
       pathFunc(linkData, start, end) {
         return "M" + end.x + "," + end.y + " " + start.x + "," + start.y;
+      },
+      // 浏览器兼容性处理
+      myBrowser(){
+        let userAgent = navigator.userAgent;
+        if (userAgent.indexOf("Chrome") > -1) {
+          return "Chrome";
+        }
       }
     },
     mounted() {
       this.setTreeCenter();
+      let mb = this.myBrowser();
+      if ("Chrome" == mb) {
+        this.fontOnOff=true
+      }else{
+        this.fontOnOff=false;
+      }
+
 
 
     }
@@ -278,40 +305,54 @@
 
 <style scoped>
 
-  .treeBox{
+  .treeBox {
+    width: 100%;
     border-radius: 5px;
-    padding: 0 3px 0 5px;
+    padding-left:8px;
     font-size: 10px;
     display: flex;
     align-items: center;
   }
-  .border-green{
-    border-left:5px solid #557e3b;
+
+  .border-green {
+    border-left: 5px solid #557e3b;
   }
-  .border-red{
-    border-left:5px solid #e02837 ;
+
+  .border-red {
+    border-left: 5px solid #e02837;
   }
-  .treeBox .el-row{
-    width: 100%;
+
+  .treeBox .tree-col-11{
+    width: 42%;
   }
- .treeBox .el-col-11>span,.treeBox .el-col-13>p{
+  .treeBox .tree-col-11 > span, .treeBox .tree-col-13 > p {
     font-size: 12px;
   }
-  .treeBox .el-col-11>p{
+
+  .treeBox .tree-col-11 > p {
     font-size: 14px;
   }
-  .treeBox .el-row{
+
+  .treeBox .tree-row {
     display: flex;
+    width: 100%;
     align-items: center;
   }
-  .treeBox .el-col-13>p b{
-    /*font-size: 12px;*/
+
+  .myFont1 {
     display: inline-block;
     transform: scale(0.7);
     vertical-align: -9%;
   }
-  .ibox{
-    position: fixed;
-    width: 100%;
+  .myFont2{
+    display: inline-block;
+    font-size: 8px;
+    vertical-align: -9%;
   }
+
+
+
+
+
+
 </style>
