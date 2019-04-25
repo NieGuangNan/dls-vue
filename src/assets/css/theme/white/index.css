@@ -299,7 +299,7 @@ html,.main-header {
   color: rgb(103, 106, 108);
 }
 
-#home .app-content i {
+#home .app-content{
   color: #000;
 
 }
@@ -310,7 +310,7 @@ html,.main-header {
   color:#999!important;
 }
 
-#home .disabled, #home .disabled .app-content i {
+#home .disabled, #home .disabled .app-content {
   color: #999999 !important;
 }
 
@@ -321,7 +321,7 @@ html,.main-header {
   color: #1ab394;
 }
 
-#home .app-box:hover i {
+#home .app-box:hover i,#home .app-box:hover .app-content {
   color: #1ab394;
 }
 

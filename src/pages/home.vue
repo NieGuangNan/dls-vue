@@ -44,15 +44,15 @@
         <el-collapse-transition>
           <el-row class="box-content" v-if="item.show">
             <template v-for="child of item.content">
-              <router-link :to="child.link" :class="{disabled:child.disabled}">
-                <div class="app-box">
+                <div class="app-box" :class="{disabled:child.disabled}">
                   <i :class="{'fal fa-star':!child.disabled}" @click="stars($event,item.id)"></i>
-                  <div class="app-content">
-                    <i :class="child.centerIcon"></i>
-                    <div>{{$t(child.title)}}</div>
-                  </div>
+                  <router-link :to="child.link" >
+                    <div class="app-content">
+                      <i :class="child.centerIcon"></i>
+                      <div>{{$t(child.title)}}</div>
+                    </div>
+                  </router-link>
                 </div>
-              </router-link>
             </template>
           </el-row>
         </el-collapse-transition>
@@ -195,7 +195,7 @@
     font-weight: 500;
   }
 
-  .disabled, .disabled .app-content i {
+  .disabled, .disabled .app-box{
     pointer-events: none;
   }
 

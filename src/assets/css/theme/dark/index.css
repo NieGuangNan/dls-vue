@@ -24822,7 +24822,7 @@ html, .main-header {
   color: rgb(103, 106, 108);
 }
 
-#home .app-content i {
+#home .app-content {
   color: #fff;
 
 }
@@ -24830,10 +24830,10 @@ html, .main-header {
 .disabled>.app-box{
   background: #363839 !important;
   border: 2px solid #363839 !important;
-  color:#999!important;
+  color:#999!important;:class="{disabled:child.disabled}"
 }
 
-#home .disabled, #home .disabled .app-content i {
+#home .disabled, #home .disabled .app-content {
   color: #999999 !important;
 }
 
@@ -24844,7 +24844,7 @@ html, .main-header {
   color: #f6a821;
 }
 
-#home .app-box:hover i {
+#home .app-box:hover i,#home .app-box:hover .app-content{
   color: #f6a821;
 }
 

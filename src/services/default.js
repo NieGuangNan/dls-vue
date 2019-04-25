@@ -916,6 +916,16 @@ export default {
           centerIcon: 'fa fa-area-chart',
           link:'/test/1/2',
           disabled: false
+        },{
+          title: 'vertical',
+          centerIcon: 'fa fa-area-chart',
+          link:'/test/1/3',
+          disabled: false,
+        },{
+          title: 'horizontal',
+          centerIcon: 'fa fa-area-chart',
+          link:'/test/1/4',
+          disabled: false,
         }],
       show: true
     },
