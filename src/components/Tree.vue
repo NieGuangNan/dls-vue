@@ -10,14 +10,14 @@
                 :pathFunc="pathFunc"
                 :orientation="orientation"
                 :linkData="link"
-                :nodeSize="link.data.attributes.data.length>1?{x:240,y:70+(link.data.attributes.data.length-1)*50}:nodeSize"
+                :nodeSize="link.data.attributes.data.length>1?{x:250,y:70+(link.data.attributes.data.length-1)*50}:nodeSize"
                 :transitionDuration="transitionDuration"
                 :deepFactor="deepFactor"
           />
 
           <Node v-for="node in tree.nodes" :key="node.data.id"
                 :nodeData="node"
-                :nodeSize="node.data.attributes.data.length>1?{x:240,y:70+(node.data.attributes.data.length-1)*50}:nodeSize"
+                :nodeSize="node.data.attributes.data.length>1?{x:250,y:70+(node.data.attributes.data.length-1)*50}:nodeSize"
 
                 :transitionDuration="transitionDuration"
                 :orientation="orientation"
@@ -67,7 +67,7 @@
     computed: {
       treemap() {
         // tree layout
-        const {x, y} = {x:240,y:100};
+        const {x, y} = {x:250,y:100};
         const treemap = tree()
         // .size([this.viewPort.width, this.viewPort.height])
           .nodeSize(this.orientation === "horizontal" ? [y, x] : [x, y])

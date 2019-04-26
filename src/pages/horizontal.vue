@@ -17,11 +17,11 @@
             <div class="base-node salad" @click="handleClick(scope)">
               <template v-if="scope.depth === 0">
                 <div class="treeBox"
-                     :class="{'border-red':scope.data.attributes.borderColor==='1','border-green':scope.data.attributes.borderColor==='2'}">
+                     :class='scope.data.attributes.borderColor?scope.data.attributes.borderColor:""'>
                   <div class="tree-row">
                     <div class="tree-col-11">
                       <span
-                        :class="{'text-red':scope.data.attributes.borderColor!=='2','text-green':scope.data.attributes.borderColor==='2'}">{{scope.data.attributes.quota}}</span>
+                        :class='scope.data.attributes.textColor?scope.data.attributes.textColor:""'>{{scope.data.attributes.quota}}</span>
                       <p>{{scope.data.attributes.name}}</p>
                     </div>
                     <div class="tree-col-13">
@@ -29,8 +29,8 @@
                       </p>
                       <template v-for="item in scope.data.attributes.data">
                         <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>基准: </b><span><b>{{item.datum}}</b><sub v-if="item.datum!=='0'" >元/吨</sub></span></p>
-                        <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>实际: </b><span class='text-blue'
-                                     :class="{'text-red':scope.data.attributes.borderColor==='1','text-green':scope.data.attributes.borderColor==='2'}"><b>{{item.fact}}</b><sub
+                        <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>实际: </b><span
+                                     :class='scope.data.attributes.textColor?scope.data.attributes.textColor:""'><b>{{item.fact}}</b><sub
                           v-if="item.fact!=='0'" >元/吨</sub></span></p>
 
                       </template>
@@ -41,11 +41,11 @@
               </template>
               <template v-else>
                 <div class="treeBox"
-                     :class="{'border-red':scope.data.attributes.borderColor==='1','border-green':scope.data.attributes.borderColor==='2'}">
+                     :class='scope.data.attributes.borderColor?scope.data.attributes.borderColor:""'>
                   <div class="tree-row">
                     <div class="tree-col-11">
                       <span
-                        :class="{'text-red':scope.data.attributes.borderColor==='1','text-green':scope.data.attributes.borderColor==='2'}">{{scope.data.attributes.quota}}</span>
+                        :class='scope.data.attributes.textColor?scope.data.attributes.textColor:""'>{{scope.data.attributes.quota}}</span>
                       <p>{{scope.data.attributes.name}}</p>
                     </div>
                     <div class="tree-col-13">
@@ -53,8 +53,7 @@
                       </p>
                       <template v-for="item in scope.data.attributes.data">
                         <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>基准: </b><span><b>{{item.datum}}</b><sub v-if="item.datum!=='0'">元/吨</sub></span></p>
-                        <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>实际: </b><span class='text-blue'
-                                     :class="{'text-red':scope.data.attributes.borderColor==='1','text-green':scope.data.attributes.borderColor==='2'}"><b>{{item.fact}}</b><sub
+                        <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>实际: </b><span :class='scope.data.attributes.textColor?scope.data.attributes.textColor:""'><b>{{item.fact}}</b><sub
                           v-if="item.fact!=='0'" >元/吨</sub></span></p>
 
                       </template>
@@ -89,8 +88,7 @@
           datum: '0',
           fact: '2,706.81',
         }],
-
-      borderColor: '0'
+      textColor:'text-blue'
     },
     children: [
       {
@@ -104,9 +102,11 @@
             {
               datum: '0',
               fact: '2,704.12',
+            },{
+              datum: '0',
+              fact: '2,706.81',
             }],
-
-          borderColor: '0'
+          textColor:'text-blue'
         },
         children: [
           {
@@ -123,7 +123,9 @@
                   datum: '111',
                   fact: '2222',
                 }],
-              borderColor: '2'
+              borderColor:'border-green',
+              textColor:'text-green',
+    
             }
           }, {
             id: '2',
@@ -140,7 +142,8 @@
                   fact:'2222',
                 }],
 
-              borderColor:'2'
+              borderColor:'border-green',
+              textColor:'text-green',
             }},{
             id: '3',
             attributes: {
@@ -155,8 +158,8 @@
                   datum:'111',
                   fact:'2222',
                 }],
-
-              borderColor:'1'
+              borderColor:'border-red',
+              textColor:'text-red',
             }},{
             id: '4',
             attributes: {
@@ -168,8 +171,8 @@
                   datum:'80.29',
                   fact:'94.86',
                 }],
-
-              borderColor:'1'
+              borderColor:'border-red',
+              textColor:'text-red',
             }},]
 
       },
@@ -184,8 +187,8 @@
               datum:'0',
               fact:'2,708.06',
             }],
-
-          borderColor:'0'},
+          textColor:'text-blue'
+},
         children:[
           {
             id: '1',
@@ -201,8 +204,8 @@
                   datum:'111',
                   fact:'2222',
                 }],
-
-              borderColor:'2'
+              borderColor:'border-green',
+              textColor:'text-green',
             }},{
             id: '2',
             attributes: {
@@ -215,7 +218,8 @@
                   fact:'141.77',
                 }],
 
-              borderColor:'1'
+              borderColor:'border-red',
+              textColor:'text-red',
             }},{
             id: '3',
             attributes: {
@@ -228,7 +232,8 @@
                   fact:'31.14',
                 }],
 
-              borderColor:'1'
+              borderColor:'border-red',
+              textColor:'text-red',
             }},{
             id: '4',
             attributes: {
@@ -241,7 +246,8 @@
                 }],
               effect:'0',
 
-              borderColor:'2'
+              borderColor:'border-green',
+              textColor:'text-green',
             }}]
       }],
   },];
@@ -252,7 +258,7 @@
       return {
         fontOnOff:true,
         data: treeData,
-        width:240,
+        width:250,
         height:70,
         translate: {
           x: 0,
@@ -327,13 +333,7 @@
     align-items: center;
   }
 
-  .border-green {
-    border-left: 5px solid #557e3b;
-  }
 
-  .border-red {
-    border-left: 5px solid #e02837;
-  }
 
   .treeBox .tree-col-11 > p {
     font-size: 14px;
@@ -373,7 +373,7 @@
   .tree-col-13 p{
     line-height: 16px;
     display: flex;
-
+    margin:0 -13px;
   }
   .tree-col-13 p span{
     width: 75%;

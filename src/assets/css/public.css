@@ -135,10 +135,20 @@ a{
   color: #557e3b !important;
 }
 .text-blue{
-  color:#63b3e2;
+  color:#63b3e2 !important;
+}
+/*左边框颜色设置 horizontal页面*/
+.border-green {
+  border-left: 5px solid #557e3b !important;
 }
 
-/*图标设置*/
+.border-red {
+  border-left: 5px solid #e02837 !important;
+}
+.border-blue{
+  border-left: 5px solid #63b3e2 !important;
+}
+  /*图标设置*/
 
 .fas:before {
   font-weight: 900 !important;
