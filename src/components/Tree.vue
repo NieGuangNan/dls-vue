@@ -10,14 +10,14 @@
                 :pathFunc="pathFunc"
                 :orientation="orientation"
                 :linkData="link"
-                :nodeSize="link.data.attributes.data.length>1?{x:250,y:70+(link.data.attributes.data.length-1)*50}:nodeSize"
+                :nodeSize="link.data.data.length>1?{x:250,y:70+(link.data.data.length-1)*50}:nodeSize"
                 :transitionDuration="transitionDuration"
                 :deepFactor="deepFactor"
           />
 
           <Node v-for="node in tree.nodes" :key="node.data.id"
                 :nodeData="node"
-                :nodeSize="node.data.attributes.data.length>1?{x:250,y:70+(node.data.attributes.data.length-1)*50}:nodeSize"
+                :nodeSize="node.data.data.length>1?{x:250,y:70+(node.data.data.length-1)*50}:nodeSize"
 
                 :transitionDuration="transitionDuration"
                 :orientation="orientation"
@@ -211,10 +211,9 @@
         height
       };
 
-                `translate(154.47318612120137,427.65660934232073) scale(0.8574539533919983)`;
 
       this.nodeCollapse(this.tree.nodes);
-      console.log(this.tree.nodes);
+      //console.log(this.tree.nodes);
       // console.log(this.nodeSize);
       // console.log(this.tree.links);
       // console.log(this.tree.links[2].data.attributes.expansionSize);
