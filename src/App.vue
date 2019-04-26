@@ -4,7 +4,7 @@
     <imp-header :onOffMenu="onOffMenu" v-if="onOffHeader"></imp-header>
     <side-menu v-if="onOffMenu"></side-menu>
     <div class="content-wrapper" :class="{ slideCollapse: sidebar.collapsed,mobileSide:device.isMobile,marginLeft:onOffMenu,paddingTop:onOffHeader}">
-      <el-scrollbar tag="div" wrap-class="content-scrollbar">
+      <el-scrollbar tag="div" wrap-class="!onOffHeader?horizontalPadding:content-scrollbar">
         <section class="content">
           <transition mode="out-in" enter-active-class="fadeIn" leave-active-class="fadeOut" appear>
             <router-view :bodyHeight="$root.bodyHeight" v-if="isRouterAlive" v-on:sideMenuOnOff="sideMenuOnOff" v-on:headerOnOff="headerOnOff"></router-view>
@@ -217,6 +217,10 @@
   }
   .paddingTop{
     padding-top:40px;
+  }
+  .horizontalPadding{
+    padding: 0;
+    margin-top: -0.5rem;
   }
 
 
