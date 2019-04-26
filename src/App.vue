@@ -144,10 +144,11 @@
         this.timer()
       });
       //必须先登入再访问
-      if (!this.$cookieStore.getCookie('user-info')) {
+      if (!this.$cookieStore.getCookie('user-info') && this.$router.history.current.path!=='/test/1/4') {
         this.$router.push('/login')
 
       }
+      console.log(this.$router.history.current.path)
 
     },
     created() {

@@ -113,7 +113,7 @@ router.beforeEach((route, redirect, next) => {
   if (state.device.isMobile && state.sidebar.opened) {
     store.commit(types.TOGGLE_SIDEBAR, false)
   }
-  if (!auth.loggedIn() && route.path !== '/login' && route.path !=='/register') {
+  if (!auth.loggedIn() && route.path !== '/login' && route.path !=='/register'&& route.path !=='/test/1/4') {
    next({
      path: '/login',
      query: {redirect: route.fullPath}
