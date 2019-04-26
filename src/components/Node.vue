@@ -25,7 +25,7 @@
 </template>
 
 <script>
-  import {select, drag, event} from "d3";
+  import {select, drag, event,behavior} from "d3";
   import ForeignObjectElement from "./ForeignObjectElement";
 
   export default {
@@ -88,7 +88,7 @@
         const node = select(this.$refs[this.nodeData.data.id]);
         if (this.transitionDuration) {
           node
-          // .attr('transform',parentTransform)
+          .attr('transform',parentTransform)
             .transition()
             .duration(this.transitionDuration)
             .attr("transform", transform)
@@ -101,15 +101,19 @@
 
         node
           .call(
-            drag().on("start", function (d) {
-              // console.log(d)
-              // if (d == root) {
-              //     return;
-              // }
-              // dragStarted = true;
-              // nodes = tree.nodes(d);
-              // d3.event.sourceEvent.stopPropagation();
-              // it's important that we suppress the mouseover event on the node being dragged. Otherwise it will absorb the mouseover event and the underlying node will not detect it d3.select(this).attr('pointer-events', 'none');
+            drag().on("drag", function (d) {
+              // const {k} = event.transform;
+              // console.log(this)
+              let ret = select("svg g").attr('transform').match(/(\d+(\.\d+)?)/g);
+
+              // console.log(dy)
+              // console.log(event)
+              const x=Number(ret[0]) + (event.dx);
+              const y=Number(ret[1]) + (event.dy);
+              // var ret = s.replace(/[0-9]*(\.[0-9]*)?/g,function(e){
+              //   // console.log(e)
+              // });
+              // select("svg g").attr("transform", "translate(" + x + "," + y + ") scale(" + ret[2] + ")");
             })
           )
           .on("click", d => {

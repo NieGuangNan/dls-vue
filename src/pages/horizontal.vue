@@ -86,7 +86,6 @@
   import {URLSearchChange} from "@/common/utils";
 
   let treeData = [{
-    id: '0',
     attributes: {
       quota: '',  //百分比（优劣）
       name: '炼钢成本',
@@ -102,8 +101,7 @@
     },
     children: [
       {
-        id: '1',
-        collapse: true,
+        collapse: true,//默认是否展开
         attributes: {
           quota: '',
           name: '60T炼钢成本',
@@ -123,7 +121,6 @@
         },
         children: [
           {
-            id: '1',
             attributes: {
               quota: '7% 优',
               name: '钢铁料成本',
@@ -144,7 +141,6 @@
 
             }
           }, {
-            id: '2',
             attributes: {
               quota: '7% 优',
               name: '合金成本',
@@ -164,7 +160,6 @@
               textColor: 'text-green',
             }
           }, {
-            id: '3',
             attributes: {
               quota: '7% 劣',
               name: '溶剂成本',
@@ -183,7 +178,6 @@
               textColor: 'text-red',
             }
           }, {
-            id: '4',
             attributes: {
               quota: '7% 劣',
               name: '其它',
@@ -201,7 +195,6 @@
 
       },
       {
-        id: '2',
         attributes: {
           quota: ' ',
           name: '120T炼钢成本',
@@ -216,7 +209,6 @@
         },
         children: [
           {
-            id: '1',
             attributes: {
               quota: '7% 优',
               name: '钢铁料成本',
@@ -235,7 +227,6 @@
               textColor: 'text-green',
             }
           }, {
-            id: '2',
             attributes: {
               quota: '9% 劣',
               name: '合金成本',
@@ -251,7 +242,6 @@
               textColor: 'text-red',
             }
           }, {
-            id: '3',
             attributes: {
               quota: '19% 劣',
               name: '溶剂成本',
@@ -267,7 +257,6 @@
               textColor: 'text-red',
             }
           }, {
-            id: '4',
             attributes: {
               quota: '28% 优',
               name: '其它',
