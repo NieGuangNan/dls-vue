@@ -6,6 +6,7 @@
         :nodeSize="{x:width,y:height}"
         :initData="data"
         :translate="translate"
+        :scaleExtent="{min:0.1,max:2}"
         pathFunc="straight"
         :deepFactor=0.5
         @handleNodeToggle="handleNodeToggle"
@@ -24,13 +25,13 @@
                       <p>{{scope.data.attributes.name}}</p>
                     </div>
                     <div class="tree-col-13">
-                      <p>影响: <span>{{scope.data.attributes.effect}}<sub v-if="scope.data.attributes.effect!=='0'" :class="{myFont1:fontOnOff,myFont2:!fontOnOff}">元/吨</sub></span>
+                      <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>影响: </b><span><b>{{scope.data.attributes.effect}}</b><sub v-if="scope.data.attributes.effect!=='0'" >元/吨</sub></span>
                       </p>
                       <template v-for="item in scope.data.attributes.data">
-                        <p>基准: <span>{{item.datum}}<sub v-if="item.datum!=='0'" :class="{myFont1:fontOnOff,myFont2:!fontOnOff}">元/吨</sub></span></p>
-                        <p>实际: <span class='text-blue'
-                                     :class="{'text-red':scope.data.attributes.borderColor==='1','text-green':scope.data.attributes.borderColor==='2'}">{{item.fact}}<sub
-                          v-if="item.fact!=='0'" :class="{myFont1:fontOnOff,myFont2:!fontOnOff}">元/吨</sub></span></p>
+                        <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>基准: </b><span><b>{{item.datum}}</b><sub v-if="item.datum!=='0'" >元/吨</sub></span></p>
+                        <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>实际: </b><span class='text-blue'
+                                     :class="{'text-red':scope.data.attributes.borderColor==='1','text-green':scope.data.attributes.borderColor==='2'}"><b>{{item.fact}}</b><sub
+                          v-if="item.fact!=='0'" >元/吨</sub></span></p>
 
                       </template>
 
@@ -48,13 +49,13 @@
                       <p>{{scope.data.attributes.name}}</p>
                     </div>
                     <div class="tree-col-13">
-                      <p>影响: <span>{{scope.data.attributes.effect}}<sub v-if="scope.data.attributes.effect!=='0'" :class="{myFont1:fontOnOff,myFont2:!fontOnOff}">元/吨</sub></span>
+                      <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>影响: </b><span><b>{{scope.data.attributes.effect}}</b><sub v-if="scope.data.attributes.effect!=='0'">元/吨</sub></span>
                       </p>
                       <template v-for="item in scope.data.attributes.data">
-                        <p>基准: <span>{{item.datum}}<sub v-if="item.datum!=='0'" :class="{myFont1:fontOnOff,myFont2:!fontOnOff}">元/吨</sub></span></p>
-                        <p>实际: <span class='text-blue'
-                                     :class="{'text-red':scope.data.attributes.borderColor==='1','text-green':scope.data.attributes.borderColor==='2'}">{{item.fact}}<sub
-                          v-if="item.fact!=='0'" :class="{myFont1:fontOnOff,myFont2:!fontOnOff}">元/吨</sub></span></p>
+                        <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>基准: </b><span><b>{{item.datum}}</b><sub v-if="item.datum!=='0'">元/吨</sub></span></p>
+                        <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>实际: </b><span class='text-blue'
+                                     :class="{'text-red':scope.data.attributes.borderColor==='1','text-green':scope.data.attributes.borderColor==='2'}"><b>{{item.fact}}</b><sub
+                          v-if="item.fact!=='0'" >元/吨</sub></span></p>
 
                       </template>
                     </div>
@@ -111,7 +112,7 @@
           {
             id: '1',
             attributes: {
-              quota: '7% 好',
+              quota: '7% 优',
               name: '钢铁料成本',
               effect: '0',
               data: [
@@ -127,7 +128,7 @@
           }, {
             id: '2',
             attributes: {
-              quota:'7% 好',
+              quota:'7% 优',
               name:'合金成本',
               effect:'0',
               data:[
@@ -143,7 +144,7 @@
             }},{
             id: '3',
             attributes: {
-              quota:'7% 差',
+              quota:'7% 劣',
               name:'溶剂成本',
               effect:'16.69',
               data:[
@@ -159,7 +160,7 @@
             }},{
             id: '4',
             attributes: {
-              quota:'7% 差',
+              quota:'7% 劣',
               name:'其它',
               effect:'14.57',
               data:[
@@ -189,7 +190,7 @@
           {
             id: '1',
             attributes: {
-              quota:'7% 好',
+              quota:'7% 优',
               name:'钢铁料成本',
               effect:'0',
               data:[
@@ -205,7 +206,7 @@
             }},{
             id: '2',
             attributes: {
-              quota:'9% 差',
+              quota:'9% 劣',
               name:'合金成本',
               effect:'101.97',
               data:[
@@ -218,7 +219,7 @@
             }},{
             id: '3',
             attributes: {
-              quota:'19% 差',
+              quota:'19% 劣',
               name:'溶剂成本',
               effect:'23.35',
               data:[
@@ -231,7 +232,7 @@
             }},{
             id: '4',
             attributes: {
-              quota:'28% 好',
+              quota:'28% 优',
               name:'其它',
               data:[
                 {
@@ -286,7 +287,15 @@
         if (userAgent.indexOf("Chrome") > -1) {
           return "Chrome";
         }
-      }
+      },
+      // 控制侧边菜单 home页面传值
+      childMenuClick (value) {
+        this.$emit('sideMenuOnOff', value);
+      },
+      // 控制侧边菜单 home页面传值
+      childHeaderClick (value) {
+        this.$emit('headerOnOff', value);
+      },
     },
     mounted() {
       this.setTreeCenter();
@@ -296,9 +305,13 @@
       }else{
         this.fontOnOff=false;
       }
+      this.childMenuClick (false);
+      this.childHeaderClick (false);
 
-
-
+    },
+    destroyed() {
+      this.childMenuClick (true);
+      this.childHeaderClick (true);
     }
   };
 </script>
@@ -322,13 +335,6 @@
     border-left: 5px solid #e02837;
   }
 
-  .treeBox .tree-col-11{
-    width: 42%;
-  }
-  .treeBox .tree-col-11 > span, .treeBox .tree-col-13 > p {
-    font-size: 12px;
-  }
-
   .treeBox .tree-col-11 > p {
     font-size: 14px;
   }
@@ -336,22 +342,46 @@
   .treeBox .tree-row {
     display: flex;
     width: 100%;
-    align-items: center;
+    justify-content: space-between;
   }
   .ibox{
     position: fixed;
     width: 100%;
+
+  }
+
+  .treeBox .tree-col-13 >p sub{
+    display: inline-block;
+    vertical-align: -9%;
   }
 
   .myFont1 {
-    display: inline-block;
     transform: scale(0.7);
-    vertical-align: -9%;
   }
   .myFont2{
-    display: inline-block;
     font-size: 8px;
-    vertical-align: -9%;
+  }
+  .tree-col-11{
+    width: 40%;
+  }
+  .tree-col-13{
+    width: 60%;
+  }
+  .tree-col-13 p:first-child span b{
+    font-size: 22px !important;
+  }
+  .tree-col-13 p{
+    line-height: 16px;
+    display: flex;
+
+  }
+  .tree-col-13 p span{
+    width: 75%;
+    text-align: right;
+    white-space: nowrap;
+  }
+  .tree-col-13 p span b{
+    font-size: 18px !important;
   }
 
 

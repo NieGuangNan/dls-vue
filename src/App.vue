@@ -1,13 +1,13 @@
 <template>
   <div class="wrapper fixed" v-if="isShow">
     <vue-progress-bar></vue-progress-bar>
-    <imp-header :onOffMenu="onOffMenu"></imp-header>
+    <imp-header :onOffMenu="onOffMenu" v-if="onOffHeader"></imp-header>
     <side-menu v-if="onOffMenu"></side-menu>
-    <div class="content-wrapper" :class="{ slideCollapse: sidebar.collapsed,mobileSide:device.isMobile,marginLeft:onOffMenu}">
+    <div class="content-wrapper" :class="{ slideCollapse: sidebar.collapsed,mobileSide:device.isMobile,marginLeft:onOffMenu,paddingTop:onOffHeader}">
       <el-scrollbar tag="div" wrap-class="content-scrollbar">
         <section class="content">
           <transition mode="out-in" enter-active-class="fadeIn" leave-active-class="fadeOut" appear>
-            <router-view :bodyHeight="$root.bodyHeight" v-if="isRouterAlive" v-on:sideMenuOnOff="sideMenuOnOff"></router-view>
+            <router-view :bodyHeight="$root.bodyHeight" v-if="isRouterAlive" v-on:sideMenuOnOff="sideMenuOnOff" v-on:headerOnOff="headerOnOff"></router-view>
           </transition>
         </section>
       </el-scrollbar>
@@ -50,7 +50,8 @@
         headerFixed: true,
         breadcrumb: [],
         isRouterAlive: true,
-        onOffMenu:true,
+        onOffMenu:true,// 控制侧边菜单
+        onOffHeader:true,// 控制header
       }
     },
     methods: {
@@ -69,6 +70,10 @@
       // 控制侧边菜单
       sideMenuOnOff(childValue) {
         this.onOffMenu= childValue;
+      },
+      // 控制header
+      headerOnOff(childValue) {
+        this.onOffHeader= childValue;
       },
       setLanguage() {
         let language = this.$cookies.get("user-info") && this.$cookies.get("user-info").language ? this.$cookies.get("user-info").language : 'zh';
@@ -189,7 +194,6 @@
     -moz-transition: -moz-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
     -o-transition: -o-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out, margin 0.3s ease-in-out;
-    padding-top: 40px;
   }
   .content-scrollbar {
     height: calc(100vh - 35px) !important;
@@ -210,6 +214,9 @@
   }
   .marginLeft{
     margin-left: 230px;
+  }
+  .paddingTop{
+    padding-top:40px;
   }
 
 
