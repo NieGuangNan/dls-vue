@@ -1,5 +1,5 @@
 <template>
-  <div class="ibox">
+  <div class="ibox" style="margin-top: 0; margin-left: -0.5rem">
     <div class="tree-progress" style="height: 100vh;">
       <Tree
         ref="treeContainer"
@@ -30,7 +30,7 @@
                       <template v-for="item in scope.data.attributes.data">
                         <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>基准: </b><span><b>{{item.datum}}</b><sub v-if="item.datum!=='0'" >元/吨</sub></span></p>
                         <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>实际: </b><span
-                                     :class='scope.data.attributes.textColor?scope.data.attributes.textColor:""'><b>{{item.fact}}</b><sub
+                                     :class='item.textColor?item.textColor:""'><b>{{item.fact}}</b><sub
                           v-if="item.fact!=='0'" >元/吨</sub></span></p>
 
                       </template>
@@ -53,7 +53,7 @@
                       </p>
                       <template v-for="item in scope.data.attributes.data">
                         <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>基准: </b><span><b>{{item.datum}}</b><sub v-if="item.datum!=='0'">元/吨</sub></span></p>
-                        <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>实际: </b><span :class='scope.data.attributes.textColor?scope.data.attributes.textColor:""'><b>{{item.fact}}</b><sub
+                        <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>实际: </b><span :class='item.textColor?item.textColor:""'><b>{{item.fact}}</b><sub
                           v-if="item.fact!=='0'" >元/吨</sub></span></p>
 
                       </template>
@@ -87,8 +87,10 @@
         {
           datum: '0',
           fact: '2,706.81',
+          textColor:'text-blue'
         }],
       textColor:'text-blue'
+
     },
     children: [
       {
@@ -102,11 +104,14 @@
             {
               datum: '0',
               fact: '2,704.12',
+              textColor:'text-blue'
             },{
               datum: '0',
               fact: '2,706.81',
+              textColor:'text-blue'
             }],
           textColor:'text-blue'
+
         },
         children: [
           {
@@ -119,12 +124,15 @@
                 {
                   datum: '2,306.33',
                   fact: '2,295.37',
+                  textColor:'text-green',
                 }, {
                   datum: '111',
                   fact: '2222',
+                  textColor:'text-green',
                 }],
               borderColor:'border-green',
               textColor:'text-green',
+
     
             }
           }, {
@@ -137,9 +145,11 @@
                 {
                   datum:'225.56',
                   fact:'208.41',
+                  textColor:'text-green',
                 },{
                   datum:'111',
                   fact:'2222',
+                  textColor:'text-green',
                 }],
 
               borderColor:'border-green',
@@ -154,9 +164,11 @@
                 {
                   datum:'7.79',
                   fact:'24.48',
+                  textColor:'text-red',
                 },{
                   datum:'111',
                   fact:'2222',
+                  textColor:'text-red',
                 }],
               borderColor:'border-red',
               textColor:'text-red',
@@ -170,6 +182,7 @@
                 {
                   datum:'80.29',
                   fact:'94.86',
+                  textColor:'text-red',
                 }],
               borderColor:'border-red',
               textColor:'text-red',
@@ -186,6 +199,7 @@
             {
               datum:'0',
               fact:'2,708.06',
+              textColor:'text-blue'
             }],
           textColor:'text-blue'
 },
@@ -200,9 +214,11 @@
                 {
                   datum:'2,331.97',
                   fact:'2,139.98',
+                  textColor:'text-green',
                 },{
                   datum:'111',
                   fact:'2222',
+                  textColor:'text-green',
                 }],
               borderColor:'border-green',
               textColor:'text-green',
@@ -216,6 +232,7 @@
                 {
                   datum:'39.8',
                   fact:'141.77',
+                  textColor:'text-red',
                 }],
 
               borderColor:'border-red',
@@ -230,6 +247,7 @@
                 {
                   datum:'7.79',
                   fact:'31.14',
+                  textColor:'text-red',
                 }],
 
               borderColor:'border-red',
@@ -243,6 +261,7 @@
                 {
                   datum:'141.12',
                   fact:'129.67',
+                  textColor:'text-green',
                 }],
               effect:'0',
 
