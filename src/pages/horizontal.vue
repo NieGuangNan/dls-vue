@@ -88,16 +88,16 @@
   let treeData = [{
     id: '0',
     attributes: {
-      quota: '',
+      quota: '',  //百分比（优劣）
       name: '炼钢成本',
-      effect: '0 ',
+      effect: '0 ', //影响值
       data: [
         {
-          datum: '0',
-          fact: '2,706.81',
-          textColor: 'text-blue'
+          datum: '0',  //基准值
+          fact: '2,706.81', //实际值
+          textColor: 'text-blue' //实际值字体颜色
         }],
-      textColor: 'text-blue'
+      textColor: 'text-blue'  //百分比字体颜色
 
     },
     children: [
@@ -138,7 +138,7 @@
                   fact: '2222',
                   textColor: 'text-green',
                 }],
-              borderColor: 'border-green',
+              borderColor: 'border-green',  //外边框颜色
               textColor: 'text-green',
 
 
@@ -309,10 +309,10 @@
         let _this = this;
         this.$http.post('http://localhost:9990/oauth/token', this.url,).then(function (res) {
           _this.data = treeData
-          this.setTreeCenter();
+          _this.setTreeCenter();
         }).catch(function (error) {
           _this.data = treeData;
-          this.setTreeCenter();
+          _this.setTreeCenter();
         });
       },
       setTreeCenter() {
