@@ -147,3 +147,18 @@ export function deepClone(obj) {
   return JSON.parse(JSON.stringify(obj))
 }
 
+//location.search转化为对象
+export function URLSearchChange(str) {
+  if (str == undefined) return
+  str = str.substr(1)
+  var arr = str.split("&"),
+    obj = {},
+    newArr = []
+  arr.map(function (value, index, arr) {
+    newArr = value.split("=")
+    if (newArr[0] != undefined) {
+      obj[newArr[0]] = newArr[1]
+    }
+  })
+  return obj
+}
