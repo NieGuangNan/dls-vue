@@ -319,8 +319,9 @@
     methods: {
       getData() {
         let _this = this;
-        this.$http.post('http://localhost:9990/oauth/token', this.url,).then(function (res) {
-          _this.data = treeData
+        this.$http.get('http://localhost:9990/api/v1/dpm/kpiTree/1').then(function (res) {
+          console.log(res.data.root)
+          _this.data = treeData;
           _this.setTreeCenter();
         }).catch(function (error) {
           _this.data = treeData;
