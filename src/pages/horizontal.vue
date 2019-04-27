@@ -18,23 +18,23 @@
               <div class="base-node salad" @click="handleClick(scope)">
                 <template v-if="scope.depth === 0">
                   <div class="treeBox"
-                       :class='scope.data.borderColor?scope.data.borderColor:""'>
+                       :class='scope.data.statusBorderStyleClass?scope.data.statusBorderStyleClass:""'>
                     <div class="tree-row">
                       <div class="tree-col-11">
                       <span
-                        :class='scope.data.textColor?scope.data.textColor:""'>{{scope.data.quota}}</span>
+                        :class='scope.data.impactRateTextStyleClass?scope.data.impactRateTextStyleClass:""'>{{scope.data.impactRateNumberString}}{{scope.data.impactRateLabel}}</span>
                         <p>{{scope.data.name}}</p>
                       </div>
                       <div class="tree-col-13">
-                        <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>影响: </b><span><b>{{scope.data.effect}}</b><sub
-                          v-if="scope.data.effect!=='0'">{{scope.data.effectUnit}}</sub></span>
+                        <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>影响: </b><span><b>{{scope.data.impactNumberString}}</b><sub
+                          v-if="scope.data.impactNumberString!=='0'">{{scope.data.impactUnitCodeString}}</sub></span>
                         </p>
                         <template v-for="item in scope.data.data">
-                          <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>基准: </b><span><b>{{item.datum}}</b><sub
-                            v-if="item.datum!=='0'">{{item.datumUnit}}</sub></span></p>
+                          <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>基准: </b><span><b>{{item.benchmarkNumberString}}</b><sub
+                            v-if="item.benchmarkNumberString!=='0'">{{scope.data.impactUnitCodeString}}</sub></span></p>
                           <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>实际: </b><span
-                            :class='item.textColor?item.textColor:""'><b>{{item.fact}}</b><sub
-                            v-if="item.fact!=='0'">{{item.factUnit}}</sub></span></p>
+                            :class='item.textStyleClass?item.textStyleClass:""'><b>{{item.actualNumberString}}</b><sub
+                            v-if="item.actualNumberString!=='0'">{{scope.data.impactUnitCodeString}}</sub></span></p>
 
                         </template>
 
@@ -44,23 +44,23 @@
                 </template>
                 <template v-else>
                   <div class="treeBox"
-                       :class='scope.data.borderColor?scope.data.borderColor:""'>
+                       :class='scope.data.statusBorderStyleClass?scope.data.statusBorderStyleClass:""'>
                     <div class="tree-row">
                       <div class="tree-col-11">
                       <span
-                        :class='scope.data.textColor?scope.data.textColor:""'>{{scope.data.quota}}</span>
+                        :class='scope.data.impactRateTextStyleClass?scope.data.impactRateTextStyleClass:""'>{{scope.data.impactRateNumberString}}{{scope.data.impactRateLabel}}</span>
                         <p>{{scope.data.name}}</p>
-                    </div>
+                      </div>
                       <div class="tree-col-13">
-                        <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>影响: </b><span><b>{{scope.data.effect}}</b><sub
-                          v-if="scope.data.effect!=='0'">{{scope.data.effectUnit}}</sub></span>
+                        <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>影响: </b><span><b>{{scope.data.impactNumberString}}</b><sub
+                          v-if="scope.data.impactNumberString!=='0'">{{scope.data.impactUnitCodeString}}</sub></span>
                         </p>
                         <template v-for="item in scope.data.data">
-                          <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>基准: </b><span><b>{{item.datum}}</b><sub
-                            v-if="item.datum!=='0'">{{item.datumUnit}}</sub></span></p>
+                          <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>基准: </b><span><b>{{item.benchmarkNumberString}}</b><sub
+                            v-if="item.benchmarkNumberString!=='0'">{{scope.data.impactUnitCodeString}}</sub></span></p>
                           <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>实际: </b><span
-                            :class='item.textColor?item.textColor:""'><b>{{item.fact}}</b><sub
-                            v-if="item.fact!=='0'">{{item.factUnit}}</sub></span></p>
+                            :class='item.textStyleClass?item.textStyleClass:""'><b>{{item.actualNumberString}}</b><sub
+                            v-if="item.actualNumberString!=='0'">{{scope.data.impactUnitCodeString}}</sub></span></p>
 
                         </template>
                       </div>
@@ -85,218 +85,8292 @@
   import Tree from "../components/Tree";
   import {URLSearchChange} from "@/common/utils";
 
+
   let treeData = [{
-      quota: '',  //百分比（优劣）
-      name: '炼钢成本',
-      effect: '0 ', //影响值
-      data: [
-        {
-          datum: '0',  //基准值
-          datumUnit:'元/吨',//基准值单位
-          fact: '2,706.81', //实际值
-          factUnit:'元/吨',//基准值单位
-          textColor: 'text-blue', //实际值字体颜色
-        }],
-      textColor: 'text-blue', //百分比字体颜色
-      effectUnit:'元/吨',//影响值单位
-      children: [
+    "name": "钢坯产量",
+    "statusBorderStyleClass": "border-kpi-normal",
+    "impactNumberString": "1,111",
+    "impactUnitCodeString": "元/吨",
+    "impactTextStyleClass": "",
+    "impactRateNumberString": "3.4%",
+    "impactRateLabel": "优",
+    "impactRateTextStyleClass": "text-kpi-normal",
+    "data": [
       {
-        collapse: true,//默认是否展开
-          quota: '',
-          name: '60T炼钢成本',
-          effect: '0',
-          data: [
-            {
-              datum: '0',
-              datumUnit:'元/吨',
-              fact: '2,704.12',
-              factUnit:'元/吨',
-              textColor: 'text-blue',
-              effectUnit:'元/吨',
-            }, {
-              datum: '0',
-              datumUnit:'元/吨',
-              fact: '2,706.81',
-              factUnit:'元/吨',
-              textColor: 'text-blue'
-            }],
-          textColor: 'text-blue',
-        effectUnit:'元/吨',//单位
-        children: [
+        "benchmarkNumberString": "10,000",
+        "actualNumberString": "11,111",
+        "textStyleClass": "text-kpi-danger"
+      }
+    ],
+    "children": [
+      {
+        "name": "1#钢坯产量",
+        "statusBorderStyleClass": "border-kpi-normal",
+        "impactNumberString": "1,111",
+        "impactUnitCodeString": "元/吨",
+        "impactTextStyleClass": "",
+        "impactRateNumberString": "3.4%",
+        "impactRateLabel": "优",
+        "impactRateTextStyleClass": "text-kpi-normal",
+        "data": [
           {
-              quota: '7% 优',
-              name: '钢铁料成本',
-              effect: '0',
-              data: [
-                {
-                  datum: '2,306.33',
-                  datumUnit:'元/吨',
-                  fact: '2,295.37',
-                  factUnit:'元/吨',
-                  textColor: 'text-green',
-                }, {
-                  datum: '111',
-                  datumUnit:'元/吨',
-                  fact: '2222',
-                  factUnit:'元/吨',
-                  textColor: 'text-green',
-                }],
-              borderColor: 'border-green',  //外边框颜色
-              textColor: 'text-green',
-              effectUnit:'元/吨',//单位
-          }, {
-              quota: '7% 优',
-              name: '合金成本',
-              effect: '0',
-              data: [
-                {
-                  datum: '225.56',
-                  datumUnit:'元/吨',
-                  fact: '208.41',
-                  factUnit:'元/吨',
-                  textColor: 'text-green',
-                }, {
-                  datum: '111',
-                  datumUnit:'元/吨',
-                  fact: '2222',
-                  factUnit:'元/吨',
-                  textColor: 'text-green',
-                }],
-
-              borderColor: 'border-green',
-              textColor: 'text-green',
-              effectUnit:'元/吨',//单位
-          }, {
-              quota: '7% 劣',
-              name: '溶剂成本',
-              effect: '16.69',
-              data: [
-                {
-                  datum: '7.79',
-                  datumUnit:'元/吨',
-                  fact: '24.48',
-                  factUnit:'元/吨',
-                  textColor: 'text-red',
-                }, {
-                  datum: '111',
-                  datumUnit:'元/吨',
-                  fact: '2222',
-                  factUnit:'元/吨',
-                  textColor: 'text-red',
-                }],
-              borderColor: 'border-red',
-              textColor: 'text-red',
-              effectUnit:'元/吨',//单位
-
-          }, {
-              quota: '7% 劣',
-              name: '其它',
-              effect: '14.57',
-              data: [
-                {
-                  datum: '80.29',
-                  datumUnit:'元/吨',
-                  fact: '94.86',
-                  factUnit:'元/吨',
-                  textColor: 'text-red',
-                }],
-              borderColor: 'border-red',
-              textColor: 'text-red',
-              effectUnit:'元/吨',//单位
-
-          },]
-
+            "benchmarkNumberString": "10,000",
+            "actualNumberString": "11,111",
+            "textStyleClass": "text-kpi-danger"
+          }
+        ],
+        "children": [
+          {
+            "name": "时间损失",
+            "statusBorderStyleClass": "border-kpi-normal",
+            "impactNumberString": "1,111",
+            "impactUnitCodeString": "元/吨",
+            "impactTextStyleClass": "",
+            "impactRateNumberString": "3.4%",
+            "impactRateLabel": "优",
+            "impactRateTextStyleClass": "text-kpi-normal",
+            "data": [
+              {
+                "benchmarkNumberString": "10,000",
+                "actualNumberString": "11,111",
+                "textStyleClass": "text-kpi-danger"
+              }
+            ],
+            "children": [
+              {
+                "name": "计划停机",
+                "statusBorderStyleClass": "border-kpi-normal",
+                "impactNumberString": "1,111",
+                "impactUnitCodeString": "元/吨",
+                "impactTextStyleClass": "",
+                "impactRateNumberString": "3.4%",
+                "impactRateLabel": "优",
+                "impactRateTextStyleClass": "text-kpi-normal",
+                "data": [
+                  {
+                    "benchmarkNumberString": "10,000",
+                    "actualNumberString": "11,111",
+                    "textStyleClass": "text-kpi-danger"
+                  }
+                ],
+                "children": [
+                  {
+                    "name": "计划检修",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "计划换浇次",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "年度检修",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "计划换出钢口",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "计划换结晶器",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "热换",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "限产占时",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "其它",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  }
+                ],
+                "level": 4,
+                "collapse": false
+              },
+              {
+                "name": "计划停机延时",
+                "statusBorderStyleClass": "border-kpi-normal",
+                "impactNumberString": "1,111",
+                "impactUnitCodeString": "元/吨",
+                "impactTextStyleClass": "",
+                "impactRateNumberString": "3.4%",
+                "impactRateLabel": "优",
+                "impactRateTextStyleClass": "text-kpi-normal",
+                "data": [
+                  {
+                    "benchmarkNumberString": "10,000",
+                    "actualNumberString": "11,111",
+                    "textStyleClass": "text-kpi-danger"
+                  }
+                ],
+                "children": [
+                  {
+                    "name": "计划检修延时",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "生产工艺",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "设备",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "原材料",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其他工序",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "计划换浇次延时",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "生产工艺",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "设备",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "原材料",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其他工序",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "年度检修延时",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "计划换出钢口延时",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "计划换结晶器延时",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "热换延时",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "其它",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  }
+                ],
+                "level": 4,
+                "collapse": false
+              },
+              {
+                "name": "非计划停机",
+                "statusBorderStyleClass": "border-kpi-normal",
+                "impactNumberString": "1,111",
+                "impactUnitCodeString": "元/吨",
+                "impactTextStyleClass": "",
+                "impactRateNumberString": "3.4%",
+                "impactRateLabel": "优",
+                "impactRateTextStyleClass": "text-kpi-normal",
+                "data": [
+                  {
+                    "benchmarkNumberString": "10,000",
+                    "actualNumberString": "11,111",
+                    "textStyleClass": "text-kpi-danger"
+                  }
+                ],
+                "children": [
+                  {
+                    "name": "生产工艺",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "钢水C成分",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "钢水Si成分",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "钢水Mn成分",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "钢水P成分",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "钢水S成分",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "温度低",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "温度高",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "设备",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "备件",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "机修",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "电气",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "耐材",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "钢包",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "中包",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "水口",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "铁包",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "转炉",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "原材料",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "铁水",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "合金",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "溶剂",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "废钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "铁块",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  }
+                ],
+                "level": 4,
+                "collapse": false
+              },
+              {
+                "name": "二次开浇",
+                "statusBorderStyleClass": "border-kpi-normal",
+                "impactNumberString": "1,111",
+                "impactUnitCodeString": "元/吨",
+                "impactTextStyleClass": "",
+                "impactRateNumberString": "3.4%",
+                "impactRateLabel": "优",
+                "impactRateTextStyleClass": "text-kpi-normal",
+                "data": [
+                  {
+                    "benchmarkNumberString": "10,000",
+                    "actualNumberString": "11,111",
+                    "textStyleClass": "text-kpi-danger"
+                  }
+                ],
+                "children": [
+                  {
+                    "name": "生产工艺",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "钢水C成分",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "钢水Si成分",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "钢水Mn成分",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "钢水P成分",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "钢水S成分",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "温度低",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "温度高",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "设备",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "备件",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "机修",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "电气",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "耐材",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "钢包",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "中包",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "水口",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "铁包",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "转炉",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "原材料",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "铁水",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "合金",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "溶剂",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "废钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "铁块",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  }
+                ],
+                "level": 4,
+                "collapse": false
+              },
+              {
+                "name": "其它",
+                "statusBorderStyleClass": "border-kpi-normal",
+                "impactNumberString": "1,111",
+                "impactUnitCodeString": "元/吨",
+                "impactTextStyleClass": "",
+                "impactRateNumberString": "3.4%",
+                "impactRateLabel": "优",
+                "impactRateTextStyleClass": "text-kpi-normal",
+                "data": [
+                  {
+                    "benchmarkNumberString": "10,000",
+                    "actualNumberString": "11,111",
+                    "textStyleClass": "text-kpi-danger"
+                  }
+                ],
+                "children": [
+                  {
+                    "name": "等铁",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "其它",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  }
+                ],
+                "level": 4,
+                "collapse": false
+              }
+            ],
+            "level": 3,
+            "collapse": false
+          },
+          {
+            "name": "速度损失",
+            "statusBorderStyleClass": "border-kpi-normal",
+            "impactNumberString": "1,111",
+            "impactUnitCodeString": "元/吨",
+            "impactTextStyleClass": "",
+            "impactRateNumberString": "3.4%",
+            "impactRateLabel": "优",
+            "impactRateTextStyleClass": "text-kpi-normal",
+            "data": [
+              {
+                "benchmarkNumberString": "10,000",
+                "actualNumberString": "11,111",
+                "textStyleClass": "text-kpi-danger"
+              }
+            ],
+            "children": [
+              {
+                "name": "堵流",
+                "statusBorderStyleClass": "border-kpi-normal",
+                "impactNumberString": "1,111",
+                "impactUnitCodeString": "元/吨",
+                "impactTextStyleClass": "",
+                "impactRateNumberString": "3.4%",
+                "impactRateLabel": "优",
+                "impactRateTextStyleClass": "text-kpi-normal",
+                "data": [
+                  {
+                    "benchmarkNumberString": "10,000",
+                    "actualNumberString": "11,111",
+                    "textStyleClass": "text-kpi-danger"
+                  }
+                ],
+                "children": [
+                  {
+                    "name": "设备问题",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "等铁",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "漏钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "顶坯",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "冒钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "挂钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "套管断",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "散流",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "缩流",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "射源故障",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "翻钢机故障",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "跳电",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "截流",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "自动打",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "节奏影响",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "电气问题",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "等铁",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "漏钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "顶坯",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "冒钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "挂钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "套管断",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "散流",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "缩流",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "射源故障",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "翻钢机故障",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "跳电",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "截流",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "自动打",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "节奏影响",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "生产工艺",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "等铁",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "漏钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "顶坯",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "冒钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "挂钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "套管断",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "散流",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "缩流",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "射源故障",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "翻钢机故障",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "跳电",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "截流",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "自动打",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "节奏影响",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "耐材问题",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "等铁",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "漏钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "顶坯",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "冒钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "挂钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "套管断",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "散流",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "缩流",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "射源故障",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "翻钢机故障",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "跳电",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "截流",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "自动打",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "节奏影响",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "其它",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  }
+                ],
+                "level": 4,
+                "collapse": false
+              },
+              {
+                "name": "降拉速",
+                "statusBorderStyleClass": "border-kpi-normal",
+                "impactNumberString": "1,111",
+                "impactUnitCodeString": "元/吨",
+                "impactTextStyleClass": "",
+                "impactRateNumberString": "3.4%",
+                "impactRateLabel": "优",
+                "impactRateTextStyleClass": "text-kpi-normal",
+                "data": [
+                  {
+                    "benchmarkNumberString": "10,000",
+                    "actualNumberString": "11,111",
+                    "textStyleClass": "text-kpi-danger"
+                  }
+                ],
+                "children": [
+                  {
+                    "name": "成分问题",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "温度问题",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "生产节奏",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "人员操作",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "备件",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "机修",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "电气",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "耐材",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "原材料",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "其它",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  }
+                ],
+                "level": 4,
+                "collapse": false
+              }
+            ],
+            "level": 3,
+            "collapse": false
+          },
+          {
+            "name": "质量损失",
+            "statusBorderStyleClass": "border-kpi-normal",
+            "impactNumberString": "1,111",
+            "impactUnitCodeString": "元/吨",
+            "impactTextStyleClass": "",
+            "impactRateNumberString": "3.4%",
+            "impactRateLabel": "优",
+            "impactRateTextStyleClass": "text-kpi-normal",
+            "data": [
+              {
+                "benchmarkNumberString": "10,000",
+                "actualNumberString": "11,111",
+                "textStyleClass": "text-kpi-danger"
+              }
+            ],
+            "children": [
+              {
+                "name": "工艺甩废",
+                "statusBorderStyleClass": "border-kpi-normal",
+                "impactNumberString": "1,111",
+                "impactUnitCodeString": "元/吨",
+                "impactTextStyleClass": "",
+                "impactRateNumberString": "3.4%",
+                "impactRateLabel": "优",
+                "impactRateTextStyleClass": "text-kpi-normal",
+                "data": [
+                  {
+                    "benchmarkNumberString": "10,000",
+                    "actualNumberString": "11,111",
+                    "textStyleClass": "text-kpi-danger"
+                  }
+                ],
+                "children": [
+                  {
+                    "name": "连铸甩坯损失",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "生产工艺",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "设备",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "耐材",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "原材料",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "中包铸余",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "生产工艺",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "设备",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "耐材",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "原材料",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "大包剩钢",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "生产工艺",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "设备",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "耐材",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "原材料",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  }
+                ],
+                "level": 4,
+                "collapse": false
+              },
+              {
+                "name": "异常甩废",
+                "statusBorderStyleClass": "border-kpi-normal",
+                "impactNumberString": "1,111",
+                "impactUnitCodeString": "元/吨",
+                "impactTextStyleClass": "",
+                "impactRateNumberString": "3.4%",
+                "impactRateLabel": "优",
+                "impactRateTextStyleClass": "text-kpi-normal",
+                "data": [
+                  {
+                    "benchmarkNumberString": "10,000",
+                    "actualNumberString": "11,111",
+                    "textStyleClass": "text-kpi-danger"
+                  }
+                ],
+                "children": [
+                  {
+                    "name": "生产工艺",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "设备",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "耐材",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "原材料",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "其它",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  }
+                ],
+                "level": 4,
+                "collapse": false
+              },
+              {
+                "name": "质量判废",
+                "statusBorderStyleClass": "border-kpi-normal",
+                "impactNumberString": "1,111",
+                "impactUnitCodeString": "元/吨",
+                "impactTextStyleClass": "",
+                "impactRateNumberString": "3.4%",
+                "impactRateLabel": "优",
+                "impactRateTextStyleClass": "text-kpi-normal",
+                "data": [
+                  {
+                    "benchmarkNumberString": "10,000",
+                    "actualNumberString": "11,111",
+                    "textStyleClass": "text-kpi-danger"
+                  }
+                ],
+                "children": [
+                  {
+                    "name": "生产工艺",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "设备",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "耐材",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "原材料",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "其它",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  }
+                ],
+                "level": 4,
+                "collapse": false
+              },
+              {
+                "name": "回炉",
+                "statusBorderStyleClass": "border-kpi-normal",
+                "impactNumberString": "1,111",
+                "impactUnitCodeString": "元/吨",
+                "impactTextStyleClass": "",
+                "impactRateNumberString": "3.4%",
+                "impactRateLabel": "优",
+                "impactRateTextStyleClass": "text-kpi-normal",
+                "data": [
+                  {
+                    "benchmarkNumberString": "10,000",
+                    "actualNumberString": "11,111",
+                    "textStyleClass": "text-kpi-danger"
+                  }
+                ],
+                "children": [
+                  {
+                    "name": "低温回炉",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "成份质量",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "生产事故",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "其它",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  }
+                ],
+                "level": 4,
+                "collapse": false
+              },
+              {
+                "name": "待判",
+                "statusBorderStyleClass": "border-kpi-normal",
+                "impactNumberString": "1,111",
+                "impactUnitCodeString": "元/吨",
+                "impactTextStyleClass": "",
+                "impactRateNumberString": "3.4%",
+                "impactRateLabel": "优",
+                "impactRateTextStyleClass": "text-kpi-normal",
+                "data": [
+                  {
+                    "benchmarkNumberString": "10,000",
+                    "actualNumberString": "11,111",
+                    "textStyleClass": "text-kpi-danger"
+                  }
+                ],
+                "children": null,
+                "level": 4,
+                "collapse": false
+              },
+              {
+                "name": "补入",
+                "statusBorderStyleClass": "border-kpi-normal",
+                "impactNumberString": "1,111",
+                "impactUnitCodeString": "元/吨",
+                "impactTextStyleClass": "",
+                "impactRateNumberString": "3.4%",
+                "impactRateLabel": "优",
+                "impactRateTextStyleClass": "text-kpi-normal",
+                "data": [
+                  {
+                    "benchmarkNumberString": "10,000",
+                    "actualNumberString": "11,111",
+                    "textStyleClass": "text-kpi-danger"
+                  }
+                ],
+                "children": null,
+                "level": 4,
+                "collapse": false
+              }
+            ],
+            "level": 3,
+            "collapse": false
+          }
+        ],
+        "level": 2,
+        "collapse": true
       },
       {
-          quota: ' ',
-          name: '120T炼钢成本',
-          effect: '0',
-          data: [
-            {
-              datum: '0',
-              datumUnit:'元/吨',
-              fact: '2,708.06',
-              factUnit:'元/吨',
-              textColor: 'text-blue',
-
-            }],
-          textColor: 'text-blue',
-          effectUnit:'元/吨',//单位
-          children: [{
-              quota: '7% 优',
-              name: '钢铁料成本',
-              effect: '0',
-              data: [
-                {
-                  datum: '2,331.97',
-                  datumUnit:'元/吨',
-                  fact: '2,139.98',
-                  factUnit:'元/吨',
-                  textColor: 'text-green',
-                }, {
-                  datum: '111',
-                  datumUnit:'元/吨',
-                  fact: '2222',
-                  factUnit:'元/吨',
-                  textColor: 'text-green',
-                }],
-              borderColor: 'border-green',
-              textColor: 'text-green',
-              effectUnit:'元/吨',//单位
-
-          }, {
-              quota: '9% 劣',
-              name: '合金成本',
-              effect: '101.97',
-              data: [
-                {
-                  datum: '39.8',
-                  datumUnit:'元/吨',
-                  fact: '141.77',
-                  factUnit:'元/吨',
-                  textColor: 'text-red',
-                }],
-
-              borderColor: 'border-red',
-              textColor: 'text-red',
-              effectUnit:'元/吨',//单位
-
-          }, {
-
-              quota: '19% 劣',
-              name: '溶剂成本',
-              effect: '23.35',
-              data: [
-                {
-                  datum: '7.79',
-                  datumUnit:'元/吨',
-                  fact: '31.14',
-                  factUnit:'元/吨',
-                  textColor: 'text-red',
-                }],
-
-              borderColor: 'border-red',
-              textColor: 'text-red',
-              effectUnit:'元/吨',//单位
-
-          }, {
-              quota: '28% 优',
-              name: '其它',
-              data: [
-                {
-                  datum: '141.12',
-                  datumUnit:'元/吨',
-                  fact: '129.67',
-                  factUnit:'元/吨',
-                  textColor: 'text-green',
-                }],
-              effect: '0',
-              borderColor: 'border-green',
-              textColor: 'text-green',
-              effectUnit:'元/吨',//单位
-          }]
-      }],
-  },];
+        "name": "2#钢坯产量",
+        "statusBorderStyleClass": "border-kpi-normal",
+        "impactNumberString": "1,111",
+        "impactUnitCodeString": "元/吨",
+        "impactTextStyleClass": "",
+        "impactRateNumberString": "3.4%",
+        "impactRateLabel": "优",
+        "impactRateTextStyleClass": "text-kpi-normal",
+        "data": [
+          {
+            "benchmarkNumberString": "10,000",
+            "actualNumberString": "11,111",
+            "textStyleClass": "text-kpi-danger"
+          }
+        ],
+        "children": [
+          {
+            "name": "时间损失",
+            "statusBorderStyleClass": "border-kpi-normal",
+            "impactNumberString": "1,111",
+            "impactUnitCodeString": "元/吨",
+            "impactTextStyleClass": "",
+            "impactRateNumberString": "3.4%",
+            "impactRateLabel": "优",
+            "impactRateTextStyleClass": "text-kpi-normal",
+            "data": [
+              {
+                "benchmarkNumberString": "10,000",
+                "actualNumberString": "11,111",
+                "textStyleClass": "text-kpi-danger"
+              }
+            ],
+            "children": [
+              {
+                "name": "计划停机",
+                "statusBorderStyleClass": "border-kpi-normal",
+                "impactNumberString": "1,111",
+                "impactUnitCodeString": "元/吨",
+                "impactTextStyleClass": "",
+                "impactRateNumberString": "3.4%",
+                "impactRateLabel": "优",
+                "impactRateTextStyleClass": "text-kpi-normal",
+                "data": [
+                  {
+                    "benchmarkNumberString": "10,000",
+                    "actualNumberString": "11,111",
+                    "textStyleClass": "text-kpi-danger"
+                  }
+                ],
+                "children": [
+                  {
+                    "name": "计划检修",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "计划换浇次",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "年度检修",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "计划换出钢口",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "计划换结晶器",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "热换",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "限产占时",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "其它",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  }
+                ],
+                "level": 4,
+                "collapse": false
+              },
+              {
+                "name": "计划停机延时",
+                "statusBorderStyleClass": "border-kpi-normal",
+                "impactNumberString": "1,111",
+                "impactUnitCodeString": "元/吨",
+                "impactTextStyleClass": "",
+                "impactRateNumberString": "3.4%",
+                "impactRateLabel": "优",
+                "impactRateTextStyleClass": "text-kpi-normal",
+                "data": [
+                  {
+                    "benchmarkNumberString": "10,000",
+                    "actualNumberString": "11,111",
+                    "textStyleClass": "text-kpi-danger"
+                  }
+                ],
+                "children": [
+                  {
+                    "name": "计划检修延时",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "生产工艺",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "设备",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "原材料",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其他工序",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "计划换浇次延时",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "生产工艺",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "设备",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "原材料",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其他工序",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "年度检修延时",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "计划换出钢口延时",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "计划换结晶器延时",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "热换延时",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "其它",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  }
+                ],
+                "level": 4,
+                "collapse": false
+              },
+              {
+                "name": "非计划停机",
+                "statusBorderStyleClass": "border-kpi-normal",
+                "impactNumberString": "1,111",
+                "impactUnitCodeString": "元/吨",
+                "impactTextStyleClass": "",
+                "impactRateNumberString": "3.4%",
+                "impactRateLabel": "优",
+                "impactRateTextStyleClass": "text-kpi-normal",
+                "data": [
+                  {
+                    "benchmarkNumberString": "10,000",
+                    "actualNumberString": "11,111",
+                    "textStyleClass": "text-kpi-danger"
+                  }
+                ],
+                "children": [
+                  {
+                    "name": "生产工艺",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "钢水C成分",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "钢水Si成分",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "钢水Mn成分",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "钢水P成分",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "钢水S成分",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "温度低",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "温度高",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "设备",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "备件",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "机修",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "电气",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "耐材",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "钢包",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "中包",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "水口",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "铁包",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "转炉",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "原材料",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "铁水",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "合金",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "溶剂",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "废钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "铁块",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  }
+                ],
+                "level": 4,
+                "collapse": false
+              },
+              {
+                "name": "二次开浇",
+                "statusBorderStyleClass": "border-kpi-normal",
+                "impactNumberString": "1,111",
+                "impactUnitCodeString": "元/吨",
+                "impactTextStyleClass": "",
+                "impactRateNumberString": "3.4%",
+                "impactRateLabel": "优",
+                "impactRateTextStyleClass": "text-kpi-normal",
+                "data": [
+                  {
+                    "benchmarkNumberString": "10,000",
+                    "actualNumberString": "11,111",
+                    "textStyleClass": "text-kpi-danger"
+                  }
+                ],
+                "children": [
+                  {
+                    "name": "生产工艺",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "钢水C成分",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "钢水Si成分",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "钢水Mn成分",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "钢水P成分",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "钢水S成分",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "温度低",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "温度高",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "设备",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "备件",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "机修",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "电气",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "耐材",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "钢包",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "中包",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "水口",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "铁包",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "转炉",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "原材料",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "铁水",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "合金",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "溶剂",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "废钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "铁块",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  }
+                ],
+                "level": 4,
+                "collapse": false
+              },
+              {
+                "name": "其它",
+                "statusBorderStyleClass": "border-kpi-normal",
+                "impactNumberString": "1,111",
+                "impactUnitCodeString": "元/吨",
+                "impactTextStyleClass": "",
+                "impactRateNumberString": "3.4%",
+                "impactRateLabel": "优",
+                "impactRateTextStyleClass": "text-kpi-normal",
+                "data": [
+                  {
+                    "benchmarkNumberString": "10,000",
+                    "actualNumberString": "11,111",
+                    "textStyleClass": "text-kpi-danger"
+                  }
+                ],
+                "children": [
+                  {
+                    "name": "等铁",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "其它",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  }
+                ],
+                "level": 4,
+                "collapse": false
+              }
+            ],
+            "level": 3,
+            "collapse": false
+          },
+          {
+            "name": "速度损失",
+            "statusBorderStyleClass": "border-kpi-normal",
+            "impactNumberString": "1,111",
+            "impactUnitCodeString": "元/吨",
+            "impactTextStyleClass": "",
+            "impactRateNumberString": "3.4%",
+            "impactRateLabel": "优",
+            "impactRateTextStyleClass": "text-kpi-normal",
+            "data": [
+              {
+                "benchmarkNumberString": "10,000",
+                "actualNumberString": "11,111",
+                "textStyleClass": "text-kpi-danger"
+              }
+            ],
+            "children": [
+              {
+                "name": "堵流",
+                "statusBorderStyleClass": "border-kpi-normal",
+                "impactNumberString": "1,111",
+                "impactUnitCodeString": "元/吨",
+                "impactTextStyleClass": "",
+                "impactRateNumberString": "3.4%",
+                "impactRateLabel": "优",
+                "impactRateTextStyleClass": "text-kpi-normal",
+                "data": [
+                  {
+                    "benchmarkNumberString": "10,000",
+                    "actualNumberString": "11,111",
+                    "textStyleClass": "text-kpi-danger"
+                  }
+                ],
+                "children": [
+                  {
+                    "name": "设备问题",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "等铁",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "漏钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "顶坯",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "冒钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "挂钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "套管断",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "散流",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "缩流",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "射源故障",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "翻钢机故障",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "跳电",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "截流",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "自动打",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "节奏影响",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "电气问题",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "等铁",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "漏钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "顶坯",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "冒钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "挂钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "套管断",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "散流",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "缩流",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "射源故障",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "翻钢机故障",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "跳电",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "截流",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "自动打",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "节奏影响",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "生产工艺",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "等铁",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "漏钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "顶坯",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "冒钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "挂钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "套管断",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "散流",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "缩流",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "射源故障",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "翻钢机故障",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "跳电",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "截流",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "自动打",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "节奏影响",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "耐材问题",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "等铁",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "漏钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "顶坯",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "冒钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "挂钢",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "套管断",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "散流",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "缩流",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "射源故障",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "翻钢机故障",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "跳电",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "截流",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "自动打",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "节奏影响",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "其它",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  }
+                ],
+                "level": 4,
+                "collapse": false
+              },
+              {
+                "name": "降拉速",
+                "statusBorderStyleClass": "border-kpi-normal",
+                "impactNumberString": "1,111",
+                "impactUnitCodeString": "元/吨",
+                "impactTextStyleClass": "",
+                "impactRateNumberString": "3.4%",
+                "impactRateLabel": "优",
+                "impactRateTextStyleClass": "text-kpi-normal",
+                "data": [
+                  {
+                    "benchmarkNumberString": "10,000",
+                    "actualNumberString": "11,111",
+                    "textStyleClass": "text-kpi-danger"
+                  }
+                ],
+                "children": [
+                  {
+                    "name": "成分问题",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "温度问题",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "生产节奏",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "人员操作",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "备件",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "机修",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "电气",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "耐材",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "原材料",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "其它",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  }
+                ],
+                "level": 4,
+                "collapse": false
+              }
+            ],
+            "level": 3,
+            "collapse": false
+          },
+          {
+            "name": "质量损失",
+            "statusBorderStyleClass": "border-kpi-normal",
+            "impactNumberString": "1,111",
+            "impactUnitCodeString": "元/吨",
+            "impactTextStyleClass": "",
+            "impactRateNumberString": "3.4%",
+            "impactRateLabel": "优",
+            "impactRateTextStyleClass": "text-kpi-normal",
+            "data": [
+              {
+                "benchmarkNumberString": "10,000",
+                "actualNumberString": "11,111",
+                "textStyleClass": "text-kpi-danger"
+              }
+            ],
+            "children": [
+              {
+                "name": "工艺甩废",
+                "statusBorderStyleClass": "border-kpi-normal",
+                "impactNumberString": "1,111",
+                "impactUnitCodeString": "元/吨",
+                "impactTextStyleClass": "",
+                "impactRateNumberString": "3.4%",
+                "impactRateLabel": "优",
+                "impactRateTextStyleClass": "text-kpi-normal",
+                "data": [
+                  {
+                    "benchmarkNumberString": "10,000",
+                    "actualNumberString": "11,111",
+                    "textStyleClass": "text-kpi-danger"
+                  }
+                ],
+                "children": [
+                  {
+                    "name": "连铸甩坯损失",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "生产工艺",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "设备",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "耐材",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "原材料",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "中包铸余",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "生产工艺",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "设备",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "耐材",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "原材料",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "大包剩钢",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "name": "生产工艺",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "设备",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "耐材",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "原材料",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      },
+                      {
+                        "name": "其它",
+                        "statusBorderStyleClass": "border-kpi-normal",
+                        "impactNumberString": "1,111",
+                        "impactUnitCodeString": "元/吨",
+                        "impactTextStyleClass": "",
+                        "impactRateNumberString": "3.4%",
+                        "impactRateLabel": "优",
+                        "impactRateTextStyleClass": "text-kpi-normal",
+                        "data": [
+                          {
+                            "benchmarkNumberString": "10,000",
+                            "actualNumberString": "11,111",
+                            "textStyleClass": "text-kpi-danger"
+                          }
+                        ],
+                        "children": null,
+                        "level": 6,
+                        "collapse": true
+                      }
+                    ],
+                    "level": 5,
+                    "collapse": true
+                  }
+                ],
+                "level": 4,
+                "collapse": false
+              },
+              {
+                "name": "异常甩废",
+                "statusBorderStyleClass": "border-kpi-normal",
+                "impactNumberString": "1,111",
+                "impactUnitCodeString": "元/吨",
+                "impactTextStyleClass": "",
+                "impactRateNumberString": "3.4%",
+                "impactRateLabel": "优",
+                "impactRateTextStyleClass": "text-kpi-normal",
+                "data": [
+                  {
+                    "benchmarkNumberString": "10,000",
+                    "actualNumberString": "11,111",
+                    "textStyleClass": "text-kpi-danger"
+                  }
+                ],
+                "children": [
+                  {
+                    "name": "生产工艺",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "设备",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "耐材",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "原材料",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "其它",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  }
+                ],
+                "level": 4,
+                "collapse": false
+              },
+              {
+                "name": "质量判废",
+                "statusBorderStyleClass": "border-kpi-normal",
+                "impactNumberString": "1,111",
+                "impactUnitCodeString": "元/吨",
+                "impactTextStyleClass": "",
+                "impactRateNumberString": "3.4%",
+                "impactRateLabel": "优",
+                "impactRateTextStyleClass": "text-kpi-normal",
+                "data": [
+                  {
+                    "benchmarkNumberString": "10,000",
+                    "actualNumberString": "11,111",
+                    "textStyleClass": "text-kpi-danger"
+                  }
+                ],
+                "children": [
+                  {
+                    "name": "生产工艺",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "设备",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "耐材",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "原材料",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "其它",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  }
+                ],
+                "level": 4,
+                "collapse": false
+              },
+              {
+                "name": "回炉",
+                "statusBorderStyleClass": "border-kpi-normal",
+                "impactNumberString": "1,111",
+                "impactUnitCodeString": "元/吨",
+                "impactTextStyleClass": "",
+                "impactRateNumberString": "3.4%",
+                "impactRateLabel": "优",
+                "impactRateTextStyleClass": "text-kpi-normal",
+                "data": [
+                  {
+                    "benchmarkNumberString": "10,000",
+                    "actualNumberString": "11,111",
+                    "textStyleClass": "text-kpi-danger"
+                  }
+                ],
+                "children": [
+                  {
+                    "name": "低温回炉",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "成份质量",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "生产事故",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  },
+                  {
+                    "name": "其它",
+                    "statusBorderStyleClass": "border-kpi-normal",
+                    "impactNumberString": "1,111",
+                    "impactUnitCodeString": "元/吨",
+                    "impactTextStyleClass": "",
+                    "impactRateNumberString": "3.4%",
+                    "impactRateLabel": "优",
+                    "impactRateTextStyleClass": "text-kpi-normal",
+                    "data": [
+                      {
+                        "benchmarkNumberString": "10,000",
+                        "actualNumberString": "11,111",
+                        "textStyleClass": "text-kpi-danger"
+                      }
+                    ],
+                    "children": null,
+                    "level": 5,
+                    "collapse": true
+                  }
+                ],
+                "level": 4,
+                "collapse": false
+              },
+              {
+                "name": "待判",
+                "statusBorderStyleClass": "border-kpi-normal",
+                "impactNumberString": "1,111",
+                "impactUnitCodeString": "元/吨",
+                "impactTextStyleClass": "",
+                "impactRateNumberString": "3.4%",
+                "impactRateLabel": "优",
+                "impactRateTextStyleClass": "text-kpi-normal",
+                "data": [
+                  {
+                    "benchmarkNumberString": "10,000",
+                    "actualNumberString": "11,111",
+                    "textStyleClass": "text-kpi-danger"
+                  }
+                ],
+                "children": null,
+                "level": 4,
+                "collapse": false
+              },
+              {
+                "name": "补入",
+                "statusBorderStyleClass": "border-kpi-normal",
+                "impactNumberString": "1,111",
+                "impactUnitCodeString": "元/吨",
+                "impactTextStyleClass": "",
+                "impactRateNumberString": "3.4%",
+                "impactRateLabel": "优",
+                "impactRateTextStyleClass": "text-kpi-normal",
+                "data": [
+                  {
+                    "benchmarkNumberString": "10,000",
+                    "actualNumberString": "11,111",
+                    "textStyleClass": "text-kpi-danger"
+                  }
+                ],
+                "children": null,
+                "level": 4,
+                "collapse": false
+              }
+            ],
+            "level": 3,
+            "collapse": false
+          }
+        ],
+        "level": 2,
+        "collapse": true
+      },
+    ],
+    "level": 1,
+    "collapse": true,
+  }];
 
   export default {
     name: 'horizontal',
@@ -326,6 +8400,7 @@
         }).catch(function (error) {
           _this.data = treeData;
           _this.setTreeCenter();
+          // console.log(_this.data)
         });
       },
       setTreeCenter() {
@@ -342,7 +8417,7 @@
       },
       handleClick(scope) {
         this.data = treeData;
-        // console.log(scope);
+         console.log(scope);
       },
       pathFunc(linkData, start, end) {
         return "M" + end.x + "," + end.y + " " + start.x + "," + start.y;
@@ -374,6 +8449,7 @@
       }
       this.childMenuClick(false);
       this.childHeaderClick(false);
+
 
     },
     destroyed() {

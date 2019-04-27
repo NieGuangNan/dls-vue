@@ -148,6 +148,20 @@ a{
 .border-blue{
   border-left: 5px solid #63b3e2 !important;
 }
+/*kpi tree*/
+.text-kpi-normal{
+  color:#557e3b !important;
+}
+.text-kpi-danger{
+  color: #e02837 !important;
+}
+.border-kpi-normal{
+  border-left: 5px solid #557e3b !important;
+}
+
+.border-kpi-danger{
+  border-left: 5px solid #e02837 !important;
+}
   /*图标设置*/
 
 .fas:before {
