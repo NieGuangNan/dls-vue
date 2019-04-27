@@ -38,9 +38,9 @@ axios.interceptors.response.use(
   },
   error => {
     if (error.response) {
-      console.log(getBaseUrl(window.location.href))
+      // console.log(getBaseUrl(window.location.href))
       //全局ajax错误信息提示
-      //MessageBox({type:"error",message:error.response.data,title:"温馨提示",});
+      // MessageBox({type:"error",message:error.response.data,title:"温馨提示",});
     }
     //return Promise.reject(error);
   });

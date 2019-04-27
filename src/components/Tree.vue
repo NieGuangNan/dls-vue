@@ -158,11 +158,11 @@
       },
       expandNode(node) {
         node._collapsed = false;
-        if (node._children && node._children.length > 0) {
-          node._children.forEach(child => {
-            this.expandNode(child);
-          });
-        }
+        // if (node._children && node._children.length > 0) {
+        //   node._children.forEach(child => {
+        //     this.expandNode(child);
+        //   });
+        // }
       },
       collapseNode(node) {
         node._collapsed = true;
