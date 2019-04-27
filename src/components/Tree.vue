@@ -188,9 +188,10 @@
 
         return hits;
       },
+
       nodeCollapse(nodes) {
         nodes.map((node) => {
-          if (node.data.collapse == false) {
+          if (node.data.collapse==false || node.data.collapse==null) {
             const data = [...this.data];
             const targetNode = this.findNodeById(node.data.id, data)[0];
             this.collapseNode(targetNode);
