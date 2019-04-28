@@ -2,18 +2,19 @@ import axios from "axios";
 import qs from "qs";
 import auth from "./auth";
 import {getBaseUrl} from "../common/utils";
-import {MessageBox} from "element-ui";
-import {Loading} from 'element-ui';
+import {Loading, MessageBox} from "element-ui";
 
 let loading;
-let needLoadingRequestCount = 0
+let needLoadingRequestCount = 0;
 
 function startLoading() {
   loading = Loading.service({background: 'transparent', lock: true});
 }
+
 function endLoading() {
   loading.close()
 }
+
 export function showFullScreenLoading() {
   if (needLoadingRequestCount === 0) {
     startLoading()
@@ -22,12 +23,13 @@ export function showFullScreenLoading() {
 }
 
 export function tryHideFullScreenLoading() {
-  if (needLoadingRequestCount <= 0) return
-  needLoadingRequestCount--
+  if (needLoadingRequestCount <= 0) return;
+  needLoadingRequestCount--;
   if (needLoadingRequestCount === 0) {
     endLoading()
   }
 }
+
 // axios 配置
 axios.defaults.timeout = 5000;
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
