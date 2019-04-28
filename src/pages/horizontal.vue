@@ -108,7 +108,12 @@
     },
     methods: {
       getData() {
-        this.$http.get('http://localhost:9990/api/v1/dpm/kpiTree/test/1',this.search).then((res) => {
+        this.$http.get('http://localhost:9990/api/v1/dpm/kpiTree/test/1', {
+          params: {
+            dbid: this.search.dbid,
+            dateString: this.search.dateString
+          }
+        }).then((res) => {
           this.data = [res.data.root];
           this.setTreeCenter();
         }).catch((error) => {
