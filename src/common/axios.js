@@ -5,6 +5,29 @@ import {getBaseUrl} from "../common/utils";
 import {MessageBox} from "element-ui";
 import {Loading} from 'element-ui';
 
+let loading;
+let needLoadingRequestCount = 0
+
+function startLoading() {
+  loading = Loading.service({background: 'transparent', lock: true});
+}
+function endLoading() {
+  loading.close()
+}
+export function showFullScreenLoading() {
+  if (needLoadingRequestCount === 0) {
+    startLoading()
+  }
+  needLoadingRequestCount++
+}
+
+export function tryHideFullScreenLoading() {
+  if (needLoadingRequestCount <= 0) return
+  needLoadingRequestCount--
+  if (needLoadingRequestCount === 0) {
+    endLoading()
+  }
+}
 // axios 配置
 axios.defaults.timeout = 5000;
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
@@ -16,7 +39,7 @@ axios.defaults.headers.common['authSid'] = auth.getSid();
 //POST传参序列化
 //添加请求拦截器
 axios.interceptors.request.use((config) => {
-  Loading.service({background: 'transparent'});
+  showFullScreenLoading()
   // 在发送请求之前做些什么
   if (config.method === 'post') {
     config.data = qs.stringify(config.data);
@@ -31,7 +54,7 @@ axios.interceptors.request.use((config) => {
 //添加响应拦截器
 axios.interceptors.response.use(
   response => {
-    Loading.service({background: 'transparent'}).close();
+    tryHideFullScreenLoading()
     if (response.data && response.data.code) {
       if (response.data.code === '2001') {
         auth.logout()
@@ -40,7 +63,7 @@ axios.interceptors.response.use(
     return response;
   },
   error => {
-    Loading.service({background: 'transparent'}).close();
+    tryHideFullScreenLoading()
     if (error.response) {
       // console.log(getBaseUrl(window.location.href))
       //全局ajax错误信息提示
