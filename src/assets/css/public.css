@@ -261,18 +261,22 @@ a{
 
 /*side-menu*/
 .el-menu-style.el-menu>li:not(.is-opened){
-  border-left:4px solid transparent;
+  border-left:2px solid transparent;
+}
+.el-submenu__icon-arrow.el-icon-arrow-down{
+  font-weight: bolder;
 }
 .main-sidebar,
 .el-menu-style,
 .el-menu-style .el-menu,
-.vue-scrollbar,.el-submenu__title:hover,
-.el-menu-item:focus, .el-menu-item:hover {
+.vue-scrollbar{
   background-color: #252a2f !important;
 }
 .el-menu-style.el-menu>li.el-menu-sub.el-submenu.is-opened>ul,
 .el-menu-style.el-menu>li.el-menu-sub.el-submenu.is-opened>ul li,
-.el-menu-style.el-menu>li.el-menu-sub.el-submenu.is-opened>div{
+.el-menu-style.el-menu>li.el-menu-sub.el-submenu.is-opened>div,
+.el-submenu__title:hover,
+.el-menu-item:focus, .el-menu-item:hover {
   background:#191d21!important;
 }
 

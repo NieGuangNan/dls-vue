@@ -120,7 +120,8 @@ html {
 .el-menu-item.is-active,
 .el-menu-sub.is-opened > .el-submenu__title i,
 .el-menu-sub.is-opened > .el-submenu__title,
-.el-submenu__title:hover,.el-menu-item:focus, .el-menu-item:hover {
+.el-submenu__title:hover,.el-submenu__title:hover i,
+.el-menu-item:focus, .el-menu-item:hover , .el-menu-item:hover i{
   color: #1ab394 !important;
 }
 
@@ -130,7 +131,7 @@ html {
 
 .el-menu-style.el-menu > li.el-menu-sub.el-submenu.is-active.is-opened,
 .el-menu-style.el-menu > li.el-menu-sub.el-submenu.is-opened {
-  border-left: 4px solid #1ab394;
+  border-left: 2px solid #1ab394;
 }
 
 
