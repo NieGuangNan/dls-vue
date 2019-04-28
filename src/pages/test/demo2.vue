@@ -100,19 +100,19 @@
     <el-row >
       <el-col :span="6" v-for="item in items" :key="item.value">
         <div class=" ibox ibox-margin">
-          <div>
-            <div class="ibox-title">1
-              <el-select v-model="item.value" placeholder="请选择" @change="select(item.id,item.value)">
-                <el-option
-                  v-for="option in item.options"
-                  :key="option.value"
-                  :label="option.label"
-                  :value="option.value">
-                </el-option>
-            </el-select>
+            <div class="ibox-title">
+              <h3>甜甜圈</h3>
             </div>
-          </div>
+
           <div class="ibox-content">
+            <el-select v-model="item.value" placeholder="请选择" @change="select(item.id,item.value)">
+              <el-option
+                v-for="option in item.options"
+                :key="option.value"
+                :label="option.label"
+                :value="option.value">
+              </el-option>
+            </el-select>
             <doughnut-chart :data="item.data" :height="$root.bodyHeight/3"/>
           </div>
 

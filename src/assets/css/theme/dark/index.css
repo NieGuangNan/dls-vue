@@ -24545,7 +24545,7 @@
 }
 
 /*自定义样式*//*自定义样式*//*自定义样式*//*自定义样式*//*自定义样式*//*自定义样式*/
-html, .main-header {
+html {
   background-color: rgb(54, 56, 57);
 }
 
@@ -24558,16 +24558,12 @@ html, .main-header {
 /*header样式*/
 
 
-
-.el-dropdown-menu .header-pic p,
-.el-dropdown, .main-header a[data-v-cea13f84],.el-dropdown-menu__item {
-  color: #fff !important;
-}
-
 .main-header.closeLogo .sidebar-toggle[data-v-cea13f84],
 .main-header .navbar .sidebar-toggle[data-v-cea13f84]:hover,
-.navbar-dropdown.el-dropdown:hover{
-  background: #444444 !important;
+.navbar-dropdown.el-dropdown:hover
+
+{
+  color:#f6a821 !important;
 }
 
 .el-dropdown-menu .header-pic,
@@ -24622,7 +24618,8 @@ html, .main-header {
 
 .el-menu-item.is-active,
 .el-menu-sub.is-opened > .el-submenu__title i,
-.el-menu-sub.is-opened > .el-submenu__title {
+.el-menu-sub.is-opened > .el-submenu__title,
+.el-submenu__title:hover,.el-menu-item:focus, .el-menu-item:hover {
   color: #f8a621 !important;
 }
 
@@ -24630,22 +24627,11 @@ html, .main-header {
   color: #fff
 }
 
-.main-sidebar,
-.el-menu-style,
-.el-menu-style .el-menu,
-.vue-scrollbar {
-  background-color: #1f2021 !important;
-
-}
 .el-menu-style.el-menu>li.el-menu-sub.el-submenu.is-active.is-opened,
 .el-menu-style.el-menu>li.el-menu-sub.el-submenu.is-opened{
   border-left:4px solid #f8a621;
 }
-.el-menu-style.el-menu>li.el-menu-sub.el-submenu.is-opened>ul,
-.el-menu-style.el-menu>li.el-menu-sub.el-submenu.is-opened>ul li,
-.el-menu-style.el-menu>li.el-menu-sub.el-submenu.is-opened>div{
-  background:#2a2d35!important;
-}
+
 
 /*.main-sidebar.animated.showSlide.expandSide {*/
   /*border-right: 8px solid rgb(54, 56, 57);*/
@@ -24747,10 +24733,7 @@ html, .main-header {
 /*topBar样式*/
 .topBar {
   background: #101010;
-  margin: 0rem -0.5rem 0 0;
-}
-.topBar-margin-none{
-  margin-right: 0!important;
+
 }
 
 
@@ -24852,19 +24835,23 @@ html, .main-header {
 .ibox {
   border: 1px solid black;
   background: rgb(31, 32, 33);
-  margin-bottom:0.5rem;
 }
-.ibox-margin{
-  margin-right:0.5rem
-}
-.ibox .ibox {
-  background: transparent;
-}
-
 .ibox .ibox-title {
   color: white;
-}
 
+}
+.ibox-title h3 {
+  font-size: 16px;
+  height: 25px;
+  line-height: 25px;
+  background: black;
+  border-radius: 20px;
+  margin-left: 7px;
+  margin-right: 7px;
+  padding-left: 8px;
+  padding-right: 8px;
+  display: inline-block;
+}
 /*horizontal*/
 .v-tree__link-base,.v-tree__collapse-icon line, .v-tree__collapse-icon-stroke,
 .v-tree__collapse-icon polyline{stroke: rgb(54, 56, 57)}

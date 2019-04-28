@@ -216,24 +216,26 @@ a{
 /*ibox*/
 
 .ibox {
-  padding: 5px !important;
+  padding-top: 5px !important;
   font-weight: 500;
   box-shadow: none !important;
-
+  margin-top:0.5rem;
 }
-
-
+.ibox-margin{
+  margin-right:0.5rem
+}
 .ibox .ibox {
   border: none;
   padding: 10px 20px 10px 20px !important;
+  background: transparent;
 }
 .ibox-item{
   height:6vmin;
   padding: 0 0.5vmin 0 ;
 }
-
-.ibox .ibox-title {
-  padding:8px 20px;
+.ibox .ibox-title{
+  margin: 5px 0 5px;
+  min-height:40px;
 }
 .ibox-title h3, .ibox-title span {
   vertical-align: middle;
@@ -242,14 +244,13 @@ a{
   margin-right: 5px;
 }
 .ibox .ibox-content{
-  padding: 0 10px 10px;
+  padding: 0 20px 10px;
 }
 
 /*topBar*/
 .topBar {
-
+  margin: 0rem -0.5rem 0 -0.5rem;
   padding: 0.4rem 0.5rem;
-  border-radius: 5px 5px 0 0 ;
   height:40px;
 }
 .topBar-margin-none{
@@ -262,5 +263,37 @@ a{
 .el-menu-style.el-menu>li:not(.is-opened){
   border-left:4px solid transparent;
 }
+.main-sidebar,
+.el-menu-style,
+.el-menu-style .el-menu,
+.vue-scrollbar,.el-submenu__title:hover,
+.el-menu-item:focus, .el-menu-item:hover {
+  background-color: #252a2f !important;
+}
+.el-menu-style.el-menu>li.el-menu-sub.el-submenu.is-opened>ul,
+.el-menu-style.el-menu>li.el-menu-sub.el-submenu.is-opened>ul li,
+.el-menu-style.el-menu>li.el-menu-sub.el-submenu.is-opened>div{
+  background:#191d21!important;
+}
+
+/*header*/
+.main-header {
+  background: #252a2f;
+  border-bottom: 1px solid #191d21;
+}
+.el-dropdown-menu .header-pic p,
+.el-dropdown, .main-header a[data-v-cea13f84],.el-breadcrumb__inner,
+.navbar-custom-menu .el-radio__label {
+  color:#fff !important;
+}
+
+.main-header.closeLogo .sidebar-toggle[data-v-cea13f84],
+.main-header .navbar .sidebar-toggle[data-v-cea13f84]:hover,
+.navbar-dropdown.el-dropdown:hover
+
+{
+  background: #191d21 !important;
+}
+
 
 

@@ -44,7 +44,7 @@ input:focus{
 
 /*自定义类的样式*//*自定义类的样式*//*自定义类的样式*//*自定义类的样式*//*自定义类的样式*/
 
-html,.main-header {
+html {
   background-color: #fff;
 }
 
@@ -60,21 +60,13 @@ html,.main-header {
 }
 
 /*header样式*/
-.main-header {
-  border-bottom: 1px solid #eee
-}
-
-.el-dropdown-menu .header-pic p,
-.el-dropdown, .main-header a[data-v-cea13f84] {
-  color: #1ab394 !important;
-}
 
 .main-header.closeLogo .sidebar-toggle[data-v-cea13f84],
 .main-header .navbar .sidebar-toggle[data-v-cea13f84]:hover,
 .navbar-dropdown.el-dropdown:hover
 
 {
-  background: #eee !important;
+  color:#1ab394 !important;
 }
 
 .el-dropdown-menu .header-pic,
@@ -118,10 +110,6 @@ html,.main-header {
   background: #aaa;
 }
 
-.el-breadcrumb__inner {
-  color: #1ab394 !important;
-}
-
 .el-dropdown-menu__item.is-disabled {
   color: #ddd !important;
 }
@@ -131,7 +119,8 @@ html,.main-header {
 
 .el-menu-item.is-active,
 .el-menu-sub.is-opened > .el-submenu__title i,
-.el-menu-sub.is-opened > .el-submenu__title {
+.el-menu-sub.is-opened > .el-submenu__title,
+.el-submenu__title:hover,.el-menu-item:focus, .el-menu-item:hover {
   color: #1ab394 !important;
 }
 
@@ -139,23 +128,11 @@ html,.main-header {
   color: #fff
 }
 
-.main-sidebar,
-.el-menu-style,
-.el-menu-style .el-menu,
-.vue-scrollbar {
-  background-color: #2f4050 !important;
-}
-
 .el-menu-style.el-menu > li.el-menu-sub.el-submenu.is-active.is-opened,
 .el-menu-style.el-menu > li.el-menu-sub.el-submenu.is-opened {
   border-left: 4px solid #1ab394;
 }
 
-.el-menu-style.el-menu>li.el-menu-sub.el-submenu.is-opened>ul,
-.el-menu-style.el-menu>li.el-menu-sub.el-submenu.is-opened>ul li,
-.el-menu-style.el-menu>li.el-menu-sub.el-submenu.is-opened>div{
-  background:#293846!important;
-}
 
 
 /*footer样式*/
@@ -221,7 +198,7 @@ html,.main-header {
 /*topBar样式*/
 .topBar {
   background: #fff;
-  margin: 0rem -0.5rem 0 -0.5rem;
+
   border-bottom: 1px solid #e7eaec;
 }
 
@@ -328,15 +305,16 @@ html,.main-header {
 /*ibox*/
 .ibox {
   background: #fff;
-  margin-top:0.5rem;
 }
-.ibox-margin{
-  margin-right:0.5rem
+.ibox-title h3 {
+  border-left: 2px solid #19aa8d;
+  padding-left: 15px;
+  padding-right: 15px;
+  height: 60%;
+  font-size: large;
+  margin: 0;
+  line-height: 24px;
 }
-.ibox .ibox {
-  background: transparent;
-}
-
 /*horizontal*/
 .v-tree__link-base,.v-tree__collapse-icon line, .v-tree__collapse-icon-stroke,
 .v-tree__collapse-icon polyline{stroke: #ddd}
