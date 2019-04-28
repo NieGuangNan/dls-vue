@@ -1,22 +1,22 @@
 import axios from "axios";
 import qs from "qs";
 import auth from "./auth";
-import { getBaseUrl } from "../common/utils";
-import { MessageBox } from "element-ui";
-import { Loading } from 'element-ui';
+import {getBaseUrl} from "../common/utils";
+import {MessageBox} from "element-ui";
+import {Loading} from 'element-ui';
 
 // axios 配置
 axios.defaults.timeout = 5000;
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
 //axios.defaults.baseURL = 'http://localhost:8008';
 axios.defaults.baseURL = getBaseUrl(window.location.href);
-axios.defaults.headers.common[ 'authUid' ] = auth.getUid();
-axios.defaults.headers.common[ 'authSid' ] = auth.getSid();
+axios.defaults.headers.common['authUid'] = auth.getUid();
+axios.defaults.headers.common['authSid'] = auth.getSid();
 
 //POST传参序列化
 //添加请求拦截器
 axios.interceptors.request.use((config) => {
-  Loading.service({ fullscreen: true });
+  Loading.service({background: 'transparent'});
   // 在发送请求之前做些什么
   if (config.method === 'post') {
     config.data = qs.stringify(config.data);
@@ -31,7 +31,7 @@ axios.interceptors.request.use((config) => {
 //添加响应拦截器
 axios.interceptors.response.use(
   response => {
-    Loading.service({ fullscreen: true }).close();
+    Loading.service({background: 'transparent'}).close();
     if (response.data && response.data.code) {
       if (response.data.code === '2001') {
         auth.logout()
@@ -40,6 +40,7 @@ axios.interceptors.response.use(
     return response;
   },
   error => {
+    Loading.service({background: 'transparent'}).close();
     if (error.response) {
       // console.log(getBaseUrl(window.location.href))
       //全局ajax错误信息提示
@@ -47,8 +48,9 @@ axios.interceptors.response.use(
     }
     //return Promise.reject(error);
   });
-export function fetch (url, config = { method: 'get' }) {
-  return axios.request({ ...config, url })
+
+export function fetch(url, config = {method: 'get'}) {
+  return axios.request({...config, url})
   // return new Promise((resolve, reject) => {
   //   axios.request({ ...config, url })
   //     .then(response => {
