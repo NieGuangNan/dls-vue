@@ -5,7 +5,7 @@ import { getBaseUrl } from "../common/utils";
 import { MessageBox } from "element-ui";
 
 // axios 配置
-axios.defaults.timeout = 5000;
+axios.defaults.timeout = 180000;
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
 //axios.defaults.baseURL = 'http://localhost:8008';
 axios.defaults.baseURL = getBaseUrl(window.location.href);
