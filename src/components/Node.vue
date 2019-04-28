@@ -16,7 +16,7 @@
     </foreignObject>
     <g :transform="collapseIcon" v-if="nodeData.data._children" @click="handleClick" class="v-tree__collapse-icon"
        ref="circle">
-      <circle r="8"></circle>
+      <circle r="10"></circle>
       <polyline points="-4,0 4,0 0,0 0,4 0,-4" stroke-width="2" stroke="white" fill="none"
                 v-if="nodeData.data._collapsed"/>
       <line x1="-4" y1="0" x2="4" y2="0" stroke-width="2" stroke="white" v-else/>

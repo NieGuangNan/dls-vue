@@ -241,5 +241,8 @@
     font-size: 18px !important;
   }
 
+  .v-tree__node-base sub {
+    margin-left: 2px;
+  }
 
 </style>
