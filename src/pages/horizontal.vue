@@ -108,7 +108,7 @@
     },
     methods: {
       getData() {
-        this.$http.get('http://localhost:9990/api/v1/dpm/kpiTree', {
+        this.$http.get('http://192.168.100.102:9990/api/v1/dpm/kpiTree', {
           params: {
             dbid: this.search.dbid,
             dateString: this.search.dateString
