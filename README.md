@@ -61,15 +61,8 @@ npm uninstall moudleName：卸载node模块
 ## 页面截图
 
 <p><img src="./static/img/login.jpg" /></p>
-<p><img src="https://raw.githubusercontent.com/lanux/Vue-Admin/master/static/data/cmenu.png?t=1" /></p>
-<p><img src="https://raw.githubusercontent.com/lanux/Vue-Admin/master/static/data/dash.png?t=1" /></p>
-<p><img src="https://raw.githubusercontent.com/lanux/Vue-Admin/master/static/data/dash2.png?t=1" /></p>
-<p><img src="https://raw.githubusercontent.com/lanux/Vue-Admin/master/static/data/menu.png?t=1" /></p>
-<p><img src="https://raw.githubusercontent.com/lanux/Vue-Admin/master/static/data/menu2.png?t=1" /></p>
-<p><img src="https://raw.githubusercontent.com/lanux/Vue-Admin/master/static/data/menu5.png?t=1" /></p>
-<p><img src="https://raw.githubusercontent.com/lanux/Vue-Admin/master/static/data/resource.png?t=1" /></p>
-<p><img src="https://raw.githubusercontent.com/lanux/Vue-Admin/master/static/data/role.png?t=1" /></p>
-<p><img src="https://raw.githubusercontent.com/lanux/Vue-Admin/master/static/data/role4.png?t=1" /></p>
-<p><img src="https://raw.githubusercontent.com/lanux/Vue-Admin/master/static/data/user.png?t=1" /></p>
-<p><img src="https://raw.githubusercontent.com/lanux/Vue-Admin/master/static/data/user2.png?t=1" /></p>
-<p><img src="https://raw.githubusercontent.com/lanux/Vue-Admin/master/static/data/mobile.png?t=1" /></p>
+<p><img src="./static/img/home.jpg" /></p>
+<p><img src="/static/img/dashboard.jpg" /></p>
+<p><img src="/static/img/test.jpg" /></p>
+<p><img src="/static/img/table.jpg" /></p>
+<p><img src="/static/img/charts.jpg" /></p>
