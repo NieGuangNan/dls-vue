@@ -24558,8 +24558,8 @@ html {
 /*header样式*/
 
 
-.main-header.closeLogo .sidebar-toggle[data-v-cea13f84],
-.main-header .navbar .sidebar-toggle[data-v-cea13f84]:hover,
+.main-header.closeLogo .sidebar-toggle,
+.main-header .navbar .sidebar-toggle:hover,
 .navbar-dropdown.el-dropdown:hover
 
 {

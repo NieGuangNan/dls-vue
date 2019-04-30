@@ -286,13 +286,13 @@ a{
   border-bottom: 1px solid #191d21;
 }
 .el-dropdown-menu .header-pic p,
-.el-dropdown, .main-header a[data-v-cea13f84],.el-breadcrumb__inner,
+.el-dropdown, .main-header a,.el-breadcrumb__inner,
 .navbar-custom-menu .el-radio__label {
   color:#fff !important;
 }
 
-.main-header.closeLogo .sidebar-toggle[data-v-cea13f84],
-.main-header .navbar .sidebar-toggle[data-v-cea13f84]:hover,
+.main-header.closeLogo .sidebar-toggle,
+.main-header .navbar .sidebar-toggle:hover,
 .navbar-dropdown.el-dropdown:hover
 
 {
