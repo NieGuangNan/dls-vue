@@ -60,7 +60,7 @@ npm uninstall moudleName：卸载node模块
 
 ## 页面截图
 
-<p><img src="https://raw.githubusercontent.com/lanux/Vue-Admin/master/static/data/login.png?t=1" /></p>
+<p><img src="./static/img/login.jpg" /></p>
 <p><img src="https://raw.githubusercontent.com/lanux/Vue-Admin/master/static/data/cmenu.png?t=1" /></p>
 <p><img src="https://raw.githubusercontent.com/lanux/Vue-Admin/master/static/data/dash.png?t=1" /></p>
 <p><img src="https://raw.githubusercontent.com/lanux/Vue-Admin/master/static/data/dash2.png?t=1" /></p>
