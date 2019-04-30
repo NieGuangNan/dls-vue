@@ -25,7 +25,7 @@
 </template>
 
 <script>
-  import {select, drag, event,behavior} from "d3";
+  import {select, drag, event, behavior} from "d3";
   import ForeignObjectElement from "./ForeignObjectElement";
 
   export default {
@@ -88,7 +88,7 @@
         const node = select(this.$refs[this.nodeData.data.id]);
         if (this.transitionDuration) {
           node
-          .attr('transform',parentTransform)
+            .attr('transform', parentTransform)
             .transition()
             .duration(this.transitionDuration)
             .attr("transform", transform)
@@ -108,8 +108,8 @@
 
               // console.log(dy)
               // console.log(event)
-              const x=Number(ret[0]) + (event.dx);
-              const y=Number(ret[1]) + (event.dy);
+              const x = Number(ret[0]) + (event.dx);
+              const y = Number(ret[1]) + (event.dy);
               // var ret = s.replace(/[0-9]*(\.[0-9]*)?/g,function(e){
               //   // console.log(e)
               // });
@@ -117,6 +117,12 @@
             })
           )
           .on("click", d => {
+            // console.log(event);
+            // console.log(select("svg")._groups[0][0].clientWidth);
+            // let ret = select("svg g").attr('transform').match(/(\d+(\.\d+)?)/g);
+            // var new_x = (-event.x + (select("svg")._groups[0][0].clientWidth / 2));
+            // var new_y = (-event.y + (select("svg")._groups[0][0].clientHeight / 2));
+            // select("svg g").attr("transform", "translate(" + new_x + "," + new_y + ") scale(" + ret[2] + ")");
             if (event.defaultPrevented) return;
           });
       },
