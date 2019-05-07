@@ -28,16 +28,16 @@
                       <div class="tree-col-13">
                         <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>影响: </b><span><b>{{scope.data.impactNumberString}}</b><sub
                           class="unit"
-                          v-if="scope.data.impactNumberString!=='0'">{{scope.data.impactUnitCodeString}}</sub></span>
+                          v-if="scope.data.impactNumberString">{{scope.data.impactUnitCodeString}}</sub></span>
                         </p>
                         <template v-for="item in scope.data.data">
                           <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>基准: </b><span><b>{{item.benchmarkNumberString}}</b><sub
                             class="unit"
-                            v-if="item.benchmarkNumberString!=='0'">{{item.benchmarkUnitCodeString}}</sub></span></p>
+                            v-if="item.benchmarkNumberString">{{item.benchmarkUnitCodeString}}</sub></span></p>
                           <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>实际: </b><span
                             :class='item.textStyleClass?item.textStyleClass:""'><b>{{item.actualNumberString}}</b><sub
                             class="unit"
-                            v-if="item.actualNumberString!=='0'">{{item.actualUnitCodeString}}</sub></span></p>
+                            v-if="item.actualNumberString">{{item.actualUnitCodeString}}</sub></span></p>
 
                         </template>
 
@@ -57,16 +57,16 @@
                       <div class="tree-col-13">
                         <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>影响: </b><span><b>{{scope.data.impactNumberString}}</b><sub
                           class="unit"
-                          v-if="scope.data.impactNumberString!=='0'">{{scope.data.impactUnitCodeString}}</sub></span>
+                          v-if="scope.data.impactNumberString">{{scope.data.impactUnitCodeString}}</sub></span>
                         </p>
                         <template v-for="item in scope.data.data">
                           <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>基准: </b><span><b>{{item.benchmarkNumberString}}</b><sub
                             class="unit"
-                            v-if="item.benchmarkNumberString!=='0'">{{item.benchmarkUnitCodeString}}</sub></span></p>
+                            v-if="item.benchmarkNumberString">{{item.benchmarkUnitCodeString}}</sub></span></p>
                           <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>实际: </b><span
                             :class='item.textStyleClass?item.textStyleClass:""'><b>{{item.actualNumberString}}</b><sub
                             class="unit"
-                            v-if="item.actualNumberString!=='0'">{{item.actualUnitCodeString}}</sub></span></p>
+                            v-if="item.actualNumberString">{{item.actualUnitCodeString}}</sub></span></p>
 
                         </template>
                       </div>
