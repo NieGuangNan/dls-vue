@@ -15,7 +15,7 @@ $tree: v-tree;
 
 .#{$tree}__link-base {
   fill: none;
-  stroke: #6a6a6a;
+  stroke: #ccc;
   stroke-width: 2px;
 }
 
@@ -46,11 +46,11 @@ $tree: v-tree;
   }
 
   line, polyline {
-    stroke: #6a6a6a;
+    stroke: #ccc;
     stroke-width: 2px;
     cursor: pointer;
   }
 }
 .v-tree__collapse-icon-stroke{
-  stroke: #6a6a6a;
+  stroke: #ccc;
 }

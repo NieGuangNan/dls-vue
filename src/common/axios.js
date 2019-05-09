@@ -33,8 +33,8 @@ export function tryHideFullScreenLoading() {
 // axios 配置
 axios.defaults.timeout = 180000;
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
-//axios.defaults.baseURL = 'http://localhost:8008';
-axios.defaults.baseURL = getBaseUrl(window.location.href);
+axios.defaults.baseURL = 'http://192.168.100.102:9990';
+// axios.defaults.baseURL = getBaseUrl(window.location.href);
 axios.defaults.headers.common['authUid'] = auth.getUid();
 axios.defaults.headers.common['authSid'] = auth.getSid();
 

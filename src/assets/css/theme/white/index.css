@@ -318,10 +318,10 @@ html {
 }
 /*horizontal*/
 .v-tree__link-base,.v-tree__collapse-icon line, .v-tree__collapse-icon-stroke,
-.v-tree__collapse-icon polyline{stroke: #6a6a6a}
+.v-tree__collapse-icon polyline{stroke: #ccc}
 .treeBox{
   color:#555;
-  border:2px solid #6a6a6a;
+  border:2px solid #ccc;
 }
 .treeBox .tree-col-10>span,.treeBox .tree-col-14>span{
    color:#555;

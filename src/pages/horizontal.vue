@@ -17,13 +17,14 @@
             <template>
               <div class="base-node salad" @click="handleClick(scope)">
                 <template v-if="scope.depth === 0">
-                  <div class="treeBox"
+                  <div class="treeBox" :style="{background:scope.data.backgroundColor,borderColor:scope.data.backgroundColor}"
                        :class='scope.data.statusBorderStyleClass?scope.data.statusBorderStyleClass:""'>
                     <div class="tree-row">
                       <div class="tree-col-11">
                       <span
                         :class='scope.data.impactRateTextStyleClass?scope.data.impactRateTextStyleClass:""'>{{scope.data.impactRateNumberString}}{{scope.data.impactRateLabel}}</span>
                         <p>{{scope.data.name}}</p>
+                        <i class="fal fa-hand-point-up" v-if="scope.data.manual?scope.data.manual:false"/>
                       </div>
                       <div class="tree-col-13">
                         <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>影响: </b><span><b>{{scope.data.impactNumberString}}</b><sub
@@ -47,12 +48,14 @@
                 </template>
                 <template v-else>
                   <div class="treeBox"
+                       :style="{background:scope.data.backgroundColor,borderColor:scope.data.backgroundColor}"
                        :class='scope.data.statusBorderStyleClass?scope.data.statusBorderStyleClass:""'>
                     <div class="tree-row">
                       <div class="tree-col-11">
                       <span
                         :class='scope.data.impactRateTextStyleClass?scope.data.impactRateTextStyleClass:""'>{{scope.data.impactRateNumberString}}{{scope.data.impactRateLabel}}</span>
                         <p>{{scope.data.name}}</p>
+                        <i class="fal fa-hand-point-up" v-if="scope.data.manual?scope.data.manual:false"/>
                       </div>
                       <div class="tree-col-13">
                         <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>影响: </b><span><b>{{scope.data.impactNumberString}}</b><sub
@@ -93,7 +96,6 @@
 
 
   let treeData = [];
-
   export default {
     name: 'horizontal',
     data() {
@@ -114,7 +116,7 @@
     },
     methods: {
       getData() {
-        this.$http.get('http://192.168.100.102:9990/api/v1/dpm/kpiTree', {
+        this.$http.get('/api/v1/dpm/kpiTree', {
           params: this.search
         }).then((res) => {
           this.data = [res.data.root];
@@ -189,6 +191,14 @@
     align-items: center;
   }
 
+  .treeBox .tree-col-11 {
+    position: relative;
+  }
+
+  .treeBox .tree-col-11 .fa-hand-point-up {
+    position: absolute;
+    bottom: 6px;
+  }
 
   .treeBox .tree-col-11 > p {
     font-size: 14px;
