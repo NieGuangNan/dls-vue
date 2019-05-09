@@ -1,7 +1,7 @@
 // export const CONTEXT = './api';
-export const CONTEXT = './Vue-Admin';
+export const CONTEXT = '/dls-vue/static/';
 export const PERMISSION = ['admin', 'developer'];
-
+export const BASEURL = 'http://192.168.100.102:9990';
 export const LOGIN = CONTEXT + '/login';
 export const LOGOUT = CONTEXT + '/logout';
 export const CHANGE_PWD = CONTEXT + '/changePwd';

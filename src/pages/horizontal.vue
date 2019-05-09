@@ -17,7 +17,8 @@
             <template>
               <div class="base-node salad" @click="handleClick(scope)">
                 <template v-if="scope.depth === 0">
-                  <div class="treeBox" :style="{background:scope.data.backgroundColor,borderColor:scope.data.backgroundColor}"
+                  <div class="treeBox"
+                       :style="{background:scope.data.backgroundColor,borderColor:scope.data.backgroundColor}"
                        :class='scope.data.statusBorderStyleClass?scope.data.statusBorderStyleClass:""'>
                     <div class="tree-row">
                       <div class="tree-col-11">
@@ -92,6 +93,7 @@
 <script>
   // import treeData from "../mock/salad";
   import Tree from "../components/Tree";
+  import * as api from "../api"
   import {URLSearchChange} from "@/common/utils";
 
 
@@ -116,7 +118,7 @@
     },
     methods: {
       getData() {
-        this.$http.get('/api/v1/dpm/kpiTree', {
+        this.$http.get(api.BASEURL + '/api/v1/dpm/kpiTree', {
           params: this.search
         }).then((res) => {
           this.data = [res.data.root];
