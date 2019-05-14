@@ -24,8 +24,8 @@
                       <div class="tree-col-11">
                       <span
                         :class='scope.data.impactRateTextStyleClass?scope.data.impactRateTextStyleClass:""'>{{scope.data.impactRateNumberString}}{{scope.data.impactRateLabel}}</span>
-                        <p>{{scope.data.name}}</p>
-                        <i class="fal fa-hand-point-up" v-if="scope.data.manual?scope.data.manual:false"/>
+                        <p>{{scope.data.name}} <br/> <i class="fal fa-hand-point-up"
+                                                        v-if="scope.data.manual?scope.data.manual:false"/></p>
                       </div>
                       <div class="tree-col-13">
                         <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>影响: </b><span><b>{{scope.data.impactNumberString}}</b><sub
@@ -55,8 +55,8 @@
                       <div class="tree-col-11">
                       <span
                         :class='scope.data.impactRateTextStyleClass?scope.data.impactRateTextStyleClass:""'>{{scope.data.impactRateNumberString}}{{scope.data.impactRateLabel}}</span>
-                        <p>{{scope.data.name}}</p>
-                        <i class="fal fa-hand-point-up" v-if="scope.data.manual?scope.data.manual:false"/>
+                        <p>{{scope.data.name}} <br/><i class="fal fa-hand-point-up"
+                                                       v-if="scope.data.manual?scope.data.manual:false"/></p>
                       </div>
                       <div class="tree-col-13">
                         <p :class="{myFont1:fontOnOff,myFont2:!fontOnOff}"><b>影响: </b><span><b>{{scope.data.impactNumberString}}</b><sub
@@ -194,12 +194,12 @@
   }
 
   .treeBox .tree-col-11 {
-    position: relative;
+    /*position: relative;*/
   }
 
   .treeBox .tree-col-11 .fa-hand-point-up {
-    position: absolute;
-    bottom: 6px;
+    /*position: fixed;*/
+    /*bottom: 19px;*/
   }
 
   .treeBox .tree-col-11 > p {
@@ -221,6 +221,7 @@
   .treeBox .tree-col-13 > p sub {
     display: inline-block;
     vertical-align: -9%;
+    position: static;
   }
 
   .treeBox .unit {
