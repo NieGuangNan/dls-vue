@@ -237,6 +237,24 @@
     font-size: 8px;
   }
 
+  .myFont2 .unit {
+    font-size: 8px;
+  }
+
+  p.myFont2 > b {
+    margin-left: 13%;
+  }
+  p.myFont2 > span {
+    margin-left: -13%;
+  }
+  .tree-col-13 p.myFont2:first-child span b {
+    font-size: 15px !important;
+  }
+
+  .tree-col-13 p.myFont2 span b {
+    font-size: 12px !important;
+  }
+
   .tree-col-11 {
     width: 40%;
   }
