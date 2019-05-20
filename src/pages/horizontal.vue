@@ -118,7 +118,7 @@
     },
     methods: {
       getData() {
-        this.$http.get(api.BASEURL + '/api/v1/dpm/kpiTree', {
+        this.$http.get('http://localhost:9990/api/v1/dpm/kpiTree/test?dbid=1', {
           params: this.search
         }).then((res) => {
           this.data = [res.data.root];

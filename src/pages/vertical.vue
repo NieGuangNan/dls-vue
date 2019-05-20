@@ -23,12 +23,12 @@
 
 <script>
 import Tree from "../components/Tree";
-import treeData from "../mock/organization";
+// import treeData from "../mock/organization";
 export default {
   name: "horizontal",
   data() {
     return {
-      data: treeData,
+      data: [],
       translate: {
         x: 0,
         y: 0

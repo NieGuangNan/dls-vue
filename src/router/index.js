@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-
+import VueCookies from 'vue-cookies'
 import {sync} from "vuex-router-sync";
 import store from "store";
 import types from "store/mutation-types";
@@ -28,7 +28,6 @@ import barCharts from "pages/charts/barCharts"
 
 
 import {setCookie, getCookie, delCookie} from '@/common/utils';
-import VueCookies from 'vue-cookies'
 
 
 
