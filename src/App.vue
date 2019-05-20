@@ -24,7 +24,6 @@
   import types from "./store/mutation-types"
   import 'animate.css'
   import * as api from "./api";
-  // import'../static/theme/white/index.css'
   export default {
     name: 'app',
     provide() {
@@ -143,7 +142,7 @@
     created() {
       const theme = api.DEFAULT_THEME;
       import(`../static/theme/${this.$cookies.isKey('themeColor') ? this.$cookies.get('themeColor') : theme}/index.css`).then(a => {
-        console.log(a)
+      //   console.log(a)
         this.isShow = true;
       });//主题样式
 
