@@ -2927,20 +2927,20 @@
 
 .el-button--text {
   border-color: transparent;
-  color: #f6a821;
+  color: #212529;
   background: 0 0;
   padding-left: 0;
   padding-right: 0
 }
 
 .el-button--text:focus, .el-button--text:hover {
-  color: #f8b94d;
+  color: #f6a821;
   border-color: transparent;
   background-color: transparent
 }
 
 .el-button--text:active {
-  color: #dd971e;
+  color: #f6a821;
   border-color: transparent;
   background-color: transparent
 }
@@ -3258,16 +3258,18 @@
   padding: 0 20px;
   margin: 0;
   font-size: 14px;
-  color: #606266;
+  color: #fff;
   cursor: pointer;
   outline: 0
 }
 
 .el-dropdown-menu__item:focus, .el-dropdown-menu__item:not(.is-disabled):hover {
-  background-color: #f6a821;
-  color: #fff
+  background-color: #e6e6e6;
+  color: #f6a821
 }
-
+.el-dropdown-menu__item:focus,.el-dropdown-menu__item:hover .el-button{
+  color: #f6a821;
+}
 .el-dropdown-menu__item i {
   margin-right: 5px
 }
@@ -3288,7 +3290,7 @@
 
 .el-dropdown-menu__item.is-disabled {
   cursor: default;
-  color: #fff;
+  color: #f6a821;
   pointer-events: none
 }
 
@@ -4813,8 +4815,8 @@
 }
 
 .el-radio__input.is-checked .el-radio__inner {
-  border-color: #2f7bfd;
-  background: #2f7bfd
+  border-color: #f6a821;
+  background: #f6a821
 }
 
 .el-radio__input.is-checked .el-radio__inner::after {
@@ -6901,20 +6903,20 @@
 
 .el-button--text {
   border-color: transparent;
-  color: #f6a821;
+  color: #212529;
   background: 0 0;
   padding-left: 0;
   padding-right: 0
 }
 
 .el-button--text:focus, .el-button--text:hover {
-  color: #f8b94d;
+  color: #f6a821;
   border-color: transparent;
   background-color: transparent
 }
 
 .el-button--text:active {
-  color: #dd971e;
+  color: #f6a821;
   border-color: transparent;
   background-color: transparent
 }
@@ -13121,20 +13123,20 @@
 
 .el-button--text {
   border-color: transparent;
-  color: #f6a821;
+  color: #212529;
   background: 0 0;
   padding-left: 0;
   padding-right: 0
 }
 
 .el-button--text:focus, .el-button--text:hover {
-  color: #f8b94d;
+  color: #f6a821;
   border-color: transparent;
   background-color: transparent
 }
 
 .el-button--text:active {
-  color: #dd971e;
+  color: #f6a821;
   border-color: transparent;
   background-color: transparent
 }
@@ -13987,7 +13989,7 @@
 }
 
 .el-form-item {
-  margin-bottom: 22px
+  margin-bottom: 0px
 }
 
 .el-form-item::after, .el-form-item::before {
@@ -23536,20 +23538,20 @@
 
 .el-button--text {
   border-color: transparent;
-  color: #f6a821;
+  color: #212529;
   background: 0 0;
   padding-left: 0;
   padding-right: 0
 }
 
 .el-button--text:focus, .el-button--text:hover {
-  color: #f8b94d;
+  color: #f6a821;
   border-color: transparent;
   background-color: transparent
 }
 
 .el-button--text:active {
-  color: #dd971e;
+  color: #f6a821;
   border-color: transparent;
   background-color: transparent
 }
@@ -24577,12 +24579,14 @@ html {
 }
 
 .message-list li a {
-  color: #fff;
+  color: #212529;
 }
 
 .message-list li:hover {
-  background-color: #f8a621;
-  /*color:#fff;*/
+  background-color: #e6e6e6;
+}
+.message-list li:hover a{
+  color:#f8a621 !important;
 }
 
 .el-dropdown-menu .header-pic img {
@@ -24595,7 +24599,7 @@ html {
 }
 
 .el-dropdown-menu.el-popper {
-  background: #444444;
+  background: #fff;
 }
 
 .el-dropdown-menu .header-pic {
@@ -24611,7 +24615,7 @@ html {
 }
 
 .el-dropdown-menu__item.is-disabled {
-  color: #606266 !important;
+  color: #f6a821 !important;
 }
 
 /*side-menu样式*/
@@ -24665,9 +24669,9 @@ html {
 /*按钮*/
 
 
-.el-button:focus, .el-button:hover {
+/*.el-button:focus, .el-button:hover {
   color: #fff !important;
-}
+}*/
 
 .el-button--default:focus, .el-button--default:hover {
   background: #3b3b40 !important;
