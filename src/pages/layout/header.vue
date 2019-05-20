@@ -6,84 +6,94 @@
       </span>
     </a>
     <nav class="navbar">
-      <a href="#" class="sidebar-toggle" v-if="onOffMenu" data-toggle="offcanvas" role="button"
-         @click.stop.prevent="toggleMenu(!sidebar.collapsed,device.isMobile)">
-        <span class="sr-only">Toggle navigation</span>
-      </a>
-      <el-breadcrumb separator="/" style="margin-bottom: 20px;">
-
-        <!--<template v-if="!currentMenus||currentMenus.length===0">-->
-          <!--<el-breadcrumb-item>{{$t('message.menu.dashboard')}}</el-breadcrumb-item>-->
-        <!--</template>-->
-        <template v-if="!onOffMenu">
-          <el-breadcrumb-item>{{$t('message.menu.home')}}</el-breadcrumb-item>
-        </template>
-        <template v-for="child in currentMenus" v-else>
-          <el-breadcrumb-item >{{$t(child.name)}}</el-breadcrumb-item>
-        </template>
-
-      </el-breadcrumb>
-      <div class="navbar-custom-menu">
-        <template>
-          <el-radio-group v-model="themeColor">
-            <el-radio label="dark">备选项1</el-radio>
-            <el-radio label="white">备选项2</el-radio>
-          </el-radio-group>
-        </template>
-        <el-dropdown trigger="click" class="navbar-dropdown">
-          <span class="el-dropdown-link">
-            {{$t('message.lang')}}
-            <i class="el-icon-arrow-down el-icon--right"></i>
-          </span>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item @click.native="toggleLang('zh')" :disabled="$i18n.locale == 'zh'">中文</el-dropdown-item>
-            <el-dropdown-item @click.native="toggleLang('en')" :disabled="$i18n.locale == 'en'">English
-            </el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
-        <el-dropdown class="navbar-dropdown" trigger="click">
-          <div class="el-dropdown-link" style="height: auto;line-height: inherit">
-            <el-badge :value="count" class="item">
-              <i class="fal fa-envelope"></i>
-            </el-badge>
-          </div>
-          <el-dropdown-menu slot="dropdown">
-            <ul class="message-list">
-              <li v-for="(item,index) in list"><!-- start message -->
-                <router-link :to="{path:'/sys/message',query:{id:item.id}}">
-                  <p>{{index + 1}}. {{item.title}}</p>
-                </router-link>
-              </li>
-            </ul>
-          </el-dropdown-menu>
-        </el-dropdown>
-        <el-dropdown trigger="click" class="navbar-dropdown">
-          <div class="el-dropdown-link">
-            <img :src='userInfo.avatar' style="width: 25px;height: 25px;border-radius: 50%; vertical-align: middle;"
-                 alt="U">
-            {{userInfo.name}}
-          </div>
-          <el-dropdown-menu style="padding: 0px" slot="dropdown">
-            <div>
-              <div class="header-pic">
-                <img :src='userInfo.avatar' class="img-circle" alt="User Image">
-                <p>{{userInfo.name}}</p>
-              </div>
-              <div class="pull-left">
-                <router-link :to="{ path: '/resetPwd' }">
-                  <el-button type="default">{{$t('message.header.btn1')}}</el-button>
-                </router-link>
-              </div>
-              <div class="pull-right">
-                <el-button type="default" @click="logout">{{$t('message.header.btn2')}}</el-button>
-              </div>
+      <div class="navber-left">
+        <a href="#" class="sidebar-toggle" v-if="onOffMenu" data-toggle="offcanvas" role="button"
+           @click.stop.prevent="toggleMenu(!sidebar.collapsed,device.isMobile)">
+          <span class="sr-only">Toggle navigation</span>
+        </a>
+        <el-breadcrumb separator="/" style="margin-bottom: 20px;">
+          <template v-if="!onOffMenu">
+            <el-breadcrumb-item>{{$t('message.menu.home')}}</el-breadcrumb-item>
+          </template>
+          <template v-for="child in currentMenus" v-else>
+            <el-breadcrumb-item >{{$t(child.name)}}</el-breadcrumb-item>
+          </template>
+        </el-breadcrumb>
+      </div>
+      <div class="navber-right">
+        <div class="navbar-custom-menu">
+          <template>
+            <span>{{userInfo.name}}</span>
+          </template>
+          <el-dropdown trigger="click" class="navbar-dropdown">
+            <span class="el-dropdown-link">
+              <i class="fal fa-user" style="font-size: 18px;"></i>
+            </span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item v-if="$t('message.lang') != 'language:English'">
+                <el-button type="text" @click="toogleLanguage = true">切换{{$t('message.lang')}}</el-button>
+              </el-dropdown-item>
+              <el-dropdown-item v-if="$t('message.lang') != 'language:English'">
+                <el-button type="text" @click="toogleTheme = true" v-if="themeColor == 'white'">切换主题：天青</el-button>
+                <el-button type="text" @click="toogleTheme = true" v-if="themeColor == 'dark'">切换主题：暗月</el-button>
+              </el-dropdown-item>
+              <el-dropdown-item v-if="$t('message.lang') == 'language:English'">
+                <el-button type="text" @click="toogleLanguage = true">Change {{$t('message.lang')}}</el-button>
+              </el-dropdown-item>
+              <el-dropdown-item v-if="$t('message.lang') == 'language:English'">
+                <el-button type="text" @click="toogleTheme = true" v-if="themeColor == 'white'">Change Theme:Light Green</el-button>
+                <el-button type="text" @click="toogleTheme = true" v-if="themeColor == 'dark'">Change Theme:Dark Orange</el-button>
+              </el-dropdown-item>
+              <el-dropdown-item>
+                <el-button type="text" @click="logout">{{$t('message.header.btn2')}}</el-button>
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+          <el-dropdown class="navbar-dropdown" trigger="click">
+            <div class="el-dropdown-link" style="height: auto;line-height: inherit">
+              <el-badge :value="count" class="item">
+                <i class="fal fa-envelope" style="font-size: 18px;"></i>
+              </el-badge>
             </div>
-          </el-dropdown-menu>
-        </el-dropdown>
+            <el-dropdown-menu slot="dropdown">
+              <ul class="message-list">
+                <li v-for="(item,index) in list">
+                  <router-link :to="{path:'/sys/',query:{id:item.id}}">
+                    <p>{{index + 1}}. {{item.title}}</p>
+                  </router-link>
+                </li>
+              </ul>
+            </el-dropdown-menu>
+          </el-dropdown>
+          <el-dropdown class="navbar-dropdown"><span class="el-dropdown-link"><i class="fal fa-home" style="font-size: 18px;"></i></span></el-dropdown>
+        </div>
       </div>
 
     </nav>
-
+    <el-dialog title="语言" :visible.sync="toogleLanguage" width="30%" top="0" append-to-body=true :close-on-click-modal="false" :close-on-press-escape="false">
+      <el-form>
+        <el-form-item>
+          <el-dropdown-item @click.native="toggleLang('zh')" :disabled="$i18n.locale == 'zh'">中文</el-dropdown-item>
+        </el-form-item>
+        <el-form-item>
+          <el-dropdown-item @click.native="toggleLang('en')" :disabled="$i18n.locale == 'en'">English</el-dropdown-item>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
+    <el-dialog title="主题" :visible.sync="toogleTheme" width="30%" top="0" append-to-body=true :close-on-click-modal="false" :close-on-press-escape="false">
+      <el-form>
+        <el-form-item>
+          <el-radio-group v-model="themeColor">
+            <el-radio label="dark">暗月</el-radio>
+          </el-radio-group>
+        </el-form-item>
+        <el-form-item>
+          <el-radio-group v-model="themeColor">
+            <el-radio label="white">天青</el-radio>
+          </el-radio-group>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
   </header>
 </template>
 <script>
@@ -104,6 +114,8 @@
         count: 4,
         show: true,
         breadcrumb: [],
+        toogleLanguage: false,
+        toogleTheme: false
       }
     },
     props:{
@@ -138,22 +150,13 @@
         if (lang == 'zh') {
           this.$cookies.set('locale', 'zh');
           this.$i18n.locale = this.$cookies.get('locale');
-          this.$message({
-            message: '切换为中文！',
-            type: 'success'
-          })
-          // console.log(this.$i18n.locale);
         } else if (lang == 'en') {
           this.$cookies.set('locale', 'en');
           this.$i18n.locale = this.$cookies.get('locale');
-          this.$message({
-            message: 'Switch to English!',
-            type: 'success'
-          })
-
         }
         console.log(this.$i18n.locale);
         this.reload();
+        this.toogleLanguage=false;
       },
       toggleMenu(collapsed, isMobile) {
         if (isMobile) {
@@ -226,7 +229,9 @@
 </script>
 <style scoped>
 
-
+  *{
+    list-style: none;
+  }
   .animated {
     animation-duration: .2s;
   }
@@ -241,7 +246,7 @@
     z-index: 1999;
     animation-name: slideInDown;
     animation-fill-mode: both;
-
+    border-bottom: 1px solid rgb(54, 56, 57) !important;
   }
 
   .main-header .navbar .sidebar-toggle {
@@ -360,6 +365,7 @@
 
   .navbar-custom-menu {
     float: right;
+    color: #fff;
   }
   .navbar-dropdown.el-dropdown{
     height:40px;
@@ -427,6 +433,7 @@
     margin: 0 !important;;
 
   }
-
-
+  .el-dialog{
+    margin-top: 0!important;
+  }
 </style>
