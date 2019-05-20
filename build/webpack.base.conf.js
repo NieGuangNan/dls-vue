@@ -1,16 +1,17 @@
-var path = require('path')
-var utils = require('./utils')
-var config = require('../config/index')
-var vueLoaderConfig = require('./vue-loader.conf')
+var webpack = require('webpack');
+var path = require('path');
+var utils = require('./utils');
+var config = require('../config/index');
+var vueLoaderConfig = require('./vue-loader.conf');
 
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
 
 module.exports = {
   entry: {
-    app: './src/main.js',
-    vendor: [ 'vue', 'vuex', 'vue-router', 'element-ui' ]  //第三方库和框架
+    app: ['@babel/polyfill', './src/main.js'],
+    vendor: ['vue', 'vuex', 'vue-router', 'element-ui']  //第三方库和框架
   },
   output: {
     // path仅仅告诉Webpack结果存储在哪里，然而publicPath项则被许多Webpack的插件用于在生产模式下更新内嵌到css、html文件里的url值。
@@ -48,7 +49,11 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        //exclude: /(node_modules|bower_components)/,
+        // exclude: /(node_modules|bower_components)/,
+        options: {
+          presets: ['@babel/preset-env']    //解析ES6
+
+        },
         // 注意elementUI的源码使用ES6需要解析
         include: [
           resolve('src'),
@@ -56,9 +61,9 @@ module.exports = {
           resolve('/node_modules/element-ui/src'),
           resolve('/node_modules/element-ui/packages'),
           resolve('/node_modules/vuex-router-sync'),
-          resolve('/node_modules/.2.7.0@element-ui/src'),
-          resolve('/node_modules/.2.7.0@element-ui/packages'),
-          resolve('/node_modules/.4.3.0@vuex-router-sync')
+          resolve('/node_modules/_element-ui@2.8.2@element-ui/src'),
+          resolve('/node_modules/_element-ui@2.8.2@element-ui/packages'),
+          resolve('/node_modules/_vuex-router-sync@5.0.0@vuex-router-sync')
         ]
       },
       {

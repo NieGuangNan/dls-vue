@@ -4,7 +4,7 @@ import types from "./mutation-types";
 import defaultValue from "../services/default";
 import * as api from "../api";
 import {getCurrentMenu, getSessionKey, getLocalKey, addTheme, getCookie} from '../common/utils'
-import VueCookies from "vue-cookies/vue-cookies"
+import VueCookies from 'vue-cookies'
 
 Vue.use(Vuex)
 

@@ -119,6 +119,23 @@
         </div>
       </el-col>
     </el-row>
+<!--    <b-row class="text-center">-->
+<!--      <b-col md="3" class="py-3">-->
+<!--        <b-button v-b-popover.hover.top="'Popover!'" variant="primary">Top</b-button>-->
+<!--      </b-col>-->
+
+<!--      <b-col md="3" class="py-3">-->
+<!--        <b-button v-b-popover.hover.right="'Popover!'" variant="primary">Right</b-button>-->
+<!--      </b-col>-->
+
+<!--      <b-col md="3" class="py-3">-->
+<!--        <b-button v-b-popover.hover.left="'Popover!'" variant="primary">Left</b-button>-->
+<!--      </b-col>-->
+
+<!--      <b-col md="3" class="py-3">-->
+<!--        <b-button v-b-popover.hover.bottom="'ToolTip!'" variant="primary">Bottom</b-button>-->
+<!--      </b-col>-->
+<!--    </b-row>-->
   </div>
 </template>
 

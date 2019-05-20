@@ -10,6 +10,10 @@ npm install
 #        test: /\.js$/,
 #        loader: 'babel-loader',
 #        //exclude: /(node_modules|bower_components)/,
+#         options: {
+#                   presets: ['@babel/preset-env']    //解析ES6
+#          
+#                 },
 #        // 注意elementUI的源码使用ES6需要解析
 #        include: [
 #          resolve('src'),
@@ -25,7 +29,6 @@ npm install
 npm run dev
 npm run build
 
-npm run mock
 ```
 
 1. **启动mock服务**
@@ -58,9 +61,9 @@ npm uninstall moudleName：卸载node模块
 
 ## 页面截图
 
-<p><img src="./static/img/login.jpg" /></p>
-<p><img src="./static/img/home.jpg" /></p>
-<p><img src="/static/img/dashboard.jpg" /></p>
-<p><img src="/static/img/test.jpg" /></p>
-<p><img src="/static/img/table.jpg" /></p>
-<p><img src="/static/img/charts.jpg" /></p>
+<p><img src="/screenshot/img/login.jpg" /></p>
+<p><img src="/screenshot/img/home.jpg" /></p>
+<p><img src="/screenshot/img/dashboard.jpg" /></p>
+<p><img src="/screenshot/img/test.jpg" /></p>
+<p><img src="/screenshot/img/table.jpg" /></p>
+<p><img src="/screenshot/img/charts.jpg" /></p>

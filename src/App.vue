@@ -3,11 +3,13 @@
     <vue-progress-bar></vue-progress-bar>
     <imp-header :onOffMenu="onOffMenu" v-if="onOffHeader"></imp-header>
     <side-menu v-if="onOffMenu"></side-menu>
-    <div class="content-wrapper" :class="{ slideCollapse: sidebar.collapsed,mobileSide:device.isMobile,marginLeft:onOffMenu,paddingTop:onOffHeader}">
-      <el-scrollbar tag="div" wrap-class="content-scrollbar" >
+    <div class="content-wrapper"
+         :class="{ slideCollapse: sidebar.collapsed,mobileSide:device.isMobile,marginLeft:onOffMenu,paddingTop:onOffHeader}">
+      <el-scrollbar tag="div" wrap-class="content-scrollbar">
         <section class="content">
           <transition mode="out-in" enter-active-class="fadeIn" leave-active-class="fadeOut" appear>
-            <router-view :bodyHeight="$root.bodyHeight" v-if="isRouterAlive" v-on:sideMenuOnOff="sideMenuOnOff" v-on:headerOnOff="headerOnOff"></router-view>
+            <router-view :bodyHeight="$root.bodyHeight" v-if="isRouterAlive" v-on:sideMenuOnOff="sideMenuOnOff"
+                         v-on:headerOnOff="headerOnOff"></router-view>
           </transition>
         </section>
       </el-scrollbar>
@@ -21,7 +23,8 @@
   import {mapGetters, mapActions, mapMutations} from 'vuex'
   import types from "./store/mutation-types"
   import 'animate.css'
-
+  import * as api from "./api";
+  // import'../static/theme/white/index.css'
   export default {
     name: 'app',
     provide() {
@@ -50,8 +53,8 @@
         headerFixed: true,
         breadcrumb: [],
         isRouterAlive: true,
-        onOffMenu:true,// 控制侧边菜单
-        onOffHeader:true,// 控制header
+        onOffMenu: true,// 控制侧边菜单
+        onOffHeader: true,// 控制header
       }
     },
     methods: {
@@ -69,24 +72,16 @@
       },
       // 控制侧边菜单
       sideMenuOnOff(childValue) {
-        this.onOffMenu= childValue;
+        this.onOffMenu = childValue;
       },
       // 控制header
       headerOnOff(childValue) {
-        this.onOffHeader= childValue;
+        this.onOffHeader = childValue;
       },
       setLanguage() {
         let language = this.$cookies.get("user-info") && this.$cookies.get("user-info").language ? this.$cookies.get("user-info").language : 'zh';
         this.$i18n.locale = this.$cookies.get('locale') ? this.$cookies.get('locale') : language;
 
-      },
-      timer() {
-        let timer = setInterval(() => {
-          if (document.readyState === 'interactive' || document.readyState === 'complete') {
-            this.isShow = true;
-            window.clearInterval(timer)
-          }
-        }, 100)
       },
       ...mapMutations({
         toggleDevice: types.TOGGLE_DEVICE,
@@ -127,30 +122,31 @@
       }
       const resize = () => {
         // this.reload()
-      }
+      };
       document.addEventListener('visibilitychange', handler);
       window.addEventListener('DOMContentLoaded', handler);
       window.addEventListener('resize', handler);
       window.addEventListener('resize', resize);
-
-
     },
     mounted() {
       this.token();
       this.setLanguage();
       //  [App.vue specific] When App.vue is finish loading finish the progress bar
       this.$Progress.finish()
-      this.$nextTick(function () {
-        this.timer()
-      });
       //必须先登入再访问
-      if (!this.$cookieStore.getCookie('user-info') && this.$router.history.current.path!=='/test/1/4') {
+      if (!this.$cookieStore.getCookie('user-info') && this.$router.history.current.path !== '/test/1/4') {
         this.$router.push('/login')
 
       }
 
     },
     created() {
+      const theme = api.DEFAULT_THEME;
+      import(`../static/theme/${this.$cookies.isKey('themeColor') ? this.$cookies.get('themeColor') : theme}/index.css`).then(a => {
+        console.log(a)
+        this.isShow = true;
+      });//主题样式
+
       // addTheme(getLocalKey('state.themecolor', '#fff'));
 
       //  [App.vue specific] When App.vue is first loaded start the progress bar
@@ -195,6 +191,7 @@
     -o-transition: -o-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out, margin 0.3s ease-in-out;
   }
+
   .content-scrollbar {
     height: calc(100vh - 35px) !important;
   }
@@ -206,17 +203,21 @@
   .content-wrapper.slideCollapse {
     margin-left: 44px;
   }
+
   .content-wrapper.mobileSide {
     margin-left: 0px;
   }
+
   .scrollbar-tree {
     height: 260px !important;
   }
-  .marginLeft{
+
+  .marginLeft {
     margin-left: 230px;
   }
-  .paddingTop{
-    padding-top:40px;
+
+  .paddingTop {
+    padding-top: 40px;
   }
 
 </style>
