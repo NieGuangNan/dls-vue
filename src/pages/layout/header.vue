@@ -16,7 +16,7 @@
             <el-breadcrumb-item>{{$t('message.menu.home')}}</el-breadcrumb-item>
           </template>
           <template v-for="child in currentMenus" v-else>
-            <el-breadcrumb-item >{{$t(child.name)}}</el-breadcrumb-item>
+            <el-breadcrumb-item>{{$t(child.name)}}</el-breadcrumb-item>
           </template>
         </el-breadcrumb>
       </div>
@@ -41,8 +41,12 @@
                 <el-button type="text" @click="toogleLanguage = true">Change {{$t('message.lang')}}</el-button>
               </el-dropdown-item>
               <el-dropdown-item v-if="$t('message.lang') == 'language:English'">
-                <el-button type="text" @click="toogleTheme = true" v-if="themeColor == 'white'">Change Theme:Light Green</el-button>
-                <el-button type="text" @click="toogleTheme = true" v-if="themeColor == 'dark'">Change Theme:Dark Orange</el-button>
+                <el-button type="text" @click="toogleTheme = true" v-if="themeColor == 'white'">Change Theme:Light
+                  Green
+                </el-button>
+                <el-button type="text" @click="toogleTheme = true" v-if="themeColor == 'dark'">Change Theme:Dark
+                  Orange
+                </el-button>
               </el-dropdown-item>
               <el-dropdown-item>
                 <el-button type="text" @click="logout">{{$t('message.header.btn2')}}</el-button>
@@ -65,22 +69,29 @@
               </ul>
             </el-dropdown-menu>
           </el-dropdown>
-          <el-dropdown class="navbar-dropdown"><span class="el-dropdown-link"><i class="fal fa-home" style="font-size: 18px;"></i></span></el-dropdown>
+          <router-link :to="{ path: '/' }">
+            <span class="el-dropdown-link">
+              <i class="fal fa-home" style="font-size: 18px;"></i>
+            </span>
+          </router-link>
         </div>
       </div>
 
     </nav>
-    <el-dialog title="语言" :visible.sync="toogleLanguage" width="30%" top="0" append-to-body=true :close-on-click-modal="false" :close-on-press-escape="false">
+    <el-dialog title="语言" :visible.sync="toogleLanguage" width="30%" top="0" :append-to-body="true"
+               :close-on-click-modal="false" :close-on-press-escape="false">
       <el-form>
         <el-form-item>
-          <el-dropdown-item @click.native="toggleLang('zh')" :disabled="$i18n.locale == 'zh'">中文</el-dropdown-item>
+          <el-dropdown-item @click.native="toggleLang('zh')" :disabled="$i18n.locale === 'zh'">中文</el-dropdown-item>
         </el-form-item>
         <el-form-item>
-          <el-dropdown-item @click.native="toggleLang('en')" :disabled="$i18n.locale == 'en'">English</el-dropdown-item>
+          <el-dropdown-item @click.native="toggleLang('en')" :disabled="$i18n.locale === 'en'">English
+          </el-dropdown-item>
         </el-form-item>
       </el-form>
     </el-dialog>
-    <el-dialog title="主题" :visible.sync="toogleTheme" width="30%" top="0" append-to-body=true :close-on-click-modal="false" :close-on-press-escape="false">
+    <el-dialog title="主题" :visible.sync="toogleTheme" width="30%" top="0" :append-to-body="true"
+               :close-on-click-modal="false" :close-on-press-escape="false">
       <el-form>
         <el-form-item>
           <el-radio-group v-model="themeColor">
@@ -118,7 +129,7 @@
         toogleTheme: false
       }
     },
-    props:{
+    props: {
       onOffMenu: {
         type: Boolean,
         default: true
@@ -156,7 +167,7 @@
         }
         console.log(this.$i18n.locale);
         this.reload();
-        this.toogleLanguage=false;
+        this.toogleLanguage = false;
       },
       toggleMenu(collapsed, isMobile) {
         if (isMobile) {
@@ -229,9 +240,10 @@
 </script>
 <style scoped>
 
-  *{
+  * {
     list-style: none;
   }
+
   .animated {
     animation-duration: .2s;
   }
@@ -367,10 +379,12 @@
     float: right;
     color: #fff;
   }
-  .navbar-dropdown.el-dropdown{
-    height:40px;
+
+  .navbar-dropdown.el-dropdown {
+    height: 40px;
     font-weight: 500;
   }
+
   .navbar-custom-menu .el-dropdown-link {
     display: inline-block;
     cursor: pointer;
@@ -379,6 +393,7 @@
     text-align: center;
 
   }
+
   .message-list {
     list-style: none;
     padding: 0 10px;
@@ -433,7 +448,8 @@
     margin: 0 !important;;
 
   }
-  .el-dialog{
-    margin-top: 0!important;
+
+  .el-dialog {
+    margin-top: 0 !important;
   }
 </style>

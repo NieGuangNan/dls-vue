@@ -86,7 +86,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       filename: config.build.index,
       template: 'index.html',
       inject: true,
-      // hash:true,// 防止缓存
+      hash:true,// 防止缓存
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -94,7 +94,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       },
       chunksSortMode: 'dependency'
     }),
-    // new webpack.HashedModuleIdsPlugin(),
+    new webpack.HashedModuleIdsPlugin(),
 
     new CopyWebpackPlugin([{
       from: path.resolve(__dirname, '../static'),

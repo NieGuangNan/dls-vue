@@ -293,6 +293,7 @@ a{
 
 .main-header.closeLogo .sidebar-toggle,
 .main-header .navbar .sidebar-toggle:hover,
+.main-header .navbar .el-dropdown-link:hover,
 .navbar-dropdown.el-dropdown:hover
 
 {

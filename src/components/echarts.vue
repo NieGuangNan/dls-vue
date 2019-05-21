@@ -48,8 +48,9 @@
     },
     methods: {
       drawLine() {
-        this.$http.get(`/static/theme/eCharts/theme/${this.themeColor}/index.json`).then(res => {
-          echarts.registerTheme('index', res.data);
+        import(`@/assets/theme/eCharts/${this.themeColor}/index.json`).then(res => {
+          console.log(res);
+          echarts.registerTheme('index', res);
           let myChart = echarts.init(this.$refs.eChart, 'index');
           // 绘制图表
           myChart.setOption(this.option);
@@ -57,8 +58,8 @@
         });
       },
       resize() {
-        this.$http.get(`/static/theme/eCharts/theme/${this.themeColor}/index.json`).then(res => {
-          echarts.registerTheme('index', res.data);
+        import(`@/assets/theme/eCharts/${this.themeColor}/index.json`).then(res => {
+          echarts.registerTheme('index', res);
           let myChart = echarts.init(this.$refs.eChart, 'index');
           // 绘制图表
           myChart.setOption(this.option);

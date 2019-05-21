@@ -3267,9 +3267,11 @@
   background-color: #e6e6e6;
   color: #f6a821
 }
-.el-dropdown-menu__item:focus,.el-dropdown-menu__item:hover .el-button{
+
+.el-dropdown-menu__item:focus, .el-dropdown-menu__item:hover .el-button {
   color: #f6a821;
 }
+
 .el-dropdown-menu__item i {
   margin-right: 5px
 }
@@ -24491,7 +24493,6 @@
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 
-
 /*原先样式重置*/
 
 .el-table--border,
@@ -24516,31 +24517,38 @@
   color: #fff !important;
 }
 
-.el-popper[x-placement^=bottom] .popper__arrow,.el-popper[x-placement^=bottom] .popper__arrow::after {
+.el-popper[x-placement^=bottom] .popper__arrow, .el-popper[x-placement^=bottom] .popper__arrow::after {
 
-  border-bottom-color:rgb(54,56,57)!important;
+  border-bottom-color: rgb(54, 56, 57) !important;
 }
+
 .el-date-picker.el-popper[x-placement^=bottom] .popper__arrow,
-.el-date-picker.el-popper[x-placement^=bottom] .popper__arrow::after
-{    border-bottom-color: #fff!important;}
+.el-date-picker.el-popper[x-placement^=bottom] .popper__arrow::after {
+  border-bottom-color: #fff !important;
+}
+
 .el-select-dropdown {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.8) !important;
 
 }
-.el-card{
-  background:#1c1d1e ;
+
+.el-card {
+  background: #1c1d1e;
 }
+
 /*页码*/
-.el-pager li.active{
-  color:#fff !important;
+.el-pager li.active {
+  color: #fff !important;
   border: 1px solid #f8a621;
 }
-.el-pagination__total,.el-pagination__jump,
+
+.el-pagination__total, .el-pagination__jump,
 .el-pager li.btn-quicknext, .el-pager li.btn-quickprev,
 .el-pagination .btn-next .el-icon,
-.el-pagination .btn-prev .el-icon{
-  color:#fff!important;
+.el-pagination .btn-prev .el-icon {
+  color: #fff !important;
 }
+
 /*滚动条的滑块*/
 ::-webkit-scrollbar-thumb {
   background-color: #656666;
@@ -24562,19 +24570,17 @@ html {
 
 .main-header.closeLogo .sidebar-toggle,
 .main-header .navbar .sidebar-toggle:hover,
-.navbar-dropdown.el-dropdown:hover
-
-{
-  color:#f6a821 !important;
+.main-header .navbar .el-dropdown-link:hover,
+.navbar-dropdown.el-dropdown:hover {
+  color: #f6a821 !important;
 }
-
 .el-dropdown-menu .header-pic,
 .navbar-custom-menu .el-dropdown-link img {
   background-color: #108ee9;
 }
 
 .el-dropdown-menu .pull-left,
-.el-dropdown-menu .pull-right{
+.el-dropdown-menu .pull-right {
   background: #f9f9f9;
 }
 
@@ -24585,8 +24591,9 @@ html {
 .message-list li:hover {
   background-color: #e6e6e6;
 }
-.message-list li:hover a{
-  color:#f8a621 !important;
+
+.message-list li:hover a {
+  color: #f8a621 !important;
 }
 
 .el-dropdown-menu .header-pic img {
@@ -24623,7 +24630,7 @@ html {
 .el-menu-item.is-active,
 .el-menu-sub.is-opened > .el-submenu__title i,
 .el-menu-sub.is-opened > .el-submenu__title,
-.el-submenu__title:hover,.el-submenu__title:hover i,
+.el-submenu__title:hover, .el-submenu__title:hover i,
 .el-menu-item:focus, .el-menu-item:hover, .el-menu-item:hover i {
   color: #f8a621 !important;
 }
@@ -24632,14 +24639,14 @@ html {
   color: #fff
 }
 
-.el-menu-style.el-menu>li.el-menu-sub.el-submenu.is-active.is-opened,
-.el-menu-style.el-menu>li.el-menu-sub.el-submenu.is-opened{
-  border-left:2px solid #f8a621;
+.el-menu-style.el-menu > li.el-menu-sub.el-submenu.is-active.is-opened,
+.el-menu-style.el-menu > li.el-menu-sub.el-submenu.is-opened {
+  border-left: 2px solid #f8a621;
 }
 
 
 /*.main-sidebar.animated.showSlide.expandSide {*/
-  /*border-right: 8px solid rgb(54, 56, 57);*/
+/*border-right: 8px solid rgb(54, 56, 57);*/
 /*}*/
 
 /*footer样式*/
@@ -24649,8 +24656,8 @@ html {
 }
 
 /*progressbar.js甜甜圈*/
-.progressbar-text,.progressbar-label-top,.progressbar-label-bottom,
-.progressbar-label-right,.progressbar-label-left {
+.progressbar-text, .progressbar-label-top, .progressbar-label-bottom,
+.progressbar-label-right, .progressbar-label-left {
   color: #fff !important;
 }
 
@@ -24663,7 +24670,6 @@ html {
   border: 1px solid #676a6c;
 
 }
-
 
 
 /*按钮*/
@@ -24690,7 +24696,6 @@ html {
 .el-button--danger:focus, .el-button--danger:hover {
   background-color: rgba(219, 82, 75, 0.1) !important;
 }
-
 
 
 /*系统管理*/
@@ -24745,17 +24750,19 @@ html {
 .el-dialog {
   background: #262629 !important;
 }
-.el-dialog__header{
+
+.el-dialog__header {
   border-bottom: 1px solid #3d404c;
 }
-.el-dialog__footer{
+
+.el-dialog__footer {
   border-top: 1px solid #3d404c;
 }
 
 .el-dialog__title,
 .el-dialog__body .content1 h3,
 .el-dialog__body .content2 h3,
-.el-dialog__headerbtn .el-dialog__close{
+.el-dialog__headerbtn .el-dialog__close {
   color: #fff !important;
 }
 
@@ -24815,10 +24822,10 @@ html {
 
 }
 
-.disabled>.app-box{
+.disabled > .app-box {
   background: #363839 !important;
   border: 2px solid #363839 !important;
-  color:#999!important;:class="{disabled:child.disabled}"
+  color: #999 !important;: class = "{disabled:child.disabled}"
 }
 
 #home .disabled, #home .disabled .app-content {
@@ -24832,7 +24839,7 @@ html {
   color: #f6a821;
 }
 
-#home .app-box:hover i,#home .app-box:hover .app-content{
+#home .app-box:hover i, #home .app-box:hover .app-content {
   color: #f6a821;
 }
 
@@ -24841,10 +24848,12 @@ html {
   border: 1px solid black;
   background: rgb(31, 32, 33);
 }
+
 .ibox .ibox-title {
   color: white;
 
 }
+
 .ibox-title h3 {
   font-size: 16px;
   height: 25px;
@@ -24857,21 +24866,28 @@ html {
   padding-right: 8px;
   display: inline-block;
 }
+
 /*horizontal*/
-.v-tree__link-base,.v-tree__collapse-icon line, .v-tree__collapse-icon-stroke,
-.v-tree__collapse-icon polyline{stroke: rgb(54, 56, 57)}
-.v-tree__collapse-icon circle{fill:rgb(31, 32, 33)}
-
-.treeBox{
-  color:#ddd;
-  border:2px solid rgb(54, 56, 57);
-}
-.treeBox .tree-col-11>span,.treeBox .tree-col-13>span{
-  color:#ddd;
+.v-tree__link-base, .v-tree__collapse-icon line, .v-tree__collapse-icon-stroke,
+.v-tree__collapse-icon polyline {
+  stroke: rgb(54, 56, 57)
 }
 
-.treeBox .tree-col-11>p,.treeBox .tree-col-13>p{
-  color:#fff
+.v-tree__collapse-icon circle {
+  fill: rgb(31, 32, 33)
+}
+
+.treeBox {
+  color: #ddd;
+  border: 2px solid rgb(54, 56, 57);
+}
+
+.treeBox .tree-col-11 > span, .treeBox .tree-col-13 > span {
+  color: #ddd;
+}
+
+.treeBox .tree-col-11 > p, .treeBox .tree-col-13 > p {
+  color: #fff
 }
 
 /*login*/
@@ -24881,8 +24897,9 @@ html {
   border-color: #484c5a;
 
 }
-#loginWrap .login .el-input__inner{
-  background: #494b54!important;
+
+#loginWrap .login .el-input__inner {
+  background: #494b54 !important;
 }
 
 

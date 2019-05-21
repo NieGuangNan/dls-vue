@@ -141,8 +141,7 @@
     },
     created() {
       const theme = api.DEFAULT_THEME;
-      import(`../static/theme/${this.$cookies.isKey('themeColor') ? this.$cookies.get('themeColor') : theme}/index.css`).then(a => {
-      //   console.log(a)
+      import(`@/assets/theme/${this.$cookies.isKey('themeColor') ? this.$cookies.get('themeColor') : theme}/index.css`).then(() => {
         this.isShow = true;
       });//主题样式
 
