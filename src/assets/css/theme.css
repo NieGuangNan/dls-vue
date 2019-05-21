@@ -66,12 +66,12 @@ html {
 }
 
 .el-dropdown-menu .header-pic p,
-.el-dropdown, .main-header a[data-v-cea13f84] {
+.el-dropdown, .main-header a {
   color: #1ab394 !important;
 }
 
-.main-header.closeLogo .sidebar-toggle[data-v-cea13f84],
-.main-header .navbar .sidebar-toggle[data-v-cea13f84]:hover,
+.main-header.closeLogo .sidebar-toggle,
+.main-header .navbar .sidebar-toggle:hover,
 .navbar-dropdown.el-dropdown:hover
 
 {

@@ -14,7 +14,7 @@ blockquote, body, dd, dl, dt, fieldset, figure, h1, h2, h3, h4, h5, h6, hr, html
   box-sizing: border-box;
 }
 
-.el-col[data-v-35657914]{
+.el-col{
   padding: 0!important;
 }
 .el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content,
