@@ -2,7 +2,7 @@
   <div id="tableShowWrap">
     <div class="topBar"></div>
     <div class="ibox">
-      <data-table :data="tableData" :paginator="true" :row="row" :maxHeight="$root.bodyHeight-200">
+      <data-table :data="tableData" :paginator="true" :row="row" :height="$root.bodyHeight-200">
         <el-table-column
           type="selection"
           width="55">

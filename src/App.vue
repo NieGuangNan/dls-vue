@@ -24,6 +24,7 @@
   import types from "./store/mutation-types"
   import 'animate.css'
   import * as api from "./api";
+
   export default {
     name: 'app',
     provide() {
@@ -81,6 +82,12 @@
         let language = this.$cookies.get("user-info") && this.$cookies.get("user-info").language ? this.$cookies.get("user-info").language : 'zh';
         this.$i18n.locale = this.$cookies.get('locale') ? this.$cookies.get('locale') : language;
 
+      },
+      setTheme() {
+        const themeColor = this.$cookies.isKey('themeColor') ? this.$cookies.get('themeColor') : api.DEFAULT_THEME;
+        import(`@/assets/theme/${themeColor}/index.css`).then(() => {
+          this.isShow = true;
+        });//主题样式
       },
       ...mapMutations({
         toggleDevice: types.TOGGLE_DEVICE,
@@ -140,11 +147,7 @@
 
     },
     created() {
-      const theme = api.DEFAULT_THEME;
-      import(`@/assets/theme/${this.$cookies.isKey('themeColor') ? this.$cookies.get('themeColor') : theme}/index.css`).then(() => {
-        this.isShow = true;
-      });//主题样式
-
+      this.setTheme();
       // addTheme(getLocalKey('state.themecolor', '#fff'));
 
       //  [App.vue specific] When App.vue is first loaded start the progress bar

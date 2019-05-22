@@ -4,7 +4,7 @@
         ref="multipleTable"
         :data="data"
         @selection-change="handleSelectionChange"
-        :max-height="maxHeight"
+        :height="height"
       >
         <slot></slot>
       </el-table>
@@ -44,7 +44,7 @@
         type: Number,
         default: 30
       },
-      maxHeight: {
+      height: {
         type: Number,
       }
     },

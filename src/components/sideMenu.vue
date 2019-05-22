@@ -1,5 +1,6 @@
 <template>
-  <aside class="main-sidebar animated" :class="{ showSlide: sidebar.show, hideSlide: !sidebar.show, expandSide:(!sidebar.collapsed||device.isMobile)}">
+  <aside class="main-sidebar animated"
+         :class="{ showSlide: sidebar.show, hideSlide: !sidebar.show, expandSide:(!sidebar.collapsed||device.isMobile)}">
     <el-scrollbar tag="div" wrapClass="vue-scrollbar" v-if="(!sidebar.collapsed||device.isMobile)">
       <div class="sidebar">
         <el-menu :default-active="onRoutes"
@@ -42,12 +43,12 @@
     computed: {
       ...mapGetters({
         sidebar: 'sidebar',
-        device:'device',
+        device: 'device',
       }),
-      onRoutes(){
+      onRoutes() {
         return this.$route.path;
       },
-      onRouteKeys(){
+      onRouteKeys() {
         const getParentArray = (path, ms, kas = []) => {
           if (ms && ms.length > 0) {
             for (let k = 0, length = ms.length; k < length; k++) {
@@ -73,7 +74,7 @@
         'menuList'
       ])
     },
-    mounted () {
+    mounted() {
       let route = this.$route
 //      console.log(route)
 //      if (route.name) {
@@ -85,7 +86,7 @@
     },
     methods: {
       handleSelect() {
-        if(this.device.isMobile){
+        if (this.device.isMobile) {
           this.toggleSidebarShow(false);
         }
       },
@@ -131,7 +132,6 @@
   }
 
 
-
   .el-menu-style .el-submenu .el-menu-item {
     height: 45px;
     line-height: 45px;
@@ -147,22 +147,23 @@
     width: 44px;
   }
 
-  .main-sidebar .el-menu--collapse>.el-menu-item,
-  .main-sidebar .el-menu--collapse>.el-submenu>.el-submenu__title {
+  .main-sidebar .el-menu--collapse > .el-menu-item,
+  .main-sidebar .el-menu--collapse > .el-submenu > .el-submenu__title {
     padding-left: 13px !important;
   }
 
-  .vue-scrollbar{
-    height: calc(100vh - 50px)
+  .vue-scrollbar {
+    height: calc(100vh - 50px)!important;
   }
-
-  .main-sidebar .el-scrollbar__bar.is-vertical{
+  .vue-scrollbar .el-scrollbar__view{
+    overflow-x: hidden;
+  }
+  .main-sidebar .el-scrollbar__bar.is-vertical {
     display: none;
   }
 
-  .sidebar{
+  .sidebar {
     min-height: 450px;
   }
-
 
 </style>
