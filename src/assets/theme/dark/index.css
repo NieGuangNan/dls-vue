@@ -24889,6 +24889,10 @@ html {
 .treeBox .tree-col-11 > p, .treeBox .tree-col-13 > p {
   color: #fff
 }
+/*进度条*/
+.__cov-progress{
+  background: #f8a621!important;
+}
 
 /*login*/
 /*#loginWrap .login .el-input__inner {

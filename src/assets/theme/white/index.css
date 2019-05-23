@@ -338,6 +338,10 @@ html {
 .treeBox .tree-col-10>p,.treeBox .tree-col-14>p{
   color:#000
 }
+/*进度条*/
+.__cov-progress{
+  background: #1ab394!important;
+}
 
 /*login*/
 /*#loginWrap .login{

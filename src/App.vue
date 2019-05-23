@@ -187,10 +187,10 @@
 <style>
 
   .content-wrapper {
-    -webkit-transition: -webkit-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
-    -moz-transition: -moz-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
-    -o-transition: -o-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
-    transition: transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+    /*-webkit-transition: -webkit-transform 0.3s ease-in-out, margin 0.3s ease-in-out;*/
+    /*-moz-transition: -moz-transform 0.3s ease-in-out, margin 0.3s ease-in-out;*/
+    /*-o-transition: -o-transform 0.3s ease-in-out, margin 0.3s ease-in-out;*/
+    /*transition: transform 0.3s ease-in-out, margin 0.3s ease-in-out;*/
   }
 
   .content-scrollbar {
