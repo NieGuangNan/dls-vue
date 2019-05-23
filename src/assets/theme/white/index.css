@@ -340,12 +340,28 @@ html {
 }
 
 /*login*/
-.login {
-  color: rgb(103, 106, 108);
-  background:white;
-  border-color: rgb(103, 106, 108);
-
+/*#loginWrap .login{
+  background-color: #fff !important;
 }
 #loginWrap .login .el-input__inner {
   background: rgb(232, 240, 254)!important;
+  border: 1px solid #dddddd !important;
+  height: 30px !important;
 }
+#loginWrap .login .el-input__inner:hover,#loginWrap .login .el-input__inner:focus{
+  outline: 0 !important;
+  border-color: #1ab394 !important;
+}
+#loginWrap .el-button {
+  color: #fff !important;
+  background-color: #1ab394 !important;
+  border: 1px solid #1ab394 !important;
+}
+#loginWrap .el-button:hover {
+  background: #48c2a9 !important;
+  border-color: #48c2a9 !important;
+}
+#loginWrap .el-button:active {
+  background: #17a185 !important;
+  border-color: #17a185 !important;
+}*/

@@ -268,7 +268,7 @@ html {
 }
 
 
-/*login样式*/
+/*!*login样式*!
 .login {
   border: 1px solid #cfd8dc;
   background-color: #20a8d8;
@@ -316,7 +316,7 @@ html {
 
   background-color: #20a8d8;
   color: #fff;
-}
+}*/
 
 /*404页面*/
 .error-page .errorWarp .title {
