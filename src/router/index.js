@@ -35,46 +35,39 @@ import {setCookie, getCookie, delCookie} from '@/common/utils';
 Vue.use(VueRouter)
 
 const routes = [
-  {path: '/login', component: login, permission: ['admin', 'developer']},
-  {path: '/register', component: register, permission: ['admin', 'developer']},
+  {path: '/login', component: login, permission: ['admin', 'developer'],meta: {title:'登录'}},
+  {path: '/register', component: register, permission: ['admin', 'developer'],meta: {title:'注册'}},
   {
-    path: '/test/1', component: app, permission: ['admin', 'developer'], children: [
-      {path: '/test/1/1/1', component: tableShow, permission: ['admin', 'developer']},
-      {path: '/test/1/1/2', component: treeTable, permission: ['admin', 'developer']},
-      {path: '/test/1/2', component: demo1, permission: ['admin', 'developer']},
-      {path: '/test/1/3', component: vertical, permission: ['admin', 'developer']},
-      {path: '/test/1/4', component: horizontal, permission: ['admin', 'developer']},
-      {path: '*', component: NotFoundView, permission: ['admin', 'developer']}
+    path: '/pages', component: app, permission: ['admin', 'developer'], children: [
+      {path: '/pages/table/tableShow', component: tableShow, permission: ['admin', 'developer'],meta: {title:'表格展示'}},
+      {path: '/pages/table/treeTable', component: treeTable, permission: ['admin', 'developer'],meta: {title:'树形表格'}},
+      {path: '/pages/demo1', component: demo1, permission: ['admin', 'developer'],meta: {title:'测试1-2'}},
+      {path: '/pages/vertical', component: vertical, permission: ['admin', 'developer'],meta: {title:'vertical'}},
+      {path: '/pages/horizontal', component: horizontal, permission: ['admin', 'developer'],meta: {title:'horizontal'}},
+      {path: '*', component: NotFoundView, permission: ['admin', 'developer'],meta: {title:'404'}}
     ]
   },
   {
-    path: '/test/2', component: app, permission: ['admin', 'developer'], children: [
-      {path: '/test/2/1', component: bar, permission: ['admin', 'developer']},
-      {path: '/test/2/2', component: mixedChart, permission: ['admin', 'developer']},
-      {
-        path: '/test/2/3',
-        component: demo2,
-        permission: ['admin', 'developer']
-      }, {
-        path: '/test/2/4',
-        component: barCharts,
-        permission: ['admin', 'developer']
-      },
-      {path: '*', component: NotFoundView, permission: ['admin', 'developer']}
+    path: '/pages', component: app, permission: ['admin', 'developer'], children: [
+      {path: '/bar', component: bar, permission: ['admin', 'developer'],meta: {title:'柱状图'}},
+      {path: '/mixedChart', component: mixedChart, permission: ['admin', 'developer'],meta: {title:'混合图表'}},
+      {path: '/demo2',component: demo2, permission: ['admin', 'developer'], meta: {title:'甜甜圈'}},
+      {path: '/barCharts', component: barCharts, permission: ['admin', 'developer'], meta: {title:'堆叠图'}},
+      {path: '*', component: NotFoundView, permission: ['admin', 'developer'],meta: {title:'404'}}
     ]
   },
   {
     path: '', component: app, permission: ['admin', 'developer'], children: [
-      {path: '/', component: home, permission: ['admin', 'developer']},
-      {path: '/resetPwd', component: resetPwd, permission: ['admin', 'developer']},
-      {path: '/dashboard', component: dashboard, permission: ['admin', 'developer']},
-      {path: '/sys/menuList', component: menuList, permission: ['admin']},
-      {path: '/sys/roleList', component: role, permission: ['admin']},
-      {path: '/sys/userList', component: sysUser, permission: ['admin']},
-      {path: '/sys/userAdd', component: userAdd, permission: ['admin']},
+      {path: '/', component: home, permission: ['admin', 'developer'],meta: {title:'主页'}},
+      {path: '/resetPwd', component: resetPwd, permission: ['admin', 'developer'],meta: {title:'重置密码'}},
+      {path: '/dashboard', component: dashboard, permission: ['admin', 'developer'],meta: {title:'仪表盘'}},
+      {path: '/sys/menuList', component: menuList, permission: ['admin'],meta: {title:'菜单管理'}},
+      {path: '/sys/roleList', component: role, permission: ['admin'],meta: {title:'角色管理'}},
+      {path: '/sys/userList', component: sysUser, permission: ['admin'],meta: {title:'用户管理'}},
+      {path: '/sys/userAdd', component: userAdd, permission: ['admin'],meta: {title:'新增用户'}},
     ]
   },
-  {path: '*', component: NotFoundView, permission: ['admin', 'developer']}
+  {path: '*', component: NotFoundView, permission: ['admin', 'developer'],meta: {title:'404'}}
 ];
 
 // 权限路由设置
@@ -107,10 +100,13 @@ const {state} = store
 
 //全局前置导航守卫
 router.beforeEach((route, redirect, next) => {
+  if(route.meta.title) {
+    document.title = route.meta.title
+  }
   if (state.device.isMobile && state.sidebar.opened) {
     store.commit(types.TOGGLE_SIDEBAR, false)
   }
-  if (!auth.loggedIn() && route.path !== '/login' && route.path !== '/register' && route.path !== '/test/1/4') {
+  if (!auth.loggedIn() && route.path !== '/login' && route.path !== '/register' && route.path !== '/pages/horizontal') {
     next({
       path: '/login',
       query: {redirect: route.fullPath}

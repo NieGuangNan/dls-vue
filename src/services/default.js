@@ -356,7 +356,7 @@ export default {
     "parentId": null,
     "sort": 2,
     "name": "message.menu.menu1.name",
-    "href": "/test/1",
+    "href": "/pages",
     "icon": "fa fa-upload",
     "children": [{
       "id": 92,
@@ -364,7 +364,7 @@ export default {
       "parentId": 31,
       "sort": 0,
       "name": "message.menu.menu1.items.item1.name",
-      "href": "/test/1/1",
+      "href": "/pages/table",
       "icon": "fa fa-bank",
       "children": [{
         "id": 912,
@@ -372,7 +372,7 @@ export default {
         "parentId": 92,
         "sort": 0,
         "name": "message.menu.menu1.items.item1.children.child1",
-        "href": "/test/1/1/1",
+        "href": "/pages/table/tableShow",
         "icon": "fa fa-bank",
         "children": [],
         "isShow": "1"
@@ -382,7 +382,7 @@ export default {
         "parentId": 92,
         "sort": 0,
         "name": "message.menu.menu1.items.item1.children.child2",
-        "href": "/test/1/1/2",
+        "href": "/pages/table/treeTable",
         "icon": "fa fa-area-chart",
         "children": [],
         "isShow": "1"
@@ -394,7 +394,7 @@ export default {
       "parentId": 31,
       "sort": 0,
       "name": "message.menu.menu1.items.item2.name",
-      "href": "/test/1/2",
+      "href": "/pages/demo1",
       "icon": "fa fa-area-chart",
       "children": [],
       "isShow": "1"
@@ -404,7 +404,7 @@ export default {
       "parentId": 31,
       "sort": 0,
       "name": "vertical",
-      "href": "/test/1/3",
+      "href": "/pages/vertical",
       "icon": "fa fa-area-chart",
       "children": [],
       "isShow": "1"
@@ -414,7 +414,7 @@ export default {
       "parentId": 31,
       "sort": 0,
       "name": "horizontal",
-      "href": "/test/1/4",
+      "href": "/pages/horizontal",
       "icon": "fa fa-area-chart",
       "children": [],
       "isShow": "1"
@@ -426,7 +426,7 @@ export default {
     "parentId": null,
     "sort": 3,
     "name": "message.menu.menu2.name",
-    "href": "/test/2",
+    "href": "",
     "icon": "fa fa-download",
     "children": [{
       "id": 103,
@@ -434,7 +434,7 @@ export default {
       "parentId": 102,
       "sort": 0,
       "name": "message.menu.menu2.items.item1.name",
-      "href": "/test/2/1",
+      "href": "/bar",
       "icon": "fa fa-image",
       "children": [],
       "isShow": "1"
@@ -444,7 +444,7 @@ export default {
       "parentId": 102,
       "sort": 0,
       "name": "message.menu.menu2.items.item2.name",
-      "href": "/test/2/2",
+      "href": "/mixedChart",
       "icon": "fa fa-image",
       "children": [],
       "isShow": "1"
@@ -454,7 +454,7 @@ export default {
       "parentId": 102,
       "sort": 0,
       "name": "message.menu.menu2.items.item3.name",
-      "href": "/test/2/3",
+      "href": "/demo2",
       "icon": "fa fa-image",
       "children": [],
       "isShow": "1"
@@ -464,7 +464,7 @@ export default {
       "parentId": 102,
       "sort": 0,
       "name": "message.menu.menu2.items.item4.name",
-      "href": "/test/2/4",
+      "href": "/barCharts",
       "icon": "fa fa-image",
       "children": [],
       "isShow": "1"
@@ -904,27 +904,27 @@ export default {
         {
           title: 'message.menu.menu1.items.item1.children.child1',
           centerIcon: 'fa fa-bank',
-          link:'/test/1/1/1',
+          link:'/pages/table/tableShow',
           disabled: false
         }, {
           title: 'message.menu.menu1.items.item1.children.child2',
           centerIcon: 'fa fa-area-chart',
-          link:'/test/1/1/2',
+          link:'/pages/table/treeTable',
           disabled: false
         }, {
           title: 'message.menu.menu1.items.item2.name',
           centerIcon: 'fa fa-area-chart',
-          link:'/test/1/2',
+          link:'/pages/demo1',
           disabled: false
         },{
           title: 'vertical',
           centerIcon: 'fa fa-area-chart',
-          link:'/test/1/3',
+          link:'/pages/vertical',
           disabled: false,
         },{
           title: 'horizontal',
           centerIcon: 'fa fa-area-chart',
-          link:'/test/1/4',
+          link:'/pages/horizontal',
           disabled: false,
         }],
       show: true
@@ -936,22 +936,22 @@ export default {
         {
           title: 'message.menu.menu2.items.item1.name',
           centerIcon: 'fa fa-image',
-          link:'/test/2/1',
+          link:'/bar',
           disabled: false
         }, {
           title: 'message.menu.menu2.items.item2.name',
           centerIcon: 'fa fa-image',
-          link:'/test/2/1',
+          link:'/mixedChart',
           disabled: false
         }, {
           title: 'message.menu.menu2.items.item3.name',
           centerIcon: 'fa fa-image',
-          link:'/test/2/3',
+          link:'/demo2',
           disabled: false
         }, {
           title: 'message.menu.menu2.items.item4.name',
           centerIcon: 'fa fa-image',
-          link:'/test/2/4',
+          link:'/barCharts',
           disabled: false
         }],
       show: true
