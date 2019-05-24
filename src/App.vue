@@ -140,7 +140,7 @@
       //  [App.vue specific] When App.vue is finish loading finish the progress bar
       this.$Progress.finish()
       //必须先登入再访问
-      if (!this.$cookieStore.getCookie('user-info') && this.$router.history.current.path !== '/test/1/4') {
+      if (!this.$cookieStore.getCookie('user-info') && this.$router.history.current.path !== '/pages/horizontal') {
         this.$router.push('/login')
 
       }

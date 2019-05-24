@@ -54,18 +54,18 @@ const resourceList = [{"id":52,"parentId":null,"sort":0,"name":"登录","code":"
 const menuList = [
   {"id":1,"parentId":null,"sort":0,"name":"仪表盘","href":"/index","icon":"fa fa-dashboard","children":[],
     "isShow":"1"},
-  {"id":31,"parentId":null,"sort":1,"name":"测试1","href":"/test/1","icon":"fa fa-upload","children":
+  {"id":31,"parentId":null,"sort":1,"name":"测试1","href":"/pages","icon":"fa fa-upload","children":
     [
-      {"id":92,"parentId":31,"sort":0,"name":"测试表格","href":"/test/1/1","icon":"fa fa-bank","children":[
-        {"id":912,"parentId":92,"sort":0,"name":"测试1-1-1","href":"/test/1/1/1","icon":"fa fa-bank","children":[],"isShow":"1"},
-        {"id":913,"parentId":92,"sort":0,"name":"测试1-1-2","href":"/test/1/1/2","icon":"fa fa-area-chart","children":[],"isShow":"1"}
+      {"id":92,"parentId":31,"sort":0,"name":"测试表格","href":"/pages/table","icon":"fa fa-bank","children":[
+        {"id":912,"parentId":92,"sort":0,"name":"测试1-1-1","href":"/pages/table/tableShow","icon":"fa fa-bank","children":[],"isShow":"1"},
+        {"id":913,"parentId":92,"sort":0,"name":"测试1-1-2","href":"/pages/table/treeTable","icon":"fa fa-area-chart","children":[],"isShow":"1"}
       ],"isShow":"1"},
-      {"id":93,"parentId":31,"sort":0,"name":"测试1-2","href":"/test/1/2","icon":"fa fa-area-chart","children":[],"isShow":"1"}
+      {"id":93,"parentId":31,"sort":0,"name":"测试1-2","href":"/pages/demo1","icon":"fa fa-area-chart","children":[],"isShow":"1"}
     ]
     ,"isShow":"1"},
-  {"id":102,"parentId":null,"sort":3,"name":"测试2","href":"/test/2","icon":"fa fa-download","children":
+  {"id":102,"parentId":null,"sort":3,"name":"测试2","href":"/pages","icon":"fa fa-download","children":
     [
-      {"id":103,"parentId":102,"sort":0,"name":"测试2-1","href":"/test/2/1","icon":"fa fa-image","children":[],"isShow":"1"}
+      {"id":103,"parentId":102,"sort":0,"name":"测试2-1","href":"/bar","icon":"fa fa-image","children":[],"isShow":"1"}
     ]
     ,"isShow":"1"},
   {"id":6,"parentId":null,"sort":6,"name":"系统管理","href":"/sys","icon":"fa fa-cog","children":
